@@ -1,16 +1,24 @@
-# This is a sample Python script.
+import eventos
+from MainWindow import *
+import sys, var
+class Main(QtWidgets.QMainWindow):
 
-# Press Mayús+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+    def __init__(self):
+        super(Main, self).__init__()
+        var.ui = Ui_MainWindow()
+        var.ui.setupUi(self) #metodo encargado de genera la interfaz
+        '''
+        ZONA DE EVENTOS
+        
+        '''
+        var.ui.btnSalir.clicked.connect(eventos.Eventos.saludar)
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    app = QtWidgets.QApplication([])
+    window = Main()
+    window.show()
+    sys.exit(app.exec())
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+

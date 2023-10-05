@@ -15,11 +15,11 @@ class Eventos():
 
         try:
             var.calendar.show()
-        except Exception as erro:
-            print("erro en abrir",erro)
+        except Exception as error:
+            print("erro en abrir",error)
 
     def acercade(self):
         try:
             pass
         except Exception as error:
-            print(error, "en módulo eventos")
+            print(error, "Errro en acerca de ", error)

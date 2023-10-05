@@ -32,11 +32,9 @@ class Calendar(QtWidgets.QDialog):
         super(Calendar, self).__init__()
         var.calendar = Ui_WindowCalendar()
         var.calendar.setupUi(self)
-
-
-        dia = datetime.now().day
-        mes = datetime.now().month
-        ano = datetime.now().year
+        day = datetime.now().day
+        month = datetime.now().month
+        year = datetime.now().year
 
 
 if __name__ == '__main__':

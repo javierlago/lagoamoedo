@@ -25,7 +25,7 @@ class Main(QtWidgets.QMainWindow):
         '''
         zona de eventos salir
         '''
-        var.ui.actionSalir.triggered.connect(eventos.Eventos.salir)
+        var.ui.actiongit Salir.triggered.connect(eventos.Eventos.salir)
 
 class Calendar(QtWidgets.QDialog):
     def __init__(self):

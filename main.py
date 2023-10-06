@@ -24,11 +24,13 @@ class Main(QtWidgets.QMainWindow):
         '''
         var.ui.btnCalendar.clicked.connect(eventos.Eventos.abrirCalendar)
 
+
         var.ui.actionAcerca_de.triggered.connect(eventos.Eventos.abrirAcercaDe)
         '''
         zona de eventos salir
         '''
         var.ui.actionSalir.triggered.connect(eventos.Eventos.salir)
+
 
 class Calendar(QtWidgets.QDialog):
     def __init__(self):
@@ -44,6 +46,7 @@ class Acerca(QtWidgets.QDialog):
         super(Acerca, self).__init__()
         var.acercade = Ui_AcercaDe()
         var.acercade.setupUi(self)
+        var.acercade.pushButton.clicked.connect(eventos.Eventos.salirAcercaDe)
 
 
 if __name__ == '__main__':

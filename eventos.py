@@ -25,3 +25,13 @@ class Eventos():
             var.acercade.show()
         except Exception as error:
             print("erro en abrir", error)
+
+
+
+    @staticmethod
+    def salirAcercaDe(self):
+
+        try:
+            var.acercade.hide()
+        except Exception as error:
+            print("erro en abrir", error)

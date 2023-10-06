@@ -12,61 +12,90 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_AcercaDe(object):
     def setupUi(self, AcercaDe):
         AcercaDe.setObjectName("AcercaDe")
+        AcercaDe.setWindowModality(QtCore.Qt.WindowModality.WindowModal)
         AcercaDe.resize(500, 300)
+        AcercaDe.setMinimumSize(QtCore.QSize(500, 300))
+        AcercaDe.setMaximumSize(QtCore.QSize(500, 300))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("img/3986726-man-taxi-transport-icon_112967.svg"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         AcercaDe.setWindowIcon(icon)
+        AcercaDe.setModal(True)
+        self.gridLayout_3 = QtWidgets.QGridLayout(AcercaDe)
+        self.gridLayout_3.setObjectName("gridLayout_3")
         self.frame = QtWidgets.QFrame(parent=AcercaDe)
-        self.frame.setGeometry(QtCore.QRect(0, 0, 501, 301))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Maximum, QtWidgets.QSizePolicy.Policy.Maximum)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
         self.frame.setSizePolicy(sizePolicy)
-        self.frame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
         self.frame.setFrameShadow(QtWidgets.QFrame.Shadow.Plain)
         self.frame.setLineWidth(1)
         self.frame.setObjectName("frame")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.frame)
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.frame_2 = QtWidgets.QFrame(parent=self.frame)
-        self.frame_2.setGeometry(QtCore.QRect(10, 20, 481, 221))
-        self.frame_2.setFrameShape(QtWidgets.QFrame.Shape.Box)
-        self.frame_2.setFrameShadow(QtWidgets.QFrame.Shadow.Plain)
-        self.frame_2.setLineWidth(1)
+        self.frame_2.setStyleSheet("border-radius:10px;\n"
+"background-color: rgb(222, 222, 222);")
+        self.frame_2.setFrameShape(QtWidgets.QFrame.Shape.Panel)
+        self.frame_2.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_2.setObjectName("frame_2")
-        self.label = QtWidgets.QLabel(parent=self.frame_2)
-        self.label.setGeometry(QtCore.QRect(20, 30, 91, 91))
-        self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("img/3986726-man-taxi-transport-icon_112967.svg"))
-        self.label.setScaledContents(True)
-        self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.label.setObjectName("label")
-        self.txtNameApp = QtWidgets.QTextEdit(parent=self.frame_2)
-        self.txtNameApp.setEnabled(False)
-        self.txtNameApp.setGeometry(QtCore.QRect(130, 40, 271, 71))
-        font = QtGui.QFont()
-        font.setPointSize(20)
-        font.setBold(True)
-        font.setWeight(75)
-        self.txtNameApp.setFont(font)
-        self.txtNameApp.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
-        self.txtNameApp.setLineWidth(0)
-        self.txtNameApp.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.txtNameApp.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.txtNameApp.setObjectName("txtNameApp")
-        self.textEdit_2 = QtWidgets.QTextEdit(parent=self.frame_2)
-        self.textEdit_2.setEnabled(False)
-        self.textEdit_2.setGeometry(QtCore.QRect(20, 120, 441, 71))
-        self.textEdit_2.setMinimumSize(QtCore.QSize(441, 0))
-        self.textEdit_2.setAutoFillBackground(False)
-        self.textEdit_2.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
-        self.textEdit_2.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.textEdit_2.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
-        self.textEdit_2.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.SizeAdjustPolicy.AdjustToContents)
-        self.textEdit_2.setTextInteractionFlags(QtCore.Qt.TextInteractionFlag.NoTextInteraction)
-        self.textEdit_2.setObjectName("textEdit_2")
+        self.gridLayout = QtWidgets.QGridLayout(self.frame_2)
+        self.gridLayout.setObjectName("gridLayout")
+        self.label_2 = QtWidgets.QLabel(parent=self.frame_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
+        self.label_2.setSizePolicy(sizePolicy)
+        self.label_2.setMinimumSize(QtCore.QSize(150, 150))
+        self.label_2.setMaximumSize(QtCore.QSize(150, 150))
+        self.label_2.setText("")
+        self.label_2.setTextFormat(QtCore.Qt.TextFormat.PlainText)
+        self.label_2.setPixmap(QtGui.QPixmap("img/3986726-man-taxi-transport-icon_112967.svg"))
+        self.label_2.setScaledContents(True)
+        self.label_2.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.label_2.setObjectName("label_2")
+        self.gridLayout.addWidget(self.label_2, 2, 0, 1, 1)
+        self.textEdit = QtWidgets.QTextEdit(parent=self.frame_2)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.textEdit.sizePolicy().hasHeightForWidth())
+        self.textEdit.setSizePolicy(sizePolicy)
+        self.textEdit.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        self.textEdit.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
+        self.textEdit.setFrameShadow(QtWidgets.QFrame.Shadow.Plain)
+        self.textEdit.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.textEdit.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff)
+        self.textEdit.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.SizeAdjustPolicy.AdjustIgnored)
+
+        self.textEdit.setObjectName("textEdit")
+        self.gridLayout.addWidget(self.textEdit, 2, 1, 1, 1)
+        self.verticalLayout_2.addWidget(self.frame_2)
         self.pushButton = QtWidgets.QPushButton(parent=self.frame)
-        self.pushButton.setGeometry(QtCore.QRect(194, 252, 91, 31))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
+        self.pushButton.setSizePolicy(sizePolicy)
+        self.pushButton.setMinimumSize(QtCore.QSize(75, 30))
+        self.pushButton.setMaximumSize(QtCore.QSize(75, 50))
+        font = QtGui.QFont()
+        font.setFamily("MS Shell Dlg 2")
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setItalic(False)
+        font.setWeight(75)
+        self.pushButton.setFont(font)
+        self.pushButton.setStyleSheet("border-radius:5px;\n"
+"background-color: rgb(203, 203, 203);\n"
+"hover:!pressed { color: blue; }")
+        self.pushButton.setFlat(False)
         self.pushButton.setObjectName("pushButton")
+        self.verticalLayout_2.addWidget(self.pushButton, 0, QtCore.Qt.AlignmentFlag.AlignHCenter)
+        self.gridLayout_3.addWidget(self.frame, 0, 0, 1, 1)
 
         self.retranslateUi(AcercaDe)
         QtCore.QMetaObject.connectSlotsByName(AcercaDe)
@@ -74,22 +103,15 @@ class Ui_AcercaDe(object):
     def retranslateUi(self, AcercaDe):
         _translate = QtCore.QCoreApplication.translate
         AcercaDe.setWindowTitle(_translate("AcercaDe", "Acerca de ...."))
-        self.txtNameApp.setHtml(_translate("AcercaDe", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:20pt; font-weight:600; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">ApparCar</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Gestion de taxis y trabajadores</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt;\">Versión 0.0.0.1</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt;\"><br /></p></body></html>"))
-        self.textEdit_2.setHtml(_translate("AcercaDe", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.textEdit.setHtml(_translate("AcercaDe", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">6/10/2023 - Javier Lago Amoedo</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Proyecto fin de ciclo</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Desarrollo de aplicaciones multiplataforma</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">I.E.S Teis</p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600;\">TappxiControl</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">Empresa dedicada a la gestion de taxis</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">Version 0.0.0.0</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">Proyecto de fin de Ciclo</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">Javier Lago Amoedo</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600;\">IES de Teis 6/10/2023</span></p></body></html>"))
         self.pushButton.setText(_translate("AcercaDe", "Cerrar"))

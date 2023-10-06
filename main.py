@@ -5,7 +5,7 @@ import eventos
 import var
 from WindowCalendar import *
 from MainWindow import *
-
+from AcercaDeWindow import *
 
 
 
@@ -16,16 +16,21 @@ class Main(QtWidgets.QMainWindow):
         var.ui = Ui_MainWindow()
         var.ui.setupUi(self) #metodo encargado de genera la interfaz
         var.calendar = Calendar()
+        var.acercade = Acerca()
 
         '''
         ZONA DE EVENTOS
         
         '''
         var.ui.btnCalendar.clicked.connect(eventos.Eventos.abrirCalendar)
+
+
+        var.ui.actionAcerca_de.triggered.connect(eventos.Eventos.abrirAcercaDe)
         '''
         zona de eventos salir
         '''
         var.ui.actiongit Salir.triggered.connect(eventos.Eventos.salir)
+
 
 class Calendar(QtWidgets.QDialog):
     def __init__(self):
@@ -35,6 +40,13 @@ class Calendar(QtWidgets.QDialog):
         day = datetime.now().day
         month = datetime.now().month
         year = datetime.now().year
+
+class Acerca(QtWidgets.QDialog):
+    def __init__(self):
+        super(Acerca, self).__init__()
+        var.acercade = Ui_AcercaDe()
+        var.acercade.setupUi(self)
+        var.acercade.pushButton.clicked.connect(eventos.Eventos.salirAcercaDe)
 
 
 if __name__ == '__main__':

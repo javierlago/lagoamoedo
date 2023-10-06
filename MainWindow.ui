@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
+    <width>980</width>
     <height>720</height>
    </rect>
   </property>
@@ -45,284 +45,292 @@
    </size>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QFrame" name="gridFrame">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>9</y>
-      <width>1011</width>
-      <height>871</height>
-     </rect>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="leftMargin">
+     <number>0</number>
     </property>
-    <layout class="QGridLayout" name="_2">
-     <property name="leftMargin">
-      <number>0</number>
-     </property>
-     <property name="topMargin">
-      <number>0</number>
-     </property>
-     <property name="rightMargin">
-      <number>0</number>
-     </property>
-     <property name="bottomMargin">
-      <number>0</number>
-     </property>
-     <property name="spacing">
-      <number>0</number>
-     </property>
-     <item row="0" column="0">
-      <widget class="QTabWidget" name="tabPrincipal">
-       <property name="minimumSize">
-        <size>
-         <width>980</width>
-         <height>700</height>
-        </size>
-       </property>
-       <property name="tabPosition">
-        <enum>QTabWidget::North</enum>
-       </property>
-       <property name="tabShape">
-        <enum>QTabWidget::Rounded</enum>
-       </property>
-       <property name="currentIndex">
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="gridFrame">
+      <layout class="QGridLayout" name="_2">
+       <property name="leftMargin">
         <number>0</number>
        </property>
-       <widget class="QWidget" name="tabDrivers">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>974</width>
-          <height>0</height>
-         </size>
-        </property>
-        <attribute name="title">
-         <string>Conductores</string>
-        </attribute>
-        <widget class="QFrame" name="frame">
-         <property name="enabled">
-          <bool>true</bool>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <item row="0" column="0">
+        <widget class="QTabWidget" name="tabPrincipal">
+         <property name="minimumSize">
+          <size>
+           <width>980</width>
+           <height>700</height>
+          </size>
          </property>
-         <property name="geometry">
-          <rect>
-           <x>10</x>
-           <y>10</y>
-           <width>961</width>
-           <height>141</height>
-          </rect>
+         <property name="tabPosition">
+          <enum>QTabWidget::North</enum>
          </property>
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
+         <property name="tabShape">
+          <enum>QTabWidget::Rounded</enum>
          </property>
-         <property name="autoFillBackground">
-          <bool>false</bool>
+         <property name="currentIndex">
+          <number>0</number>
          </property>
-         <property name="frameShape">
-          <enum>QFrame::Box</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Plain</enum>
-         </property>
-         <property name="lineWidth">
-          <number>2</number>
-         </property>
-         <widget class="QLineEdit" name="txtDni">
-          <property name="geometry">
-           <rect>
-            <x>260</x>
-            <y>30</y>
-            <width>101</width>
-            <height>20</height>
-           </rect>
+         <widget class="QWidget" name="tabDrivers">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
-         </widget>
-         <widget class="QLabel" name="lblCodDB">
-          <property name="geometry">
-           <rect>
-            <x>120</x>
-            <y>30</y>
-            <width>91</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(255, 255, 127);</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-         <widget class="QLabel" name="lblCodigo">
-          <property name="geometry">
-           <rect>
-            <x>40</x>
-            <y>30</y>
-            <width>61</width>
-            <height>21</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>Codigo:</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="txtDni_2">
-          <property name="geometry">
-           <rect>
-            <x>110</x>
-            <y>80</y>
-            <width>250</width>
-            <height>20</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QLabel" name="lblDNI">
-          <property name="geometry">
-           <rect>
-            <x>230</x>
-            <y>30</y>
-            <width>50</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>DNI:</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-          </property>
-         </widget>
-         <widget class="QLabel" name="lblSurname">
-          <property name="geometry">
-           <rect>
-            <x>40</x>
-            <y>80</y>
-            <width>51</width>
-            <height>21</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>Apellidos</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-          </property>
-         </widget>
-         <widget class="QLabel" name="tltDate">
-          <property name="geometry">
-           <rect>
-            <x>390</x>
-            <y>30</y>
-            <width>71</width>
-            <height>21</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Fecha de Alta:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-          </property>
-         </widget>
-         <widget class="QLabel" name="lblName">
-          <property name="geometry">
-           <rect>
-            <x>390</x>
-            <y>80</y>
-            <width>51</width>
-            <height>21</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Nombre&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="txtDni_3">
-          <property name="geometry">
-           <rect>
-            <x>460</x>
-            <y>80</y>
-            <width>471</width>
-            <height>20</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="txtDate">
-          <property name="geometry">
-           <rect>
-            <x>480</x>
-            <y>30</y>
-            <width>411</width>
-            <height>20</height>
-           </rect>
-          </property>
-         </widget>
-         <widget class="QPushButton" name="btnCalendar">
-          <property name="geometry">
-           <rect>
-            <x>900</x>
-            <y>10</y>
-            <width>41</width>
-            <height>41</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset>
-            <normaloff>img/calendar-icon_34471.png</normaloff>img/calendar-icon_34471.png</iconset>
-          </property>
-          <property name="iconSize">
+          <property name="minimumSize">
            <size>
-            <width>32</width>
-            <height>32</height>
+            <width>974</width>
+            <height>0</height>
            </size>
           </property>
+          <attribute name="title">
+           <string>Conductores</string>
+          </attribute>
+          <widget class="QFrame" name="frame">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>961</width>
+             <height>141</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::Box</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Plain</enum>
+           </property>
+           <property name="lineWidth">
+            <number>2</number>
+           </property>
+           <widget class="QLineEdit" name="txtDni">
+            <property name="geometry">
+             <rect>
+              <x>260</x>
+              <y>30</y>
+              <width>101</width>
+              <height>20</height>
+             </rect>
+            </property>
+           </widget>
+           <widget class="QLabel" name="lblCodDB">
+            <property name="geometry">
+             <rect>
+              <x>120</x>
+              <y>30</y>
+              <width>91</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 127);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+           <widget class="QLabel" name="lblCodigo">
+            <property name="geometry">
+             <rect>
+              <x>40</x>
+              <y>30</y>
+              <width>61</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string>Codigo:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+            </property>
+           </widget>
+           <widget class="QLineEdit" name="txtDni_2">
+            <property name="geometry">
+             <rect>
+              <x>110</x>
+              <y>80</y>
+              <width>250</width>
+              <height>20</height>
+             </rect>
+            </property>
+           </widget>
+           <widget class="QLabel" name="lblDNI">
+            <property name="geometry">
+             <rect>
+              <x>230</x>
+              <y>30</y>
+              <width>50</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>DNI:</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+            </property>
+           </widget>
+           <widget class="QLabel" name="lblSurname">
+            <property name="geometry">
+             <rect>
+              <x>40</x>
+              <y>80</y>
+              <width>51</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string>Apellidos</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+            </property>
+           </widget>
+           <widget class="QLabel" name="tltDate">
+            <property name="geometry">
+             <rect>
+              <x>390</x>
+              <y>30</y>
+              <width>71</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Fecha de Alta:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+            </property>
+           </widget>
+           <widget class="QLabel" name="lblName">
+            <property name="geometry">
+             <rect>
+              <x>390</x>
+              <y>80</y>
+              <width>51</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <property name="text">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Nombre&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+            </property>
+           </widget>
+           <widget class="QLineEdit" name="txtDni_3">
+            <property name="geometry">
+             <rect>
+              <x>460</x>
+              <y>80</y>
+              <width>471</width>
+              <height>20</height>
+             </rect>
+            </property>
+           </widget>
+           <widget class="QLineEdit" name="txtDate">
+            <property name="geometry">
+             <rect>
+              <x>480</x>
+              <y>30</y>
+              <width>411</width>
+              <height>20</height>
+             </rect>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="btnCalendar">
+            <property name="geometry">
+             <rect>
+              <x>900</x>
+              <y>10</y>
+              <width>41</width>
+              <height>41</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>img/calendar-icon_34471.png</normaloff>img/calendar-icon_34471.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>32</width>
+              <height>32</height>
+             </size>
+            </property>
+           </widget>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="tabCars">
+          <attribute name="title">
+           <string>Taxis</string>
+          </attribute>
+          <layout class="QGridLayout" name="gridLayout_4"/>
          </widget>
         </widget>
-       </widget>
-       <widget class="QWidget" name="tabCars">
-        <attribute name="title">
-         <string>Taxis</string>
-        </attribute>
-        <layout class="QGridLayout" name="gridLayout_4"/>
-       </widget>
-      </widget>
-     </item>
-    </layout>
-   </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1000</width>
+     <width>980</width>
      <height>21</height>
     </rect>
    </property>

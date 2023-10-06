@@ -4,11 +4,7 @@ import var
 
 
 class Eventos():
-    def salir(self):
-        try:
-            sys.exit(0)
-        except Exception as error:
-            print(error, "en módulo eventos")
+
 
     @staticmethod
     def abrirCalendar(self):
@@ -26,6 +22,18 @@ class Eventos():
         except Exception as error:
             print("erro en abrir", error)
 
+    @staticmethod
+    def showSalir(self):
+        try:
+            var.ventana_salir.show()
+        except Exception as error:
+            print("erro en abrir", error)
+
+    def hideSalir(self):
+        try:
+            var.ventana_salir.hide()
+        except Exception as error:
+            print("erro en abrir", error)
 
 
     @staticmethod
@@ -33,5 +41,12 @@ class Eventos():
 
         try:
             var.acercade.hide()
+        except Exception as error:
+            print("erro en abrir", error)
+    @staticmethod
+    def salir(self):
+
+        try:
+            sys.exit()
         except Exception as error:
             print("erro en abrir", error)

@@ -1,8 +1,7 @@
 from datetime import datetime
 import sys
 
-
-
+import drivers
 import eventos
 import var
 from WindowCalendar import *
@@ -34,6 +33,11 @@ class Main(QtWidgets.QMainWindow):
         zona de eventos salir
         '''
         var.ui.actionSalir.triggered.connect(eventos.Eventos.showSalir)
+        """
+        zona de eventos cajas
+        """
+        var.ui.txtDni.editingFinished.connect(drivers.Drivers.validarDNI)
+
 
 
 class Calendar(QtWidgets.QDialog):
@@ -52,8 +56,6 @@ class  SalirVentana(QtWidgets.QDialog):
         var.ventana_salir.setupUi(self)
         var.ventana_salir.btnAcept.clicked.connect(eventos.Eventos.salir)
         var.ventana_salir.btnCancelar.clicked.connect(eventos.Eventos.hideSalir)
-
-
 
 
 class Acerca(QtWidgets.QDialog):

@@ -1,5 +1,7 @@
 import sys
 
+from PyQt6.uic.properties import QtGui
+
 import var
 
 
@@ -8,9 +10,12 @@ class Eventos():
 
     def limpiar(self):
             try:
-                listalimpiar = [var.ui.txtDni, var.ui.txtDate, var.ui.txtDni_2, var.ui.txtNombre, var.ui.txtDireccion, var.ui.txtMovil, var.ui.txtSalario, var.ui.lblCheckDNI]
+                listalimpiar = [var.ui.txtDni, var.ui.txtDate, var.ui.txtDni_2, var.ui.txtNombre, var.ui.txtDireccion, var.ui.txtMovil, var.ui.txtSalario]
+                var.ui.lblCheckDNI.setText(None)
+                var.ui.lblCheckDNI.setScaledContents(False)
                 for i in listalimpiar:
                     i.setText(None)
+
             except Exception as error:
                 print("Error al limpiar", error)
     @staticmethod

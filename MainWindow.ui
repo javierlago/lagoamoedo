@@ -14,7 +14,7 @@
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -51,20 +51,8 @@
    </size>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <property name="leftMargin">
-     <number>0</number>
-    </property>
-    <property name="topMargin">
-     <number>0</number>
-    </property>
-    <property name="rightMargin">
-     <number>0</number>
-    </property>
-    <property name="bottomMargin">
-     <number>0</number>
-    </property>
-    <item>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
      <widget class="QFrame" name="gridFrame">
       <layout class="QGridLayout" name="_2">
        <property name="leftMargin">
@@ -84,6 +72,12 @@
        </property>
        <item row="0" column="0">
         <widget class="QTabWidget" name="tabPrincipal">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="minimumSize">
           <size>
            <width>0</width>
@@ -115,418 +109,433 @@
           <attribute name="title">
            <string>Conductores</string>
           </attribute>
-          <widget class="QFrame" name="boxInfo">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="geometry">
-            <rect>
-             <x>10</x>
-             <y>10</y>
-             <width>971</width>
-             <height>241</height>
-            </rect>
-           </property>
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="autoFillBackground">
-            <bool>false</bool>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QWidget#boxInfo{
+          <layout class="QGridLayout" name="gridLayout_2">
+           <item row="0" column="0">
+            <widget class="QFrame" name="boxInfo">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="autoFillBackground">
+              <bool>false</bool>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QWidget#boxInfo{
 border-radius:10px;
 border: 2px solid black;
 }</string>
-           </property>
-           <property name="frameShape">
-            <enum>QFrame::Panel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Plain</enum>
-           </property>
-           <property name="lineWidth">
-            <number>5</number>
-           </property>
-           <widget class="QLineEdit" name="txtDni">
-            <property name="geometry">
-             <rect>
-              <x>260</x>
-              <y>30</y>
-              <width>101</width>
-              <height>20</height>
-             </rect>
-            </property>
-            <property name="maxLength">
-             <number>9</number>
-            </property>
-           </widget>
-           <widget class="QLabel" name="lblCodDB">
-            <property name="geometry">
-             <rect>
-              <x>120</x>
-              <y>30</y>
-              <width>91</width>
-              <height>20</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 127);</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-           <widget class="QLabel" name="lblCodigo">
-            <property name="geometry">
-             <rect>
-              <x>40</x>
-              <y>30</y>
-              <width>61</width>
-              <height>21</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="text">
-             <string>Codigo:</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-           <widget class="QLineEdit" name="txtDni_2">
-            <property name="geometry">
-             <rect>
-              <x>110</x>
-              <y>80</y>
-              <width>250</width>
-              <height>20</height>
-             </rect>
-            </property>
-           </widget>
-           <widget class="QLabel" name="lblDNI">
-            <property name="geometry">
-             <rect>
-              <x>230</x>
-              <y>30</y>
-              <width>50</width>
-              <height>20</height>
-             </rect>
-            </property>
-            <property name="text">
-             <string>DNI:</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-            </property>
-           </widget>
-           <widget class="QLabel" name="lblSurname">
-            <property name="geometry">
-             <rect>
-              <x>40</x>
-              <y>80</y>
-              <width>51</width>
-              <height>21</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="text">
-             <string>Apellidos</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-            </property>
-           </widget>
-           <widget class="QLabel" name="tltDate">
-            <property name="geometry">
-             <rect>
-              <x>690</x>
-              <y>30</y>
-              <width>71</width>
-              <height>21</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Fecha de Alta:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-           <widget class="QLabel" name="lblName">
-            <property name="geometry">
-             <rect>
-              <x>390</x>
-              <y>80</y>
-              <width>51</width>
-              <height>21</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Nombre&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-            </property>
-           </widget>
-           <widget class="QLineEdit" name="txtDni_3">
-            <property name="geometry">
-             <rect>
-              <x>460</x>
-              <y>80</y>
-              <width>471</width>
-              <height>20</height>
-             </rect>
-            </property>
-           </widget>
-           <widget class="QLineEdit" name="txtDate">
-            <property name="geometry">
-             <rect>
-              <x>770</x>
-              <y>30</y>
-              <width>121</width>
-              <height>20</height>
-             </rect>
-            </property>
-           </widget>
-           <widget class="QPushButton" name="btnCalendar">
-            <property name="geometry">
-             <rect>
-              <x>900</x>
-              <y>10</y>
-              <width>41</width>
-              <height>41</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">border-radius:2px;
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::Panel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Plain</enum>
+             </property>
+             <property name="lineWidth">
+              <number>5</number>
+             </property>
+             <widget class="QLineEdit" name="txtDni">
+              <property name="geometry">
+               <rect>
+                <x>260</x>
+                <y>30</y>
+                <width>101</width>
+                <height>20</height>
+               </rect>
+              </property>
+              <property name="maxLength">
+               <number>9</number>
+              </property>
+             </widget>
+             <widget class="QLabel" name="lblCodDB">
+              <property name="geometry">
+               <rect>
+                <x>120</x>
+                <y>30</y>
+                <width>91</width>
+                <height>20</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(255, 255, 127);</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+             <widget class="QLabel" name="lblCodigo">
+              <property name="geometry">
+               <rect>
+                <x>40</x>
+                <y>30</y>
+                <width>61</width>
+                <height>21</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>Codigo:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="txtDni_2">
+              <property name="geometry">
+               <rect>
+                <x>110</x>
+                <y>80</y>
+                <width>250</width>
+                <height>20</height>
+               </rect>
+              </property>
+             </widget>
+             <widget class="QLabel" name="lblDNI">
+              <property name="geometry">
+               <rect>
+                <x>230</x>
+                <y>30</y>
+                <width>50</width>
+                <height>20</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>DNI:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+              </property>
+             </widget>
+             <widget class="QLabel" name="lblSurname">
+              <property name="geometry">
+               <rect>
+                <x>40</x>
+                <y>80</y>
+                <width>51</width>
+                <height>21</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>Apellidos</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+              </property>
+             </widget>
+             <widget class="QLabel" name="tltDate">
+              <property name="geometry">
+               <rect>
+                <x>690</x>
+                <y>30</y>
+                <width>71</width>
+                <height>21</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Fecha de Alta:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+             <widget class="QLabel" name="lblName">
+              <property name="geometry">
+               <rect>
+                <x>390</x>
+                <y>80</y>
+                <width>51</width>
+                <height>21</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Nombre&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="txtNombre">
+              <property name="geometry">
+               <rect>
+                <x>460</x>
+                <y>80</y>
+                <width>471</width>
+                <height>20</height>
+               </rect>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="txtDate">
+              <property name="geometry">
+               <rect>
+                <x>770</x>
+                <y>30</y>
+                <width>121</width>
+                <height>20</height>
+               </rect>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="btnCalendar">
+              <property name="geometry">
+               <rect>
+                <x>900</x>
+                <y>10</y>
+                <width>41</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-radius:2px;
 </string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="icon">
-             <iconset>
-              <normaloff>img/calendar-icon_34471.png</normaloff>img/calendar-icon_34471.png</iconset>
-            </property>
-            <property name="iconSize">
-             <size>
-              <width>32</width>
-              <height>32</height>
-             </size>
-            </property>
-           </widget>
-           <widget class="QLabel" name="lblCheckDNI">
-            <property name="geometry">
-             <rect>
-              <x>365</x>
-              <y>30</y>
-              <width>20</width>
-              <height>20</height>
-             </rect>
-            </property>
-            <property name="font">
-             <font>
-              <family>Ravie</family>
-              <pointsize>16</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="scaledContents">
-             <bool>false</bool>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-           <widget class="QLineEdit" name="txtDireccion">
-            <property name="geometry">
-             <rect>
-              <x>110</x>
-              <y>120</y>
-              <width>250</width>
-              <height>20</height>
-             </rect>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>250</width>
-              <height>20</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>250</width>
-              <height>20</height>
-             </size>
-            </property>
-           </widget>
-           <widget class="QLabel" name="lblStreet">
-            <property name="geometry">
-             <rect>
-              <x>40</x>
-              <y>120</y>
-              <width>51</width>
-              <height>21</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="text">
-             <string>Direccion</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-            </property>
-           </widget>
-           <widget class="QLineEdit" name="txtMovil">
-            <property name="geometry">
-             <rect>
-              <x>110</x>
-              <y>160</y>
-              <width>91</width>
-              <height>20</height>
-             </rect>
-            </property>
-           </widget>
-           <widget class="QLabel" name="lblMovil">
-            <property name="geometry">
-             <rect>
-              <x>40</x>
-              <y>160</y>
-              <width>51</width>
-              <height>21</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="text">
-             <string>Movil:</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-            </property>
-           </widget>
-           <widget class="QLabel" name="lblLocalidad">
-            <property name="geometry">
-             <rect>
-              <x>700</x>
-              <y>120</y>
-              <width>51</width>
-              <height>21</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="text">
-             <string>Localidad</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-            </property>
-           </widget>
-           <widget class="QComboBox" name="cmbLocalidad">
-            <property name="geometry">
-             <rect>
-              <x>770</x>
-              <y>120</y>
-              <width>161</width>
-              <height>22</height>
-             </rect>
-            </property>
-            <item>
-             <property name="text">
-              <string>Pontevedra</string>
-             </property>
-            </item>
-           </widget>
-           <widget class="QLabel" name="lblProvincia">
-            <property name="geometry">
-             <rect>
-              <x>390</x>
-              <y>120</y>
-              <width>51</width>
-              <height>21</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="text">
-             <string>Provincia</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-            </property>
-           </widget>
-           <widget class="QComboBox" name="cmbProvincia">
-            <property name="geometry">
-             <rect>
-              <x>460</x>
-              <y>120</y>
-              <width>201</width>
-              <height>22</height>
-             </rect>
-            </property>
-            <item>
-             <property name="text">
-              <string>Pontevedra</string>
-             </property>
-            </item>
-           </widget>
-           <widget class="QLabel" name="lblSalario">
-            <property name="geometry">
-             <rect>
-              <x>210</x>
-              <y>160</y>
-              <width>51</width>
-              <height>21</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true"/>
-            </property>
-            <property name="text">
-             <string>Salario</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-           <widget class="QLineEdit" name="txtSalario">
-            <property name="geometry">
-             <rect>
-              <x>280</x>
-              <y>160</y>
-              <width>81</width>
-              <height>20</height>
-             </rect>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </widget>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>img/calendar-icon_34471.png</normaloff>img/calendar-icon_34471.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
+              </property>
+             </widget>
+             <widget class="QLabel" name="lblCheckDNI">
+              <property name="geometry">
+               <rect>
+                <x>365</x>
+                <y>30</y>
+                <width>20</width>
+                <height>20</height>
+               </rect>
+              </property>
+              <property name="font">
+               <font>
+                <family>Ravie</family>
+                <pointsize>16</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="scaledContents">
+               <bool>false</bool>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="txtDireccion">
+              <property name="geometry">
+               <rect>
+                <x>110</x>
+                <y>120</y>
+                <width>250</width>
+                <height>20</height>
+               </rect>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>250</width>
+                <height>20</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>250</width>
+                <height>20</height>
+               </size>
+              </property>
+             </widget>
+             <widget class="QLabel" name="lblStreet">
+              <property name="geometry">
+               <rect>
+                <x>40</x>
+                <y>120</y>
+                <width>51</width>
+                <height>21</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>Direccion</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="txtMovil">
+              <property name="geometry">
+               <rect>
+                <x>110</x>
+                <y>160</y>
+                <width>91</width>
+                <height>20</height>
+               </rect>
+              </property>
+             </widget>
+             <widget class="QLabel" name="lblMovil">
+              <property name="geometry">
+               <rect>
+                <x>40</x>
+                <y>160</y>
+                <width>51</width>
+                <height>21</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>Movil:</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+              </property>
+             </widget>
+             <widget class="QLabel" name="lblLocalidad">
+              <property name="geometry">
+               <rect>
+                <x>700</x>
+                <y>120</y>
+                <width>51</width>
+                <height>21</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>Localidad</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+              </property>
+             </widget>
+             <widget class="QComboBox" name="cmbLocalidad">
+              <property name="geometry">
+               <rect>
+                <x>770</x>
+                <y>120</y>
+                <width>161</width>
+                <height>22</height>
+               </rect>
+              </property>
+              <item>
+               <property name="text">
+                <string>Pontevedra</string>
+               </property>
+              </item>
+             </widget>
+             <widget class="QLabel" name="lblProvincia">
+              <property name="geometry">
+               <rect>
+                <x>390</x>
+                <y>120</y>
+                <width>51</width>
+                <height>21</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>Provincia</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+              </property>
+             </widget>
+             <widget class="QComboBox" name="cmbProvincia">
+              <property name="geometry">
+               <rect>
+                <x>460</x>
+                <y>120</y>
+                <width>201</width>
+                <height>22</height>
+               </rect>
+              </property>
+              <item>
+               <property name="text">
+                <string>Pontevedra</string>
+               </property>
+              </item>
+             </widget>
+             <widget class="QLabel" name="lblSalario">
+              <property name="geometry">
+               <rect>
+                <x>210</x>
+                <y>160</y>
+                <width>51</width>
+                <height>21</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
+              </property>
+              <property name="text">
+               <string>Salario</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="txtSalario">
+              <property name="geometry">
+               <rect>
+                <x>280</x>
+                <y>160</y>
+                <width>81</width>
+                <height>20</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+             <widget class="QLabel" name="lblTxt">
+              <property name="geometry">
+               <rect>
+                <x>370</x>
+                <y>160</y>
+                <width>20</width>
+                <height>20</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+              <property name="pixmap">
+               <pixmap>img/euro.png</pixmap>
+              </property>
+              <property name="scaledContents">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </widget>
+           </item>
+          </layout>
          </widget>
          <widget class="QWidget" name="tabCars">
           <attribute name="title">
@@ -554,7 +563,6 @@ border: 2px solid black;
     <property name="title">
      <string>Archivo</string>
     </property>
-    <addaction name="actionSalir"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -566,17 +574,69 @@ border: 2px solid black;
    <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionSalir">
-   <property name="text">
-    <string>Salir</string>
+  <widget class="QToolBar" name="toolBar">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
    </property>
-  </action>
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>24</width>
+     <height>24</height>
+    </size>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="separator"/>
+   <addaction name="Salir"/>
+   <addaction name="btnLimpiar"/>
+  </widget>
   <action name="actionAcerca_de">
    <property name="text">
     <string>Acerca de...</string>
    </property>
   </action>
+  <action name="Salir">
+   <property name="icon">
+    <iconset>
+     <normaloff>img/salir.png</normaloff>img/salir.png</iconset>
+   </property>
+   <property name="text">
+    <string>salir</string>
+   </property>
+  </action>
+  <action name="btnLimpiar">
+   <property name="icon">
+    <iconset>
+     <normalon>img/pincel.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </action>
  </widget>
+ <tabstops>
+  <tabstop>btnCalendar</tabstop>
+  <tabstop>txtDni_2</tabstop>
+  <tabstop>txtNombre</tabstop>
+  <tabstop>cmbProvincia</tabstop>
+  <tabstop>txtDireccion</tabstop>
+  <tabstop>cmbLocalidad</tabstop>
+  <tabstop>txtMovil</tabstop>
+  <tabstop>txtSalario</tabstop>
+  <tabstop>txtDni</tabstop>
+  <tabstop>txtDate</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

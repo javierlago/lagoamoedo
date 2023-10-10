@@ -1,7 +1,19 @@
 import var
 from PyQt6 import QtCore, QtGui, QtWidgets
-
+from datetime import datetime
 class Drivers():
+    def cargaFecha(qDate):
+        try:
+            data = ('{:02d}/{:02d}/{:4d}'.format(qDate.day(), qDate.month(), qDate.year()))
+            var.ui.txtDate.setText(str(data))
+            var.calendar.hide()
+        except Exception as error:
+            print("erro en carga fecha", error)
+
+
+
+
+
     def validarDNI(self=None):
         try:
             dni = var.ui.txtDni.text()
@@ -31,11 +43,15 @@ class Drivers():
                     ##var.ui.lblCheckDNI.setText('X')
                     var.ui.lblCheckDNI.setScaledContents(True)
                     var.ui.lblCheckDNI.setPixmap(QtGui.QPixmap("img/CancelIco.ico"))
+                    var.ui.txtDni.setText("")
+                    var.ui.txtDni.setFocus()
             else:
               #  var.ui.lblCheckDNI.setStyleSheet('color:red;')
                # var.ui.lblCheckDNI.setText('X')
                 var.ui.lblCheckDNI.setScaledContents(True)
                 var.ui.lblCheckDNI.setPixmap(QtGui.QPixmap("img/CancelIco.ico"))
+                var.ui.txtDni.setText("")
+                var.ui.txtDni.setFocus()
         except Exception as error:
             print("error en validar dni: ", error)
 

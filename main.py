@@ -1,6 +1,5 @@
 from datetime import datetime
 import sys
-
 import drivers
 import eventos
 import var
@@ -32,13 +31,17 @@ class Main(QtWidgets.QMainWindow):
         '''
         zona de eventos salir
         '''
-        var.ui.actionSalir.triggered.connect(eventos.Eventos.showSalir)
+        var.ui.Salir.triggered.connect(eventos.Eventos.showSalir)
         """
         zona de eventos cajas
         """
         var.ui.txtDni.editingFinished.connect(drivers.Drivers.validarDNI)
 
-
+        """
+        eventos de la menubar
+        """
+        var.ui.Salir.triggered.connect(eventos.Eventos.showSalir)
+        var.ui.btnLimpiar.triggered.connect(eventos.Eventos.limpiar)
 
 class Calendar(QtWidgets.QDialog):
     def __init__(self):
@@ -48,6 +51,8 @@ class Calendar(QtWidgets.QDialog):
         day = datetime.now().day
         month = datetime.now().month
         year = datetime.now().year
+        var.calendar.calendarWidget.selectedDate()
+        var.calendar.calendarWidget.clicked.connect(drivers.Drivers.cargaFecha)
 
 class  SalirVentana(QtWidgets.QDialog):
     def __init__(self):

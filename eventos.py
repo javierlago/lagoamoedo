@@ -1,9 +1,10 @@
 import sys
+from datetime import datetime
 
 from PyQt6.uic.properties import QtGui
 
 import var
-
+from datetime import *
 
 class Eventos():
 
@@ -31,6 +32,7 @@ class Eventos():
 
         try:
             var.acercade.show()
+
         except Exception as error:
             print("erro en abrir", error)
 
@@ -62,3 +64,9 @@ class Eventos():
             sys.exit()
         except Exception as error:
             print("erro en abrir", error)
+
+
+    def devolverFecha(self):
+       fecha= datetime.now()
+       fecha = fecha.strftime('%d-%m-%Y')
+       return fecha

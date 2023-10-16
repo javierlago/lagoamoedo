@@ -14,7 +14,10 @@ class Main(QtWidgets.QMainWindow):
         var.acercade = Acerca()
         var.ventana_salir = SalirVentana()
 
+
+
         '''
+        
         ZONA DE EVENTOS
         
         '''
@@ -25,17 +28,37 @@ class Main(QtWidgets.QMainWindow):
         zona de eventos salir
         '''
         var.ui.Salir.triggered.connect(eventos.Eventos.showSalir)
+
         """
         zona de eventos cajas
         """
         var.ui.txtDni.editingFinished.connect(drivers.Drivers.validarDNI)
 
+
         """
+        
         eventos de la menubar
+        
         """
         var.ui.Salir.triggered.connect(eventos.Eventos.showSalir)
         var.ui.btnLimpiar.triggered.connect(eventos.Eventos.limpiar)
+        '''
+        
+        status var
+    
+        '''
+        var.ui.statusbar.showMessage(eventos.Eventos.devolverFecha(self))
 
+    def closeEvent(self, event):
+
+        mbox = QtWidgets.QMessageBox.information(self, "Salir", "Estas seguro de salir?",
+                                                 QtWidgets.QMessageBox.StandardButton.Yes |
+                                                 QtWidgets.QMessageBox.StandardButton.No)
+
+        if mbox == QtWidgets.QMessageBox.StandardButton.Yes:
+            app.quit()
+        if mbox == QtWidgets.QMessageBox.StandardButton.No:
+            event.ignore()
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])

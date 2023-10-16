@@ -7,6 +7,7 @@ from AcercaDeWindow import Ui_AcercaDe
 from VentanaSalir import Ui_ventanaSalir
 from PyQt6 import QtWidgets
 
+
 class Calendar(QtWidgets.QDialog):
     def __init__(self):
         super(Calendar, self).__init__()

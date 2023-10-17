@@ -26,7 +26,7 @@ class SalirVentana(QtWidgets.QDialog):
         var.ventana_salir = Ui_ventanaSalir()
         var.ventana_salir.setupUi(self)
         var.ventana_salir.btnAcept.clicked.connect(eventos.Eventos.salir)
-        var.ventana_salir.btnCancelar.clicked.connect(eventos.Eventos.hideSalir)
+        var.ventana_salir.btnCancelar.clicked.connect(eventos.Eventos.hide_salir)
 
 
 class Acerca(QtWidgets.QDialog):
@@ -34,4 +34,4 @@ class Acerca(QtWidgets.QDialog):
         super(Acerca, self).__init__()
         var.acercade = Ui_AcercaDe()
         var.acercade.setupUi(self)
-        var.acercade.pushButton.clicked.connect(eventos.Eventos.salirAcercaDe)
+        var.acercade.pushButton.clicked.connect(eventos.Eventos.salir_acerca_de)

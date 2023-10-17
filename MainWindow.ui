@@ -35,8 +35,8 @@
    <string>CarTeis</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>../../.designer/backup/img/3986726-man-taxi-transport-icon_112967.svg</normaloff>../../.designer/backup/img/3986726-man-taxi-transport-icon_112967.svg</iconset>
+   <iconset resource="img/calendar-icon_34471.png">
+    <normaloff>:/icono/3986726-man-taxi-transport-icon_112967.svg</normaloff>:/icono/3986726-man-taxi-transport-icon_112967.svg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget#centralwidget{
@@ -49,6 +49,9 @@
     <width>35</width>
     <height>35</height>
    </size>
+  </property>
+  <property name="documentMode">
+   <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -110,7 +113,7 @@
            <string>Conductores</string>
           </attribute>
           <layout class="QGridLayout" name="gridLayout_2">
-           <item row="0" column="0">
+           <item row="0" column="1">
             <widget class="QFrame" name="boxInfo">
              <property name="enabled">
               <bool>true</bool>
@@ -173,7 +176,7 @@ border: 2px solid black;
                <rect>
                 <x>40</x>
                 <y>30</y>
-                <width>61</width>
+                <width>51</width>
                 <height>21</height>
                </rect>
               </property>
@@ -308,7 +311,7 @@ border: 2px solid black;
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>img/calendar-icon_34471.png</normaloff>img/calendar-icon_34471.png</iconset>
+                <normaloff>img/CancelIco.ico</normaloff>img/CancelIco.ico</iconset>
               </property>
               <property name="iconSize">
                <size>
@@ -476,11 +479,6 @@ border: 2px solid black;
                 <height>22</height>
                </rect>
               </property>
-              <item>
-               <property name="text">
-                <string>Pontevedra</string>
-               </property>
-              </item>
              </widget>
              <widget class="QLabel" name="lblSalario">
               <property name="geometry">
@@ -527,10 +525,127 @@ border: 2px solid black;
                <string/>
               </property>
               <property name="pixmap">
-               <pixmap>img/euro.png</pixmap>
+               <pixmap>../../.designer/backup/img/euro.png</pixmap>
               </property>
               <property name="scaledContents">
                <bool>true</bool>
+              </property>
+             </widget>
+             <widget class="QLabel" name="lblCarnet">
+              <property name="geometry">
+               <rect>
+                <x>40</x>
+                <y>200</y>
+                <width>81</width>
+                <height>16</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>Tipo de carnet</string>
+              </property>
+             </widget>
+             <widget class="QCheckBox" name="chkA">
+              <property name="geometry">
+               <rect>
+                <x>140</x>
+                <y>200</y>
+                <width>31</width>
+                <height>17</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>A</string>
+              </property>
+             </widget>
+             <widget class="QCheckBox" name="chkB">
+              <property name="geometry">
+               <rect>
+                <x>180</x>
+                <y>200</y>
+                <width>31</width>
+                <height>17</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>B</string>
+              </property>
+             </widget>
+             <widget class="QCheckBox" name="chkC">
+              <property name="geometry">
+               <rect>
+                <x>220</x>
+                <y>200</y>
+                <width>31</width>
+                <height>17</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>C</string>
+              </property>
+             </widget>
+             <widget class="QCheckBox" name="chkD">
+              <property name="geometry">
+               <rect>
+                <x>260</x>
+                <y>200</y>
+                <width>31</width>
+                <height>17</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>D</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label">
+              <property name="geometry">
+               <rect>
+                <x>390</x>
+                <y>163</y>
+                <width>47</width>
+                <height>21</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>Estado:</string>
+              </property>
+             </widget>
+             <widget class="QRadioButton" name="rbtTodos">
+              <property name="geometry">
+               <rect>
+                <x>460</x>
+                <y>166</y>
+                <width>51</width>
+                <height>21</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>Todos</string>
+              </property>
+             </widget>
+             <widget class="QRadioButton" name="rbtAlta">
+              <property name="geometry">
+               <rect>
+                <x>550</x>
+                <y>166</y>
+                <width>51</width>
+                <height>21</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>Alta</string>
+              </property>
+             </widget>
+             <widget class="QRadioButton" name="rbtBaja">
+              <property name="geometry">
+               <rect>
+                <x>640</x>
+                <y>160</y>
+                <width>51</width>
+                <height>31</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>Baja</string>
               </property>
              </widget>
             </widget>
@@ -607,8 +722,8 @@ border: 2px solid black;
   </action>
   <action name="Salir">
    <property name="icon">
-    <iconset>
-     <normaloff>img/salir.png</normaloff>img/salir.png</iconset>
+    <iconset resource="img/calendar-icon_34471.png">
+     <normaloff>:/icono/salir.png</normaloff>:/icono/salir.png</iconset>
    </property>
    <property name="text">
     <string>salir</string>
@@ -616,9 +731,8 @@ border: 2px solid black;
   </action>
   <action name="btnLimpiar">
    <property name="icon">
-    <iconset>
-     <normalon>img/pincel.png</normalon>
-    </iconset>
+    <iconset resource="img/calendar-icon_34471.png">
+     <normaloff>:/icono/pincel.png</normaloff>:/icono/pincel.png</iconset>
    </property>
    <property name="text">
     <string/>
@@ -637,6 +751,10 @@ border: 2px solid black;
   <tabstop>txtDni</tabstop>
   <tabstop>txtDate</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="img/calendar-icon_34471.png"/>
+  <include location="img/3986726-man-taxi-transport-icon_112967.svg"/>
+  <include location="img/CancelIco.ico"/>
+ </resources>
  <connections/>
 </ui>

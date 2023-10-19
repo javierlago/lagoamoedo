@@ -21,7 +21,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>img/3986726-man-taxi-transport-icon_112967.svg</normaloff>img/3986726-man-taxi-transport-icon_112967.svg</iconset>
+    <normaloff>img/taxiIcon.png</normaloff>img/taxiIcon.png</iconset>
   </property>
   <property name="layoutDirection">
    <enum>Qt::LeftToRight</enum>
@@ -93,7 +93,7 @@
          <enum>Qt::PlainText</enum>
         </property>
         <property name="pixmap">
-         <pixmap>img/3986726-man-taxi-transport-icon_112967.svg</pixmap>
+         <pixmap>img/taxiIcon.png</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>

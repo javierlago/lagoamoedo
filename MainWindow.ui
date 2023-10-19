@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
-    <height>768</height>
+    <width>1920</width>
+    <height>1080</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -21,8 +21,8 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>1000</width>
-    <height>720</height>
+    <width>0</width>
+    <height>0</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -36,7 +36,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>img/CancelIco.ico</normaloff>img/CancelIco.ico</iconset>
+    <normaloff>img/taxiIcon.png</normaloff>img/taxiIcon.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget#centralwidget{
@@ -125,7 +125,50 @@
            <string>Conductores</string>
           </attribute>
           <layout class="QGridLayout" name="gridLayout_2">
-           <item row="0" column="0">
+           <item row="2" column="0">
+            <widget class="QTableWidget" name="tabDriver2">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <column>
+              <property name="text">
+               <string>Codigo</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Apellidos</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Nombre</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Móvil</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Licencias</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Fecha Baja</string>
+              </property>
+             </column>
+            </widget>
+           </item>
+           <item row="1" column="0">
             <widget class="QFrame" name="boxInfo">
              <property name="enabled">
               <bool>true</bool>
@@ -223,7 +266,7 @@ border: 2px solid black;
                <rect>
                 <x>230</x>
                 <y>30</y>
-                <width>50</width>
+                <width>31</width>
                 <height>20</height>
                </rect>
               </property>
@@ -231,7 +274,7 @@ border: 2px solid black;
                <string>DNI:</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+               <set>Qt::AlignCenter</set>
               </property>
              </widget>
              <widget class="QLabel" name="lblSurname">
@@ -250,13 +293,13 @@ border: 2px solid black;
                <string>Apellidos</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+               <set>Qt::AlignCenter</set>
               </property>
              </widget>
              <widget class="QLabel" name="tltDate">
               <property name="geometry">
                <rect>
-                <x>690</x>
+                <x>720</x>
                 <y>30</y>
                 <width>71</width>
                 <height>21</height>
@@ -288,7 +331,7 @@ border: 2px solid black;
                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Nombre&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
               <property name="alignment">
-               <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+               <set>Qt::AlignCenter</set>
               </property>
              </widget>
              <widget class="QLineEdit" name="txtNombre">
@@ -304,20 +347,20 @@ border: 2px solid black;
              <widget class="QLineEdit" name="txtDate">
               <property name="geometry">
                <rect>
-                <x>770</x>
+                <x>800</x>
                 <y>30</y>
-                <width>121</width>
-                <height>20</height>
+                <width>60</width>
+                <height>24</height>
                </rect>
               </property>
              </widget>
              <widget class="QPushButton" name="btnCalendar">
               <property name="geometry">
                <rect>
-                <x>900</x>
-                <y>10</y>
-                <width>41</width>
-                <height>41</height>
+                <x>870</x>
+                <y>30</y>
+                <width>24</width>
+                <height>24</height>
                </rect>
               </property>
               <property name="styleSheet">
@@ -329,12 +372,12 @@ border: 2px solid black;
               </property>
               <property name="icon">
                <iconset>
-                <normaloff>img/CancelIco.ico</normaloff>img/CancelIco.ico</iconset>
+                <normaloff>img/calendario.png</normaloff>img/calendario.png</iconset>
               </property>
               <property name="iconSize">
                <size>
-                <width>32</width>
-                <height>32</height>
+                <width>24</width>
+                <height>24</height>
                </size>
               </property>
              </widget>
@@ -687,8 +730,8 @@ border: 2px solid black;
              <widget class="QPushButton" name="btnaltaDriver">
               <property name="geometry">
                <rect>
-                <x>300</x>
-                <y>260</y>
+                <x>310</x>
+                <y>230</y>
                 <width>75</width>
                 <height>23</height>
                </rect>
@@ -700,8 +743,8 @@ border: 2px solid black;
              <widget class="QPushButton" name="btnModifDriver">
               <property name="geometry">
                <rect>
-                <x>400</x>
-                <y>260</y>
+                <x>470</x>
+                <y>230</y>
                 <width>75</width>
                 <height>23</height>
                </rect>
@@ -713,8 +756,8 @@ border: 2px solid black;
              <widget class="QPushButton" name="btnBajaDriver">
               <property name="geometry">
                <rect>
-                <x>500</x>
-                <y>260</y>
+                <x>390</x>
+                <y>230</y>
                 <width>75</width>
                 <height>23</height>
                </rect>
@@ -723,51 +766,6 @@ border: 2px solid black;
                <string>Baja</string>
               </property>
              </widget>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QTableWidget" name="tabDriver2">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">
-
-</string>
-             </property>
-             <column>
-              <property name="text">
-               <string>Codigo</string>
-              </property>
-             </column>
-             <column>
-              <property name="text">
-               <string>Apellidos</string>
-              </property>
-             </column>
-             <column>
-              <property name="text">
-               <string>Nombre</string>
-              </property>
-             </column>
-             <column>
-              <property name="text">
-               <string>Móvil</string>
-              </property>
-             </column>
-             <column>
-              <property name="text">
-               <string>Licencias</string>
-              </property>
-             </column>
-             <column>
-              <property name="text">
-               <string>Fecha Baja</string>
-              </property>
-             </column>
             </widget>
            </item>
           </layout>
@@ -790,7 +788,7 @@ border: 2px solid black;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1000</width>
+     <width>1920</width>
      <height>21</height>
     </rect>
    </property>
@@ -798,6 +796,7 @@ border: 2px solid black;
     <property name="title">
      <string>Archivo</string>
     </property>
+    <addaction name="actionSalir"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -831,8 +830,8 @@ border: 2px solid black;
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="separator"/>
    <addaction name="Salir"/>
+   <addaction name="separator"/>
    <addaction name="btnLimpiar"/>
   </widget>
   <action name="actionAcerca_de">
@@ -842,8 +841,8 @@ border: 2px solid black;
   </action>
   <action name="Salir">
    <property name="icon">
-    <iconset resource="img/calendar-icon_34471.png">
-     <normaloff>:/icono/salir.png</normaloff>:/icono/salir.png</iconset>
+    <iconset>
+     <normaloff>img/salir.png</normaloff>img/salir.png</iconset>
    </property>
    <property name="text">
     <string>salir</string>
@@ -856,6 +855,11 @@ border: 2px solid black;
    </property>
    <property name="text">
     <string/>
+   </property>
+  </action>
+  <action name="actionSalir">
+   <property name="text">
+    <string>Salir</string>
    </property>
   </action>
  </widget>
@@ -872,7 +876,6 @@ border: 2px solid black;
   <tabstop>txtDate</tabstop>
  </tabstops>
  <resources>
-  <include location="img/calendar-icon_34471.png"/>
   <include location="img/3986726-man-taxi-transport-icon_112967.svg"/>
   <include location="img/CancelIco.ico"/>
  </resources>

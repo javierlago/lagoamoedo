@@ -29,7 +29,7 @@ class Main(QtWidgets.QMainWindow):
         '''
         zona de eventos salir
         '''
-        var.ui.Salir.triggered.connect(eventos.Eventos.show_salir)
+        var.ui.actionSalir.triggered.connect(eventos.Eventos.show_salir)
 
         """
         zona de eventos cajas

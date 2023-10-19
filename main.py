@@ -24,6 +24,7 @@ class Main(QtWidgets.QMainWindow):
         '''
         var.ui.btnCalendar.clicked.connect(eventos.Eventos.abrir_calendar)
         var.ui.actionAcerca_de.triggered.connect(eventos.Eventos.abrir_acerca_de)
+        var.ui.btnaltaDriver.clicked.connect(drivers.Drivers.alta_driver)
 
         '''
         zona de eventos salir
@@ -33,7 +34,7 @@ class Main(QtWidgets.QMainWindow):
         """
         zona de eventos cajas
         """
-        var.ui.txtDni.editingFinished.connect(drivers.Drivers.validarDNI)
+        var.ui.txtDni.editingFinished.connect(drivers.Drivers.validar_dni)
 
         """
         
@@ -50,6 +51,12 @@ class Main(QtWidgets.QMainWindow):
 
         eventos.Eventos.cargastatusbar(self)
         eventos.Eventos.cargaprov()
+
+        '''
+        eventos de tablas  
+        '''
+
+
 
         rbtDriver = [var.ui.rbtTodos, var.ui.rbtAlta, var.ui.rbtBaja]
         for i in rbtDriver:

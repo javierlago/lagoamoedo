@@ -14,6 +14,12 @@ class Eventos:
             var.ui.lblCheckDNI.setScaledContents(False)
             for i in listalimpiar:
                 i.setText(None)
+            chklicencia = [var.ui.chkA, var.ui.chkB, var.ui.chkC, var.ui.chkD]
+
+            for i in chklicencia:
+                i.setChecked(False)
+            var.ui.cmbProvincia.setCurrentText("")
+            var.ui.cmbLocalidad.setCurrentText("")
 
         except Exception as error:
             print("Error al limpiar", error)

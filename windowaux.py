@@ -17,7 +17,7 @@ class Calendar(QtWidgets.QDialog):
         month = datetime.now().month
         year = datetime.now().year
         var.calendar.calendarWidget.selectedDate()
-        var.calendar.calendarWidget.clicked.connect(drivers.Drivers.cargaFecha)
+        var.calendar.calendarWidget.clicked.connect(drivers.Drivers.carga_fecha)
 
 
 class SalirVentana(QtWidgets.QDialog):

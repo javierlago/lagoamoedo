@@ -1,9 +1,8 @@
 import var
-from PyQt6 import QtCore, QtGui, QtWidgets
-from datetime import datetime
+from PyQt6 import QtGui, QtWidgets, QtCore
 
 
-class Drivers():
+class Drivers:
     def carga_fecha(qDate):
         try:
             data = ('{:02d}/{:02d}/{:4d}'.format(qDate.day(), qDate.month(), qDate.year()))
@@ -56,7 +55,7 @@ class Drivers():
     def alta_driver(self):
         try:
             driver = [var.ui.txtDni_2, var.ui.txtNombre, var.ui.txtMovil]
-            newdriver = []
+            newdriver = list()
             newdriver.append(1)
             for i in driver:
                 newdriver.append(i.text().title())
@@ -76,13 +75,9 @@ class Drivers():
             var.ui.tabDriver2.setItem(index, 2, QtWidgets.QTableWidgetItem(str(newdriver[2])))
             var.ui.tabDriver2.setItem(index, 3, QtWidgets.QTableWidgetItem(str(newdriver[3])))
             var.ui.tabDriver2.setItem(index, 4, QtWidgets.QTableWidgetItem(str(newdriver[4])))
-
-
-
-
-            print(newdriver)
-
-
+            var.ui.tabDriver2.item(index, 0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+            var.ui.tabDriver2.item(index, 3).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+            var.ui.tabDriver2.item(index, 4).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
 
         except Exception as error:
             print("error alta cliente", error)

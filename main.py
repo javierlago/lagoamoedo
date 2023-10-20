@@ -4,6 +4,7 @@ from windowaux import *
 import locale
 import var
 locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
+locale.setlocale(locale.LC_MONETARY, 'es_ES.UTF-8')
 
 
 class Main(QtWidgets.QMainWindow):
@@ -35,6 +36,9 @@ class Main(QtWidgets.QMainWindow):
         zona de eventos cajas
         """
         var.ui.txtDni.editingFinished.connect(drivers.Drivers.validar_dni)
+        var.ui.txtNombre.editingFinished.connect(eventos.Eventos.format_caja_texto)
+        var.ui.txtDni_2.editingFinished.connect(eventos.Eventos.format_caja_texto)
+        var.ui.txtSalario.editingFinished.connect(eventos.Eventos.format_caja_texto)
 
         """
         
@@ -55,7 +59,7 @@ class Main(QtWidgets.QMainWindow):
         '''
         eventos de tablas  
         '''
-
+        eventos.Eventos.resize_tabDriver2(self)
 
 
         rbtDriver = [var.ui.rbtTodos, var.ui.rbtAlta, var.ui.rbtBaja]

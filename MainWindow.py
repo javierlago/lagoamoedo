@@ -337,7 +337,7 @@ class Ui_MainWindow(object):
         self.gridLayout_3.addWidget(self.cmbProvincia, 2, 9, 1, 3)
         self.gridLayout_3.setColumnStretch(0, 10)
         self.gridLayout_3.setRowStretch(1, 10)
-        self.gridLayout_2.addWidget(self.boxInfo, 1, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.boxInfo, 1, 0, 1, 1, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.PanPrincipal.addTab(self.tabDrivers, "")
         self.tabCars = QtWidgets.QWidget()
         self.tabCars.setObjectName("tabCars")

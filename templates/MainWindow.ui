@@ -195,7 +195,7 @@
              </column>
             </widget>
            </item>
-           <item row="1" column="0">
+           <item row="1" column="0" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
             <widget class="QFrame" name="boxInfo">
              <property name="enabled">
               <bool>true</bool>

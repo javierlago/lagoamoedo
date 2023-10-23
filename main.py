@@ -20,6 +20,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.setupUi(self)  # metodo encargado de genera la interfaz
         screen = QApplication.primaryScreen().geometry()
         self.setMaximumSize(screen.width(), screen.height())
+
         var.calendar = Calendar()
         var.acercade = Acerca()
         var.ventana_salir = SalirVentana()

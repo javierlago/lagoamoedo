@@ -2,6 +2,7 @@ import sys
 
 from PyQt6.QtWidgets import QApplication
 
+import conexion
 from MainWindow import *
 from windowaux import *
 import locale
@@ -22,6 +23,9 @@ class Main(QtWidgets.QMainWindow):
         var.calendar = Calendar()
         var.acercade = Acerca()
         var.ventana_salir = SalirVentana()
+        conexion.Conexion.conexion()
+        conexion.Conexion.cargaProv()
+
 
         '''
         
@@ -59,7 +63,7 @@ class Main(QtWidgets.QMainWindow):
         '''
 
         eventos.Eventos.cargastatusbar(self)
-        eventos.Eventos.cargaprov()
+
 
         '''
         eventos de tablas  
@@ -67,8 +71,8 @@ class Main(QtWidgets.QMainWindow):
         eventos.Eventos.resize_tabDriver2(self)
 
 
-        rbtDriver = [var.ui.rbtTodos, var.ui.rbtAlta, var.ui.rbtBaja]
-        for i in rbtDriver:
+        rbt_driverr = [var.ui.rbtTodos, var.ui.rbtAlta, var.ui.rbtBaja]
+        for i in rbt_driverr:
             i.toggled.connect(eventos.Eventos.sel_estado)
     def closeEvent(self, event):
 

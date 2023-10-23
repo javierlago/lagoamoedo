@@ -99,16 +99,7 @@ class Eventos:
             print('Error cargar el statusbar: ', error)
 
     @staticmethod
-    def cargaprov():
-        try:
-            prov = ["A Coruña", "Lugo", "Pontevedra", "Ferrol", "Santiago de Compostela", "Ourense"]
-            var.ui.cmbProvincia.clear()
-            var.ui.cmbProvincia.addItem('')
-            for i, m in enumerate(prov):
-                var.ui.cmbProvincia.addItem(str(m))
 
-        except Exception as error:
-            print("error al cargar", error)
 
     @staticmethod
     def sel_estado():

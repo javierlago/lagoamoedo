@@ -135,5 +135,3 @@ class Eventos:
             print("error letra capital", error)
 
 
-
-

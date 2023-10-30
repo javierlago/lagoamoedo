@@ -4,6 +4,7 @@ from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QApplication, QWidget
 
 import conexion
+import eventos
 from MainWindow import *
 from windowaux import *
 import locale
@@ -19,8 +20,8 @@ class Main(QtWidgets.QMainWindow):
 
         var.ui = Ui_MainWindow()
         var.ui.setupUi(self)  # metodo encargado de genera la interfaz
-        screen = QApplication.primaryScreen().geometry()
-        self.setMaximumSize(screen.width(), screen.height())
+        #screen = QApplication.primaryScreen().geometry()
+        #self.setMaximumSize(screen.width(), screen.height())
 
 
 
@@ -35,6 +36,19 @@ class Main(QtWidgets.QMainWindow):
         
         ZONA DE EVENTOS
         
+        
+        
+        
+        
+        
+        '''
+
+        '''
+        combox
+        '''
+        var.ui.cmbProvincia.currentIndexChanged.connect(conexion.Conexion.selMuni)
+        '''
+        botones
         '''
         var.ui.btnCalendar.clicked.connect(eventos.Eventos.abrir_calendar)
         var.ui.actionAcerca_de.triggered.connect(eventos.Eventos.abrir_acerca_de)
@@ -52,6 +66,8 @@ class Main(QtWidgets.QMainWindow):
         var.ui.txtNombre.editingFinished.connect(eventos.Eventos.format_caja_texto)
         var.ui.txtDni_2.editingFinished.connect(eventos.Eventos.format_caja_texto)
         var.ui.txtSalario.editingFinished.connect(eventos.Eventos.format_caja_texto)
+        var.ui.txtMovil.editingFinished.connect(drivers.Drivers.validar_tlf)
+
 
         """
         
@@ -73,6 +89,9 @@ class Main(QtWidgets.QMainWindow):
         eventos de tablas  
         '''
         eventos.Eventos.resize_tabDriver2(self)
+
+
+
 
 
         rbt_driverr = [var.ui.rbtTodos, var.ui.rbtAlta, var.ui.rbtBaja]

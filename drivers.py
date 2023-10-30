@@ -1,8 +1,46 @@
+import re
+
 import var
 from PyQt6 import QtGui, QtWidgets, QtCore
 
 
 class Drivers:
+
+    def validar_tlf(self=None):
+        try:
+            tlf = var.ui.txtMovil.text()
+
+            #str(tlf).format('{9d}')
+            #if len(tlf) != 9 and tlf != type(int)
+            regex = r'^\d{9}$'
+
+            if not re.match(regex, tlf):
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Icon.Information)
+                msg.setText('Telefono icorrecto introducir nueve digitos')
+                msg.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Ok)
+                msg.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
+                msg.exec()
+                var.ui.txtMovil.setText('')
+                var.ui.txtMovil.setFocus()
+
+            else:
+                var.ui.txtMovil.setText(tlf)
+
+        except Exception as error:
+            print("error en validar telf: ", error)
+
+        def validar_salario(self=None):
+            sal = var.ui.txtSalario.text()
+            rxTlf = r'^$'
+
+
+
+
+
+
+
     def carga_fecha(qDate):
         try:
             data = ('{:02d}/{:02d}/{:4d}'.format(qDate.day(), qDate.month(), qDate.year()))
@@ -54,12 +92,16 @@ class Drivers:
 
     def alta_driver(self):
         try:
-            driver = [var.ui.txtDni_2, var.ui.txtNombre, var.ui.txtMovil]
+            driver = [var.ui.txtDni, var.ui.txtDate,var.ui.txtDni_2, var.ui.txtNombre, var.ui.txtDireccion, var.ui.cmbProvincia,var.ui.cmbLocalidad]
             newdriver = list()
             newdriver.append(1)
             for i in driver:
                 newdriver.append(i.text().title())
 
+            prov = var.ui.cmbProvincia.selectedItem()
+            #newdriver.append(prov)
+            #muni = var.ui.cmbLocalidad.currentText()
+            #newdriver.append(muni)
             licencias = []
             chklicencia = [var.ui.chkA, var.ui.chkB, var.ui.chkC, var.ui.chkD]
 
@@ -67,9 +109,12 @@ class Drivers:
                 if i.isChecked():
                     licencias.append(i.text())
 
+
             newdriver.append(str("-".join(licencias)))
+            print(newdriver)
+            '''
             index = 0
-            var.ui.tabDriver2.setRowCount(index+1)
+            var.ui.tabDriver2.setRowCount(index + 1)
             var.ui.tabDriver2.setItem(index, 0, QtWidgets.QTableWidgetItem(str(newdriver[0])))
             var.ui.tabDriver2.setItem(index, 1, QtWidgets.QTableWidgetItem(str(newdriver[1])))
             var.ui.tabDriver2.setItem(index, 2, QtWidgets.QTableWidgetItem(str(newdriver[2])))
@@ -78,6 +123,9 @@ class Drivers:
             var.ui.tabDriver2.item(index, 0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
             var.ui.tabDriver2.item(index, 3).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
             var.ui.tabDriver2.item(index, 4).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-
+            '''
         except Exception as error:
             print("error alta cliente", error)
+
+
+            

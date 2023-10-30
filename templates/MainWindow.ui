@@ -12,8 +12,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1222</width>
-    <height>602</height>
+    <width>1452</width>
+    <height>876</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -214,8 +214,8 @@ border: 2px solid black;
              </property>
              <layout class="QVBoxLayout" name="verticalLayout">
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_5">
-                <item>
+               <layout class="QGridLayout" name="gridLayout_9">
+                <item row="0" column="0">
                  <widget class="QLabel" name="lblCodigo">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -246,7 +246,7 @@ border: 2px solid black;
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="1">
                  <widget class="QLabel" name="lblCodDB">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -274,7 +274,7 @@ border: 2px solid black;
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="2">
                  <widget class="QLabel" name="lblDNI">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -296,7 +296,7 @@ border: 2px solid black;
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="3">
                  <widget class="QLineEdit" name="txtDni">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -321,7 +321,7 @@ border: 2px solid black;
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="4">
                  <widget class="QLabel" name="lblCheckDNI">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
@@ -363,7 +363,7 @@ border: 2px solid black;
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="5">
                  <spacer name="horizontalSpacer_6">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
@@ -379,7 +379,7 @@ border: 2px solid black;
                   </property>
                  </spacer>
                 </item>
-                <item>
+                <item row="0" column="6">
                  <widget class="QLabel" name="tltDate">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -410,7 +410,7 @@ border: 2px solid black;
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="7">
                  <widget class="QLineEdit" name="txtDate">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -438,7 +438,7 @@ border: 2px solid black;
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="8">
                  <widget class="QPushButton" name="btnCalendar">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
@@ -465,7 +465,7 @@ border: 2px solid black;
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="9">
                  <spacer name="horizontalSpacer">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
@@ -484,8 +484,8 @@ border: 2px solid black;
                </layout>
               </item>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_4">
-                <item>
+               <layout class="QGridLayout" name="gridLayout_8">
+                <item row="0" column="0">
                  <widget class="QLabel" name="lblSurname">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
@@ -510,10 +510,10 @@ border: 2px solid black;
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="1">
                  <widget class="QLineEdit" name="txtDni_2">
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
@@ -524,9 +524,15 @@ border: 2px solid black;
                     <height>24</height>
                    </size>
                   </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="2">
                  <spacer name="horizontalSpacer_11">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
@@ -542,7 +548,7 @@ border: 2px solid black;
                   </property>
                  </spacer>
                 </item>
-                <item>
+                <item row="0" column="3">
                  <widget class="QLabel" name="lblName">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -567,7 +573,7 @@ border: 2px solid black;
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="4">
                  <widget class="QLineEdit" name="txtNombre">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -589,7 +595,7 @@ border: 2px solid black;
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="5">
                  <spacer name="horizontalSpacer_2">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
@@ -608,8 +614,8 @@ border: 2px solid black;
                </layout>
               </item>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_3">
-                <item>
+               <layout class="QGridLayout" name="gridLayout_7">
+                <item row="0" column="0">
                  <widget class="QLabel" name="lblStreet">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
@@ -619,7 +625,7 @@ border: 2px solid black;
                   </property>
                   <property name="minimumSize">
                    <size>
-                    <width>45</width>
+                    <width>49</width>
                     <height>24</height>
                    </size>
                   </property>
@@ -640,10 +646,10 @@ border: 2px solid black;
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="1">
                  <widget class="QLineEdit" name="txtDireccion">
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
@@ -662,7 +668,7 @@ border: 2px solid black;
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="2">
                  <spacer name="horizontalSpacer_9">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
@@ -678,7 +684,7 @@ border: 2px solid black;
                   </property>
                  </spacer>
                 </item>
-                <item>
+                <item row="0" column="3">
                  <widget class="QLabel" name="lblProvincia">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
@@ -703,7 +709,7 @@ border: 2px solid black;
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="4">
                  <widget class="QComboBox" name="cmbProvincia">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -719,7 +725,7 @@ border: 2px solid black;
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="5">
                  <spacer name="horizontalSpacer_10">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
@@ -735,7 +741,7 @@ border: 2px solid black;
                   </property>
                  </spacer>
                 </item>
-                <item>
+                <item row="0" column="6">
                  <widget class="QLabel" name="lblLocalidad">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -754,7 +760,7 @@ border: 2px solid black;
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="7">
                  <widget class="QComboBox" name="cmbLocalidad">
                   <property name="minimumSize">
                    <size>
@@ -764,7 +770,7 @@ border: 2px solid black;
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="8">
                  <spacer name="horizontalSpacer_3">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
@@ -783,8 +789,8 @@ border: 2px solid black;
                </layout>
               </item>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_2">
-                <item>
+               <layout class="QGridLayout" name="gridLayout_6">
+                <item row="0" column="0">
                  <widget class="QLabel" name="lblMovil">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
@@ -809,7 +815,7 @@ border: 2px solid black;
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="1">
                  <widget class="QLineEdit" name="txtMovil">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -831,7 +837,7 @@ border: 2px solid black;
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="2">
                  <widget class="QLabel" name="lblSalario">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
@@ -850,7 +856,7 @@ border: 2px solid black;
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="3">
                  <widget class="QLineEdit" name="txtSalario">
                   <property name="minimumSize">
                    <size>
@@ -872,7 +878,7 @@ border: 2px solid black;
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="4">
                  <spacer name="horizontalSpacer_4">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
@@ -891,15 +897,15 @@ border: 2px solid black;
                </layout>
               </item>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout">
-                <item>
+               <layout class="QGridLayout" name="gridLayout_5">
+                <item row="0" column="0">
                  <widget class="QLabel" name="lblCarnet">
                   <property name="text">
                    <string>Tipo de carnet</string>
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="1">
                  <spacer name="horizontalSpacer_18">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
@@ -915,7 +921,7 @@ border: 2px solid black;
                   </property>
                  </spacer>
                 </item>
-                <item>
+                <item row="0" column="2">
                  <widget class="QCheckBox" name="chkA">
                   <property name="text">
                    <string>A</string>
@@ -925,7 +931,7 @@ border: 2px solid black;
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="3">
                  <spacer name="horizontalSpacer_7">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
@@ -941,14 +947,14 @@ border: 2px solid black;
                   </property>
                  </spacer>
                 </item>
-                <item>
+                <item row="0" column="4">
                  <widget class="QCheckBox" name="chkB">
                   <property name="text">
                    <string>B</string>
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="5">
                  <spacer name="horizontalSpacer_12">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
@@ -964,14 +970,14 @@ border: 2px solid black;
                   </property>
                  </spacer>
                 </item>
-                <item>
+                <item row="0" column="6">
                  <widget class="QCheckBox" name="chkC">
                   <property name="text">
                    <string>C</string>
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="7">
                  <spacer name="horizontalSpacer_13">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
@@ -987,14 +993,14 @@ border: 2px solid black;
                   </property>
                  </spacer>
                 </item>
-                <item>
+                <item row="0" column="8">
                  <widget class="QCheckBox" name="chkD">
                   <property name="text">
                    <string>D</string>
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="9">
                  <spacer name="horizontalSpacer_14">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
@@ -1010,7 +1016,7 @@ border: 2px solid black;
                   </property>
                  </spacer>
                 </item>
-                <item>
+                <item row="0" column="10">
                  <widget class="QLabel" name="label">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
@@ -1035,7 +1041,7 @@ border: 2px solid black;
                   </property>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="11">
                  <widget class="QRadioButton" name="rbtTodos">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -1054,7 +1060,7 @@ border: 2px solid black;
                   </attribute>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="12">
                  <spacer name="horizontalSpacer_15">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
@@ -1070,7 +1076,7 @@ border: 2px solid black;
                   </property>
                  </spacer>
                 </item>
-                <item>
+                <item row="0" column="13">
                  <widget class="QRadioButton" name="rbtBaja">
                   <property name="text">
                    <string>Baja</string>
@@ -1083,7 +1089,7 @@ border: 2px solid black;
                   </attribute>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="14">
                  <spacer name="horizontalSpacer_16">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
@@ -1099,7 +1105,7 @@ border: 2px solid black;
                   </property>
                  </spacer>
                 </item>
-                <item>
+                <item row="0" column="15">
                  <widget class="QRadioButton" name="rbtAlta">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -1115,7 +1121,7 @@ border: 2px solid black;
                   </attribute>
                  </widget>
                 </item>
-                <item>
+                <item row="0" column="16">
                  <spacer name="horizontalSpacer_5">
                   <property name="orientation">
                    <enum>Qt::Horizontal</enum>
@@ -1241,7 +1247,7 @@ border: 2px solid black;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1222</width>
+     <width>1452</width>
      <height>21</height>
     </rect>
    </property>

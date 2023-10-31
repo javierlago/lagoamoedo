@@ -1,5 +1,6 @@
 import re
 
+import conexion
 import var
 from PyQt6 import QtGui, QtWidgets, QtCore
 
@@ -76,6 +77,7 @@ class Drivers:
                 else:
                     # var.ui.lblCheckDNI.setStyleSheet('color:red;')
                     ##var.ui.lblCheckDNI.setText('X')
+                    var.ui.lblCheckDNI.show()
                     var.ui.lblCheckDNI.setScaledContents(True)
                     var.ui.lblCheckDNI.setPixmap(QtGui.QPixmap("img/CancelIco.ico"))
                     var.ui.txtDni.setText("")
@@ -83,6 +85,7 @@ class Drivers:
             else:
                 #  var.ui.lblCheckDNI.setStyleSheet('color:red;')
                 # var.ui.lblCheckDNI.setText('X')
+                var.ui.lblCheckDNI.show()
                 var.ui.lblCheckDNI.setScaledContents(True)
                 var.ui.lblCheckDNI.setPixmap(QtGui.QPixmap("img/CancelIco.ico"))
                 var.ui.txtDni.setText("")
@@ -92,13 +95,15 @@ class Drivers:
 
     def alta_driver(self):
         try:
-            driver = [var.ui.txtDni, var.ui.txtDate,var.ui.txtDni_2, var.ui.txtNombre, var.ui.txtDireccion, var.ui.cmbProvincia,var.ui.cmbLocalidad]
-            newdriver = list()
-            newdriver.append(1)
-            for i in driver:
-                newdriver.append(i.text().title())
+            driver = [var.ui.txtDni.text(), var.ui.txtDate.text(),var.ui.txtDni_2.text(), var.ui.txtNombre.text(),
+                      var.ui.txtDireccion.text(), var.ui.cmbProvincia.currentText(),
+                      var.ui.cmbLocalidad.currentText(), var.ui.txtMovil.text(),var.ui.txtSalario.text()]
+            #newdriver = driver
+            #newdriver.append(1)
+            #for i in driver:
+                #newdriver.append(i.text().title())
 
-            prov = var.ui.cmbProvincia.selectedItem()
+            #prov = var.ui.cmbProvincia.selectedItem()
             #newdriver.append(prov)
             #muni = var.ui.cmbLocalidad.currentText()
             #newdriver.append(muni)
@@ -110,8 +115,9 @@ class Drivers:
                     licencias.append(i.text())
 
 
-            newdriver.append(str("-".join(licencias)))
-            print(newdriver)
+            driver.append(str("-".join(licencias)))
+            #print(driver)
+            conexion.Conexion.guardardri(driver)
             '''
             index = 0
             var.ui.tabDriver2.setRowCount(index + 1)

@@ -60,7 +60,7 @@ class Conexion:
                 if (i.strip()==""):
                         mbox = QtWidgets.QMessageBox()
                         mbox.setWindowTitle("Aviso")
-                        mbox.setWindowIcon(QtGui.QIcon())
+                        #mbox.setWindowIcon(QtGui.QIcon("./img/taxiIcon.png"))
                         mbox.setIcon((QtWidgets.QMessageBox.Icon.Warning))
                         mensaje ="Campos vacios"
                         mbox.setText(mensaje)
@@ -102,9 +102,9 @@ class Conexion:
 
     def mostrardrivers(self=None):
             try:
-                registros: []
+                registros = list()
                 query1 = QtSql.QSqlQuery()
-                query1.prepare("select codigo,apeldr,nombredri,movildri, "
+                query1.prepare("select codigo ,apeldrI ,nombredri ,movildri, "
                                "carnet,bajadri from drivers")
                 if query1.exec():
                     while query1.next():

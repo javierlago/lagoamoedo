@@ -11,8 +11,8 @@ class Drivers:
         try:
             tlf = var.ui.txtMovil.text()
 
-            #str(tlf).format('{9d}')
-            #if len(tlf) != 9 and tlf != type(int)
+            # str(tlf).format('{9d}')
+            # if len(tlf) != 9 and tlf != type(int)
             regex = r'^\d{9}$'
 
             if not re.match(regex, tlf):
@@ -35,12 +35,6 @@ class Drivers:
         def validar_salario(self=None):
             sal = var.ui.txtSalario.text()
             rxTlf = r'^$'
-
-
-
-
-
-
 
     def carga_fecha(qDate):
         try:
@@ -95,43 +89,39 @@ class Drivers:
 
     def alta_driver(self):
         try:
-            driver = [var.ui.txtDni.text(), var.ui.txtDate.text(),var.ui.txtDni_2.text(), var.ui.txtNombre.text(),
+            driver = [var.ui.txtDni.text(), var.ui.txtDate.text(), var.ui.txtDni_2.text(), var.ui.txtNombre.text(),
                       var.ui.txtDireccion.text(), var.ui.cmbProvincia.currentText(),
-                      var.ui.cmbLocalidad.currentText(), var.ui.txtMovil.text(),var.ui.txtSalario.text()]
-            #newdriver = driver
-            #newdriver.append(1)
-            #for i in driver:
-                #newdriver.append(i.text().title())
+                      var.ui.cmbLocalidad.currentText(), var.ui.txtMovil.text(), var.ui.txtSalario.text()]
 
-            #prov = var.ui.cmbProvincia.selectedItem()
-            #newdriver.append(prov)
-            #muni = var.ui.cmbLocalidad.currentText()
-            #newdriver.append(muni)
-            licencias = []
+            licencias = list()
             chklicencia = [var.ui.chkA, var.ui.chkB, var.ui.chkC, var.ui.chkD]
 
             for i in chklicencia:
                 if i.isChecked():
                     licencias.append(i.text())
 
-
             driver.append(str("-".join(licencias)))
-            #print(driver)
+
+            # print(driver)
             conexion.Conexion.guardardri(driver)
-            '''
-            index = 0
-            var.ui.tabDriver2.setRowCount(index + 1)
-            var.ui.tabDriver2.setItem(index, 0, QtWidgets.QTableWidgetItem(str(newdriver[0])))
-            var.ui.tabDriver2.setItem(index, 1, QtWidgets.QTableWidgetItem(str(newdriver[1])))
-            var.ui.tabDriver2.setItem(index, 2, QtWidgets.QTableWidgetItem(str(newdriver[2])))
-            var.ui.tabDriver2.setItem(index, 3, QtWidgets.QTableWidgetItem(str(newdriver[3])))
-            var.ui.tabDriver2.setItem(index, 4, QtWidgets.QTableWidgetItem(str(newdriver[4])))
-            var.ui.tabDriver2.item(index, 0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-            var.ui.tabDriver2.item(index, 3).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-            var.ui.tabDriver2.item(index, 4).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-            '''
+
         except Exception as error:
             print("error alta cliente", error)
 
 
-            
+    def cargartabla(registros):
+        try:
+            for registro in registros:
+                index = 0
+                var.ui.tabDrivers.setRowCount(index + 1)
+                var.ui.tabDrivers.setItem(index, 0, QtWidgets.QTableWidgetItem(str(registro[0])))
+                var.ui.tabDrivers.setItem(index, 1, QtWidgets.QTableWidgetItem(str(registro[1])))
+                var.ui.tabDrivers.setItem(index, 2, QtWidgets.QTableWidgetItem(str(registro[2])))
+                var.ui.tabDrivers.setItem(index, 3, QtWidgets.QTableWidgetItem(str(registro[3])))
+                var.ui.tabDrivers.setItem(index, 4, QtWidgets.QTableWidgetItem(str(registro[4])))
+                var.ui.tabDrivers.item(index, 0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                var.ui.tabDrivers.item(index, 3).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                var.ui.tabDrivers.item(index, 4).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                index += 1
+        except Exception as error:
+            print("Error completar tabla ", error)

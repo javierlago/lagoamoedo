@@ -4,6 +4,7 @@ from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QApplication, QWidget
 
 import conexion
+import drivers
 import eventos
 from MainWindow import *
 from windowaux import *
@@ -30,6 +31,8 @@ class Main(QtWidgets.QMainWindow):
         var.ventana_salir = SalirVentana()
         conexion.Conexion.conexion()
         conexion.Conexion.cargaProv()
+        conexion.Conexion.mostrardrivers()
+
 
 
         '''

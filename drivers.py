@@ -104,6 +104,7 @@ class Drivers:
 
             # print(driver)
             conexion.Conexion.guardardri(driver)
+            conexion.Conexion.mostrardrivers()
 
         except Exception as error:
             print("error alta cliente", error)

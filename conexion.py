@@ -82,18 +82,18 @@ class Conexion:
                     query.bindValue(':movil', str(newdriver[7]))
                     query.bindValue(':salario', str(newdriver[8]))
                     query.bindValue(':carnet', str(newdriver[9]))
-                    if query.exec():
+            if query.exec():
                         mbox = QtWidgets.QMessageBox()
                         mbox.setWindowTitle('Aviso')
                         mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
                         mbox.setText('Empleado dado de alta')
                         mbox.exec()
-                    else:
-                        mbox = QtWidgets.QMessageBox()
-                        mbox.setWindowTitle('Aviso')
-                        mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                        mbox.setText(query.lastError().text())
-                        mbox.exec()
+            else:
+                            mbox = QtWidgets.QMessageBox()
+                            mbox.setWindowTitle('Aviso')
+                            mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
+                            mbox.setText(query.lastError().text())
+                            mbox.exec()
                     # select de los datos de los conductores de la base de datos
 
         except Exception as error:

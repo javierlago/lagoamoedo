@@ -90,6 +90,8 @@ class Conexion:
                 mbox.setWindowTitle('Aviso')
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
                 mbox.setText('Empleado dado de alta')
+                icon = QIcon('./img/taxiIcon.png')
+                mbox.setWindowIcon(icon)
                 mbox.exec()
             # else:
             #     mbox = QtWidgets.QMessageBox()

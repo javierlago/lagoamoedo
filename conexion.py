@@ -1,5 +1,5 @@
 from PyQt6 import QtWidgets, QtSql, QtCore
-from PyQt6.uic.properties import QtGui
+from PyQt6.QtGui import QIcon
 
 import drivers
 import var
@@ -56,19 +56,22 @@ class Conexion:
     @staticmethod
     def guardardri(newdriver):
         try:
+            query = QtSql.QSqlQuery()
             for i in newdriver:
-                if (i.strip()==""):
-                        mbox = QtWidgets.QMessageBox()
-                        mbox.setWindowTitle("Aviso")
-                        #mbox.setWindowIcon(QtGui.QIcon("./img/taxiIcon.png"))
-                        mbox.setIcon((QtWidgets.QMessageBox.Icon.Warning))
-                        mensaje ="Campos vacios"
-                        mbox.setText(mensaje)
-                        mbox.exec()
-                        break
+                if i.strip() == "":
+
+                    mbox = QtWidgets.QMessageBox()
+                    mbox.setWindowTitle("Aviso")
+                    mbox.setIcon((QtWidgets.QMessageBox.Icon.Warning))
+                    mensaje = "Campos vacios"
+                    mbox.setText(mensaje)
+                    icon = QIcon('./img/taxiIcon.png')
+                    mbox.setWindowIcon(icon)
+                    mbox.exec()
+                    break
 
                 else:
-                    query = QtSql.QSqlQuery()
+
                     query.prepare('insert into drivers(dnidri, altadri, apeldri, nombredri, direcciondri, provdri, '
                                   'munidri, movildri, salario, carnet ) VALUES (:dni, :alta, :apel, :nombre, :direccion, '
                                   ':provincia, :municipio, :movil, :salario, :carnet)')
@@ -83,37 +86,35 @@ class Conexion:
                     query.bindValue(':salario', str(newdriver[8]))
                     query.bindValue(':carnet', str(newdriver[9]))
             if query.exec():
-                        mbox = QtWidgets.QMessageBox()
-                        mbox.setWindowTitle('Aviso')
-                        mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                        mbox.setText('Empleado dado de alta')
-                        mbox.exec()
-            else:
-                            mbox = QtWidgets.QMessageBox()
-                            mbox.setWindowTitle('Aviso')
-                            mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                            mbox.setText(query.lastError().text())
-                            mbox.exec()
-                    # select de los datos de los conductores de la base de datos
+                mbox = QtWidgets.QMessageBox()
+                mbox.setWindowTitle('Aviso')
+                mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
+                mbox.setText('Empleado dado de alta')
+                mbox.exec()
+            # else:
+            #     mbox = QtWidgets.QMessageBox()
+            #     mbox.setWindowTitle('Avisooooo')
+            #     mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
+            #     mbox.setText(query.lastError().text())
+            #     mbox.exec()
+            # # select de los datos de los conductores de la base de datos
 
         except Exception as error:
             print("Error al guardar el conductor", error)
 
-
     def mostrardrivers(self=None):
-            try:
-                registros = list()
-                query1 = QtSql.QSqlQuery()
-                query1.prepare("select codigo ,apeldrI ,nombredri ,movildri, "
-                               "carnet,bajadri from drivers")
-                if query1.exec():
-                    while query1.next():
-                        row = [query1.value(i) for i in range(query1.record().count())]
-                        registros.append(row)
-                drivers.Drivers.cargartabla(registros)
-                print(registros)
+        try:
+            registros = list()
+            query1 = QtSql.QSqlQuery()
+            query1.prepare("select codigo ,apeldrI ,nombredri ,movildri, "
+                           "carnet,bajadri from drivers")
+            if query1.exec():
+                while query1.next():
+                    row = [query1.value(i) for i in range(query1.record().count())]
+                    registros.append(row)
+            drivers.Drivers.cargartabla(registros)
+            print(registros)
 
 
-            except Exception as error:
-                print("error al mostrar resultados", error)
-
+        except Exception as error:
+            print("error al mostrar resultados", error)

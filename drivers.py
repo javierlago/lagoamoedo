@@ -1,11 +1,32 @@
 import re
 
 import conexion
+import eventos
 import var
 from PyQt6 import QtGui, QtWidgets, QtCore
 
 
 class Drivers:
+
+    def cargaDriver(self):
+        try:
+            eventos.Eventos.limpiar()
+            row = var.ui.tabDriver2.selectedItems()
+            fila = [dato.text() for dato in row]
+            # #registro = conexion.Conexion.oneDriver(fila[0])
+            # datos = [var.ui.lblCodbd, var.ui.txtDni, var.ui.txtDate, var.ui.txtDni_2, var.ui.txtDireccion,
+            #           var.ui.cmbProvincia, var.ui.cmbLocalidad ,var.ui.txtMovil, var.ui.txtMovil]
+            # for i in datos:
+            #      i.setText(str(registro[i]))
+            #      if i == 5:
+            #          i.setCurrentText(registro[i])
+            #      if i == 6:
+            #          i.setCurrentText(registro[i])
+
+            print(fila)
+        except Exception as error:
+            print("Error cargar datos de un cliente marcando en la tabla: ", error)
+
 
     def validar_tlf(self=None):
         try:

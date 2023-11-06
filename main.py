@@ -92,6 +92,7 @@ class Main(QtWidgets.QMainWindow):
         eventos de tablas  
         '''
         eventos.Eventos.resize_tabDriver2(self)
+        var.ui.tabDriver2.clicked.connect(drivers.Drivers.cargaDriver)
 
 
 

@@ -130,11 +130,18 @@
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="font">
+              <font>
+               <pointsize>9</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
              <property name="focusPolicy">
               <enum>Qt::NoFocus</enum>
              </property>
              <property name="styleSheet">
-              <string notr="true">QHeaderView::section { background-color: rgb(170, 170, 255); border-radius: 5px; color: white;}</string>
+              <string notr="true">QHeaderView::section { background-color: rgb(247, 181, 0); border-radius: 1px; color: black;font-weight: bold;border: 1px solid black;}</string>
              </property>
              <property name="frameShape">
               <enum>QFrame::NoFrame</enum>
@@ -380,7 +387,7 @@ border: 2px solid black;
                          </size>
                         </property>
                         <property name="styleSheet">
-                         <string notr="true">background-color: rgb(255, 255, 127);</string>
+                         <string notr="true">background-color: rgb(247, 181, 0);bold;border: 1px solid black</string>
                         </property>
                         <property name="text">
                          <string/>

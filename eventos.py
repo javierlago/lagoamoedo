@@ -1,17 +1,34 @@
 import sys
+
+import eventos
 import var
 from datetime import *
-from PyQt6 import QtWidgets, QtCore
+from PyQt6 import QtWidgets, QtCore, QtSql
 import locale
 locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 locale.setlocale(locale.LC_MONETARY, 'es_ES.UTF-8')
 
 class Eventos:
+
+    def cargar_segun_dni(self):
+        try:
+
+            dni = var.ui.txtDni.text()
+            query = QtSql.QSqlQuery()
+            query.prepare('select * from drivers where dnidri = :dni')
+            query.bindValue(':dnidri', dni)
+
+
+
+
+        except Exception as error:
+         print("error al cargar dni", error)
+
     @staticmethod
     def limpiar():
         try:
             listalimpiar = [var.ui.txtDni, var.ui.txtDate, var.ui.txtDni_2, var.ui.txtNombre, var.ui.txtDireccion,
-                            var.ui.txtMovil, var.ui.txtSalario]
+                            var.ui.txtMovil, var.ui.txtSalario,var.ui.lblCodDB]
             var.ui.lblCheckDNI.hide()
             #var.ui.lblCheckDNI.setText(None)
             #var.ui.lblCheckDNI.setScaledContents(False)
@@ -23,6 +40,8 @@ class Eventos:
                 i.setChecked(False)
             var.ui.cmbProvincia.setCurrentText("")
             var.ui.cmbLocalidad.setCurrentText("")
+
+
 
         except Exception as error:
             print("Error al limpiar", error)

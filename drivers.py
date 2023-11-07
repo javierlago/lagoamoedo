@@ -8,25 +8,33 @@ from PyQt6 import QtGui, QtWidgets, QtCore
 
 class Drivers:
 
-    def cargaDriver(self):
+    def carga_driver(self):
         try:
             eventos.Eventos.limpiar()
             row = var.ui.tabDriver2.selectedItems()
             fila = [dato.text() for dato in row]
-            # #registro = conexion.Conexion.oneDriver(fila[0])
-            # datos = [var.ui.lblCodbd, var.ui.txtDni, var.ui.txtDate, var.ui.txtDni_2, var.ui.txtDireccion,
-            #           var.ui.cmbProvincia, var.ui.cmbLocalidad ,var.ui.txtMovil, var.ui.txtMovil]
-            # for i in datos:
-            #      i.setText(str(registro[i]))
-            #      if i == 5:
-            #          i.setCurrentText(registro[i])
-            #      if i == 6:
-            #          i.setCurrentText(registro[i])
+            registro = conexion.Conexion.oneDriver(fila[0])
+            datos = [var.ui.lblCodDB, var.ui.txtDni, var.ui.txtDate, var.ui.txtDni_2, var.ui.txtNombre,
+                     var.ui.txtDireccion,
+                     var.ui.cmbProvincia, var.ui.cmbLocalidad, var.ui.txtMovil, var.ui.txtSalario]
+
+            for i, dato in enumerate(datos):
+                if i == 6 or i == 7:
+                    dato.setCurrentText(str(registro[i]))
+                else:
+                    dato.setText(str(registro[i]))
+            if 'A' in registro[10]:
+                var.ui.chkA.setChecked(True)
+            if 'B' in registro[10]:
+                var.ui.chkB.setChecked(True)
+            if 'C' in registro[10]:
+                var.ui.chkC.setChecked(True)
+            if 'D' in registro[10]:
+                var.ui.chkD.setChecked(True)
 
             print(fila)
         except Exception as error:
             print("Error cargar datos de un cliente marcando en la tabla: ", error)
-
 
     def validar_tlf(self=None):
         try:
@@ -91,7 +99,7 @@ class Drivers:
 
                 else:
                     # var.ui.lblCheckDNI.setStyleSheet('color:red;')
-                    ##var.ui.lblCheckDNI.setText('X')
+                    # var.ui.lblCheckDNI.setText('X')
                     var.ui.lblCheckDNI.show()
                     var.ui.lblCheckDNI.setScaledContents(True)
                     var.ui.lblCheckDNI.setPixmap(QtGui.QPixmap("img/CancelIco.ico"))
@@ -136,7 +144,7 @@ class Drivers:
         try:
             index = 0
             for registro in registros:
-                var.ui.tabDriver2.setRowCount(index+1)
+                var.ui.tabDriver2.setRowCount(index + 1)
                 var.ui.tabDriver2.setItem(index, 0, QtWidgets.QTableWidgetItem(str(registro[0])))
                 var.ui.tabDriver2.setItem(index, 1, QtWidgets.QTableWidgetItem(str(registro[1])))
                 var.ui.tabDriver2.setItem(index, 2, QtWidgets.QTableWidgetItem(str(registro[2])))

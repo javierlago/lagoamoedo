@@ -96,9 +96,9 @@ class Conexion:
                         break
                     else:
                         mbox = QtWidgets.QMessageBox()
-                        mbox.setWindowTitle('Avisooooo')
+                        mbox.setWindowTitle('Aviso')
                         mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                        mbox.setText(query.lastError().text())
+                        mbox.setText("El DNI ya se encuentra en la base de datos")
                         mbox.exec()
                         break
              # select de los datos de los conductores de la base de datos
@@ -122,17 +122,18 @@ class Conexion:
         except Exception as error:
             print("error al mostrar resultados", error)
 
-    @classmethod
+
     def oneDriver(codigo):
         try:
             registro= []
-            query = QtSql.QSqlQuery();
+            query = QtSql.QSqlQuery()
             query.prepare('select * from drivers where codigo = :codigo')
-            query.bindValue(':codigo',int(codigo))
+            query.bindValue(':codigo', int(codigo))
             if query.exec():
                 while query.next():
                     for i in range(12):
                         registro.append(str(query.value(i)))
+            print(registro)
             return registro
 
 

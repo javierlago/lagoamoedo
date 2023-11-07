@@ -96,6 +96,14 @@
            <height>491</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <family>Alef</family>
+           <pointsize>8</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
          <property name="tabPosition">
           <enum>QTabWidget::North</enum>
          </property>
@@ -268,8 +276,17 @@ border: 2px solid black;
                         <height>24</height>
                        </size>
                       </property>
+                      <property name="font">
+                       <font>
+                        <family>Alef</family>
+                        <pointsize>10</pointsize>
+                        <weight>9</weight>
+                        <italic>false</italic>
+                        <bold>false</bold>
+                       </font>
+                      </property>
                       <property name="styleSheet">
-                       <string notr="true"/>
+                       <string notr="true">font: 75 10pt &quot;Alef&quot;;</string>
                       </property>
                       <property name="text">
                        <string>Codigo:</string>
@@ -292,6 +309,14 @@ border: 2px solid black;
                         <width>45</width>
                         <height>24</height>
                        </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Alef</family>
+                        <pointsize>10</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
                       </property>
                       <property name="styleSheet">
                        <string notr="true"/>
@@ -325,7 +350,7 @@ border: 2px solid black;
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true"/>
+                       <string notr="true">font: 75 10pt &quot;Alef&quot;; font-weight: bold;</string>
                       </property>
                       <property name="text">
                        <string>Direccion</string>
@@ -350,7 +375,7 @@ border: 2px solid black;
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true"/>
+                       <string notr="true">font: 75 10pt &quot;Alef&quot;; font-weight: bold;</string>
                       </property>
                       <property name="text">
                        <string>Movil:</string>
@@ -391,6 +416,9 @@ border: 2px solid black;
                         </property>
                         <property name="text">
                          <string/>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                         </property>
                        </widget>
                       </item>
@@ -480,6 +508,29 @@ border: 2px solid black;
                         </property>
                         <property name="alignment">
                          <set>Qt::AlignCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="btnBuscarDri">
+                        <property name="minimumSize">
+                         <size>
+                          <width>24</width>
+                          <height>24</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>24</width>
+                          <height>24</height>
+                         </size>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="icon">
+                         <iconset>
+                          <normaloff>../img/lupa2.png</normaloff>../img/lupa2.png</iconset>
                         </property>
                        </widget>
                       </item>
@@ -658,7 +709,7 @@ border: 2px solid black;
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true"/>
+                       <string notr="true">font: 75 10pt &quot;Alef&quot;; font-weight: bold;</string>
                       </property>
                       <property name="text">
                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Fecha de Alta:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -828,7 +879,13 @@ border: 2px solid black;
                         </property>
                         <property name="minimumSize">
                          <size>
-                          <width>150</width>
+                          <width>170</width>
+                          <height>24</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>170</width>
                           <height>24</height>
                          </size>
                         </property>
@@ -873,7 +930,13 @@ border: 2px solid black;
                        <widget class="QComboBox" name="cmbLocalidad">
                         <property name="minimumSize">
                          <size>
-                          <width>150</width>
+                          <width>170</width>
+                          <height>24</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>170</width>
                           <height>24</height>
                          </size>
                         </property>

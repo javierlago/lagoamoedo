@@ -7,12 +7,18 @@ from PyQt6 import QtGui, QtWidgets, QtCore
 
 
 class Drivers:
+    def get_from_tab(self):
+
+
+
+
 
     def carga_driver(self):
         try:
             eventos.Eventos.limpiar()
             row = var.ui.tabDriver2.selectedItems()
             fila = [dato.text() for dato in row]
+
             registro = conexion.Conexion.oneDriver(fila[0])
             datos = [var.ui.lblCodDB, var.ui.txtDni, var.ui.txtDate, var.ui.txtDni_2, var.ui.txtNombre,
                      var.ui.txtDireccion,

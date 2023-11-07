@@ -306,7 +306,7 @@ border: 2px solid black;
                       </property>
                       <property name="minimumSize">
                        <size>
-                        <width>45</width>
+                        <width>60</width>
                         <height>24</height>
                        </size>
                       </property>
@@ -339,7 +339,7 @@ border: 2px solid black;
                       </property>
                       <property name="minimumSize">
                        <size>
-                        <width>49</width>
+                        <width>65</width>
                         <height>24</height>
                        </size>
                       </property>
@@ -353,7 +353,7 @@ border: 2px solid black;
                        <string notr="true">font: 75 10pt &quot;Alef&quot;; font-weight: bold;</string>
                       </property>
                       <property name="text">
-                       <string>Direccion</string>
+                       <string>Dirección</string>
                       </property>
                       <property name="alignment">
                        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -378,7 +378,7 @@ border: 2px solid black;
                        <string notr="true">font: 75 10pt &quot;Alef&quot;; font-weight: bold;</string>
                       </property>
                       <property name="text">
-                       <string>Movil:</string>
+                       <string>Móvil:</string>
                       </property>
                       <property name="alignment">
                        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -640,13 +640,13 @@ border: 2px solid black;
                        <widget class="QLineEdit" name="txtSalario">
                         <property name="minimumSize">
                          <size>
-                          <width>154</width>
+                          <width>70</width>
                           <height>24</height>
                          </size>
                         </property>
                         <property name="maximumSize">
                          <size>
-                          <width>154</width>
+                          <width>70</width>
                           <height>24</height>
                          </size>
                         </property>
@@ -698,7 +698,7 @@ border: 2px solid black;
                       </property>
                       <property name="minimumSize">
                        <size>
-                        <width>70</width>
+                        <width>100</width>
                         <height>13</height>
                        </size>
                       </property>
@@ -715,7 +715,7 @@ border: 2px solid black;
                        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Fecha de Alta:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                       </property>
                       <property name="alignment">
-                       <set>Qt::AlignCenter</set>
+                       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                       </property>
                      </widget>
                     </item>

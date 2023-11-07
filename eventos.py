@@ -13,10 +13,8 @@ class Eventos:
     def cargar_segun_dni(self):
         try:
 
-            dni = var.ui.txtDni.text()
-            query = QtSql.QSqlQuery()
-            query.prepare('select * from drivers where dnidri = :dni')
-            query.bindValue(':dnidri', dni)
+
+
 
 
 

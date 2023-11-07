@@ -1,6 +1,7 @@
 from PyQt6 import QtWidgets, QtSql, QtCore
 from PyQt6.QtGui import QIcon
 
+import conexion
 import drivers
 import var
 
@@ -136,7 +137,20 @@ class Conexion:
             print(registro)
             return registro
 
-
         except Exception as error:
             print("error en fichero de conexion de 1 driver" + error)
+
+
+    def buscar_segun_dni(dni):
+        query = QtSql.QSqlQuery
+        query = QtSql.QSqlQuery()
+        query.prepare('select * from drivers where dnidri = :dni')
+        query.bindValue(':dnidri', dni)
+        if query.exec():
+            while query.next():
+                codigo = query.value(0)
+        registro = conexion.Conexion.oneDriver(codigo)
+
+        return registro
+
 

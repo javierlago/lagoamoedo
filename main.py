@@ -56,7 +56,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnCalendar.clicked.connect(eventos.Eventos.abrir_calendar)
         var.ui.actionAcerca_de.triggered.connect(eventos.Eventos.abrir_acerca_de)
         var.ui.btnaltaDriver.clicked.connect(drivers.Drivers.alta_driver)
-        var.ui.btnBuscarDri.clicked.connect(eventos.Eventos.cargar_segun_dni)
+         #var.ui.btnBuscarDri.clicked.connect(eventos.Eventos.cargar_segun_dni)
 
         '''
         zona de eventos salir
@@ -93,7 +93,7 @@ class Main(QtWidgets.QMainWindow):
         eventos de tablas  
         '''
         eventos.Eventos.resize_tabDriver2(self)
-        var.ui.tabDriver2.clicked.connect(drivers.Drivers.carga_driver)
+        var.ui.tabDriver2.clicked.connect(drivers.Drivers.get_from_tab)
 
 
 

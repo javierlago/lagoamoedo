@@ -1,32 +1,39 @@
 import re
 
 import conexion
+import drivers
 import eventos
 import var
 from PyQt6 import QtGui, QtWidgets, QtCore
 
 
 class Drivers:
-    def get_from_tab(self):
-
-
-
-
-
-    def carga_driver(self):
-        try:
+    @staticmethod
+    def get_from_tab():
+      try:
             eventos.Eventos.limpiar()
             row = var.ui.tabDriver2.selectedItems()
             fila = [dato.text() for dato in row]
-
+            print(fila[0])
             registro = conexion.Conexion.oneDriver(fila[0])
+            drivers.Drivers.carga_driver(registro)
+      except Exception as error:
+          print("Error al cargar desde la tabla", error)
+
+
+
+
+    def carga_driver(registro):
+
+        try:
             datos = [var.ui.lblCodDB, var.ui.txtDni, var.ui.txtDate, var.ui.txtDni_2, var.ui.txtNombre,
                      var.ui.txtDireccion,
                      var.ui.cmbProvincia, var.ui.cmbLocalidad, var.ui.txtMovil, var.ui.txtSalario]
 
             for i, dato in enumerate(datos):
                 if i == 6 or i == 7:
-                    dato.setCurrentText(str(registro[i]))
+                    if isinstance(dato, QtWidgets.QComboBox):  # Verificar si dato es un QComboBox
+                        dato.setCurrentText(str(registro[i]))
                 else:
                     dato.setText(str(registro[i]))
             if 'A' in registro[10]:
@@ -38,9 +45,9 @@ class Drivers:
             if 'D' in registro[10]:
                 var.ui.chkD.setChecked(True)
 
-            print(fila)
+
         except Exception as error:
-            print("Error cargar datos de un cliente marcando en la tabla: ", error)
+            print("Error al cargar datos: ", error)
 
     def validar_tlf(self=None):
         try:

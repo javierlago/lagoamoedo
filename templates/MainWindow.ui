@@ -704,7 +704,7 @@ border: 2px solid black;
                       </property>
                       <property name="maximumSize">
                        <size>
-                        <width>70</width>
+                        <width>100</width>
                         <height>13</height>
                        </size>
                       </property>

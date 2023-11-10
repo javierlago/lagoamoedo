@@ -10,17 +10,17 @@ locale.setlocale(locale.LC_MONETARY, 'es_ES.UTF-8')
 
 class Eventos:
 
-    def cargar_segun_dni(self):
-        try:
-
-
-
-
-
-
-
-        except Exception as error:
-         print("error al cargar dni", error)
+    # def cargar_segun_dni(self):
+    #     try:
+    #
+    #
+    #
+    #
+    #
+    #
+    #
+    #     except Exception as error:
+    #      print("error al cargar dni", error)
 
     @staticmethod
     def limpiar():

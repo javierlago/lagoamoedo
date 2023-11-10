@@ -124,28 +124,28 @@ class Conexion:
             print("error al mostrar resultados", error)
 
 
+    @staticmethod
     def oneDriver(codigo):
+        print(codigo, "codigo que me devuelve")
         try:
-            registro= []
+            registro = []
             query = QtSql.QSqlQuery()
-            query.prepare('select * from drivers where codigo = :codigo')
-            query.bindValue(':codigo', int(codigo))
+            query.prepare("SELECT * FROM drivers WHERE codigo = :codigo")
+            query.bindValue(":codigo", int(codigo))
             if query.exec():
                 while query.next():
                     for i in range(12):
                         registro.append(str(query.value(i)))
-            print(registro)
             return registro
-
         except Exception as error:
-            print("error en fichero de conexion de 1 driver" + error)
+            print("Error en fichero conexion datos de 1 driver: ", error)
 
 
     def buscar_segun_dni(dni):
-        query = QtSql.QSqlQuery
+
         query = QtSql.QSqlQuery()
         query.prepare('select * from drivers where dnidri = :dni')
-        query.bindValue(':dnidri', dni)
+        query.bindValue(':dnidri', str(dni))
         if query.exec():
             while query.next():
                 codigo = query.value(0)

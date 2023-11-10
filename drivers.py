@@ -8,14 +8,22 @@ from PyQt6 import QtGui, QtWidgets, QtCore
 
 
 class Drivers:
-    @staticmethod
-    def get_from_tab():
+    def  get_from_dni (self):
+        try:
+            dni = var.ui.txtDni.text()
+            drivers.Drivers.carga_driver(conexion.Conexion.buscar_segun_dni(dni))
+        except Exception as error:
+            print("Error al cargar segun el DNI",error)
+
+
+
+    def get_from_tab(self):
       try:
             eventos.Eventos.limpiar()
             row = var.ui.tabDriver2.selectedItems()
             fila = [dato.text() for dato in row]
             print(fila[0])
-            registro = conexion.Conexion.oneDriver(fila[0])
+            registro = conexion.Conexion.buscar_segun_codigo(fila[0])
             drivers.Drivers.carga_driver(registro)
       except Exception as error:
           print("Error al cargar desde la tabla", error)
@@ -26,24 +34,36 @@ class Drivers:
     def carga_driver(registro):
 
         try:
-            datos = [var.ui.lblCodDB, var.ui.txtDni, var.ui.txtDate, var.ui.txtDni_2, var.ui.txtNombre,
-                     var.ui.txtDireccion,
-                     var.ui.cmbProvincia, var.ui.cmbLocalidad, var.ui.txtMovil, var.ui.txtSalario]
+            if  len(registro)==0:
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Icon.Information)
+                msg.setText('El dni no se encuentra en la base de datos')
+                msg.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Ok)
+                msg.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
+                msg.exec()
+            else:
+                datos = [var.ui.lblCodDB, var.ui.txtDni, var.ui.txtDate, var.ui.txtDni_2, var.ui.txtNombre,
+                         var.ui.txtDireccion,
+                         var.ui.cmbProvincia, var.ui.cmbLocalidad, var.ui.txtMovil, var.ui.txtSalario]
 
-            for i, dato in enumerate(datos):
-                if i == 6 or i == 7:
-                    if isinstance(dato, QtWidgets.QComboBox):  # Verificar si dato es un QComboBox
-                        dato.setCurrentText(str(registro[i]))
-                else:
-                    dato.setText(str(registro[i]))
-            if 'A' in registro[10]:
-                var.ui.chkA.setChecked(True)
-            if 'B' in registro[10]:
-                var.ui.chkB.setChecked(True)
-            if 'C' in registro[10]:
-                var.ui.chkC.setChecked(True)
-            if 'D' in registro[10]:
-                var.ui.chkD.setChecked(True)
+                for i, dato in enumerate(datos):
+                    if i == 6 or i == 7:
+                        # Verificar si dato es un QComboBox
+                            dato.setCurrentText(str(registro[i]))
+                    else:
+                        dato.setText(str(registro[i]))
+                if 'A' in registro[10]:
+                    var.ui.chkA.setChecked(True)
+                if 'B' in registro[10]:
+                    var.ui.chkB.setChecked(True)
+                if 'C' in registro[10]:
+                    var.ui.chkC.setChecked(True)
+                if 'D' in registro[10]:
+                    var.ui.chkD.setChecked(True)
+                var.ui.lblCheckDNI.show()
+                var.ui.lblCheckDNI.setScaledContents(True)
+                var.ui.lblCheckDNI.setPixmap(QtGui.QPixmap("img/OkIco.svg"))
 
 
         except Exception as error:

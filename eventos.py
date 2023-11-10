@@ -10,25 +10,17 @@ locale.setlocale(locale.LC_MONETARY, 'es_ES.UTF-8')
 
 class Eventos:
 
-    # def cargar_segun_dni(self):
-    #     try:
-    #
-    #
-    #
-    #
-    #
-    #
-    #
-    #     except Exception as error:
-    #      print("error al cargar dni", error)
+
+
+
 
     @staticmethod
     def limpiar():
         try:
             listalimpiar = [var.ui.txtDni, var.ui.txtDate, var.ui.txtDni_2, var.ui.txtNombre, var.ui.txtDireccion,
                             var.ui.txtMovil, var.ui.txtSalario,var.ui.lblCodDB]
-            var.ui.lblCheckDNI.hide()
-            #var.ui.lblCheckDNI.setText(None)
+            #var.ui.lblCheckDNI.hide()
+            var.ui.lblCheckDNI.setText(" ")
             #var.ui.lblCheckDNI.setScaledContents(False)
             for i in listalimpiar:
                 i.setText(None)

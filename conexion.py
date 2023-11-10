@@ -1,7 +1,7 @@
 from PyQt6 import QtWidgets, QtSql, QtCore
 from PyQt6.QtGui import QIcon
 
-import conexion
+
 import drivers
 import var
 
@@ -102,7 +102,7 @@ class Conexion:
                         mbox.setText("El DNI ya se encuentra en la base de datos")
                         mbox.exec()
                         break
-             # select de los datos de los conductores de la base de datos
+            # select de los datos de los conductores de la base de datos
 
         except Exception as error:
             print("Error al guardar el conductor", error)
@@ -118,15 +118,12 @@ class Conexion:
                     row = [query1.value(i) for i in range(query1.record().count())]
                     registros.append(row)
             drivers.Drivers.cargartabla(registros)
-            #print(registros)
+            # print(registros)
 
         except Exception as error:
             print("error al mostrar resultados", error)
 
-
-    @staticmethod
-    def oneDriver(codigo):
-        print(codigo, "codigo que me devuelve")
+    def buscar_segun_codigo(codigo):
         try:
             registro = []
             query = QtSql.QSqlQuery()
@@ -140,17 +137,20 @@ class Conexion:
         except Exception as error:
             print("Error en fichero conexion datos de 1 driver: ", error)
 
-
     def buscar_segun_dni(dni):
+        print(dni)
+        try:
+            registro = []
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT * FROM drivers WHERE dnidri = :dnidri")
+            query.bindValue(':dnidri', str(dni))
+            if query.exec():
+                while query.next():
+                    for i in range(12):
+                        registro.append(str(query.value(i)))
 
-        query = QtSql.QSqlQuery()
-        query.prepare('select * from drivers where dnidri = :dni')
-        query.bindValue(':dnidri', str(dni))
-        if query.exec():
-            while query.next():
-                codigo = query.value(0)
-        registro = conexion.Conexion.oneDriver(codigo)
+            print(registro,"esto es el registro del metodo buscar segun dni")
+            return registro
 
-        return registro
-
-
+        except Exception as error:
+            print("Error al buscar segun dni: ", error)

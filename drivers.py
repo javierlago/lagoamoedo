@@ -1,5 +1,7 @@
 import re
 
+from PyQt6.QtGui import QColor
+
 import conexion
 import drivers
 import eventos
@@ -18,10 +20,21 @@ class Drivers:
 
     def  get_from_dni (self):
         try:
+            obteivo = None
+            conexion.Conexion.mostrardrivers()
             dni = var.ui.txtDni.text()
             drivers.Drivers.carga_driver(conexion.Conexion.buscar_segun_dni(dni))
-
-
+            registro = conexion.Conexion.buscar_segun_dni(dni)
+            for row in range(var.ui.tabDriver2.rowCount()):
+                item = var.ui.tabDriver2.item(row, 0)
+                if item and item.text() == str(registro[0]):
+                    brush = QColor(247, 181, 0)
+                    for col in range(var.ui.tabDriver2.columnCount()):
+                        current_item = var.ui.tabDriver2.item(row, col)
+                        if current_item is not None:
+                            current_item.setBackground(brush)
+                            obteivo = current_item
+            var.ui.tabDriver2.scrollToItem(obteivo)
         except Exception as error:
             print("Error al cargar segun el DNI",error)
 
@@ -30,12 +43,10 @@ class Drivers:
 
     def get_from_tab(self):
       try:
-            eventos.Eventos.limpiar()
-            row = var.ui.tabDriver2.selectedItems()
-            fila = [dato.text() for dato in row]
-            print(fila[0])
-            registro = conexion.Conexion.buscar_segun_codigo(fila[0])
 
+            row = var.ui.tabDriver2.currentRow()
+            codigo = var.ui.tabDriver2.item(row, 0).text()
+            registro = conexion.Conexion.buscar_segun_codigo(codigo)
             drivers.Drivers.carga_driver(registro)
       except Exception as error:
           print("Error al cargar desde la tabla", error)

@@ -1,5 +1,6 @@
 import sys
 
+import conexion
 import eventos
 import var
 from datetime import *
@@ -17,6 +18,7 @@ class Eventos:
     @staticmethod
     def limpiar():
         try:
+            conexion.Conexion.mostrardrivers()
             listalimpiar = [var.ui.txtDni, var.ui.txtDate, var.ui.txtDni_2, var.ui.txtNombre, var.ui.txtDireccion,
                             var.ui.txtMovil, var.ui.txtSalario,var.ui.lblCodDB]
             #var.ui.lblCheckDNI.hide()
@@ -30,7 +32,6 @@ class Eventos:
                 i.setChecked(False)
             var.ui.cmbProvincia.setCurrentText("")
             var.ui.cmbLocalidad.setCurrentText("")
-
 
 
         except Exception as error:

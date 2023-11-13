@@ -8,12 +8,23 @@ from PyQt6 import QtGui, QtWidgets, QtCore
 
 
 class Drivers:
+    # def modif_driver(self):
+    #     try:
+    #
+    #
+    #
+    #     except Exception as error:
+    #         print("Error al modificar el conductor", error)
+
     def  get_from_dni (self):
         try:
             dni = var.ui.txtDni.text()
             drivers.Drivers.carga_driver(conexion.Conexion.buscar_segun_dni(dni))
+
+
         except Exception as error:
             print("Error al cargar segun el DNI",error)
+
 
 
 
@@ -24,6 +35,7 @@ class Drivers:
             fila = [dato.text() for dato in row]
             print(fila[0])
             registro = conexion.Conexion.buscar_segun_codigo(fila[0])
+
             drivers.Drivers.carga_driver(registro)
       except Exception as error:
           print("Error al cargar desde la tabla", error)
@@ -64,6 +76,24 @@ class Drivers:
                 var.ui.lblCheckDNI.show()
                 var.ui.lblCheckDNI.setScaledContents(True)
                 var.ui.lblCheckDNI.setPixmap(QtGui.QPixmap("img/OkIco.svg"))
+
+                for fila in range(var.ui.tabDriver2.rowCount()):
+                    if var.ui.tabDriver2.item(fila,0) == str(registro[0]):
+                        print("hola")
+                        var.ui.tabDriver2.setItem(fila, 0, QtWidgets.QTableWidgetItem(str(registro[0])))
+                        var.ui.tabDriver2.setItem(fila, 1, QtWidgets.QTableWidgetItem(str(registro[1])))
+                        var.ui.tabDriver2.setItem(fila, 2, QtWidgets.QTableWidgetItem(str(registro[2])))
+                        var.ui.tabDriver2.setItem(fila, 3, QtWidgets.QTableWidgetItem(str(registro[3])))
+                        var.ui.tabDriver2.setItem(fila, 4, QtWidgets.QTableWidgetItem(str(registro[4])))
+                        var.ui.tabDriver2.item(fila, 0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                        var.ui.tabDriver2.item(fila, 3).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                        var.ui.tabDriver2.item(fila, 4).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                        var.ui.tabDriver2.setItem(fila,0).setBackground(247, 181, 0)
+                        var.ui.tabDriver2.setItem(fila,1).setBackground(247, 181, 0)
+                        var.ui.tabDriver2.setItem(fila,2).setBackground(247, 181, 0)
+                        var.ui.tabDriver2.setItem(fila,3).setBackground(247, 181, 0)
+                        var.ui.tabDriver2.setItem(fila,4).setBackground(247, 181, 0)
+
 
 
         except Exception as error:
@@ -149,22 +179,28 @@ class Drivers:
         except Exception as error:
             print("error en validar dni: ", error)
 
-    def alta_driver(self):
-        try:
-            driver = [var.ui.txtDni.text(), var.ui.txtDate.text(), var.ui.txtDni_2.text(), var.ui.txtNombre.text(),
+
+    def recuperar_datos(self):
+        driver =[var.ui.lblCodDB,var.ui.txtDni.text(), var.ui.txtDate.text(), var.ui.txtDni_2.text(), var.ui.txtNombre.text(),
                       var.ui.txtDireccion.text(), var.ui.cmbProvincia.currentText(),
                       var.ui.cmbLocalidad.currentText(), var.ui.txtMovil.text(), var.ui.txtSalario.text()]
+        licencias = list()
+        chklicencia = [var.ui.chkA, var.ui.chkB, var.ui.chkC, var.ui.chkD]
 
-            licencias = list()
-            chklicencia = [var.ui.chkA, var.ui.chkB, var.ui.chkC, var.ui.chkD]
+        for i in chklicencia:
+            if i.isChecked():
+                licencias.append(i.text())
 
-            for i in chklicencia:
-                if i.isChecked():
-                    licencias.append(i.text())
+        driver.append(str("-".join(licencias)))
 
-            driver.append(str("-".join(licencias)))
+        return driver
 
-            # print(driver)
+
+    def alta_driver(self):
+
+        try:
+            driver = drivers.Drivers.recuperar_datos(self);
+            driver.remove(driver[0])
             conexion.Conexion.guardardri(driver)
             conexion.Conexion.mostrardrivers()
 

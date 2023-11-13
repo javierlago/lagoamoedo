@@ -59,6 +59,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnBuscarDri.clicked.connect(drivers.Drivers.get_from_dni)
 
 
+
         '''
         zona de eventos salir
         '''

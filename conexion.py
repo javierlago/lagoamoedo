@@ -1,7 +1,9 @@
+import datetime
+from datetime import datetime
 from PyQt6 import QtWidgets, QtSql, QtCore
 from PyQt6.QtGui import QIcon
 
-
+import conexion
 import drivers
 import var
 
@@ -107,6 +109,58 @@ class Conexion:
         except Exception as error:
             print("Error al guardar el conductor", error)
 
+    def modificar(driver):
+        try:
+            query = QtSql.QSqlQuery()
+            for i in driver:
+                if i.strip() == "":
+
+                    mbox = QtWidgets.QMessageBox()
+                    mbox.setWindowTitle("Aviso")
+                    mbox.setIcon((QtWidgets.QMessageBox.Icon.Warning))
+                    mensaje = "Campos vacios"
+                    mbox.setText(mensaje)
+                    icon = QIcon('./img/taxiIcon.png')
+                    mbox.setWindowIcon(icon)
+                    mbox.exec()
+                    break
+
+                else:
+
+                    query.prepare('UPDATE drivers SET altadri = :alta, apeldri = :apel, nombredri = :nombre, direcciondri = :direccion, provdri = :provincia, munidri = :municipio, movildri = :movil, salario = :salario, carnet = :carnet WHERE dnidri = :dni ')
+                    query.bindValue(':dni', str(driver[0]))
+                    query.bindValue(':alta', str(driver[1]))
+                    query.bindValue(':apel', str(driver[2]))
+                    query.bindValue(':nombre', str(driver[3]))
+                    query.bindValue(':direccion', str(driver[4]))
+                    query.bindValue(':provincia', str(driver[5]))
+                    query.bindValue(':municipio', str(driver[6]))
+                    query.bindValue(':movil', str(driver[7]))
+                    query.bindValue(':salario', str(driver[8]))
+                    query.bindValue(':carnet', str(driver[9]))
+                    if query.exec():
+                        mbox = QtWidgets.QMessageBox()
+                        mbox.setWindowTitle('Aviso')
+                        mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
+                        mbox.setText('Se ha modificado la tabla')
+                        icon = QIcon('./img/taxiIcon.png')
+                        mbox.setWindowIcon(icon)
+                        mbox.exec()
+                        break
+                    else:
+                        mbox = QtWidgets.QMessageBox()
+                        mbox.setWindowTitle('Aviso')
+                        mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
+                        mbox.setText("El DNI ya se encuentra en la base de datos")
+                        mbox.exec()
+                        break
+            # select de los datos de los conductores de la base de datos
+
+        except Exception as error:
+            print("Error al guardar el conductor", error)
+
+
+
     def mostrardrivers(self=None):
         try:
             registros = list()
@@ -154,3 +208,48 @@ class Conexion:
 
         except Exception as error:
             print("Error al buscar segun dni: ", error)
+
+
+    def borrarDriver(dni):
+        try:
+
+            fecha = datetime.now()
+            fecha = fecha.strftime("%d/%m/%Y")
+            valor = None
+            query = QtSql.QSqlQuery()
+            query.prepare('SELECT bajadri FROM drivers WHERE dnidri = :dni ')
+            query.bindValue(':dni', dni)
+            if query.exec():
+                while query.next():
+                    valor = query.value(0)
+            print(valor)
+            if valor == "":
+                fecha = datetime.now()
+                fecha = fecha.strftime("%d/%m/%Y")
+                queryFecha = QtSql.QSqlQuery()
+                queryFecha.prepare('update drivers set bajadri = :fechabaja where dnidri = :dni')
+                queryFecha.bindValue(':dni', str(dni))
+                queryFecha.bindValue(':fechabaja', str(fecha))
+                if queryFecha.exec():
+                    print("Se ha ejecutado la baja")
+                    mbox = QtWidgets.QMessageBox()
+                    mbox.setWindowTitle('Aviso')
+                    mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
+                    mbox.setText('Se ha modificado la tabla')
+                    icon = QIcon('./img/taxiIcon.png')
+                    mbox.setWindowIcon(icon)
+                    mbox.exec()
+
+                else:
+                    mbox = QtWidgets.QMessageBox()
+                    mbox.setWindowTitle('Aviso')
+                    mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
+                    mbox.setText("No se ha podido dar de baja el conductor")
+                    mbox.exec()
+
+
+
+        except Exception as error:
+            print("No se ha podido dar de baja al conductor",error)
+
+

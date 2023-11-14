@@ -10,13 +10,28 @@ from PyQt6 import QtGui, QtWidgets, QtCore
 
 
 class Drivers:
-    # def modif_driver(self):
-    #     try:
-    #
-    #
-    #
-    #     except Exception as error:
-    #         print("Error al modificar el conductor", error)
+    def borrar_datos(self):
+        try:
+            dni = var.ui.txtDni.text()
+            print(dni)
+            conexion.Conexion.borrarDriver(dni)
+            conexion.Conexion.mostrardrivers()
+        except Exception as error:
+            print("Error al dar de baja a un conductor", error)
+
+
+
+    def modif_driver(self):
+        try:
+            driver = drivers.Drivers.recuperar_datos()
+            driver.pop(0)
+            conexion.Conexion.modificar(driver)
+            conexion.Conexion.mostrardrivers()
+
+
+
+        except Exception as error:
+            print("Error al modificar el conductor", error)
 
     def  get_from_dni (self):
         try:
@@ -48,6 +63,7 @@ class Drivers:
             codigo = var.ui.tabDriver2.item(row, 0).text()
             registro = conexion.Conexion.buscar_segun_codigo(codigo)
             drivers.Drivers.carga_driver(registro)
+            conexion.Conexion.mostrardrivers()
       except Exception as error:
           print("Error al cargar desde la tabla", error)
 
@@ -95,6 +111,7 @@ class Drivers:
                         var.ui.tabDriver2.setItem(fila, 1, QtWidgets.QTableWidgetItem(str(registro[1])))
                         var.ui.tabDriver2.setItem(fila, 2, QtWidgets.QTableWidgetItem(str(registro[2])))
                         var.ui.tabDriver2.setItem(fila, 3, QtWidgets.QTableWidgetItem(str(registro[3])))
+                        var.ui.tabDriver2.setItem(fila, 4, QtWidgets.QTableWidgetItem(str(registro[4])))
                         var.ui.tabDriver2.setItem(fila, 4, QtWidgets.QTableWidgetItem(str(registro[4])))
                         var.ui.tabDriver2.item(fila, 0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
                         var.ui.tabDriver2.item(fila, 3).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
@@ -191,8 +208,8 @@ class Drivers:
             print("error en validar dni: ", error)
 
 
-    def recuperar_datos(self):
-        driver =[var.ui.lblCodDB,var.ui.txtDni.text(), var.ui.txtDate.text(), var.ui.txtDni_2.text(), var.ui.txtNombre.text(),
+    def recuperar_datos(self=None):
+        driver =[var.ui.lblCodDB.text(),var.ui.txtDni.text(), var.ui.txtDate.text(), var.ui.txtDni_2.text(), var.ui.txtNombre.text(),
                       var.ui.txtDireccion.text(), var.ui.cmbProvincia.currentText(),
                       var.ui.cmbLocalidad.currentText(), var.ui.txtMovil.text(), var.ui.txtSalario.text()]
         licencias = list()

@@ -57,6 +57,8 @@ class Main(QtWidgets.QMainWindow):
         var.ui.actionAcerca_de.triggered.connect(eventos.Eventos.abrir_acerca_de)
         var.ui.btnaltaDriver.clicked.connect(drivers.Drivers.alta_driver)
         var.ui.btnBuscarDri.clicked.connect(drivers.Drivers.get_from_dni)
+        var.ui.btnModifDriver.clicked.connect(drivers.Drivers.modif_driver)
+        var.ui.btnBajaDriver.clicked.connect(drivers.Drivers.borrar_datos)
 
 
 

@@ -171,8 +171,12 @@ class Conexion:
                 while query1.next():
                     row = [query1.value(i) for i in range(query1.record().count())]
                     registros.append(row)
+
+
+
+
             drivers.Drivers.cargartabla(registros)
-            # print(registros)
+
 
         except Exception as error:
             print("error al mostrar resultados", error)

@@ -35,6 +35,7 @@ class Main(QtWidgets.QMainWindow):
 
 
 
+
         '''
         
         ZONA DE EVENTOS
@@ -59,6 +60,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnBuscarDri.clicked.connect(drivers.Drivers.get_from_dni)
         var.ui.btnModifDriver.clicked.connect(drivers.Drivers.modif_driver)
         var.ui.btnBajaDriver.clicked.connect(drivers.Drivers.borrar_datos)
+        var.ui.buttonGroup.buttonClicked.connect(conexion.Conexion.mostrardrivers)
 
 
 

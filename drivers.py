@@ -1,6 +1,6 @@
 import re
 
-from PyQt6.QtGui import QColor
+from PyQt6.QtGui import QColor, QBrush
 
 import conexion
 import drivers
@@ -36,10 +36,16 @@ class Drivers:
     def  get_from_dni (self):
         try:
             obteivo = None
-            conexion.Conexion.mostrardrivers()
             dni = var.ui.txtDni.text()
             drivers.Drivers.carga_driver(conexion.Conexion.buscar_segun_dni(dni))
             registro = conexion.Conexion.buscar_segun_dni(dni)
+            if registro[11] == '':
+                var.ui.rbtAlta.setChecked(True)
+            else:
+                var.ui.rbtBaja.setChecked(True)
+            conexion.Conexion.mostrardrivers()
+
+
             for row in range(var.ui.tabDriver2.rowCount()):
                 item = var.ui.tabDriver2.item(row, 0)
                 if item and item.text() == str(registro[0]):
@@ -53,19 +59,28 @@ class Drivers:
         except Exception as error:
             print("Error al cargar segun el DNI",error)
 
-
-
-
     def get_from_tab(self):
-      try:
+        try:
+            # Limpiar el estilo de todas las filas
+            for r in range(var.ui.tabDriver2.rowCount()):
+                for c in range(var.ui.tabDriver2.columnCount()):
+                    item = var.ui.tabDriver2.item(r, c)
+                    if item is not None:
+                        item.setBackground(QBrush(QColor(0, 0, 0, 0)))
 
+            # Establecer el fondo amarillo solo para la fila seleccionada
             row = var.ui.tabDriver2.currentRow()
+            for c in range(var.ui.tabDriver2.columnCount()):
+                item = var.ui.tabDriver2.item(row, c)
+                if item is not None:
+                    item.setBackground(QBrush(QColor("#CCA963")))
+
             codigo = var.ui.tabDriver2.item(row, 0).text()
             registro = conexion.Conexion.buscar_segun_codigo(codigo)
             drivers.Drivers.carga_driver(registro)
-            conexion.Conexion.mostrardrivers()
-      except Exception as error:
-          print("Error al cargar desde la tabla", error)
+
+        except Exception as error:
+            print("Error al cargar desde la tabla", error)
 
 
 

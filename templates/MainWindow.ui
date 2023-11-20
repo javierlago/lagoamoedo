@@ -1568,7 +1568,20 @@ background-color: rgb(247, 181, 0);</string>
               <enum>Qt::NoFocus</enum>
              </property>
              <property name="styleSheet">
-              <string notr="true">QHeaderView::section { background-color: rgb(247, 181, 0); border-radius: 1px; color: black;font-weight: bold;border: 1px solid black;}</string>
+              <string notr="true"> QHeaderView::section {
+        background-color: rgb(247, 181, 0);
+        border-radius: 1px;
+        color: black;
+        font-weight: bold;
+        border: 1px solid black;
+    }
+
+ QTableView {
+ selection-background-color: rgb(247, 181, 0);
+}
+
+
+</string>
              </property>
              <property name="frameShape">
               <enum>QFrame::NoFrame</enum>
@@ -1580,10 +1593,13 @@ background-color: rgb(247, 181, 0);</string>
               <set>QAbstractItemView::NoEditTriggers</set>
              </property>
              <property name="dragDropMode">
-              <enum>QAbstractItemView::DragOnly</enum>
+              <enum>QAbstractItemView::NoDragDrop</enum>
              </property>
              <property name="alternatingRowColors">
               <bool>true</bool>
+             </property>
+             <property name="selectionMode">
+              <enum>QAbstractItemView::NoSelection</enum>
              </property>
              <property name="selectionBehavior">
               <enum>QAbstractItemView::SelectRows</enum>

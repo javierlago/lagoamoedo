@@ -11,9 +11,9 @@ import var
 class Conexion:
 
     def conexion(self=None):
-
+        var.bbdd = 'bbdd.sqlite'
         db = QtSql.QSqlDatabase.addDatabase('QSQLITE')
-        db.setDatabaseName('bbdd.sqlite')
+        db.setDatabaseName(var.bbdd)
         if not db.open():
             print("Error de conexion")
             return False
@@ -208,6 +208,8 @@ class Conexion:
                         registro.append(str(query.value(i)))
 
             print(registro,"esto es el registro del metodo buscar segun dni")
+            if registro[11] !='':
+                var.ui.rbtAlta.isChecked()
             return registro
 
         except Exception as error:

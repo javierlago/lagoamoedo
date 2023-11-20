@@ -10,6 +10,7 @@ from MainWindow import *
 from windowaux import *
 import locale
 import var
+
 locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 locale.setlocale(locale.LC_MONETARY, 'es_ES.UTF-8')
 
@@ -20,21 +21,14 @@ class Main(QtWidgets.QMainWindow):
         super(Main, self).__init__()
 
         var.ui = Ui_MainWindow()
-        var.ui.setupUi(self)  # metodo encargado de genera la interfaz
-        #screen = QApplication.primaryScreen().geometry()
-        #self.setMaximumSize(screen.width(), screen.height())
-
-
-
+        var.ui.setupUi(self)
         var.calendar = Calendar()
         var.acercade = Acerca()
         var.ventana_salir = SalirVentana()
+        var.dlg_abrir = FileDialogAbrir()
         conexion.Conexion.conexion()
         conexion.Conexion.cargaProv()
         conexion.Conexion.mostrardrivers()
-
-
-
 
         '''
         
@@ -62,12 +56,11 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnBajaDriver.clicked.connect(drivers.Drivers.borrar_datos)
         var.ui.buttonGroup.buttonClicked.connect(conexion.Conexion.mostrardrivers)
 
-
-
         '''
         zona de eventos salir
         '''
         var.ui.actionSalir.triggered.connect(eventos.Eventos.show_salir)
+        var.ui.actionCrear_Copia_Seguridad.triggered.connect(eventos.Eventos.crear_back_up)
 
         """
         zona de eventos cajas
@@ -77,7 +70,6 @@ class Main(QtWidgets.QMainWindow):
         var.ui.txtDni_2.editingFinished.connect(eventos.Eventos.format_caja_texto)
         var.ui.txtSalario.editingFinished.connect(eventos.Eventos.format_caja_texto)
         var.ui.txtMovil.editingFinished.connect(drivers.Drivers.validar_tlf)
-
 
         """
         
@@ -94,7 +86,6 @@ class Main(QtWidgets.QMainWindow):
 
         eventos.Eventos.cargastatusbar(self)
 
-
         '''
         eventos de tablas  
         '''
@@ -102,25 +93,16 @@ class Main(QtWidgets.QMainWindow):
         var.ui.tabDriver2.clicked.connect(drivers.Drivers.get_from_tab)
 
 
-
-
-
-
-        rbt_driverr = [var.ui.rbtTodos, var.ui.rbtAlta, var.ui.rbtBaja]
-        for i in rbt_driverr:
-            i.toggled.connect(eventos.Eventos.sel_estado)
     def closeEvent(self, event):
 
-            mbox = QtWidgets.QMessageBox.information(self, "Salir", "Estas seguro de salir?",
-                                                     QtWidgets.QMessageBox.StandardButton.Yes |
-                                                     QtWidgets.QMessageBox.StandardButton.No)
+        mbox = QtWidgets.QMessageBox.information(self, "Salir", "Estas seguro de salir?",
+                                                 QtWidgets.QMessageBox.StandardButton.Yes |
+                                                 QtWidgets.QMessageBox.StandardButton.No)
 
-            if mbox == QtWidgets.QMessageBox.StandardButton.Yes:
-                app.quit()
-            if mbox == QtWidgets.QMessageBox.StandardButton.No:
-                event.ignore()
-
-
+        if mbox == QtWidgets.QMessageBox.StandardButton.Yes:
+            app.quit()
+        if mbox == QtWidgets.QMessageBox.StandardButton.No:
+            event.ignore()
 
 
 if __name__ == '__main__':

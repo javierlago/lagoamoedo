@@ -1,5 +1,7 @@
+import os.path
+import shutil
 import sys
-
+import zipfile
 import conexion
 import eventos
 import var
@@ -11,6 +13,35 @@ locale.setlocale(locale.LC_MONETARY, 'es_ES.UTF-8')
 
 class Eventos:
 
+
+
+
+
+    def crear_back_up(self):
+        try:
+            fecha = datetime.today()
+            fecha = fecha.strftime('%Y_%m_%d_%H_%M_%S')
+            copia = str(fecha)+"_backup.zip"
+            directorio , filename= var.dlg_abrir.getSaveFileName(None,'Guardar copia de seguridad', copia, '.zip')
+            if var.dlg_abrir.accept and filename !='':
+                fichzip = zipfile.ZipFile(copia,'w')
+                fichzip.write(var.bbdd, os.path.basename(var.bbdd), zipfile.ZIP_DEFLATED)
+                fichzip.close()
+                shutil.move(str(copia),str(directorio))
+                mbox = QtWidgets.QMessageBox()
+                mbox.setWindowTitle('Aviso')
+                mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
+                mbox.setText("Copia se seguridad creada")
+                mbox.exec()
+
+
+        except Exception as error:
+            print(error)
+            mbox = QtWidgets.QMessageBox()
+            mbox.setWindowTitle('Aviso')
+            mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
+            mbox.setText("Error en la copia de seguridad",error)
+            mbox.exec()
 
 
 
@@ -112,14 +143,7 @@ class Eventos:
     @staticmethod
 
 
-    @staticmethod
-    def sel_estado():
-        if var.ui.rbtTodos.isChecked():
-            print("Pulsaste todos")
-        elif var.ui.rbtAlta.isChecked():
-            print("Pulsaste Alta")
-        elif var.ui.rbtBaja.isChecked():
-            print("Pulsaste Baja")
+
 
 
     def resize_tabDriver2(self):

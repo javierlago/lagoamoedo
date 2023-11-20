@@ -1638,30 +1638,6 @@ background-color: rgb(247, 181, 0);</string>
     </item>
    </layout>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1416</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuArchivo">
-    <property name="title">
-     <string>Archivo</string>
-    </property>
-    <addaction name="actionSalir"/>
-   </widget>
-   <widget class="QMenu" name="menuHelp">
-    <property name="title">
-     <string>Ayuda</string>
-    </property>
-    <addaction name="actionAcerca_de"/>
-   </widget>
-   <addaction name="menuArchivo"/>
-   <addaction name="menuHelp"/>
-  </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="toolBar">
    <property name="enabled">
@@ -1697,9 +1673,45 @@ background-color: rgb(247, 181, 0);</string>
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="Salir"/>
+   <addaction name="actionCrear_Copia_Seguridad"/>
+   <addaction name="actionRestarurar_Copia"/>
    <addaction name="separator"/>
    <addaction name="btnLimpiar"/>
+   <addaction name="separator"/>
+   <addaction name="Salir"/>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1416</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuArchivo">
+    <property name="title">
+     <string>Archivo</string>
+    </property>
+    <addaction name="actionSalir"/>
+    <addaction name="actionHerramientas"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Ayuda</string>
+    </property>
+    <addaction name="actionAcerca_de"/>
+   </widget>
+   <widget class="QMenu" name="menuHerramientas">
+    <property name="title">
+     <string>Herramientas</string>
+    </property>
+    <addaction name="actionCrear_Copia_Seguridad"/>
+    <addaction name="actionRestarurar_Copia"/>
+   </widget>
+   <addaction name="menuArchivo"/>
+   <addaction name="menuHerramientas"/>
+   <addaction name="menuHelp"/>
   </widget>
   <action name="actionAcerca_de">
    <property name="enabled">
@@ -1730,6 +1742,35 @@ background-color: rgb(247, 181, 0);</string>
   <action name="actionSalir">
    <property name="text">
     <string>Salir</string>
+   </property>
+  </action>
+  <action name="actionHerramientas">
+   <property name="text">
+    <string>Herramientas</string>
+   </property>
+  </action>
+  <action name="actionCrear_Copia_Seguridad">
+   <property name="icon">
+    <iconset>
+     <normaloff>../img/actualizar.png</normaloff>../img/actualizar.png</iconset>
+   </property>
+   <property name="text">
+    <string>Crear Copia Seguridad</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+S</string>
+   </property>
+  </action>
+  <action name="actionRestarurar_Copia">
+   <property name="icon">
+    <iconset>
+     <normaloff>../img/restaura_bbdd.png</normaloff>../img/restaura_bbdd.png</iconset>
+   </property>
+   <property name="text">
+    <string>Restarurar Copia</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+R</string>
    </property>
   </action>
  </widget>

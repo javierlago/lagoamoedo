@@ -35,3 +35,8 @@ class Acerca(QtWidgets.QDialog):
         var.acercade = Ui_AcercaDe()
         var.acercade.setupUi(self)
         var.acercade.pushButton.clicked.connect(eventos.Eventos.salir_acerca_de)
+
+
+class FileDialogAbrir(QtWidgets.QFileDialog):
+    def __init__(self):
+        super(FileDialogAbrir, self).__init__()

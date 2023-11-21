@@ -8,26 +8,47 @@ import var
 from datetime import *
 from PyQt6 import QtWidgets, QtCore, QtSql
 import locale
+
 locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 locale.setlocale(locale.LC_MONETARY, 'es_ES.UTF-8')
 
+
 class Eventos:
+    def restaurar_back_up(self):
+        try:
+            filename = var.dlg_abrir.getOpenFileName(None, 'Restaurar copia de seguridad',
+                                                     '', '*.zip;;All Files(*)')
+            if var.dlg_abrir.accept and filename is not None:
+                file = filename[0]
+                with zipfile.ZipFile(str(file), 'r') as bbdd:
+                    bbdd.extractall(pwd=None)
+                bbdd.close()
+            mbox = QtWidgets.QMessageBox()
+            mbox.setWindowTitle('Aviso')
+            mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
+            mbox.setText("Copia restaturada")
+            mbox.exec()
+            conexion.Conexion.mostrardrivers()
 
-
-
-
+        except Exception as error:
+            
+            mbox = QtWidgets.QMessageBox()
+            mbox.setWindowTitle('Aviso')
+            mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
+            mbox.setText("Error en la copia de seguridad", error)
+            mbox.exec()
 
     def crear_back_up(self):
         try:
             fecha = datetime.today()
             fecha = fecha.strftime('%Y_%m_%d_%H_%M_%S')
-            copia = str(fecha)+"_backup.zip"
-            directorio , filename= var.dlg_abrir.getSaveFileName(None,'Guardar copia de seguridad', copia, '.zip')
-            if var.dlg_abrir.accept and filename !='':
-                fichzip = zipfile.ZipFile(copia,'w')
+            copia = str(fecha) + "_backup.zip"
+            directorio, filename = var.dlg_abrir.getSaveFileName(None, 'Guardar copia de seguridad', copia, '.zip')
+            if var.dlg_abrir.accept and filename is not None:
+                fichzip = zipfile.ZipFile(copia, 'w')
                 fichzip.write(var.bbdd, os.path.basename(var.bbdd), zipfile.ZIP_DEFLATED)
                 fichzip.close()
-                shutil.move(str(copia),str(directorio))
+                shutil.move(str(copia), str(directorio))
                 mbox = QtWidgets.QMessageBox()
                 mbox.setWindowTitle('Aviso')
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
@@ -35,26 +56,24 @@ class Eventos:
                 mbox.exec()
 
 
+
         except Exception as error:
             print(error)
             mbox = QtWidgets.QMessageBox()
             mbox.setWindowTitle('Aviso')
             mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-            mbox.setText("Error en la copia de seguridad",error)
+            mbox.setText("Error en la copia de seguridad", error)
             mbox.exec()
-
-
-
 
     @staticmethod
     def limpiar():
         try:
             conexion.Conexion.mostrardrivers()
             listalimpiar = [var.ui.txtDni, var.ui.txtDate, var.ui.txtDni_2, var.ui.txtNombre, var.ui.txtDireccion,
-                            var.ui.txtMovil, var.ui.txtSalario,var.ui.lblCodDB]
-            #var.ui.lblCheckDNI.hide()
+                            var.ui.txtMovil, var.ui.txtSalario, var.ui.lblCodDB]
+            # var.ui.lblCheckDNI.hide()
             var.ui.lblCheckDNI.setText(" ")
-            #var.ui.lblCheckDNI.setScaledContents(False)
+            # var.ui.lblCheckDNI.setScaledContents(False)
             for i in listalimpiar:
                 i.setText(None)
             chklicencia = [var.ui.chkA, var.ui.chkB, var.ui.chkC, var.ui.chkD]
@@ -118,7 +137,7 @@ class Eventos:
     @staticmethod
     def devolver_fecha():
         fecha = datetime.now()
-        fecha = fecha.strftime("%A-"+'%d-%m-%Y')
+        fecha = fecha.strftime("%A-" + '%d-%m-%Y')
         return fecha
 
     @staticmethod
@@ -141,11 +160,6 @@ class Eventos:
             print('Error cargar el statusbar: ', error)
 
     @staticmethod
-
-
-
-
-
     def resize_tabDriver2(self):
         try:
             header = var.ui.tabDriver2.horizontalHeader()
@@ -168,5 +182,3 @@ class Eventos:
 
         except Exception as error:
             print("error letra capital", error)
-
-

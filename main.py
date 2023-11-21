@@ -61,6 +61,7 @@ class Main(QtWidgets.QMainWindow):
         '''
         var.ui.actionSalir.triggered.connect(eventos.Eventos.show_salir)
         var.ui.actionCrear_Copia_Seguridad.triggered.connect(eventos.Eventos.crear_back_up)
+        var.ui.actionRestarurar_Copia.triggered.connect(eventos.Eventos.restaurar_back_up)
 
         """
         zona de eventos cajas

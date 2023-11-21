@@ -109,12 +109,21 @@ class Drivers:
                         dato.setText(str(registro[i]))
                 if 'A' in registro[10]:
                     var.ui.chkA.setChecked(True)
+                else:
+                    var.ui.chkA.setChecked(False)
+
                 if 'B' in registro[10]:
                     var.ui.chkB.setChecked(True)
+                else:
+                    var.ui.chkB.setChecked(False)
                 if 'C' in registro[10]:
                     var.ui.chkC.setChecked(True)
+                else:
+                    var.ui.chkC.setChecked(False)
                 if 'D' in registro[10]:
                     var.ui.chkD.setChecked(True)
+                else:
+                    var.ui.chkD.setChecked(False)
                 var.ui.lblCheckDNI.show()
                 var.ui.lblCheckDNI.setScaledContents(True)
                 var.ui.lblCheckDNI.setPixmap(QtGui.QPixmap("img/OkIco.svg"))

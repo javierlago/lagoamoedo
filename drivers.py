@@ -277,20 +277,22 @@ class Drivers:
             elif (var.ui.rbtTodos.isChecked()):
                 nuevoRegistros = registros
 
-
-            index = 0
-            for registro in nuevoRegistros:
-                var.ui.tabDriver2.setRowCount(index + 1)
-                var.ui.tabDriver2.setItem(index, 0, QtWidgets.QTableWidgetItem(str(registro[0])))
-                var.ui.tabDriver2.setItem(index, 1, QtWidgets.QTableWidgetItem(str(registro[1])))
-                var.ui.tabDriver2.setItem(index, 2, QtWidgets.QTableWidgetItem(str(registro[2])))
-                var.ui.tabDriver2.setItem(index, 3, QtWidgets.QTableWidgetItem(str(registro[3])))
-                var.ui.tabDriver2.setItem(index, 4, QtWidgets.QTableWidgetItem(str(registro[4])))
-                var.ui.tabDriver2.setItem(index, 5,QtWidgets.QTableWidgetItem(str(registro[5])))
-                var.ui.tabDriver2.item(index, 0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-                var.ui.tabDriver2.item(index, 3).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-                var.ui.tabDriver2.item(index, 4).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-                var.ui.tabDriver2.item(index, 5).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-                index += 1
+            if len(nuevoRegistros) == 0:
+                var.ui.tabDriver2.setRowCount(0)
+            else:
+                index = 0
+                for registro in nuevoRegistros:
+                    var.ui.tabDriver2.setRowCount(index + 1)
+                    var.ui.tabDriver2.setItem(index, 0, QtWidgets.QTableWidgetItem(str(registro[0])))
+                    var.ui.tabDriver2.setItem(index, 1, QtWidgets.QTableWidgetItem(str(registro[1])))
+                    var.ui.tabDriver2.setItem(index, 2, QtWidgets.QTableWidgetItem(str(registro[2])))
+                    var.ui.tabDriver2.setItem(index, 3, QtWidgets.QTableWidgetItem(str(registro[3])))
+                    var.ui.tabDriver2.setItem(index, 4, QtWidgets.QTableWidgetItem(str(registro[4])))
+                    var.ui.tabDriver2.setItem(index, 5,QtWidgets.QTableWidgetItem(str(registro[5])))
+                    var.ui.tabDriver2.item(index, 0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                    var.ui.tabDriver2.item(index, 3).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                    var.ui.tabDriver2.item(index, 4).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                    var.ui.tabDriver2.item(index, 5).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                    index += 1
         except Exception as error:
             print("Error completar tabla ", error)

@@ -18,17 +18,18 @@ class Eventos:
         try:
             filename = var.dlg_abrir.getOpenFileName(None, 'Restaurar copia de seguridad',
                                                      '', '*.zip;;All Files(*)')
-            if var.dlg_abrir.accept and filename is not None:
-                file = filename[0]
+            file = filename[0]
+            if var.dlg_abrir.accept and file:
                 with zipfile.ZipFile(str(file), 'r') as bbdd:
                     bbdd.extractall(pwd=None)
                 bbdd.close()
-            mbox = QtWidgets.QMessageBox()
-            mbox.setWindowTitle('Aviso')
-            mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
-            mbox.setText("Copia restaturada")
-            mbox.exec()
-            conexion.Conexion.mostrardrivers()
+                mbox = QtWidgets.QMessageBox()
+                mbox.setWindowTitle('Aviso')
+                mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
+                mbox.setText("Copia restaturada")
+                mbox.exec()
+                conexion.Conexion.mostrardrivers()
+
 
         except Exception as error:
             

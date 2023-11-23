@@ -2,6 +2,10 @@ import os.path
 import shutil
 import sys
 import zipfile
+
+import xlwt
+import xlrd
+
 import conexion
 import eventos
 import var
@@ -14,6 +18,45 @@ locale.setlocale(locale.LC_MONETARY, 'es_ES.UTF-8')
 
 
 class Eventos:
+
+    def exportar_datos_xls(self):
+        try:
+            fecha = datetime.today()
+            fecha = fecha.strftime('%Y_%m_%d_%H_%M_%S')
+            file = (str(fecha)+'Datos.xls')
+            directorio, filename = var.dlg_abrir.getSaveFileName(None, 'Exportar datos en XLS', file, '.xls')
+            if var.dlg_abrir.accept and filename is not None:
+                wb = xlwt.Workbook()
+                sheet1 = wb.add_sheet('conductores')
+                sheet1.write(0,0,'ID')
+                sheet1.write(0,1,'DNI')
+                sheet1.write(0,2,'Fecha Alta')
+                sheet1.write(0,3,'Apellidos')
+                sheet1.write(0,4,'Nombre')
+                sheet1.write(0,5,'Direccion')
+                sheet1.write(0,6,'Provincia')
+                sheet1.write(0,7,'Localidad')
+                sheet1.write(0,8,'Movil')
+                sheet1.write(0,9,'Salario')
+                sheet1.write(0,10,'Licencias')
+                sheet1.write(0,11,'Fecha baja')
+
+
+                registros = conexion.Conexion.select_all_driver(self)
+
+                for j, registro in enumerate(registros, 1):
+                    for i, valor in enumerate(registro):
+                        sheet1.write(j, i, valor)
+                wb.save(directorio)
+
+
+        except Exception as error:
+            mbox = QtWidgets.QMessageBox()
+            mbox.setWindowTitle('Aviso')
+            mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
+            mbox.setText("Error exportar datos en hoja de calculo",error)
+            mbox.exec()
+
     def restaurar_back_up(self):
         try:
             filename = var.dlg_abrir.getOpenFileName(None, 'Restaurar copia de seguridad',

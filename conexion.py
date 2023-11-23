@@ -258,4 +258,17 @@ class Conexion:
         except Exception as error:
             print("No se ha podido dar de baja al conductor",error)
 
+    def select_all_driver(self):
 
+        try:
+            registro = []
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT * FROM drivers order by apeldri")
+            if query.exec():
+                while query.next():
+                    row = [query.value(i) for i in range(query.record().count())]
+                    registro.append(row)
+            return registro
+
+        except Exception as error:
+            print("Error al buscar segun dni: ", error)

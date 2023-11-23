@@ -1695,6 +1695,7 @@ background-color: rgb(247, 181, 0);</string>
    <addaction name="btnLimpiar"/>
    <addaction name="separator"/>
    <addaction name="Salir"/>
+   <addaction name="separator"/>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -1724,6 +1725,8 @@ background-color: rgb(247, 181, 0);</string>
     </property>
     <addaction name="actionCrear_Copia_Seguridad"/>
     <addaction name="actionRestarurar_Copia"/>
+    <addaction name="separator"/>
+    <addaction name="actionExportar_Datos_XLS"/>
    </widget>
    <addaction name="menuArchivo"/>
    <addaction name="menuHerramientas"/>
@@ -1787,6 +1790,11 @@ background-color: rgb(247, 181, 0);</string>
    </property>
    <property name="shortcut">
     <string>Alt+R</string>
+   </property>
+  </action>
+  <action name="actionExportar_Datos_XLS">
+   <property name="text">
+    <string>Exportar Datos XLS</string>
    </property>
   </action>
  </widget>

@@ -4,7 +4,7 @@ from PyQt6.QtGui import QColor, QBrush
 
 import conexion
 import drivers
-import eventos
+
 import var
 from PyQt6 import QtGui, QtWidgets, QtCore
 

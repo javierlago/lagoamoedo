@@ -24,7 +24,7 @@ class Drivers:
     def modif_driver(self):
         try:
             driver = drivers.Drivers.recuperar_datos()
-            driver.pop(0)
+
             conexion.Conexion.modificar(driver)
             conexion.Conexion.mostrardrivers()
 

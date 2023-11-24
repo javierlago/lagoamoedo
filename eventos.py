@@ -5,6 +5,7 @@ import zipfile
 
 import xlwt
 import xlrd
+from PyQt6.uic.properties import QtGui
 
 import conexion
 import eventos
@@ -25,7 +26,7 @@ class Eventos:
             fecha = fecha.strftime('%Y_%m_%d_%H_%M_%S')
             file = (str(fecha)+'Datos.xls')
             directorio, filename = var.dlg_abrir.getSaveFileName(None, 'Exportar datos en XLS', file, '.xls')
-            if var.dlg_abrir.accept and filename is not None:
+            if var.dlg_abrir.accept and filename:
                 wb = xlwt.Workbook()
                 sheet1 = wb.add_sheet('conductores')
                 sheet1.write(0,0,'ID')
@@ -48,6 +49,13 @@ class Eventos:
                     for i, valor in enumerate(registro):
                         sheet1.write(j, i, valor)
                 wb.save(directorio)
+                mbox = QtWidgets.QMessageBox()
+                mbox.setModal(True)
+
+                mbox.setWindowTitle('Aviso')
+                mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
+                mbox.setText("Se ha exportado los datos correctamente")
+                mbox.exec()
 
 
         except Exception as error:

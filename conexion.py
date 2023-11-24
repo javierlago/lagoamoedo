@@ -59,6 +59,9 @@ class Conexion:
     @staticmethod
     def guardardri(newdriver):
         try:
+            print(newdriver)
+            registro = drivers.Drivers.get_from_dni(newdriver[0])
+
             query = QtSql.QSqlQuery()
             for i in newdriver:
                 if i.strip() == "":
@@ -111,50 +114,62 @@ class Conexion:
 
     def modificar(driver):
         try:
-            query = QtSql.QSqlQuery()
-            for i in driver:
-                if i.strip() == "":
 
-                    mbox = QtWidgets.QMessageBox()
-                    mbox.setWindowTitle("Aviso")
-                    mbox.setIcon((QtWidgets.QMessageBox.Icon.Warning))
-                    mensaje = "Campos vacios"
-                    mbox.setText(mensaje)
-                    icon = QIcon('./img/taxiIcon.png')
-                    mbox.setWindowIcon(icon)
-                    mbox.exec()
-                    break
+            registro = conexion.Conexion.buscar_segun_codigo(driver[0])
+            registro = registro[:-1]
 
-                else:
+            if registro != driver:
+                query = QtSql.QSqlQuery()
+                driver.pop(0)
+                for i in driver:
+                    if i.strip() == "":
 
-                    query.prepare('UPDATE drivers SET altadri = :alta, apeldri = :apel, nombredri = :nombre, direcciondri = :direccion, provdri = :provincia, munidri = :municipio, movildri = :movil, salario = :salario, carnet = :carnet WHERE dnidri = :dni ')
-                    query.bindValue(':dni', str(driver[0]))
-                    query.bindValue(':alta', str(driver[1]))
-                    query.bindValue(':apel', str(driver[2]))
-                    query.bindValue(':nombre', str(driver[3]))
-                    query.bindValue(':direccion', str(driver[4]))
-                    query.bindValue(':provincia', str(driver[5]))
-                    query.bindValue(':municipio', str(driver[6]))
-                    query.bindValue(':movil', str(driver[7]))
-                    query.bindValue(':salario', str(driver[8]))
-                    query.bindValue(':carnet', str(driver[9]))
-                    if query.exec():
                         mbox = QtWidgets.QMessageBox()
-                        mbox.setWindowTitle('Aviso')
-                        mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                        mbox.setText('Se ha modificado la tabla')
+                        mbox.setWindowTitle("Aviso")
+                        mbox.setIcon((QtWidgets.QMessageBox.Icon.Warning))
+                        mensaje = "Campos vacios"
+                        mbox.setText(mensaje)
                         icon = QIcon('./img/taxiIcon.png')
                         mbox.setWindowIcon(icon)
                         mbox.exec()
                         break
+
                     else:
-                        mbox = QtWidgets.QMessageBox()
-                        mbox.setWindowTitle('Aviso')
-                        mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                        mbox.setText("El DNI ya se encuentra en la base de datos")
-                        mbox.exec()
-                        break
-            # select de los datos de los conductores de la base de datos
+
+                        query.prepare('UPDATE drivers SET altadri = :alta, apeldri = :apel, nombredri = :nombre, direcciondri = :direccion, provdri = :provincia, munidri = :municipio, movildri = :movil, salario = :salario, carnet = :carnet WHERE dnidri = :dni ')
+                        query.bindValue(':dni', str(driver[0]))
+                        query.bindValue(':alta', str(driver[1]))
+                        query.bindValue(':apel', str(driver[2]))
+                        query.bindValue(':nombre', str(driver[3]))
+                        query.bindValue(':direccion', str(driver[4]))
+                        query.bindValue(':provincia', str(driver[5]))
+                        query.bindValue(':municipio', str(driver[6]))
+                        query.bindValue(':movil', str(driver[7]))
+                        query.bindValue(':salario', str(driver[8]))
+                        query.bindValue(':carnet', str(driver[9]))
+                        if query.exec():
+                            mbox = QtWidgets.QMessageBox()
+                            mbox.setWindowTitle('Aviso')
+                            mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
+                            mbox.setText('Se ha modificado la tabla')
+                            icon = QIcon('./img/taxiIcon.png')
+                            mbox.setWindowIcon(icon)
+                            mbox.exec()
+                            break
+                        else:
+                            mbox = QtWidgets.QMessageBox()
+                            mbox.setWindowTitle('Aviso')
+                            mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
+                            mbox.setText("El DNI ya se encuentra en la base de datos")
+                            mbox.exec()
+                            break
+            else:
+                mbox = QtWidgets.QMessageBox()
+                mbox.setWindowTitle('Aviso')
+                mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
+                mbox.setText("No se han modificado datos")
+                mbox.exec()
+                # select de los datos de los conductores de la base de datos
 
         except Exception as error:
             print("Error al guardar el conductor", error)
@@ -272,3 +287,5 @@ class Conexion:
 
         except Exception as error:
             print("Error al buscar segun dni: ", error)
+
+

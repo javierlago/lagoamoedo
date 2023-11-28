@@ -29,6 +29,8 @@ class Main(QtWidgets.QMainWindow):
         conexion.Conexion.conexion()
         conexion.Conexion.cargaProv()
         conexion.Conexion.mostrardrivers()
+        var.ui.LayOutBaja.setEnabled(False)
+        var.ui.centralwidget.setVisible(True)
 
         '''
         
@@ -55,6 +57,9 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnModifDriver.clicked.connect(drivers.Drivers.modif_driver)
         var.ui.btnBajaDriver.clicked.connect(drivers.Drivers.borrar_datos)
         var.ui.buttonGroup.buttonClicked.connect(conexion.Conexion.mostrardrivers)
+
+
+
 
         '''
         zona de eventos salir

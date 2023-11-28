@@ -10,6 +10,11 @@ from PyQt6 import QtGui, QtWidgets, QtCore
 
 
 class Drivers:
+
+
+
+
+
     def borrar_datos(self):
         try:
             dni = var.ui.txtDni.text()
@@ -281,14 +286,18 @@ class Drivers:
         try:
             nuevoRegistros = list()
             if (var.ui.rbtAlta.isChecked()):
+                #var.ui.LayOutBaja.setVisible(False)
                 for registro in registros:
                     if registro[5] == '':
                         nuevoRegistros.append(registro)
             elif (var.ui.rbtBaja.isChecked()):
+                #var.ui.LayOutBaja.setVisible(True)
                 for registro in registros:
                     if registro[5] != '':
                         nuevoRegistros.append(registro)
             elif (var.ui.rbtTodos.isChecked()):
+                #var.ui.LayOutBaja.setVisible(False)
+
                 nuevoRegistros = registros
 
             if len(nuevoRegistros) == 0:

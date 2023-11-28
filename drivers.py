@@ -1,6 +1,6 @@
 import re
 
-from PyQt6.QtGui import QColor, QBrush
+from PyQt6.QtGui import QColor, QBrush, QIcon
 
 import conexion
 import drivers
@@ -255,7 +255,21 @@ class Drivers:
         try:
             driver = drivers.Drivers.recuperar_datos(self);
             driver.remove(driver[0])
-            conexion.Conexion.guardardri(driver)
+
+            if conexion.Conexion.guardardri(driver):
+                mbox = QtWidgets.QMessageBox()
+                mbox.setWindowTitle('Aviso')
+                mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
+                mbox.setText('Empleado dado de alta')
+                icon = QIcon('./img/taxiIcon.png')
+                mbox.setWindowIcon(icon)
+                mbox.exec()
+            else:
+                mbox = QtWidgets.QMessageBox()
+                mbox.setWindowTitle('Aviso')
+                mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
+                mbox.setText("El DNI ya se encuentra en la base de datos")
+                mbox.exec()
             conexion.Conexion.mostrardrivers()
 
         except Exception as error:

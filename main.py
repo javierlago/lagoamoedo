@@ -80,6 +80,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.Salir.triggered.connect(eventos.Eventos.show_salir)
         var.ui.btnLimpiar.triggered.connect(eventos.Eventos.limpiar)
         var.ui.actionExportar_Datos_XLS.triggered.connect(eventos.Eventos.exportar_datos_xls)
+        var.ui.actionImportar_Datos_XLS.triggered.connect(eventos.Eventos.importar_datos)
         '''
         
         status var

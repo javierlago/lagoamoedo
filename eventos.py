@@ -5,6 +5,7 @@ import zipfile
 
 import xlwt
 import xlrd
+from PyQt6.QtGui import QIcon
 from PyQt6.uic.properties import QtGui
 
 import conexion
@@ -19,6 +20,45 @@ locale.setlocale(locale.LC_MONETARY, 'es_ES.UTF-8')
 
 
 class Eventos:
+
+    def importar_datos(self):
+        try:
+            filename = var.dlg_abrir.getOpenFileName(None,'Importar datos','','*.xls;;Allfiles(*)')
+            if var.dlg_abrir.accept and filename != '':
+                file = filename[0]
+                documento = xlrd.open_workbook(file)
+                datos = documento.sheet_by_index(0)
+                filas = datos.nrows
+                columnas = datos.ncols
+
+                for i in range(filas):
+                    if i == 0:
+                        pass
+                    else:
+                        new = []
+                        for j in range(columnas):
+                            if j == 1:
+                                dato = str(datos.cell_value(i, j))
+                                dato = xlrd.xldate.xldate_as_datetime(datos.cell_value(i, j),
+                                                                      documento.datemode).strftime('%d/%m/%Y')
+                                new.append(str(dato))
+                            else:
+                                new.append(str(datos.cell_value(i, j)))
+                        conexion.Conexion.guardardri(new)
+                    if i == filas -1 :
+                        mbox = QtWidgets.QMessageBox()
+                        mbox.setWindowTitle('Aviso')
+                        mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
+                        mbox.setText('Empleado dado de alta')
+                        icon = QIcon('./img/taxiIcon.png')
+                        mbox.setWindowIcon(icon)
+                        mbox.exec()
+            conexion.Conexion.mostrardrivers()
+
+
+
+        except Exception as error:
+            print("Error al importar datos", error)
 
     def exportar_datos_xls(self):
         try:

@@ -60,8 +60,7 @@ class Conexion:
     def guardardri(newdriver):
         try:
             print(newdriver)
-            registro = drivers.Drivers.get_from_dni(newdriver[0])
-
+            
             query = QtSql.QSqlQuery()
             for i in newdriver:
                 if i.strip() == "":
@@ -92,21 +91,9 @@ class Conexion:
                     query.bindValue(':salario', str(newdriver[8]))
                     query.bindValue(':carnet', str(newdriver[9]))
                     if query.exec():
-                        mbox = QtWidgets.QMessageBox()
-                        mbox.setWindowTitle('Aviso')
-                        mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                        mbox.setText('Empleado dado de alta')
-                        icon = QIcon('./img/taxiIcon.png')
-                        mbox.setWindowIcon(icon)
-                        mbox.exec()
-                        break
+                        return True
                     else:
-                        mbox = QtWidgets.QMessageBox()
-                        mbox.setWindowTitle('Aviso')
-                        mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                        mbox.setText("El DNI ya se encuentra en la base de datos")
-                        mbox.exec()
-                        break
+                        return False
             # select de los datos de los conductores de la base de datos
 
         except Exception as error:

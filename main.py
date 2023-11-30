@@ -29,8 +29,9 @@ class Main(QtWidgets.QMainWindow):
         conexion.Conexion.conexion()
         conexion.Conexion.cargaProv()
         conexion.Conexion.mostrardrivers()
-        var.ui.LayOutBaja.setEnabled(False)
-        var.ui.centralwidget.setVisible(True)
+        var.ui.frame.hide()
+
+
 
         '''
         

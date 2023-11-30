@@ -286,18 +286,17 @@ class Drivers:
         try:
             nuevoRegistros = list()
             if (var.ui.rbtAlta.isChecked()):
-                #var.ui.LayOutBaja.setVisible(False)
+                var.ui.frame.hide()
                 for registro in registros:
                     if registro[5] == '':
                         nuevoRegistros.append(registro)
             elif (var.ui.rbtBaja.isChecked()):
-                #var.ui.LayOutBaja.setVisible(True)
+                var.ui.frame.show()
                 for registro in registros:
                     if registro[5] != '':
                         nuevoRegistros.append(registro)
             elif (var.ui.rbtTodos.isChecked()):
-                #var.ui.LayOutBaja.setVisible(False)
-
+                var.ui.frame.hide()
                 nuevoRegistros = registros
 
             if len(nuevoRegistros) == 0:

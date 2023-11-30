@@ -6,10 +6,9 @@ import zipfile
 import xlwt
 import xlrd
 from PyQt6.QtGui import QIcon
-from PyQt6.uic.properties import QtGui
 
 import conexion
-import eventos
+
 import var
 from datetime import *
 from PyQt6 import QtWidgets, QtCore, QtSql
@@ -23,7 +22,7 @@ class Eventos:
 
     def importar_datos(self):
         try:
-            filename = var.dlg_abrir.getOpenFileName(None,'Importar datos','','*.xls;;Allfiles(*)')
+            filename = var.dlg_abrir.getOpenFileName(None, 'Importar datos', '', '*.xls;;Allfiles(*)')
             if var.dlg_abrir.accept and filename != '':
                 file = filename[0]
                 documento = xlrd.open_workbook(file)
@@ -45,7 +44,7 @@ class Eventos:
                             else:
                                 new.append(str(datos.cell_value(i, j)))
                         conexion.Conexion.guardardri(new)
-                    if i == filas -1 :
+                    if i == filas - 1:
                         mbox = QtWidgets.QMessageBox()
                         mbox.setWindowTitle('Aviso')
                         mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
@@ -64,24 +63,23 @@ class Eventos:
         try:
             fecha = datetime.today()
             fecha = fecha.strftime('%Y_%m_%d_%H_%M_%S')
-            file = (str(fecha)+'Datos.xls')
+            file = (str(fecha) + 'Datos.xls')
             directorio, filename = var.dlg_abrir.getSaveFileName(None, 'Exportar datos en XLS', file, '.xls')
             if var.dlg_abrir.accept and filename:
                 wb = xlwt.Workbook()
                 sheet1 = wb.add_sheet('conductores')
-                sheet1.write(0,0,'ID')
-                sheet1.write(0,1,'DNI')
-                sheet1.write(0,2,'Fecha Alta')
-                sheet1.write(0,3,'Apellidos')
-                sheet1.write(0,4,'Nombre')
-                sheet1.write(0,5,'Direccion')
-                sheet1.write(0,6,'Provincia')
-                sheet1.write(0,7,'Localidad')
-                sheet1.write(0,8,'Movil')
-                sheet1.write(0,9,'Salario')
-                sheet1.write(0,10,'Licencias')
-                sheet1.write(0,11,'Fecha baja')
-
+                sheet1.write(0, 0, 'ID')
+                sheet1.write(0, 1, 'DNI')
+                sheet1.write(0, 2, 'Fecha Alta')
+                sheet1.write(0, 3, 'Apellidos')
+                sheet1.write(0, 4, 'Nombre')
+                sheet1.write(0, 5, 'Direccion')
+                sheet1.write(0, 6, 'Provincia')
+                sheet1.write(0, 7, 'Localidad')
+                sheet1.write(0, 8, 'Movil')
+                sheet1.write(0, 9, 'Salario')
+                sheet1.write(0, 10, 'Licencias')
+                sheet1.write(0, 11, 'Fecha baja')
 
                 registros = conexion.Conexion.select_all_driver(self)
 
@@ -102,7 +100,7 @@ class Eventos:
             mbox = QtWidgets.QMessageBox()
             mbox.setWindowTitle('Aviso')
             mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-            mbox.setText("Error exportar datos en hoja de calculo",error)
+            mbox.setText("Error exportar datos en hoja de calculo", error)
             mbox.exec()
 
     def restaurar_back_up(self):
@@ -123,7 +121,7 @@ class Eventos:
 
 
         except Exception as error:
-            
+
             mbox = QtWidgets.QMessageBox()
             mbox.setWindowTitle('Aviso')
             mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)

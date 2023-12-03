@@ -4,6 +4,7 @@ from PyQt6.QtGui import QColor, QBrush, QIcon
 
 import conexion
 import drivers
+import eventos
 
 import var
 from PyQt6 import QtGui, QtWidgets, QtCore
@@ -311,6 +312,7 @@ class Drivers:
                     mbox.exec()
 
             conexion.Conexion.mostrardrivers()
+            eventos.Eventos.limpiar()
 
         except Exception as error:
             print("error alta cliente", error)

@@ -245,7 +245,7 @@ class Conexion:
                     mbox = QtWidgets.QMessageBox()
                     mbox.setWindowTitle('Aviso')
                     mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                    mbox.setText('Se ha modificado la tabla')
+                    mbox.setText('Se ha dado de baja al empleado')
                     icon = QIcon('./img/taxiIcon.png')
                     mbox.setWindowIcon(icon)
                     mbox.exec()

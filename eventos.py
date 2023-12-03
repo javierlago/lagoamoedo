@@ -160,7 +160,7 @@ class Eventos:
         try:
             conexion.Conexion.mostrardrivers()
             listalimpiar = [var.ui.txtDni, var.ui.txtDate, var.ui.txtDni_2, var.ui.txtNombre, var.ui.txtDireccion,
-                            var.ui.txtMovil, var.ui.txtSalario, var.ui.lblCodDB]
+                            var.ui.txtMovil, var.ui.txtSalario, var.ui.lblCodDB, var.ui.txtDate_2]
             # var.ui.lblCheckDNI.hide()
             var.ui.lblCheckDNI.setText(" ")
             # var.ui.lblCheckDNI.setScaledContents(False)
@@ -182,6 +182,12 @@ class Eventos:
 
         try:
             var.calendar.show()
+        except Exception as error:
+            print("erro en abrir", error)
+    def abrir_calendar_baja():
+
+        try:
+            var.calendarBaja.show()
         except Exception as error:
             print("erro en abrir", error)
 

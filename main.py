@@ -23,6 +23,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui = Ui_MainWindow()
         var.ui.setupUi(self)
         var.calendar = Calendar()
+        var.calendarBaja = CalendarBaja()
         var.acercade = Acerca()
         var.ventana_salir = SalirVentana()
         var.dlg_abrir = FileDialogAbrir()
@@ -52,12 +53,14 @@ class Main(QtWidgets.QMainWindow):
         botones
         '''
         var.ui.btnCalendar.clicked.connect(eventos.Eventos.abrir_calendar)
+        var.ui.btnCalendar_2.clicked.connect(eventos.Eventos.abrir_calendar_baja)
         var.ui.actionAcerca_de.triggered.connect(eventos.Eventos.abrir_acerca_de)
         var.ui.btnaltaDriver.clicked.connect(drivers.Drivers.alta_driver)
         var.ui.btnBuscarDri.clicked.connect(drivers.Drivers.get_from_dni)
         var.ui.btnModifDriver.clicked.connect(drivers.Drivers.modif_driver)
         var.ui.btnBajaDriver.clicked.connect(drivers.Drivers.borrar_datos)
         var.ui.buttonGroup.buttonClicked.connect(conexion.Conexion.mostrardrivers)
+        var.ui.buttonGroup.buttonClicked.connect(eventos.Eventos.limpiar)
 
 
 

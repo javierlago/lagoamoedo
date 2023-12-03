@@ -81,6 +81,10 @@ class Drivers:
                     item.setBackground(QBrush(QColor("#CCA963")))
 
             codigo = var.ui.tabDriver2.item(row, 0).text()
+            if var.ui.tabDriver2.item(row,5).text() != '':
+                var.ui.frame.show()
+            else:
+                var.ui.frame.hide()
             registro = conexion.Conexion.buscar_segun_codigo(codigo)
             drivers.Drivers.carga_driver(registro)
 
@@ -93,13 +97,15 @@ class Drivers:
     def carga_driver(registro):
 
         try:
-            if  len(registro)==0:
+            if  registro == None:
                 msg = QtWidgets.QMessageBox()
                 msg.setWindowTitle('Aviso')
                 msg.setIcon(QtWidgets.QMessageBox.Icon.Information)
                 msg.setText('El dni no se encuentra en la base de datos')
                 msg.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Ok)
                 msg.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
+                icon = QIcon('./img/taxiIcon.png')
+                msg.setWindowIcon(icon)
                 msg.exec()
             else:
                 datos = [var.ui.lblCodDB, var.ui.txtDni, var.ui.txtDate, var.ui.txtDni_2, var.ui.txtNombre,
@@ -129,6 +135,7 @@ class Drivers:
                     var.ui.chkD.setChecked(True)
                 else:
                     var.ui.chkD.setChecked(False)
+                var.ui.txtDate_2.setText(str(registro[11]))
                 var.ui.lblCheckDNI.show()
                 var.ui.lblCheckDNI.setScaledContents(True)
                 var.ui.lblCheckDNI.setPixmap(QtGui.QPixmap("img/OkIco.svg"))
@@ -172,6 +179,8 @@ class Drivers:
                 msg.setText('Telefono icorrecto introducir nueve digitos')
                 msg.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Ok)
                 msg.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
+                icon = QIcon('./img/taxiIcon.png')
+                msg.setWindowIcon(icon)
                 msg.exec()
                 var.ui.txtMovil.setText('')
                 var.ui.txtMovil.setFocus()
@@ -191,6 +200,13 @@ class Drivers:
             data = ('{:02d}/{:02d}/{:4d}'.format(qDate.day(), qDate.month(), qDate.year()))
             var.ui.txtDate.setText(str(data))
             var.calendar.hide()
+        except Exception as error:
+            print("erro en carga fecha", error)
+    def carga_fechaBaja(qDate):
+        try:
+            data = ('{:02d}/{:02d}/{:4d}'.format(qDate.day(), qDate.month(), qDate.year()))
+            var.ui.txtDate_2.setText(str(data))
+            var.calendarBaja.hide()
         except Exception as error:
             print("erro en carga fecha", error)
 
@@ -250,31 +266,50 @@ class Drivers:
                 licencias.append(i.text())
 
         driver.append(str("-".join(licencias)))
+        driver.append(var.ui.txtDate_2.text())
+        print(driver)
 
         return driver
 
-
+    def validar_datos(listadeDatos):
+        for i in range(len(listadeDatos) - 1):
+            if listadeDatos[i].strip() == '':
+                return False
+        return True
 
     def alta_driver(self):
-
         try:
-            driver = drivers.Drivers.recuperar_datos(self);
+            driver = drivers.Drivers.recuperar_datos(self)
             driver.remove(driver[0])
-
-            if conexion.Conexion.guardardri(driver):
+            print("printeo del metodo")
+            print(drivers.Drivers.validar_datos(driver))
+            print("printeo del driver")
+            print (driver)
+            if not drivers.Drivers.validar_datos(driver):
                 mbox = QtWidgets.QMessageBox()
-                mbox.setWindowTitle('Aviso')
+                mbox.setWindowTitle("Aviso")
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                mbox.setText('Empleado dado de alta')
+                mensaje = "Campos vacíos"
+                mbox.setText(mensaje)
                 icon = QIcon('./img/taxiIcon.png')
                 mbox.setWindowIcon(icon)
                 mbox.exec()
             else:
-                mbox = QtWidgets.QMessageBox()
-                mbox.setWindowTitle('Aviso')
-                mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                mbox.setText("El DNI ya se encuentra en la base de datos")
-                mbox.exec()
+                if conexion.Conexion.guardardri(driver):
+                    mbox = QtWidgets.QMessageBox()
+                    mbox.setWindowTitle('Aviso')
+                    mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)  # Cambié el icono a Information
+                    mbox.setText('Empleado dado de alta')
+                    icon = QIcon('./img/taxiIcon.png')
+                    mbox.setWindowIcon(icon)
+                    mbox.exec()
+                else:
+                    mbox = QtWidgets.QMessageBox()
+                    mbox.setWindowTitle('Aviso')
+                    mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
+                    mbox.setText("El DNI ya se encuentra en la base de datos")
+                    mbox.exec()
+
             conexion.Conexion.mostrardrivers()
 
         except Exception as error:

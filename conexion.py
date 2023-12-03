@@ -60,40 +60,42 @@ class Conexion:
     def guardardri(newdriver):
         try:
             print(newdriver)
-            
             query = QtSql.QSqlQuery()
-            for i in newdriver:
-                if i.strip() == "":
+            query2 = QtSql.QSqlQuery()
+            query2.prepare("select * from drivers where dnidri = :dni")
+            query2.bindValue(':dni', newdriver[0])
 
-                    mbox = QtWidgets.QMessageBox()
-                    mbox.setWindowTitle("Aviso")
-                    mbox.setIcon((QtWidgets.QMessageBox.Icon.Warning))
-                    mensaje = "Campos vacios"
-                    mbox.setText(mensaje)
-                    icon = QIcon('./img/taxiIcon.png')
-                    mbox.setWindowIcon(icon)
-                    mbox.exec()
-                    break
+            if newdriver[10] == '' and not query2.next():
+                query.prepare('insert into drivers(dnidri, altadri, apeldri, nombredri, direcciondri, provdri, '
+                              'munidri, movildri, salario, carnet, bajadri ) VALUES (:dni, :alta, :apel, :nombre, :direccion, '
+                              ':provincia, :municipio, :movil, :salario, :carnet, :bajadri)')
+            else:
+                newdriver[10] = ''
+                query.prepare("UPDATE drivers SET altadri = :alta, apeldri = :apel, nombredri = :nombre, direcciondri "
+                              "= :direccion, provdri = :provincia, munidri = :municipio, movildri = :movil, "
+                              "salario = :salario, carnet = :carnet ,bajadri = :bajadri WHERE dnidri = :dni;")
 
-                else:
 
-                    query.prepare('insert into drivers(dnidri, altadri, apeldri, nombredri, direcciondri, provdri, '
-                                  'munidri, movildri, salario, carnet ) VALUES (:dni, :alta, :apel, :nombre, :direccion, '
-                                  ':provincia, :municipio, :movil, :salario, :carnet)')
-                    query.bindValue(':dni', str(newdriver[0]))
-                    query.bindValue(':alta', str(newdriver[1]))
-                    query.bindValue(':apel', str(newdriver[2]))
-                    query.bindValue(':nombre', str(newdriver[3]))
-                    query.bindValue(':direccion', str(newdriver[4]))
-                    query.bindValue(':provincia', str(newdriver[5]))
-                    query.bindValue(':municipio', str(newdriver[6]))
-                    query.bindValue(':movil', str(newdriver[7]))
-                    query.bindValue(':salario', str(newdriver[8]))
-                    query.bindValue(':carnet', str(newdriver[9]))
-                    if query.exec():
-                        return True
-                    else:
-                        return False
+
+
+
+            query.bindValue(':dni', str(newdriver[0]))
+            query.bindValue(':alta', str(newdriver[1]))
+            query.bindValue(':apel', str(newdriver[2]))
+            query.bindValue(':nombre', str(newdriver[3]))
+            query.bindValue(':direccion', str(newdriver[4]))
+            query.bindValue(':provincia', str(newdriver[5]))
+            query.bindValue(':municipio', str(newdriver[6]))
+            query.bindValue(':movil', str(newdriver[7]))
+            query.bindValue(':salario', str(newdriver[8]))
+            query.bindValue(':carnet', str(newdriver[9]))
+            query.bindValue(':bajadri', str(newdriver[10]))
+            if query.exec():
+                return True
+
+            else:
+                print("Error al ejecutar la consulta:", query.lastError().text())
+                return False
             # select de los datos de los conductores de la base de datos
 
         except Exception as error:
@@ -103,7 +105,6 @@ class Conexion:
         try:
 
             registro = conexion.Conexion.buscar_segun_codigo(driver[0])
-            registro = registro[:-1]
 
             if registro != driver:
                 query = QtSql.QSqlQuery()
@@ -123,7 +124,8 @@ class Conexion:
 
                     else:
 
-                        query.prepare('UPDATE drivers SET altadri = :alta, apeldri = :apel, nombredri = :nombre, direcciondri = :direccion, provdri = :provincia, munidri = :municipio, movildri = :movil, salario = :salario, carnet = :carnet WHERE dnidri = :dni ')
+                        query.prepare(
+                            'UPDATE drivers SET altadri = :alta, apeldri = :apel, nombredri = :nombre, direcciondri = :direccion, provdri = :provincia, munidri = :municipio, movildri = :movil, salario = :salario, carnet = :carnet , bajadri = :bajadri WHERE dnidri = :dni ')
                         query.bindValue(':dni', str(driver[0]))
                         query.bindValue(':alta', str(driver[1]))
                         query.bindValue(':apel', str(driver[2]))
@@ -134,6 +136,8 @@ class Conexion:
                         query.bindValue(':movil', str(driver[7]))
                         query.bindValue(':salario', str(driver[8]))
                         query.bindValue(':carnet', str(driver[9]))
+                        query.bindValue(':bajadri', str(driver[10]))
+
                         if query.exec():
                             mbox = QtWidgets.QMessageBox()
                             mbox.setWindowTitle('Aviso')
@@ -155,13 +159,13 @@ class Conexion:
                 mbox.setWindowTitle('Aviso')
                 mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
                 mbox.setText("No se han modificado datos")
+                icon = QIcon('./img/taxiIcon.png')
+                mbox.setWindowIcon(icon)
                 mbox.exec()
                 # select de los datos de los conductores de la base de datos
 
         except Exception as error:
             print("Error al guardar el conductor", error)
-
-
 
     def mostrardrivers(self=None):
         try:
@@ -173,9 +177,6 @@ class Conexion:
                 while query1.next():
                     row = [query1.value(i) for i in range(query1.record().count())]
                     registros.append(row)
-
-
-
 
             drivers.Drivers.cargartabla(registros)
 
@@ -210,14 +211,13 @@ class Conexion:
                     for i in range(12):
                         registro.append(str(query.value(i)))
 
-            print(registro,"esto es el registro del metodo buscar segun dni")
-            if registro[11] !='':
+            print(registro, "esto es el registro del metodo buscar segun dni")
+            if registro[11] != '':
                 var.ui.rbtAlta.isChecked()
             return registro
 
         except Exception as error:
             print("Error al buscar segun dni: ", error)
-
 
     def borrarDriver(dni):
         try:
@@ -236,9 +236,10 @@ class Conexion:
                 fecha = datetime.now()
                 fecha = fecha.strftime("%d/%m/%Y")
                 queryFecha = QtSql.QSqlQuery()
-                queryFecha.prepare('update drivers set bajadri = :fechabaja where dnidri = :dni')
+                queryFecha.prepare('update drivers set bajadri = :fechabaja, altadri = :altadri where dnidri = :dni')
                 queryFecha.bindValue(':dni', str(dni))
                 queryFecha.bindValue(':fechabaja', str(fecha))
+                queryFecha.bindValue(':altadri', '')
                 if queryFecha.exec():
                     print("Se ha ejecutado la baja")
                     mbox = QtWidgets.QMessageBox()
@@ -259,7 +260,7 @@ class Conexion:
 
 
         except Exception as error:
-            print("No se ha podido dar de baja al conductor",error)
+            print("No se ha podido dar de baja al conductor", error)
 
     def select_all_driver(self):
 
@@ -275,5 +276,3 @@ class Conexion:
 
         except Exception as error:
             print("Error al buscar segun dni: ", error)
-
-

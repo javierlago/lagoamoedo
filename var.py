@@ -1,5 +1,6 @@
 global ui
 global calendar
+global calendarBaja
 global acercade
 global ventana_salir
 global version

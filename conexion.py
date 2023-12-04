@@ -106,6 +106,7 @@ class Conexion:
 
             registro = conexion.Conexion.buscar_segun_codigo(driver[0])
 
+
             if registro != driver:
                 query = QtSql.QSqlQuery()
                 driver.pop(0)

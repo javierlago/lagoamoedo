@@ -211,11 +211,11 @@ class Drivers:
         except Exception as error:
             print("erro en carga fecha", error)
 
-    def validar_dni(self=None):
+    def validar_dni(dni):
         try:
-            dni = var.ui.txtDni.text()
+            #dni = var.ui.txtDni.text()
             dni = dni.upper()
-            var.ui.txtDni.setText(dni)
+            #var.ui.txtDni.setText(dni)
             tabla = "TRWAGMYFPDXBNJZSQVHLCKE"
             dig_ext = "XYZ"
             reemp_dig_ext = {"X": "0", "Y": "1", "Z": "2"}
@@ -234,6 +234,7 @@ class Drivers:
                     # var.ui.lblCheckDNI.setText('V')
                     var.ui.lblCheckDNI.setScaledContents(True)
                     var.ui.lblCheckDNI.setPixmap(QtGui.QPixmap("img/OkIco.svg"))
+                    return True
 
                 else:
                     # var.ui.lblCheckDNI.setStyleSheet('color:red;')

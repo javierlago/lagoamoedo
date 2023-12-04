@@ -75,7 +75,7 @@ class Main(QtWidgets.QMainWindow):
         """
         zona de eventos cajas
         """
-        var.ui.txtDni.editingFinished.connect(drivers.Drivers.validar_dni)
+        var.ui.txtDni.editingFinished.connect(lambda:drivers.Drivers.validar_dni(var.ui.txtDni.text()))
         var.ui.txtNombre.editingFinished.connect(eventos.Eventos.format_caja_texto)
         var.ui.txtDni_2.editingFinished.connect(eventos.Eventos.format_caja_texto)
         var.ui.txtSalario.editingFinished.connect(eventos.Eventos.format_caja_texto)

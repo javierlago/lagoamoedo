@@ -8,6 +8,7 @@ import xlrd
 from PyQt6.QtGui import QIcon
 
 import conexion
+import drivers
 
 import var
 from datetime import *
@@ -22,6 +23,7 @@ class Eventos:
 
     def importar_datos(self):
         try:
+            estado = 0
             filename = var.dlg_abrir.getOpenFileName(None, 'Importar datos', '', '*.xls;;Allfiles(*)')
             if var.dlg_abrir.accept and filename != '':
                 file = filename[0]
@@ -43,12 +45,22 @@ class Eventos:
                                 new.append(str(dato))
                             else:
                                 new.append(str(datos.cell_value(i, j)))
-                        conexion.Conexion.guardardri(new)
+                        if drivers.Drivers.validar_dni(str(new[0])):
+                            new.append('')
+                            conexion.Conexion.guardardri(new)
+                        elif estado== 0:
+                            estado = 1
+                            msg = QtWidgets.QMessageBox()
+                            msg.setModal(True)
+                            msg.setWindowTitle('Aviso')
+                            msg.setIcon(QtWidgets.QMessageBox.Icon.Warning)
+                            msg.setText('Hay DNI incorrectos')
+                            msg.exec()
                     if i == filas - 1:
                         mbox = QtWidgets.QMessageBox()
                         mbox.setWindowTitle('Aviso')
                         mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                        mbox.setText('Empleado dado de alta')
+                        mbox.setText('Empleados dado de alta')
                         icon = QIcon('./img/taxiIcon.png')
                         mbox.setWindowIcon(icon)
                         mbox.exec()

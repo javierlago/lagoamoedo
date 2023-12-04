@@ -286,7 +286,7 @@ class Eventos:
         try:
             var.ui.txtDni_2.setText(var.ui.txtDni_2.text().title())
             var.ui.txtNombre.setText(var.ui.txtNombre.text().title())
-            var.ui.txtSalario.setText(str(locale.currency(float(var.ui.txtSalario.text()))))
+            #var.ui.txtSalario.setText(str(locale.currency(float(var.ui.txtSalario.text()))))
 
         except Exception as error:
             print("error letra capital", error)

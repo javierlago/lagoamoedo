@@ -80,6 +80,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.txtDni_2.editingFinished.connect(eventos.Eventos.format_caja_texto)
         var.ui.txtSalario.editingFinished.connect(eventos.Eventos.format_caja_texto)
         var.ui.txtMovil.editingFinished.connect(drivers.Drivers.validar_tlf)
+        var.ui.txtSalario.editingFinished.connect(drivers.Drivers.validar_salario)
 
         """
         

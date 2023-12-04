@@ -1,3 +1,4 @@
+import locale
 import re
 
 from PyQt6.QtGui import QColor, QBrush, QIcon
@@ -192,9 +193,38 @@ class Drivers:
         except Exception as error:
             print("error en validar telf: ", error)
 
-        def validar_salario(self=None):
-            sal = var.ui.txtSalario.text()
-            rxTlf = r'^$'
+    def validar_numero(string):
+            # Patrón de expresión regular para validar el formato del número
+            patron = re.compile(r'^\d+(?:\.\d{1,2})?$')
+
+            # Intenta hacer coincidir el patrón con el string
+            coincidencia = patron.match(string)
+
+            # Retorna True si hay coincidencia, de lo contrario, retorna False
+            return bool(coincidencia)
+
+    def validar_salario(self=None):
+        try:
+            salario = var.ui.txtSalario.text()
+            salario = salario.replace(',', '.')
+            if drivers.Drivers.validar_numero(salario):
+                salario_decimal = float(salario)
+                var.ui.txtSalario.setText(str(locale.currency(salario_decimal)))
+
+            else:
+                msg = QtWidgets.QMessageBox()
+                msg.setWindowTitle('Aviso')
+                msg.setIcon(QtWidgets.QMessageBox.Icon.Information)
+                msg.setText('Salario incorrecto, el salario debe ser con dos decimales como máximo')
+                msg.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Ok)
+                msg.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
+                icon = QIcon('./img/taxiIcon.png')
+                msg.setWindowIcon(icon)
+                msg.exec()
+                var.ui.txtSalario.setText('')
+                var.ui.txtSalario.setFocus()
+        except Exception as error:
+            print(error)
 
     def carga_fecha(qDate):
         try:

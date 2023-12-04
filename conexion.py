@@ -105,14 +105,18 @@ class Conexion:
         try:
 
             registro = conexion.Conexion.buscar_segun_codigo(driver[0])
+            query = QtSql.QSqlQuery()
+
+            # print(driver)
+            # nuevoRegistro = driver
+            # nuevoRegistro.pop(2)
+            # print(nuevoRegistro)
 
 
             if registro != driver:
-                query = QtSql.QSqlQuery()
-                driver.pop(0)
-                for i in driver:
-                    if i.strip() == "":
-
+                    nuevo_array = driver[:2] + driver[3:]
+                    driver.pop(0)
+                    if not drivers.Drivers.validar_datos(nuevo_array):
                         mbox = QtWidgets.QMessageBox()
                         mbox.setWindowTitle("Aviso")
                         mbox.setIcon((QtWidgets.QMessageBox.Icon.Warning))
@@ -121,7 +125,7 @@ class Conexion:
                         icon = QIcon('./img/taxiIcon.png')
                         mbox.setWindowIcon(icon)
                         mbox.exec()
-                        break
+
 
                     else:
 
@@ -147,14 +151,14 @@ class Conexion:
                             icon = QIcon('./img/taxiIcon.png')
                             mbox.setWindowIcon(icon)
                             mbox.exec()
-                            break
+
                         else:
                             mbox = QtWidgets.QMessageBox()
                             mbox.setWindowTitle('Aviso')
                             mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
                             mbox.setText("El DNI ya se encuentra en la base de datos")
                             mbox.exec()
-                            break
+
             else:
                 mbox = QtWidgets.QMessageBox()
                 mbox.setWindowTitle('Aviso')

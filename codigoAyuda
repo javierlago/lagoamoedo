@@ -1,0 +1,109 @@
+import re
+
+def validar_matricula_espanola(matricula):
+    # Expresión regular para validar matrículas españolas
+    patron_matricula = re.compile(r'^[0-9]{4}[BCDFGHJKLMNPQRSTVWXYZ]{3}$')
+
+    # Eliminar posibles espacios y convertir a mayúsculas
+    matricula = matricula.replace(" ", "").upper()
+
+    # Verificar si la matrícula coincide con el patrón
+    if patron_matricula.match(matricula):
+        return True
+    else:
+        return False
+
+# Ejemplo de uso
+matricula_ingresada = input("Ingresa la matrícula española: ")
+if validar_matricula_espanola(matricula_ingresada):
+    print("La matrícula es válida.")
+else:
+    print("La matrícula no es válida.")
+
+
+    COMO RECORRER LAS LISTAS
+
+
+
+
+    Bucle For Tradicional:
+
+python
+Copy code
+lista = [1, 2, 3, 4, 5]
+for elemento in lista:
+    print(elemento)
+Recorrido con Índices:
+
+python
+Copy code
+lista = [1, 2, 3, 4, 5]
+for i in range(len(lista)):
+    print(lista[i])
+Enumeración (usando enumerate):
+
+python
+Copy code
+lista = [1, 2, 3, 4, 5]
+for indice, elemento in enumerate(lista):
+    print(f"Índice: {indice}, Valor: {elemento}")
+Bucle While con Índices:
+
+python
+Copy code
+lista = [1, 2, 3, 4, 5]
+i = 0
+while i < len(lista):
+    print(lista[i])
+    i += 1
+Usando List Comprehension:
+
+python
+Copy code
+lista = [1, 2, 3, 4, 5]
+[print(elemento) for elemento in lista]
+Usando la Función map:
+
+python
+Copy code
+lista = [1, 2, 3, 4, 5]
+list(map(lambda x: print(x), lista))
+Usando iter y next:
+
+python
+Copy code
+lista = [1, 2, 3, 4, 5]
+iterador = iter(lista)
+while True:
+    try:
+        elemento = next(iterador)
+        print(elemento)
+    except StopIteration:
+        break
+Cada uno de estos métodos tiene sus propias ventajas dependiendo del contexto. El bucle for tradicional es generalmente preferido cuando no necesitas realizar operaciones con índices. La enumeración es útil cuando necesitas tanto el valor como el índice. List comprehensions son concisos y eficientes en muchos casos. La elección depende de la situación específica y de tu preferencia personal.
+
+User
+lista = [1, 2, 3, 4, 5]
+for indice, elemento in enumerate(lista):
+    print(f"Índice: {indice}, Valor: {elemento}")
+como hacer que el enumerote empieze en el segunfo elemento y acabe en el penultimo
+ChatGPT
+Para lograr que la enumeración empiece en el segundo elemento y termine en el penúltimo, puedes utilizar la función enumerate con un argumento opcional para especificar el índice de inicio. Además, puedes usar el índice para verificar si estás en el penúltimo elemento. Aquí tienes un ejemplo:
+
+python
+Copy code
+lista = [1, 2, 3, 4, 5]
+
+# Usar enumerate con un argumento opcional para el índice de inicio (1 en este caso)
+for indice, elemento in enumerate(lista[1:-1], start=1):
+    print(f"Índice: {indice}, Valor: {elemento}")
+En este ejemplo:
+
+enumerate(lista[1:-1], start=1): La expresión lista[1:-1] crea una nueva lista que comienza desde el segundo elemento y termina en el penúltimo elemento de la lista original. Luego, enumerate se utiliza con un índice de inicio de 1 para comenzar la enumeración desde 1 en lugar de 0.
+Este código imprimirá:
+
+makefile
+Copy code
+Índice: 1, Valor: 2
+Índice: 2, Valor: 3
+Índice: 3, Valor: 4

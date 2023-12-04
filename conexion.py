@@ -270,11 +270,13 @@ class Conexion:
     def select_all_driver(self):
 
         try:
+            # Inicializar una lista vacía para almacenar los resultados de la consulta
             registro = []
             query = QtSql.QSqlQuery()
             query.prepare("SELECT * FROM drivers order by apeldri")
-            if query.exec():
+            if query.exec() :
                 while query.next():
+                    # Crear una lista 'row' que contiene los valores de cada columna en el resultado actual
                     row = [query.value(i) for i in range(query.record().count())]
                     registro.append(row)
             return registro

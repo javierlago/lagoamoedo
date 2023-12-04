@@ -860,6 +860,9 @@ background-color: rgb(225, 225, 225);</string>
                          <layout class="QHBoxLayout" name="horizontalLayout">
                           <item>
                            <widget class="QLineEdit" name="txtDate">
+                            <property name="enabled">
+                             <bool>false</bool>
+                            </property>
                             <property name="sizePolicy">
                              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                               <horstretch>0</horstretch>
@@ -991,6 +994,9 @@ background-color: rgb(225, 225, 225);</string>
                              </item>
                              <item>
                               <widget class="QLineEdit" name="txtDate_2">
+                               <property name="enabled">
+                                <bool>false</bool>
+                               </property>
                                <property name="sizePolicy">
                                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                  <horstretch>0</horstretch>
@@ -1538,6 +1544,19 @@ background-color: rgb(225, 225, 225);</string>
                        </spacer>
                       </item>
                      </layout>
+                    </item>
+                    <item>
+                     <spacer name="verticalSpacer_5">
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>56</height>
+                       </size>
+                      </property>
+                     </spacer>
                     </item>
                     <item>
                      <layout class="QHBoxLayout" name="horizontalLayout_9">

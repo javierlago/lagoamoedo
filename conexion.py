@@ -10,6 +10,60 @@ import var
 
 
 class Conexion:
+    def modificar_cliente(self):
+        try:
+            cliente_a_modificar = cliente.Cliente.recuperar_datos()
+            cliente_verificacion = conexion.Conexion.buscar_segun_dni_cliente(cliente_a_modificar[0])
+            cliente_verificacion.pop(0)
+            if cliente.Cliente.validar_datos(cliente_a_modificar):
+                print(cliente_a_modificar)
+                if cliente_a_modificar != cliente_verificacion:
+                    query = QtSql.QSqlQuery()
+                    query.prepare("update listadoClientes set  razon = :razon , direccion = :direccion ,telefono = :telf , provCliente = :pc , muniCliente = :mc , bajaCliente = :bc where dnicliente = :dni;")
+                    query.bindValue(":dni",cliente_a_modificar[0])
+                    query.bindValue(":razon",cliente_a_modificar[1])
+                    query.bindValue(":direccion",cliente_a_modificar[2])
+                    query.bindValue(":telf",cliente_a_modificar[3])
+                    query.bindValue(":pc",cliente_a_modificar[4])
+                    query.bindValue(":mc",cliente_a_modificar[5])
+                    query.bindValue(":bc",cliente_a_modificar[6])
+                    if query.exec():
+                        mbox = QtWidgets.QMessageBox()
+                        mbox.setWindowTitle("Aviso")
+                        mbox.setIcon((QtWidgets.QMessageBox.Icon.Information))
+                        mensaje = "Modificacion realizada"
+                        mbox.setText(mensaje)
+                        icon = QIcon('./img/taxiIcon.png')
+                        mbox.setWindowIcon(icon)
+                        mbox.exec()
+                        conexion.Conexion.mostrarclientes()
+                    else:
+
+                        print(query.lastError())
+                else:
+                    mbox = QtWidgets.QMessageBox()
+                    mbox.setWindowTitle("Aviso")
+                    mbox.setIcon((QtWidgets.QMessageBox.Icon.Information))
+                    mensaje = "No se ha modificado el cliente"
+                    mbox.setText(mensaje)
+                    icon = QIcon('./img/taxiIcon.png')
+                    mbox.setWindowIcon(icon)
+                    mbox.exec()
+            else:
+                mbox = QtWidgets.QMessageBox()
+                mbox.setWindowTitle("Aviso")
+                mbox.setIcon((QtWidgets.QMessageBox.Icon.Warning))
+                mensaje = "Campos vacios"
+                mbox.setText(mensaje)
+                icon = QIcon('./img/taxiIcon.png')
+                mbox.setWindowIcon(icon)
+                mbox.exec()
+
+        except Exception as error:
+
+            print(error,query.lastError())
+
+
 
     def conexion(self=None):
         var.bbdd = 'bbdd.sqlite'

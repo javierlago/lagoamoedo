@@ -17,6 +17,7 @@ class Cliente:
     def alta_cliente(self):
         try:
             new_cliente = cliente.Cliente.recuperar_datos(self)
+            print(new_cliente)
             if not drivers.Drivers.validar_datos(new_cliente):
                 mbox = QtWidgets.QMessageBox()
                 mbox.setWindowTitle("Aviso")
@@ -126,9 +127,10 @@ class Cliente:
             print("error en validar dni: ", error)
 
     def recuperar_datos(self=None):
-        driver = [var.ui.lblCodDB_Cliente.text(), var.ui.txtRazonSocial.text(), var.ui.txtDireccion_Cliente.text(),
+        driver = [var.ui.txtDni_3.text(),var.ui.txtRazonSocial.text(), var.ui.txtDireccion_Cliente.text(),
                   var.ui.txtMovil_Cliente.text(),var.ui.cmbProvincia_Cliente.currentText(),
                   var.ui.cmbLocalidad_Cliente.currentText(), var.ui.txtDate_Cliente.text()]
+        print(driver)
         return driver
 
     @staticmethod

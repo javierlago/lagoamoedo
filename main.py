@@ -3,6 +3,7 @@ import sys
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QApplication, QWidget
 
+import cliente
 import conexion
 import drivers
 import eventos
@@ -29,7 +30,9 @@ class Main(QtWidgets.QMainWindow):
         var.dlg_abrir = FileDialogAbrir()
         conexion.Conexion.conexion()
         conexion.Conexion.cargaProv()
+        conexion.Conexion.cargaProv_clientes()
         conexion.Conexion.mostrardrivers()
+        conexion.Conexion.mostrarclientes()
         var.ui.frame.hide()
 
 
@@ -49,6 +52,8 @@ class Main(QtWidgets.QMainWindow):
         combox
         '''
         var.ui.cmbProvincia.currentIndexChanged.connect(conexion.Conexion.selMuni)
+        var.ui.cmbProvincia_Cliente.currentIndexChanged.connect(conexion.Conexion.selMuni_cliente)
+
         '''
         botones
         '''
@@ -57,6 +62,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.actionAcerca_de.triggered.connect(eventos.Eventos.abrir_acerca_de)
         var.ui.btnaltaDriver.clicked.connect(drivers.Drivers.alta_driver)
         var.ui.btnBuscarDri.clicked.connect(drivers.Drivers.get_from_dni)
+        var.ui.btnBuscarCliente.clicked.connect(cliente.Cliente.get_from_dni)
         var.ui.btnModifDriver.clicked.connect(drivers.Drivers.modif_driver)
         var.ui.btnBajaDriver.clicked.connect(drivers.Drivers.borrar_datos)
         var.ui.buttonGroup.buttonClicked.connect(conexion.Conexion.mostrardrivers)
@@ -75,11 +81,13 @@ class Main(QtWidgets.QMainWindow):
         """
         zona de eventos cajas
         """
-        var.ui.txtDni.editingFinished.connect(lambda:drivers.Drivers.validar_dni(var.ui.txtDni.text()))
+        var.ui.txtDni.editingFinished.connect(lambda : drivers.Drivers.validar_dni(var.ui.txtDni.text()))
+        var.ui.txtDni_3.editingFinished.connect(lambda : cliente.Cliente.validar_dni(var.ui.txtDni_3.text()))
         var.ui.txtNombre.editingFinished.connect(eventos.Eventos.format_caja_texto)
         var.ui.txtDni_2.editingFinished.connect(eventos.Eventos.format_caja_texto)
         var.ui.txtSalario.editingFinished.connect(eventos.Eventos.format_caja_texto)
         var.ui.txtMovil.editingFinished.connect(drivers.Drivers.validar_tlf)
+        var.ui.txtMovil_Cliente.editingFinished.connect(cliente.Cliente.validar_tlf)
         var.ui.txtSalario.editingFinished.connect(drivers.Drivers.validar_salario)
 
         """
@@ -91,6 +99,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnLimpiar.triggered.connect(eventos.Eventos.limpiar)
         var.ui.actionExportar_Datos_XLS.triggered.connect(eventos.Eventos.exportar_datos_xls)
         var.ui.actionImportar_Datos_XLS.triggered.connect(eventos.Eventos.importar_datos)
+        var.ui.actionImportar_Datos_Cliente_XLS.triggered.connect(eventos.Eventos.importar_datos_clientes)
         '''
         
         status var
@@ -103,7 +112,9 @@ class Main(QtWidgets.QMainWindow):
         eventos de tablas  
         '''
         eventos.Eventos.resize_tabDriver2(self)
+        eventos.Eventos.resize_tabClientes(self)
         var.ui.tabDriver2.clicked.connect(drivers.Drivers.get_from_tab)
+        var.ui.tabClientes.clicked.connect(cliente.Cliente.get_from_tab)
 
 
     def closeEvent(self, event):

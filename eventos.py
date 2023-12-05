@@ -7,6 +7,7 @@ import xlwt
 import xlrd
 from PyQt6.QtGui import QIcon
 
+import cliente
 import conexion
 import drivers
 
@@ -20,6 +21,67 @@ locale.setlocale(locale.LC_MONETARY, 'es_ES.UTF-8')
 
 
 class Eventos:
+    def importar_datos_clientes(self):
+        try:
+            estado = 0
+            inserciones = 0
+            dniRepetidos = False;
+            dniMalFormdos = False
+            filename = var.dlg_abrir.getOpenFileName(None, 'Importar datos', '', '*.xls;;Allfiles(*)')
+            if var.dlg_abrir.accept and filename != '':
+                file = filename[0]
+                documento = xlrd.open_workbook(file)
+                datos = documento.sheet_by_index(0)
+                filas = datos.nrows
+                columnas = datos.ncols
+
+                for i in range(filas):
+                    if i == 0:
+                        pass
+                    else:
+                        new = []
+                        for j in range(columnas):
+                            if j == 3:
+                                new.append(int(datos.cell_value(i, j)))
+                            else:
+                                new.append(str(datos.cell_value(i, j)))
+                        if cliente.Cliente.validar_dni(str(new[0])) and not conexion.Conexion.dni_existe(str(new[0])):
+                            new.append('')
+                            conexion.Conexion.guardarCliente(new)
+                            inserciones = inserciones + 1
+                        elif estado == 0:
+                           if not cliente.Cliente.validar_dni(str(new[0])):
+                               dniMalFormdos = True
+                           if conexion.Conexion.dni_existe(str(new[0])):
+                               dniRepetidos= True
+
+                    if i == filas - 1:
+                        if inserciones >0 :
+                            mbox = QtWidgets.QMessageBox()
+                            mbox.setWindowTitle('Aviso')
+                            mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
+                            mensaje = f"Se han añadido  {inserciones} clientes."
+                            mbox.setText(mensaje)
+                            icon = QIcon('./img/taxiIcon.png')
+                            mbox.setWindowIcon(icon)
+                            mbox.exec()
+                        if dniRepetidos:
+                            msg = QtWidgets.QMessageBox()
+                            msg.setModal(True)
+                            msg.setWindowTitle('Aviso')
+                            msg.setIcon(QtWidgets.QMessageBox.Icon.Warning)
+                            msg.setText('Existen Dni en el documento que ya estan en la base de datos')
+                            msg.exec()
+                        if dniMalFormdos:
+                            msg = QtWidgets.QMessageBox()
+                            msg.setModal(True)
+                            msg.setWindowTitle('Aviso')
+                            msg.setIcon(QtWidgets.QMessageBox.Icon.Warning)
+                            msg.setText('Dnis mal formados en el documeto')
+                            msg.exec()
+            conexion.Conexion.mostrarclientes()
+        except Exception as error:
+            print("Error al importar datos", error)
 
     def importar_datos(self):
         try:
@@ -48,7 +110,7 @@ class Eventos:
                         if drivers.Drivers.validar_dni(str(new[0])):
                             new.append('')
                             conexion.Conexion.guardardri(new)
-                        elif estado== 0:
+                        elif estado == 0:
                             estado = 1
                             msg = QtWidgets.QMessageBox()
                             msg.setModal(True)
@@ -172,9 +234,11 @@ class Eventos:
         try:
             conexion.Conexion.mostrardrivers()
             listalimpiar = [var.ui.txtDni, var.ui.txtDate, var.ui.txtDni_2, var.ui.txtNombre, var.ui.txtDireccion,
-                            var.ui.txtMovil, var.ui.txtSalario, var.ui.lblCodDB, var.ui.txtDate_2]
+                            var.ui.txtMovil, var.ui.txtSalario, var.ui.lblCodDB, var.ui.txtDate_2,
+                            var.ui.lblCodDB_Cliente,var.ui.txtDni_3,var.ui.txtRazonSocial,var.ui.txtDireccion_Cliente,var.ui.txtMovil_Cliente,var.ui.txtDate_Cliente,]
             # var.ui.lblCheckDNI.hide()
             var.ui.lblCheckDNI.setText(" ")
+            var.ui.lblCheckDNI_Cliente.setText(" ")
             # var.ui.lblCheckDNI.setScaledContents(False)
             for i in listalimpiar:
                 i.setText(None)
@@ -183,7 +247,9 @@ class Eventos:
             for i in chklicencia:
                 i.setChecked(False)
             var.ui.cmbProvincia.setCurrentText("")
+            var.ui.cmbProvincia_Cliente.setCurrentText("")
             var.ui.cmbLocalidad.setCurrentText("")
+            var.ui.cmbLocalidad_Cliente.setCurrentText("")
 
 
         except Exception as error:
@@ -196,7 +262,8 @@ class Eventos:
             var.calendar.show()
         except Exception as error:
             print("erro en abrir", error)
-    def abrir_calendar_baja():
+
+    def abrir_calendar_baja(self):
 
         try:
             var.calendarBaja.show()
@@ -282,11 +349,25 @@ class Eventos:
             print("error resize tab driver", error)
 
     @staticmethod
+    def resize_tabClientes(self):
+        try:
+            header = var.ui.tabClientes.horizontalHeader()
+            for i in range(5):
+                if i == 0 or i == 2:
+                    header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeMode.ResizeToContents)
+                elif i == 1 or i == 3:
+                    header.setSectionResizeMode(i, QtWidgets.QHeaderView.ResizeMode.Stretch)
+
+
+        except Exception as error:
+            print("error resize tab driver", error)
+
+    @staticmethod
     def format_caja_texto(self=None):
         try:
             var.ui.txtDni_2.setText(var.ui.txtDni_2.text().title())
             var.ui.txtNombre.setText(var.ui.txtNombre.text().title())
-            #var.ui.txtSalario.setText(str(locale.currency(float(var.ui.txtSalario.text()))))
+            # var.ui.txtSalario.setText(str(locale.currency(float(var.ui.txtSalario.text()))))
 
         except Exception as error:
             print("error letra capital", error)

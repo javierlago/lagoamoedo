@@ -3,6 +3,7 @@ from datetime import datetime
 from PyQt6 import QtWidgets, QtSql, QtCore
 from PyQt6.QtGui import QIcon
 
+import Ventanas
 import cliente
 import conexion
 import drivers
@@ -10,12 +11,42 @@ import var
 
 
 class Conexion:
+    def borrarCliente(dni):
+        try:
+
+            fecha = datetime.now()
+            fecha = fecha.strftime("%d/%m/%Y")
+            valor = None
+            query = QtSql.QSqlQuery()
+            query.prepare('SELECT bajacliente FROM listadoClientes WHERE dnicliente = :dni ')
+            query.bindValue(':dni', dni)
+            if query.exec():
+                while query.next():
+                    valor = query.value(0)
+            print(valor)
+            if valor == "" or valor is None:
+                fecha = datetime.now()
+                fecha = fecha.strftime("%d/%m/%Y")
+                queryFecha = QtSql.QSqlQuery()
+                queryFecha.prepare('update listadoClientes set bajaCliente = :fechabaja where dnicliente = :dni')
+                queryFecha.bindValue(':dni', str(dni))
+                queryFecha.bindValue(':fechabaja', str(fecha))
+                if queryFecha.exec():
+                    Ventanas.Ventanas.ventana_info("Se ha dado de baja al empleado")
+            else:
+                  Ventanas.Ventanas.mensaje_warning("El empeado ya esta dado de baja")
+
+
+        except Exception as error:
+            print("No se ha podido dar de baja al cliente", error)
+
+
     def modificar_cliente(self):
         try:
             cliente_a_modificar = cliente.Cliente.recuperar_datos()
-            cliente_verificacion = conexion.Conexion.buscar_segun_dni_cliente(cliente_a_modificar[0])
-            cliente_verificacion.pop(0)
             if cliente.Cliente.validar_datos(cliente_a_modificar):
+                cliente_verificacion = conexion.Conexion.buscar_segun_dni_cliente(cliente_a_modificar[0])
+                cliente_verificacion.pop(0)
                 print(cliente_a_modificar)
                 if cliente_a_modificar != cliente_verificacion:
                     query = QtSql.QSqlQuery()
@@ -28,40 +59,19 @@ class Conexion:
                     query.bindValue(":mc",cliente_a_modificar[5])
                     query.bindValue(":bc",cliente_a_modificar[6])
                     if query.exec():
-                        mbox = QtWidgets.QMessageBox()
-                        mbox.setWindowTitle("Aviso")
-                        mbox.setIcon((QtWidgets.QMessageBox.Icon.Information))
-                        mensaje = "Modificacion realizada"
-                        mbox.setText(mensaje)
-                        icon = QIcon('./img/taxiIcon.png')
-                        mbox.setWindowIcon(icon)
-                        mbox.exec()
+                        Ventanas.Ventanas.ventana_info("modificacion realizada")
                         conexion.Conexion.mostrarclientes()
                     else:
+                        Ventanas.Ventanas.mensaje_warning(str(query.lastError()))
 
-                        print(query.lastError())
                 else:
-                    mbox = QtWidgets.QMessageBox()
-                    mbox.setWindowTitle("Aviso")
-                    mbox.setIcon((QtWidgets.QMessageBox.Icon.Information))
-                    mensaje = "No se ha modificado el cliente"
-                    mbox.setText(mensaje)
-                    icon = QIcon('./img/taxiIcon.png')
-                    mbox.setWindowIcon(icon)
-                    mbox.exec()
+                   Ventanas.Ventanas.mensaje_warning("No se ha modificado el cliente")
             else:
-                mbox = QtWidgets.QMessageBox()
-                mbox.setWindowTitle("Aviso")
-                mbox.setIcon((QtWidgets.QMessageBox.Icon.Warning))
-                mensaje = "Campos vacios"
-                mbox.setText(mensaje)
-                icon = QIcon('./img/taxiIcon.png')
-                mbox.setWindowIcon(icon)
-                mbox.exec()
+                Ventanas.Ventanas.mensaje_warning("Campos vaios")
 
         except Exception as error:
 
-            print(error,query.lastError())
+            print(error, query.lastError())
 
 
 

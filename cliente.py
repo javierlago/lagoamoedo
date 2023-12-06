@@ -3,6 +3,7 @@ import re
 
 from PyQt6.QtGui import QColor, QBrush, QIcon
 
+import Ventanas
 import cliente
 import conexion
 import drivers
@@ -13,6 +14,18 @@ from PyQt6 import QtGui, QtWidgets, QtCore
 
 
 class Cliente:
+    def baja_cliente(self):
+        try:
+            cliente_baja = cliente.Cliente.recuperar_datos()
+            if cliente.Cliente.validar_datos(cliente_baja):
+                conexion.Conexion.borrarCliente(cliente_baja[0])
+                conexion.Conexion.mostrarclientes()
+            else:
+                Ventanas.Ventanas.mensaje_warning("Campos vacios")
+        except Exception as error:
+            print("Error en el metodo baja_cliente",error)
+
+
 
     def alta_cliente(self):
         try:
@@ -257,9 +270,9 @@ class Cliente:
             cliente.Cliente.carga_cliente(conexion.Conexion.buscar_segun_dni_cliente(dni))
             registro = conexion.Conexion.buscar_segun_dni_cliente(dni)
             if registro[7] == '':
-                var.ui.rbtAlta.setChecked(True)
+                var.ui.rbtAltaCliente.setChecked(True)
             else:
-                var.ui.rbtBaja.setChecked(True)
+                var.ui.rbtBajaCliente.setChecked(True)
             conexion.Conexion.mostrarclientes()
 
             for row in range(var.ui.tabClientes.rowCount()):

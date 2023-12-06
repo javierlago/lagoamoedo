@@ -67,7 +67,9 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnModifDriver.clicked.connect(drivers.Drivers.modif_driver)
         var.ui.btnModifCliente.clicked.connect(conexion.Conexion.modificar_cliente)
         var.ui.btnBajaDriver.clicked.connect(drivers.Drivers.borrar_datos)
+        var.ui.btnBajaCliente.clicked.connect(cliente.Cliente.baja_cliente)
         var.ui.buttonGroup.buttonClicked.connect(conexion.Conexion.mostrardrivers)
+        var.ui.botonesDeCliente.buttonClicked.connect(conexion.Conexion.mostrarclientes)
         var.ui.buttonGroup.buttonClicked.connect(eventos.Eventos.limpiar)
 
 

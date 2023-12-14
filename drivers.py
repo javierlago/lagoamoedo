@@ -14,7 +14,7 @@ from PyQt6 import QtGui, QtWidgets, QtCore
 
 class Drivers:
 
-
+    param = None
 
 
 
@@ -202,21 +202,23 @@ class Drivers:
                 var.ui.txtSalario.setFocus()
         except Exception as error:
             print(error)
+    def set_calendar(p):
+            drivers.Drivers.param = p
+
 
     def carga_fecha(qDate):
         try:
             data = ('{:02d}/{:02d}/{:4d}'.format(qDate.day(), qDate.month(), qDate.year()))
-            var.ui.txtDate.setText(str(data))
+            if drivers.Drivers.param == "fecha alta driver":
+              var.ui.txtDate.setText(str(data))
+            elif drivers.Drivers.param == "fecha baja driver":
+             var.ui.txtDate_2.setText(str(data))
+            elif drivers.Drivers.param == "fecha baja cliente":
+                var.ui.txtDate_Cliente.setText(str(data))
             var.calendar.hide()
         except Exception as error:
             print("erro en carga fecha", error)
-    def carga_fechaBaja(qDate):
-        try:
-            data = ('{:02d}/{:02d}/{:4d}'.format(qDate.day(), qDate.month(), qDate.year()))
-            var.ui.txtDate_2.setText(str(data))
-            var.calendarBaja.hide()
-        except Exception as error:
-            print("erro en carga fecha", error)
+
 
     def validar_dni(dni):
         try:

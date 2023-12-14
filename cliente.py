@@ -17,20 +17,17 @@ from PyQt6.QtWidgets import QMessageBox
 
 class Cliente:
 
-
     def baja_cliente(self):
-            try:
+        try:
 
-                cliente_baja = cliente.Cliente.recuperar_datos()
-                if cliente.Cliente.validar_datos(cliente_baja):
-                    conexion.Conexion.borrarCliente(cliente_baja[0])
-                    conexion.Conexion.mostrarclientes()
-                else:
-                   Ventanas.Ventanas.mensaje_warning("Campos Vacios")
-            except Exception as error:
-                print("Error en el metodo baja_cliente",error)
-
-
+            cliente_baja = cliente.Cliente.recuperar_datos()
+            if cliente.Cliente.validar_datos(cliente_baja):
+                conexion.Conexion.borrarCliente(cliente_baja[0])
+                conexion.Conexion.mostrarclientes()
+            else:
+                Ventanas.Ventanas.mensaje_warning("Campos Vacios")
+        except Exception as error:
+            print("Error en el metodo baja_cliente", error)
 
     def alta_cliente(self):
         try:
@@ -122,8 +119,8 @@ class Cliente:
             print("error en validar dni: ", error)
 
     def recuperar_datos(self=None):
-        driver = [var.ui.txtDni_3.text(),var.ui.txtRazonSocial.text(), var.ui.txtDireccion_Cliente.text(),
-                  var.ui.txtMovil_Cliente.text(),var.ui.cmbProvincia_Cliente.currentText(),
+        driver = [var.ui.txtDni_3.text(), var.ui.txtRazonSocial.text(), var.ui.txtDireccion_Cliente.text(),
+                  var.ui.txtMovil_Cliente.text(), var.ui.cmbProvincia_Cliente.currentText(),
                   var.ui.cmbLocalidad_Cliente.currentText(), var.ui.txtDate_Cliente.text()]
         print(driver)
         return driver
@@ -134,17 +131,18 @@ class Cliente:
         try:
             nuevoRegistros = list()
             if (var.ui.rbtAltaCliente.isChecked()):
-                var.ui.txtDate_Cliente.setEnabled(False)
+                var.ui.frame_baja.hide()
                 for registro in registros:
                     if registro[4] == '':
                         nuevoRegistros.append(registro)
             elif (var.ui.rbtBajaCliente.isChecked()):
-                var.ui.txtDate_Cliente.setEnabled(True)
+                var.ui.frame_baja.show()
                 for registro in registros:
                     if registro[4] != '':
                         nuevoRegistros.append(registro)
             elif (var.ui.rbtTodosCliente.isChecked()):
-                var.ui.txtDate_Cliente.setEnabled(False)
+                var.ui.frame_baja.hide()
+
                 nuevoRegistros = registros
 
             if len(nuevoRegistros) == 0:
@@ -165,7 +163,6 @@ class Cliente:
                     index += 1
         except Exception as error:
             print("Error completar tabla ", error)
-
 
     def get_from_tab(self):
         try:
@@ -191,7 +188,6 @@ class Cliente:
         except Exception as error:
             print("Error al cargar desde la tabla", error)
 
-
     def carga_cliente(registro):
         try:
             print(registro)
@@ -206,9 +202,9 @@ class Cliente:
                 msg.setWindowIcon(icon)
                 msg.exec()
             else:
-                datos = [var.ui.lblCodDB_Cliente,var.ui.txtDni_3, var.ui.txtRazonSocial, var.ui.txtDireccion_Cliente,
-                  var.ui.txtMovil_Cliente,var.ui.cmbProvincia_Cliente,
-                  var.ui.cmbLocalidad_Cliente, var.ui.txtDate_Cliente]
+                datos = [var.ui.lblCodDB_Cliente, var.ui.txtDni_3, var.ui.txtRazonSocial, var.ui.txtDireccion_Cliente,
+                         var.ui.txtMovil_Cliente, var.ui.cmbProvincia_Cliente,
+                         var.ui.cmbLocalidad_Cliente, var.ui.txtDate_Cliente]
 
                 for i, dato in enumerate(datos):
                     if i == 5 or i == 6:
@@ -217,16 +213,12 @@ class Cliente:
                     else:
                         dato.setText(str(registro[i]))
 
-
-
-
                 var.ui.lblCheckDNI.show()
                 var.ui.lblCheckDNI.setScaledContents(True)
                 var.ui.lblCheckDNI.setPixmap(QtGui.QPixmap("img/OkIco.svg"))
 
                 for fila in range(var.ui.tabClientes.rowCount()):
                     if var.ui.tabClientes.item(fila, 0) == str(registro[0]):
-
                         var.ui.tabClientes.setItem(fila, 0, QtWidgets.QTableWidgetItem(str(registro[0])))
                         var.ui.tabClientes.setItem(fila, 1, QtWidgets.QTableWidgetItem(str(registro[1])))
                         var.ui.tabClientes.setItem(fila, 2, QtWidgets.QTableWidgetItem(str(registro[2])))
@@ -272,9 +264,3 @@ class Cliente:
             var.ui.tabClientes.scrollToItem(obteivo)
         except Exception as error:
             print("Error al cargar segun el DNI", error)
-
-
-
-
-
-

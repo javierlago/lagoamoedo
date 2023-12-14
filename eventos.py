@@ -7,6 +7,7 @@ import xlwt
 import xlrd
 from PyQt6.QtGui import QIcon
 
+import Ventanas
 import cliente
 import conexion
 import drivers
@@ -50,35 +51,19 @@ class Eventos:
                             conexion.Conexion.guardarCliente(new)
                             inserciones = inserciones + 1
                         elif estado == 0:
-                           if not cliente.Cliente.validar_dni(str(new[0])):
-                               dniMalFormdos = True
-                           if conexion.Conexion.dni_existe(str(new[0])):
-                               dniRepetidos= True
+                            if not cliente.Cliente.validar_dni(str(new[0])):
+                                dniMalFormdos = True
+                            if conexion.Conexion.dni_existe(str(new[0])):
+                                dniRepetidos = True
 
                     if i == filas - 1:
-                        if inserciones >0 :
-                            mbox = QtWidgets.QMessageBox()
-                            mbox.setWindowTitle('Aviso')
-                            mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                            mensaje = f"Se han añadido  {inserciones} clientes."
-                            mbox.setText(mensaje)
-                            icon = QIcon('./img/taxiIcon.png')
-                            mbox.setWindowIcon(icon)
-                            mbox.exec()
+                        if inserciones > 0:
+                            Ventanas.Ventanas.ventana_info(f"Se han añadido  {inserciones} clientes.")
                         if dniRepetidos:
-                            msg = QtWidgets.QMessageBox()
-                            msg.setModal(True)
-                            msg.setWindowTitle('Aviso')
-                            msg.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                            msg.setText('Existen Dni en el documento que ya estan en la base de datos')
-                            msg.exec()
+                            Ventanas.Ventanas.ventana_info(
+                                'Existen Dni en el documento que ya estan en la base de datos')
                         if dniMalFormdos:
-                            msg = QtWidgets.QMessageBox()
-                            msg.setModal(True)
-                            msg.setWindowTitle('Aviso')
-                            msg.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                            msg.setText('Dnis mal formados en el documeto')
-                            msg.exec()
+                            Ventanas.Ventanas.mensaje_warning('Dnis mal formados en el documeto')
             conexion.Conexion.mostrarclientes()
         except Exception as error:
             print("Error al importar datos", error)
@@ -111,21 +96,9 @@ class Eventos:
                             new.append('')
                             conexion.Conexion.guardardri(new)
                         elif estado == 0:
-                            estado = 1
-                            msg = QtWidgets.QMessageBox()
-                            msg.setModal(True)
-                            msg.setWindowTitle('Aviso')
-                            msg.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                            msg.setText('Hay DNI incorrectos')
-                            msg.exec()
+                            Ventanas.Ventanas.ventana_info('Hay DNI incorrectos')
                     if i == filas - 1:
-                        mbox = QtWidgets.QMessageBox()
-                        mbox.setWindowTitle('Aviso')
-                        mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                        mbox.setText('Empleados dado de alta')
-                        icon = QIcon('./img/taxiIcon.png')
-                        mbox.setWindowIcon(icon)
-                        mbox.exec()
+                        Ventanas.Ventanas.ventana_info('Empleados dado de alta')
             conexion.Conexion.mostrardrivers()
 
 
@@ -160,22 +133,11 @@ class Eventos:
                 for j, registro in enumerate(registros, 1):
                     for i, valor in enumerate(registro):
                         sheet1.write(j, i, valor)
-                wb.save(directorio)
-                mbox = QtWidgets.QMessageBox()
-                mbox.setModal(True)
-
-                mbox.setWindowTitle('Aviso')
-                mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                mbox.setText("Se ha exportado los datos correctamente")
-                mbox.exec()
+            Ventanas.Ventanas.ventana_info("Se ha exportado los datos correctamente")
 
 
         except Exception as error:
-            mbox = QtWidgets.QMessageBox()
-            mbox.setWindowTitle('Aviso')
-            mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-            mbox.setText("Error exportar datos en hoja de calculo", error)
-            mbox.exec()
+            Ventanas.Ventanas.mensaje_warning("Error exportar datos en hoja de calculo", error)
 
     def restaurar_back_up(self):
         try:
@@ -185,22 +147,13 @@ class Eventos:
             if var.dlg_abrir.accept and file:
                 with zipfile.ZipFile(str(file), 'r') as bbdd:
                     bbdd.extractall(pwd=None)
-                bbdd.close()
-                mbox = QtWidgets.QMessageBox()
-                mbox.setWindowTitle('Aviso')
-                mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
-                mbox.setText("Copia restaturada")
-                mbox.exec()
+                Ventanas.Ventanas.ventana_info("Copia restaurada")
                 conexion.Conexion.mostrardrivers()
 
 
         except Exception as error:
 
-            mbox = QtWidgets.QMessageBox()
-            mbox.setWindowTitle('Aviso')
-            mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-            mbox.setText("Error en la copia de seguridad", error)
-            mbox.exec()
+            Ventanas.Ventanas.mensaje_warning("Error en la copia de seguridad", error)
 
     def crear_back_up(self):
         try:
@@ -213,21 +166,13 @@ class Eventos:
                 fichzip.write(var.bbdd, os.path.basename(var.bbdd), zipfile.ZIP_DEFLATED)
                 fichzip.close()
                 shutil.move(str(copia), str(directorio))
-                mbox = QtWidgets.QMessageBox()
-                mbox.setWindowTitle('Aviso')
-                mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)
-                mbox.setText("Copia se seguridad creada")
-                mbox.exec()
+                Ventanas.Ventanas.ventana_info("Copia se seguridad creada")
 
 
 
         except Exception as error:
             print(error)
-            mbox = QtWidgets.QMessageBox()
-            mbox.setWindowTitle('Aviso')
-            mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-            mbox.setText("Error en la copia de seguridad", error)
-            mbox.exec()
+            Ventanas.Ventanas.mensaje_warning("Error en la copia de seguridad", error)
 
     @staticmethod
     def limpiar():
@@ -235,7 +180,8 @@ class Eventos:
             conexion.Conexion.mostrardrivers()
             listalimpiar = [var.ui.txtDni, var.ui.txtDate, var.ui.txtDni_2, var.ui.txtNombre, var.ui.txtDireccion,
                             var.ui.txtMovil, var.ui.txtSalario, var.ui.lblCodDB, var.ui.txtDate_2,
-                            var.ui.lblCodDB_Cliente,var.ui.txtDni_3,var.ui.txtRazonSocial,var.ui.txtDireccion_Cliente,var.ui.txtMovil_Cliente,var.ui.txtDate_Cliente,]
+                            var.ui.lblCodDB_Cliente, var.ui.txtDni_3, var.ui.txtRazonSocial,
+                            var.ui.txtDireccion_Cliente, var.ui.txtMovil_Cliente, var.ui.txtDate_Cliente, ]
             # var.ui.lblCheckDNI.hide()
             var.ui.lblCheckDNI.setText(" ")
             var.ui.lblCheckDNI_Cliente.setText(" ")
@@ -260,6 +206,7 @@ class Eventos:
 
         try:
             var.calendar.show()
+
         except Exception as error:
             print("erro en abrir", error)
 

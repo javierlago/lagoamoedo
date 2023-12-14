@@ -5,6 +5,7 @@ from PyQt6.QtWidgets import QApplication
 
 import cliente
 import conexion
+import eventos
 from MainWindow import *
 from windowaux import *
 
@@ -20,7 +21,6 @@ class Main(QtWidgets.QMainWindow):
         var.ui = Ui_MainWindow()
         var.ui.setupUi(self)
         var.calendar = Calendar()
-        var.calendarBaja = CalendarBaja()
         var.acercade = Acerca()
         var.ventana_salir = SalirVentana()
         var.dlg_abrir = FileDialogAbrir()
@@ -54,8 +54,12 @@ class Main(QtWidgets.QMainWindow):
         botones
         '''
 
+        var.ui.btnCalendar.clicked.connect(lambda : drivers.Drivers.set_calendar("fecha alta driver"))
         var.ui.btnCalendar.clicked.connect(eventos.Eventos.abrir_calendar)
-        var.ui.btnCalendar_2.clicked.connect(eventos.Eventos.abrir_calendar_baja)
+        var.ui.btnCalendar_2.clicked.connect(lambda : drivers.Drivers.set_calendar("fecha baja driver"))
+        var.ui.btnCalendar_2.clicked.connect(eventos.Eventos.abrir_calendar)
+        var.ui.btnCalendar_Cliente.clicked.connect(lambda: drivers.Drivers.set_calendar("fecha baja cliente"))
+        var.ui.btnCalendar_Cliente.clicked.connect(eventos.Eventos.abrir_calendar)
         var.ui.actionAcerca_de.triggered.connect(eventos.Eventos.abrir_acerca_de)
         '''
         

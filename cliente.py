@@ -37,29 +37,14 @@ class Cliente:
             new_cliente = cliente.Cliente.recuperar_datos(self)
             print(new_cliente)
             if not drivers.Drivers.validar_datos(new_cliente):
-                mbox = QtWidgets.QMessageBox()
-                mbox.setWindowTitle("Aviso")
-                mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                mensaje = "Campos vacíos"
-                mbox.setText(mensaje)
-                icon = QIcon('./img/taxiIcon.png')
-                mbox.setWindowIcon(icon)
-                mbox.exec()
+                Ventanas.Ventanas.mensaje_warning("Campos vacios")
             else:
                 if conexion.Conexion.guardarCliente(new_cliente):
-                    mbox = QtWidgets.QMessageBox()
-                    mbox.setWindowTitle('Aviso')
-                    mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)  # Cambié el icono a Information
-                    mbox.setText('Empleado dado de alta')
-                    icon = QIcon('./img/taxiIcon.png')
-                    mbox.setWindowIcon(icon)
-                    mbox.exec()
+                    Ventanas.Ventanas.ventana_info('Cliente dado de alta')
+                    conexion.Conexion.mostrarclientes()
+
                 else:
-                    mbox = QtWidgets.QMessageBox()
-                    mbox.setWindowTitle('Aviso')
-                    mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                    mbox.setText("El DNI ya se encuentra en la base de datos")
-                    mbox.exec()
+                    Ventanas.Ventanas.mensaje_warning("El DNI ya se encuentra en la base de datos")
 
             conexion.Conexion.mostrardrivers()
             eventos.Eventos.limpiar()
@@ -82,15 +67,7 @@ class Cliente:
             regex = r'^\d{9}$'
 
             if not re.match(regex, tlf):
-                msg = QtWidgets.QMessageBox()
-                msg.setWindowTitle('Aviso')
-                msg.setIcon(QtWidgets.QMessageBox.Icon.Information)
-                msg.setText('Telefono icorrecto introducir nueve digitos')
-                msg.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Ok)
-                msg.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
-                icon = QIcon('./img/taxiIcon.png')
-                msg.setWindowIcon(icon)
-                msg.exec()
+                Ventanas.Ventanas.mensaje_warning('Telefono icorrecto introducir nueve digitos')
                 var.ui.txtMovil_Cliente.setText('')
                 var.ui.txtMovil_Cliente.setFocus()
 
@@ -157,14 +134,17 @@ class Cliente:
         try:
             nuevoRegistros = list()
             if (var.ui.rbtAltaCliente.isChecked()):
+                var.ui.txtDate_Cliente.setEnabled(False)
                 for registro in registros:
                     if registro[4] == '':
                         nuevoRegistros.append(registro)
             elif (var.ui.rbtBajaCliente.isChecked()):
+                var.ui.txtDate_Cliente.setEnabled(True)
                 for registro in registros:
                     if registro[4] != '':
                         nuevoRegistros.append(registro)
             elif (var.ui.rbtTodosCliente.isChecked()):
+                var.ui.txtDate_Cliente.setEnabled(False)
                 nuevoRegistros = registros
 
             if len(nuevoRegistros) == 0:

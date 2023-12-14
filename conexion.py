@@ -34,12 +34,11 @@ class Conexion:
                 if queryFecha.exec():
                     Ventanas.Ventanas.ventana_info("Se ha dado de baja al empleado")
             else:
-                  Ventanas.Ventanas.mensaje_warning("El empeado ya esta dado de baja")
+                Ventanas.Ventanas.mensaje_warning("El empeado ya esta dado de baja")
 
 
         except Exception as error:
             print("No se ha podido dar de baja al cliente", error)
-
 
     def modificar_cliente(self):
         try:
@@ -50,14 +49,15 @@ class Conexion:
                 print(cliente_a_modificar)
                 if cliente_a_modificar != cliente_verificacion:
                     query = QtSql.QSqlQuery()
-                    query.prepare("update listadoClientes set  razon = :razon , direccion = :direccion ,telefono = :telf , provCliente = :pc , muniCliente = :mc , bajaCliente = :bc where dnicliente = :dni;")
-                    query.bindValue(":dni",cliente_a_modificar[0])
-                    query.bindValue(":razon",cliente_a_modificar[1])
-                    query.bindValue(":direccion",cliente_a_modificar[2])
-                    query.bindValue(":telf",cliente_a_modificar[3])
-                    query.bindValue(":pc",cliente_a_modificar[4])
-                    query.bindValue(":mc",cliente_a_modificar[5])
-                    query.bindValue(":bc",cliente_a_modificar[6])
+                    query.prepare(
+                        "update listadoClientes set  razon = :razon , direccion = :direccion ,telefono = :telf , provCliente = :pc , muniCliente = :mc , bajaCliente = :bc where dnicliente = :dni;")
+                    query.bindValue(":dni", cliente_a_modificar[0])
+                    query.bindValue(":razon", cliente_a_modificar[1])
+                    query.bindValue(":direccion", cliente_a_modificar[2])
+                    query.bindValue(":telf", cliente_a_modificar[3])
+                    query.bindValue(":pc", cliente_a_modificar[4])
+                    query.bindValue(":mc", cliente_a_modificar[5])
+                    query.bindValue(":bc", cliente_a_modificar[6])
                     if query.exec():
                         Ventanas.Ventanas.ventana_info("modificacion realizada")
                         conexion.Conexion.mostrarclientes()
@@ -65,15 +65,13 @@ class Conexion:
                         Ventanas.Ventanas.mensaje_warning(str(query.lastError()))
 
                 else:
-                   Ventanas.Ventanas.mensaje_warning("No se ha modificado el cliente")
+                    Ventanas.Ventanas.mensaje_warning("No se ha modificado el cliente")
             else:
                 Ventanas.Ventanas.mensaje_warning("Campos vaios")
 
         except Exception as error:
 
             print(error, query.lastError())
-
-
 
     def conexion(self=None):
         var.bbdd = 'bbdd.sqlite'
@@ -243,7 +241,7 @@ class Conexion:
                         Ventanas.Ventanas.mensaje_warning("Dni ya esta en la base de datos")
 
             else:
-               Ventanas.Ventanas.mensaje_warning("No se han modificado los campos")
+                Ventanas.Ventanas.mensaje_warning("No se han modificado los campos")
                 # select de los datos de los conductores de la base de datos
 
         except Exception as error:
@@ -287,7 +285,6 @@ class Conexion:
 
         except Exception as error:
             print("error al mostrar resultados", error)
-
 
     def buscar_segun_codigo(codigo):
         try:
@@ -336,6 +333,7 @@ class Conexion:
 
         except Exception as error:
             print("Error al buscar segun dni: ", error)
+
     def buscar_segun_dni_cliente(dni):
         print(dni)
         try:
@@ -355,6 +353,7 @@ class Conexion:
 
         except Exception as error:
             print("Error al buscar segun dni: ", error)
+
     def borrarDriver(dni):
         try:
 
@@ -408,22 +407,28 @@ class Conexion:
     def guardarCliente(nuevoCliente):
         try:
             print(nuevoCliente)
+            print(nuevoCliente[0])
             query = QtSql.QSqlQuery()
             query2 = QtSql.QSqlQuery()
-            query2.prepare("select * from drivers where dnidri = :dni")
+            query2.prepare("select * from listadoClientes  where dnicliente = :dni")
             query2.bindValue(':dni', nuevoCliente[0])
 
-            if not query2.next():
+            if query2.exec() and query2.next() and nuevoCliente[6] != '':
+                query.prepare('update listadoClientes set bajaCliente = :bajaCliente where dnicliente = :dni')
+                query.bindValue(':dni', str(nuevoCliente[0]))
+                query.bindValue(':bajaCliente', '')
+            else:
                 query.prepare(
                     'insert into listadoClientes (dnicliente, razon, direccion, telefono, provCliente, muniCliente, '
                     'bajaCliente ) VALUES (:dni, :razon, :direccion, :telefono, :provincia, :municipio, :bajaCliente)')
-            query.bindValue(':dni', str(nuevoCliente[0]))
-            query.bindValue(':razon', str(nuevoCliente[1]))
-            query.bindValue(':direccion', str(nuevoCliente[2]))
-            query.bindValue(':telefono', str(nuevoCliente[3]))
-            query.bindValue(':provincia', str(nuevoCliente[4]))
-            query.bindValue(':municipio', str(nuevoCliente[5]))
-            query.bindValue(':bajaCliente', str(nuevoCliente[6]))
+                query.bindValue(':dni', str(nuevoCliente[0]))
+                query.bindValue(':razon', str(nuevoCliente[1]))
+                query.bindValue(':direccion', str(nuevoCliente[2]))
+                query.bindValue(':telefono', str(nuevoCliente[3]))
+                query.bindValue(':provincia', str(nuevoCliente[4]))
+                query.bindValue(':municipio', str(nuevoCliente[5]))
+                query.bindValue(':bajaCliente', str(nuevoCliente[6]))
+
             if query.exec():
                 return True
 
@@ -450,5 +455,3 @@ class Conexion:
 
         except Exception as error:
             print("Error en el método de validar si DNI existe:", error)
-
-

@@ -53,20 +53,30 @@ class Main(QtWidgets.QMainWindow):
         '''
         botones
         '''
+
         var.ui.btnCalendar.clicked.connect(eventos.Eventos.abrir_calendar)
         var.ui.btnCalendar_2.clicked.connect(eventos.Eventos.abrir_calendar_baja)
         var.ui.actionAcerca_de.triggered.connect(eventos.Eventos.abrir_acerca_de)
+        '''
+        
+        botones Driver
+        '''
         var.ui.btnaltaDriver.clicked.connect(drivers.Drivers.alta_driver)
-        var.ui.btnaltaCliente.clicked.connect(cliente.Cliente.alta_cliente)
         var.ui.btnBuscarDri.clicked.connect(drivers.Drivers.get_from_dni)
-        var.ui.btnBuscarCliente.clicked.connect(cliente.Cliente.get_from_dni)
         var.ui.btnModifDriver.clicked.connect(drivers.Drivers.modif_driver)
-        var.ui.btnModifCliente.clicked.connect(conexion.Conexion.modificar_cliente)
-        var.ui.btnBajaDriver.clicked.connect(drivers.Drivers.borrar_datos)
-        var.ui.btnBajaCliente.clicked.connect(cliente.Cliente.baja_cliente)
         var.ui.buttonGroup.buttonClicked.connect(conexion.Conexion.mostrardrivers)
-        var.ui.botonesDeCliente.buttonClicked.connect(conexion.Conexion.mostrarclientes)
         var.ui.buttonGroup.buttonClicked.connect(eventos.Eventos.limpiar)
+        var.ui.btnBajaDriver.clicked.connect(drivers.Drivers.borrar_datos)
+
+        '''
+        botones Clinete
+        '''
+        var.ui.btnaltaCliente.clicked.connect(cliente.Cliente.alta_cliente)
+        var.ui.btnBuscarCliente.clicked.connect(cliente.Cliente.get_from_dni)
+        var.ui.btnModifCliente.clicked.connect(conexion.Conexion.modificar_cliente)
+        var.ui.btnBajaCliente.clicked.connect(cliente.Cliente.baja_cliente)
+        var.ui.botonesDeCliente.buttonClicked.connect(conexion.Conexion.mostrarclientes)
+        var.ui.botonesDeCliente.buttonClicked.connect(eventos.Eventos.limpiar)
 
 
 

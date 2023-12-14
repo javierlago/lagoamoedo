@@ -4,7 +4,8 @@ from PyQt6 import QtWidgets
 
 class Ventanas:
 
-    def mensaje_warning(mensaje):
+
+    def mensaje_warning( mensaje):
         try:
             mbox = QtWidgets.QMessageBox()
             mbox.setWindowTitle('Aviso')
@@ -15,7 +16,8 @@ class Ventanas:
             mbox.exec()
         except Exception as error:
             print(error)
-    def ventana_info(mensaje):
+
+    def ventana_info( mensaje):
         try:
             mbox = QtWidgets.QMessageBox()
             mbox.setWindowTitle('Aviso')
@@ -24,5 +26,7 @@ class Ventanas:
             icon = QIcon('./img/taxiIcon.png')
             mbox.setWindowIcon(icon)
             mbox.exec()
-        except Exception as error :
-            print("Fallo en la ventana info",error)
+        except Exception as error:
+            print("Fallo en la ventana info", error)
+
+

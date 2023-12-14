@@ -3,6 +3,7 @@ import re
 
 from PyQt6.QtGui import QColor, QBrush, QIcon
 
+import Ventanas
 import conexion
 import drivers
 import eventos
@@ -100,15 +101,7 @@ class Drivers:
 
         try:
             if  registro == None:
-                msg = QtWidgets.QMessageBox()
-                msg.setWindowTitle('Aviso')
-                msg.setIcon(QtWidgets.QMessageBox.Icon.Information)
-                msg.setText('El dni no se encuentra en la base de datos')
-                msg.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Ok)
-                msg.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
-                icon = QIcon('./img/taxiIcon.png')
-                msg.setWindowIcon(icon)
-                msg.exec()
+                Ventanas.mensaje_warning('El dni no se encuentra en la base de datos')
             else:
                 datos = [var.ui.lblCodDB, var.ui.txtDni, var.ui.txtDate, var.ui.txtDni_2, var.ui.txtNombre,
                          var.ui.txtDireccion,
@@ -175,15 +168,7 @@ class Drivers:
             regex = r'^\d{9}$'
 
             if not re.match(regex, tlf):
-                msg = QtWidgets.QMessageBox()
-                msg.setWindowTitle('Aviso')
-                msg.setIcon(QtWidgets.QMessageBox.Icon.Information)
-                msg.setText('Telefono icorrecto introducir nueve digitos')
-                msg.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Ok)
-                msg.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
-                icon = QIcon('./img/taxiIcon.png')
-                msg.setWindowIcon(icon)
-                msg.exec()
+                Ventanas.Ventanas.mensaje_warning('Telefono icorrecto introducir nueve digitos')
                 var.ui.txtMovil.setText('')
                 var.ui.txtMovil.setFocus()
 
@@ -212,15 +197,7 @@ class Drivers:
                 var.ui.txtSalario.setText(str(locale.currency(salario_decimal)))
 
             else:
-                msg = QtWidgets.QMessageBox()
-                msg.setWindowTitle('Aviso')
-                msg.setIcon(QtWidgets.QMessageBox.Icon.Information)
-                msg.setText('Salario incorrecto, el salario debe ser con dos decimales como máximo')
-                msg.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Ok)
-                msg.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
-                icon = QIcon('./img/taxiIcon.png')
-                msg.setWindowIcon(icon)
-                msg.exec()
+                Ventanas.Ventanas.mensaje_warning('Salario incorrecto, el salario debe ser con dos decimales como máximo')
                 var.ui.txtSalario.setText('')
                 var.ui.txtSalario.setFocus()
         except Exception as error:
@@ -318,29 +295,12 @@ class Drivers:
             print("printeo del driver")
             print (driver)
             if not drivers.Drivers.validar_datos(driver):
-                mbox = QtWidgets.QMessageBox()
-                mbox.setWindowTitle("Aviso")
-                mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                mensaje = "Campos vacíos"
-                mbox.setText(mensaje)
-                icon = QIcon('./img/taxiIcon.png')
-                mbox.setWindowIcon(icon)
-                mbox.exec()
+                Ventanas.Ventanas.mensaje_warning("Campos vacíos")
             else:
                 if conexion.Conexion.guardardri(driver):
-                    mbox = QtWidgets.QMessageBox()
-                    mbox.setWindowTitle('Aviso')
-                    mbox.setIcon(QtWidgets.QMessageBox.Icon.Information)  # Cambié el icono a Information
-                    mbox.setText('Empleado dado de alta')
-                    icon = QIcon('./img/taxiIcon.png')
-                    mbox.setWindowIcon(icon)
-                    mbox.exec()
+                    Ventanas.Ventanas.ventana_info('Empleado dado de alta')
                 else:
-                    mbox = QtWidgets.QMessageBox()
-                    mbox.setWindowTitle('Aviso')
-                    mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                    mbox.setText("El DNI ya se encuentra en la base de datos")
-                    mbox.exec()
+                    Ventanas.Ventanas.mensaje_warning("El DNI ya se encuentra en la base de datos")
 
             conexion.Conexion.mostrardrivers()
             eventos.Eventos.limpiar()

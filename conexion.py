@@ -212,15 +212,7 @@ class Conexion:
                 nuevo_array = driver[:2] + driver[3:]
                 driver.pop(0)
                 if not drivers.Drivers.validar_datos(nuevo_array):
-                    mbox = QtWidgets.QMessageBox()
-                    mbox.setWindowTitle("Aviso")
-                    mbox.setIcon((QtWidgets.QMessageBox.Icon.Warning))
-                    mensaje = "Campos vacios"
-                    mbox.setText(mensaje)
-                    icon = QIcon('./img/taxiIcon.png')
-                    mbox.setWindowIcon(icon)
-                    mbox.exec()
-
+                    Ventanas.Ventanas.mensaje_warning("Campos Vacios")
 
                 else:
 
@@ -248,20 +240,10 @@ class Conexion:
                         mbox.exec()
 
                     else:
-                        mbox = QtWidgets.QMessageBox()
-                        mbox.setWindowTitle('Aviso')
-                        mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                        mbox.setText("El DNI ya se encuentra en la base de datos")
-                        mbox.exec()
+                        Ventanas.Ventanas.mensaje_warning("Dni ya esta en la base de datos")
 
             else:
-                mbox = QtWidgets.QMessageBox()
-                mbox.setWindowTitle('Aviso')
-                mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                mbox.setText("No se han modificado datos")
-                icon = QIcon('./img/taxiIcon.png')
-                mbox.setWindowIcon(icon)
-                mbox.exec()
+               Ventanas.Ventanas.mensaje_warning("No se han modificado los campos")
                 # select de los datos de los conductores de la base de datos
 
         except Exception as error:
@@ -396,21 +378,10 @@ class Conexion:
                 queryFecha.bindValue(':altadri', '')
                 if queryFecha.exec():
                     print("Se ha ejecutado la baja")
-                    mbox = QtWidgets.QMessageBox()
-                    mbox.setWindowTitle('Aviso')
-                    mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                    mbox.setText('Se ha dado de baja al empleado')
-                    icon = QIcon('./img/taxiIcon.png')
-                    mbox.setWindowIcon(icon)
-                    mbox.exec()
+                    Ventanas.Ventanas.ventana_info("Se ha dado de baja al conductor")
 
                 else:
-                    mbox = QtWidgets.QMessageBox()
-                    mbox.setWindowTitle('Aviso')
-                    mbox.setIcon(QtWidgets.QMessageBox.Icon.Warning)
-                    mbox.setText("No se ha podido dar de baja el conductor")
-                    mbox.exec()
-
+                    Ventanas.Ventanas.mensaje_warning("No se ha podido dar de baja el conductor")
 
 
         except Exception as error:

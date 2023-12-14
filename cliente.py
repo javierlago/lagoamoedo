@@ -8,22 +8,27 @@ import cliente
 import conexion
 import drivers
 import eventos
+import Ventanas
 
 import var
 from PyQt6 import QtGui, QtWidgets, QtCore
+from PyQt6.QtWidgets import QMessageBox
 
 
 class Cliente:
+
+
     def baja_cliente(self):
-        try:
-            cliente_baja = cliente.Cliente.recuperar_datos()
-            if cliente.Cliente.validar_datos(cliente_baja):
-                conexion.Conexion.borrarCliente(cliente_baja[0])
-                conexion.Conexion.mostrarclientes()
-            else:
-                Ventanas.Ventanas.mensaje_warning("Campos vacios")
-        except Exception as error:
-            print("Error en el metodo baja_cliente",error)
+            try:
+
+                cliente_baja = cliente.Cliente.recuperar_datos()
+                if cliente.Cliente.validar_datos(cliente_baja):
+                    conexion.Conexion.borrarCliente(cliente_baja[0])
+                    conexion.Conexion.mostrarclientes()
+                else:
+                   Ventanas.Ventanas.mensaje_warning("Campos Vacios")
+            except Exception as error:
+                print("Error en el metodo baja_cliente",error)
 
 
 
@@ -180,8 +185,8 @@ class Cliente:
                     index += 1
         except Exception as error:
             print("Error completar tabla ", error)
-            
-            
+
+
     def get_from_tab(self):
         try:
             # Limpiar el estilo de todas las filas
@@ -241,7 +246,7 @@ class Cliente:
 
                 for fila in range(var.ui.tabClientes.rowCount()):
                     if var.ui.tabClientes.item(fila, 0) == str(registro[0]):
-                        
+
                         var.ui.tabClientes.setItem(fila, 0, QtWidgets.QTableWidgetItem(str(registro[0])))
                         var.ui.tabClientes.setItem(fila, 1, QtWidgets.QTableWidgetItem(str(registro[1])))
                         var.ui.tabClientes.setItem(fila, 2, QtWidgets.QTableWidgetItem(str(registro[2])))
@@ -287,10 +292,9 @@ class Cliente:
             var.ui.tabClientes.scrollToItem(obteivo)
         except Exception as error:
             print("Error al cargar segun el DNI", error)
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+

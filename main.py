@@ -1,16 +1,12 @@
+import locale
 import sys
 
-from PyQt6.QtCore import Qt
-from PyQt6.QtWidgets import QApplication, QWidget
+from PyQt6.QtWidgets import QApplication
 
 import cliente
 import conexion
-import drivers
-import eventos
 from MainWindow import *
 from windowaux import *
-import locale
-import var
 
 locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 locale.setlocale(locale.LC_MONETARY, 'es_ES.UTF-8')

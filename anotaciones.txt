@@ -1,0 +1,1 @@
+Cuando modificas un usuario salta la ventana de que ya existe(verificar boton modificar)

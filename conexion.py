@@ -381,7 +381,8 @@ class Conexion:
 
                 else:
                     Ventanas.Ventanas.mensaje_warning("No se ha podido dar de baja el conductor")
-
+            else:
+                Ventanas.Ventanas.mensaje_warning("El empleado ya esta dado de baja")
 
         except Exception as error:
             print("No se ha podido dar de baja al conductor", error)

@@ -54,9 +54,9 @@ class Main(QtWidgets.QMainWindow):
         botones
         '''
 
-        var.ui.btnCalendar.clicked.connect(lambda : drivers.Drivers.set_calendar("fecha alta driver"))
+        var.ui.btnCalendar.clicked.connect(lambda: drivers.Drivers.set_calendar("fecha alta driver"))
         var.ui.btnCalendar.clicked.connect(eventos.Eventos.abrir_calendar)
-        var.ui.btnCalendar_2.clicked.connect(lambda : drivers.Drivers.set_calendar("fecha baja driver"))
+        var.ui.btnCalendar_2.clicked.connect(lambda: drivers.Drivers.set_calendar("fecha baja driver"))
         var.ui.btnCalendar_2.clicked.connect(eventos.Eventos.abrir_calendar)
         var.ui.btnCalendar_Cliente.clicked.connect(lambda: drivers.Drivers.set_calendar("fecha baja cliente"))
         var.ui.btnCalendar_Cliente.clicked.connect(eventos.Eventos.abrir_calendar)

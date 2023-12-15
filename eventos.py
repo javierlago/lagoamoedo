@@ -85,26 +85,24 @@ class Eventos:
                     else:
                         new = []
                         for j in range(columnas):
+                            dato = str(datos.cell_value(i, j))
+                            print(dato)
                             if j == 1:
-                                dato = str(datos.cell_value(i, j))
-                                dato = xlrd.xldate.xldate_as_datetime(datos.cell_value(i, j),
-                                                                      documento.datemode).strftime('%d/%m/%Y')
-                                new.append(str(dato))
-                            else:
-                                new.append(str(datos.cell_value(i, j)))
+                                if datos.cell_type(i, j) == xlrd.XL_CELL_DATE:
+                                    dato = xlrd.xldate.xldate_as_datetime(dato, documento.datemode).strftime('%d/%m/%Y')
+
+                            new.append(str(dato))
                         if drivers.Drivers.validar_dni(str(new[0])):
                             new.append('')
                             conexion.Conexion.guardardri(new)
                         elif estado == 0:
                             Ventanas.Ventanas.ventana_info('Hay DNI incorrectos')
+                            estado = 1
                     if i == filas - 1:
-                        Ventanas.Ventanas.ventana_info('Empleados dado de alta')
+                        Ventanas.Ventanas.ventana_info('Empleados dados de alta')
             conexion.Conexion.mostrardrivers()
-
-
-
-        except Exception as error:
-            print("Error al importar datos", error)
+        except Exception as e:
+            print(f"Error al importar datos: {str(e)}")
 
     def exportar_datos_xls(self):
         try:
@@ -133,6 +131,7 @@ class Eventos:
                 for j, registro in enumerate(registros, 1):
                     for i, valor in enumerate(registro):
                         sheet1.write(j, i, valor)
+                wb.save(directorio)
             Ventanas.Ventanas.ventana_info("Se ha exportado los datos correctamente")
 
 

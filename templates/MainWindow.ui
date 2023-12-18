@@ -3332,10 +3332,20 @@ background-color: rgb(247, 181, 0);</string>
     <addaction name="separator"/>
     <addaction name="actionExportar_Datos_XLS"/>
     <addaction name="actionImportar_Datos_XLS"/>
+    <addaction name="separator"/>
     <addaction name="actionImportar_Datos_Cliente_XLS"/>
+   </widget>
+   <widget class="QMenu" name="menuInformes">
+    <property name="title">
+     <string>Informes</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionListarConductores"/>
+    <addaction name="actionListar_Clientes"/>
    </widget>
    <addaction name="menuArchivo"/>
    <addaction name="menuHerramientas"/>
+   <addaction name="menuInformes"/>
    <addaction name="menuHelp"/>
   </widget>
   <action name="actionAcerca_de">
@@ -3411,6 +3421,16 @@ background-color: rgb(247, 181, 0);</string>
   <action name="actionImportar_Datos_Cliente_XLS">
    <property name="text">
     <string>Importar Datos Cliente XLS</string>
+   </property>
+  </action>
+  <action name="actionListarConductores">
+   <property name="text">
+    <string>ListarConductores</string>
+   </property>
+  </action>
+  <action name="actionListar_Clientes">
+   <property name="text">
+    <string>Listar Clientes</string>
    </property>
   </action>
  </widget>

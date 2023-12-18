@@ -6,6 +6,7 @@ from PyQt6.QtWidgets import QApplication
 import cliente
 import conexion
 import eventos
+import informes
 from MainWindow import *
 from windowaux import *
 
@@ -61,6 +62,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnCalendar_Cliente.clicked.connect(lambda: drivers.Drivers.set_calendar("fecha baja cliente"))
         var.ui.btnCalendar_Cliente.clicked.connect(eventos.Eventos.abrir_calendar)
         var.ui.actionAcerca_de.triggered.connect(eventos.Eventos.abrir_acerca_de)
+        var.ui.actionListar_Clientes.triggered.connect(informes.informes.reportclientes)
         '''
         
         botones Driver

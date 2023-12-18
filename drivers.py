@@ -45,8 +45,10 @@ class Drivers:
         try:
             obteivo = None
             dni = var.ui.txtDni.text()
-            drivers.Drivers.carga_driver(conexion.Conexion.buscar_segun_dni(dni))
             registro = conexion.Conexion.buscar_segun_dni(dni)
+            if registro != None:
+                drivers.Drivers.carga_driver(conexion.Conexion.buscar_segun_dni(dni))
+
             if registro[11] == '':
                 var.ui.rbtAlta.setChecked(True)
             else:

@@ -192,15 +192,7 @@ class Cliente:
         try:
             print(registro)
             if registro == None:
-                msg = QtWidgets.QMessageBox()
-                msg.setWindowTitle('Aviso')
-                msg.setIcon(QtWidgets.QMessageBox.Icon.Information)
-                msg.setText('El dni no se encuentra en la base de datos')
-                msg.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Ok)
-                msg.button(QtWidgets.QMessageBox.StandardButton.Ok).setText('Aceptar')
-                icon = QIcon('./img/taxiIcon.png')
-                msg.setWindowIcon(icon)
-                msg.exec()
+                Ventanas.Ventanas.mensaje_warning('El dni no se encuentra en la base de datos')
             else:
                 datos = [var.ui.lblCodDB_Cliente, var.ui.txtDni_3, var.ui.txtRazonSocial, var.ui.txtDireccion_Cliente,
                          var.ui.txtMovil_Cliente, var.ui.cmbProvincia_Cliente,
@@ -242,7 +234,7 @@ class Cliente:
 
     def get_from_dni(self):
         try:
-            obteivo = None
+            objetivo = None
             dni = var.ui.txtDni_3.text()
             cliente.Cliente.carga_cliente(conexion.Conexion.buscar_segun_dni_cliente(dni))
             registro = conexion.Conexion.buscar_segun_dni_cliente(dni)
@@ -260,7 +252,8 @@ class Cliente:
                         current_item = var.ui.tabClientes.item(row, col)
                         if current_item is not None:
                             current_item.setBackground(brush)
-                            obteivo = current_item
-            var.ui.tabClientes.scrollToItem(obteivo)
+                            objetivo = current_item
+            if objetivo !=None:
+                var.ui.tabClientes.scrollToItem(objetivo)
         except Exception as error:
             print("Error al cargar segun el DNI", error)

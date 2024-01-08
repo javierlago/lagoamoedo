@@ -25,50 +25,36 @@ class informes:
             informes.foot_informe(titulo)
             items = ['Codigo','DNI','Razon','Municipico','Provincia','Baja Cliente']
             def print_Titulo(items):
-                var.report.drawString(60,675,str(items[0]))
-                var.report.drawString(120,675,str(items[1]))
-                var.report.drawString(180,675,str(items[2]))
-                var.report.drawString(240,675,str(items[3]))
-                var.report.drawString(300,675,str(items[4]))
-                var.report.drawString(360,675,str(items[5]))
-                var.report.line(50, 670, 50, 670)
+                var.report.drawString(60,675,str(items[0])) #codigo
+                var.report.drawString(120,675,str(items[1])) #dni
+                var.report.drawString(180,675,str(items[2])) #razon
+                var.report.drawString(300,675,str(items[3])) #Municipio
+                var.report.drawString(410,675,str(items[4])) #Provincia
+                var.report.drawString(480,675,str(items[5])) #Fecha
+                var.report.line(50, 670, 525, 670)
             print_Titulo(items)
 
             #Obtencion de datos de la base de datos
             query = QtSql.QSqlQuery()
             query.prepare('select codigo ,dnicliente,razon, muniCliente, provCliente,bajaCliente from listadoclientes order by razon')
-            var.report.setFont('Helvetica',size=9)
+            var.report.setFont('Helvetica',size=7)
             if query.exec():
-                i = 55
-                j = 655
+                j = 635
                 while query.next():
-                    if j <=80:
+                    if j <= 80:
                         var.report.showPage() #creamos una pagina nueva
                         informes.top_informe(titulo)
                         informes.foot_informe(titulo)
                         print_Titulo(items)
-                        var.report.line(50,670,50,670)
-                        var.report.drawString(60, j, query.value(0))
-                        var.report.drawString(120, j, query.value(0))
-                        var.report.drawString(240, j, query.value(1))
-                        var.report.drawString(300, j, query.value(2))
-                        var.report.drawString(360, j, query.value(3))
-                        var.report.drawString(360, j, query.value(4))
-                        j +=10
-                    var.report.line(50, 670, 50, 670)
+                        var.report.setFont('Helvetica', size=7)
+                        j = 635
                     var.report.drawString(60, j, str(query.value(0)))
-                    var.report.drawString(120, j, str(query.value(0)))
-                    var.report.drawString(240, j, str(query.value(1)))
-                    var.report.drawString(300, j, str(query.value(2)))
-                    var.report.drawString(360, j, str(query.value(3)))
-                    var.report.drawString(360, j, str(query.value(4)))
-                    j += 10
-
-
-
-
-
-
+                    var.report.drawString(120, j, str(query.value(1)))
+                    var.report.drawString(180, j, str(query.value(2)))
+                    var.report.drawString(300, j, str(query.value(3)))
+                    var.report.drawString(410, j, str(query.value(4)))
+                    var.report.drawString(480, j, str(query.value(5)))
+                    j -= 20
 
 
             ## var.report.drawString(250,250,'Mi primer informe')
@@ -78,7 +64,7 @@ class informes:
                 if file.endswith(nombre):
                     os.startfile('%s%s' % (root_path, file))
         except Exception as e:
-            print(e)
+            print("error en la ejecucion del informe")
 
 
     def top_informe(titulo):

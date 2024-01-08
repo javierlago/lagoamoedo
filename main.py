@@ -73,6 +73,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.buttonGroup.buttonClicked.connect(conexion.Conexion.mostrardrivers)
         var.ui.buttonGroup.buttonClicked.connect(eventos.Eventos.limpiar)
         var.ui.btnBajaDriver.clicked.connect(drivers.Drivers.borrar_datos)
+        var.ui.actionListarConductores.triggered.connect(informes.informes.reportclientes)
 
         '''
         botones Clinete

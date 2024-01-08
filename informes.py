@@ -36,7 +36,7 @@ class informes:
 
             #Obtencion de datos de la base de datos
             query = QtSql.QSqlQuery()
-            query.prepare('select coddigo ,dnicliente,razon, muniCliente, provCliente,bajaCliente from listadoclientes order by razon')
+            query.prepare('select codigo ,dnicliente,razon, muniCliente, provCliente,bajaCliente from listadoclientes order by razon')
             var.report.setFont('Helvetica',size=9)
             if query.exec():
                 i = 55
@@ -49,12 +49,20 @@ class informes:
                         print_Titulo(items)
                         var.report.line(50,670,50,670)
                         var.report.drawString(60, j, query.value(0))
-                        var.report.drawString(120, 675, query.value(0))
-                        var.report.drawString(240, 675, query.value(1))
-                        var.report.drawString(300, 675, query.value(2))
-                        var.report.drawString(360, 675, query.value(3))
-                        var.report.drawString(360, 675, query.value(4))
-
+                        var.report.drawString(120, j, query.value(0))
+                        var.report.drawString(240, j, query.value(1))
+                        var.report.drawString(300, j, query.value(2))
+                        var.report.drawString(360, j, query.value(3))
+                        var.report.drawString(360, j, query.value(4))
+                        j +=10
+                    var.report.line(50, 670, 50, 670)
+                    var.report.drawString(60, j, str(query.value(0)))
+                    var.report.drawString(120, j, str(query.value(0)))
+                    var.report.drawString(240, j, str(query.value(1)))
+                    var.report.drawString(300, j, str(query.value(2)))
+                    var.report.drawString(360, j, str(query.value(3)))
+                    var.report.drawString(360, j, str(query.value(4)))
+                    j += 10
 
 
 

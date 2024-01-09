@@ -112,7 +112,7 @@ class informes:
                     var.report.drawString(410, y, str(query.value(4)))
                     var.report.drawString(480, y, str(query.value(5)))
                     y -= 20
-            ##var.report.save()
+            var.report.save()
             root_path = '.\\informes\\'
             for file in os.listdir(root_path):
                 if file.endswith(nombre):
@@ -144,7 +144,6 @@ class informes:
     def foot_informe(titulo):
 
         try:
-
             var.report.line(50, 50, 525, 50)
             fecha = datetime.today()
             fecha = fecha.strftime('%d-%m-%Y %H:%M:%S')

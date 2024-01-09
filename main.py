@@ -62,7 +62,6 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnCalendar_Cliente.clicked.connect(lambda: drivers.Drivers.set_calendar("fecha baja cliente"))
         var.ui.btnCalendar_Cliente.clicked.connect(eventos.Eventos.abrir_calendar)
         var.ui.actionAcerca_de.triggered.connect(eventos.Eventos.abrir_acerca_de)
-        var.ui.actionListar_Clientes.triggered.connect(informes.informes.reportclientes)
         '''
         
         botones Driver
@@ -73,7 +72,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.buttonGroup.buttonClicked.connect(conexion.Conexion.mostrardrivers)
         var.ui.buttonGroup.buttonClicked.connect(eventos.Eventos.limpiar)
         var.ui.btnBajaDriver.clicked.connect(drivers.Drivers.borrar_datos)
-        var.ui.actionListarConductores.triggered.connect(informes.informes.reportclientes)
+        var.ui.actionListarConductores.triggered.connect(informes.informes.report_conductores)
 
         '''
         botones Clinete
@@ -84,6 +83,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnBajaCliente.clicked.connect(cliente.Cliente.baja_cliente)
         var.ui.botonesDeCliente.buttonClicked.connect(conexion.Conexion.mostrarclientes)
         var.ui.botonesDeCliente.buttonClicked.connect(eventos.Eventos.limpiar)
+        var.ui.actionListar_Clientes.triggered.connect(informes.informes.reportclientes)
 
 
 

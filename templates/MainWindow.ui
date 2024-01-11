@@ -1876,6 +1876,89 @@ background-color: rgb(247, 181, 0);</string>
            </item>
           </layout>
          </widget>
+         <widget class="QWidget" name="tabFacturacion">
+          <attribute name="title">
+           <string>Facturación</string>
+          </attribute>
+          <widget class="QFrame" name="frame_2">
+           <property name="geometry">
+            <rect>
+             <x>19</x>
+             <y>19</y>
+             <width>1201</width>
+             <height>141</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <widget class="QLineEdit" name="txt_cif_cliente">
+            <property name="geometry">
+             <rect>
+              <x>100</x>
+              <y>20</y>
+              <width>151</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_Cliente">
+            <property name="geometry">
+             <rect>
+              <x>40</x>
+              <y>20</y>
+              <width>47</width>
+              <height>13</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Cliente</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="btnBuscar_Cli_facturacion">
+            <property name="geometry">
+             <rect>
+              <x>260</x>
+              <y>20</y>
+              <width>24</width>
+              <height>24</height>
+             </rect>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border-radius:2px; 
+background-color: rgb(225, 225, 225);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../img/lupa2.png</normaloff>../img/lupa2.png</iconset>
+            </property>
+           </widget>
+          </widget>
+         </widget>
          <widget class="QWidget" name="tabCars">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Maximum" vsizetype="Maximum">

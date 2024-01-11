@@ -194,6 +194,7 @@ class Cliente:
             if registro == None:
                 Ventanas.Ventanas.mensaje_warning('El dni no se encuentra en la base de datos')
             else:
+                var.ui.txt_cif_cliente.setText(str(registro[1]))
                 datos = [var.ui.lblCodDB_Cliente, var.ui.txtDni_3, var.ui.txtRazonSocial, var.ui.txtDireccion_Cliente,
                          var.ui.txtMovil_Cliente, var.ui.cmbProvincia_Cliente,
                          var.ui.cmbLocalidad_Cliente, var.ui.txtDate_Cliente]
@@ -235,7 +236,10 @@ class Cliente:
     def get_from_dni(self):
         try:
             objetivo = None
-            dni = var.ui.txtDni_3.text()
+            if var.ui.txtDni_3.text() is not None:
+                dni = var.ui.txtDni_3.text()
+            elif var.ui.txt_cif_cliente is not None:
+                dni = var.ui.txt_cif_cliente
             cliente.Cliente.carga_cliente(conexion.Conexion.buscar_segun_dni_cliente(dni))
             registro = conexion.Conexion.buscar_segun_dni_cliente(dni)
             if registro[7] == '':

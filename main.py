@@ -84,8 +84,10 @@ class Main(QtWidgets.QMainWindow):
         var.ui.botonesDeCliente.buttonClicked.connect(conexion.Conexion.mostrarclientes)
         var.ui.botonesDeCliente.buttonClicked.connect(eventos.Eventos.limpiar)
         var.ui.actionListar_Clientes.triggered.connect(informes.informes.reportclientes)
-
-
+        '''
+              botones Clinete
+        '''
+        var.ui.btnBuscar_Cli_facturacion.clicked.connect(cliente.Cliente.get_from_dni)
 
 
         '''

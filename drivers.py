@@ -217,6 +217,8 @@ class Drivers:
              var.ui.txtDate_2.setText(str(data))
             elif drivers.Drivers.param == "fecha baja cliente":
                 var.ui.txtDate_Cliente.setText(str(data))
+            elif drivers.Drivers.param == "fecha factura":
+                var.ui.txt_fecha_factura.setText(str(data))
             var.calendar.hide()
         except Exception as error:
             print("erro en carga fecha", error)

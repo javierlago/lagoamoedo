@@ -6,8 +6,10 @@ from PyQt6.QtWidgets import QApplication
 import cliente
 import conexion
 import eventos
+import facturacion
 import informes
 from MainWindow import *
+from facturacion import *
 from windowaux import *
 
 locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
@@ -25,9 +27,11 @@ class Main(QtWidgets.QMainWindow):
         var.acercade = Acerca()
         var.ventana_salir = SalirVentana()
         var.dlg_abrir = FileDialogAbrir()
+        var.facturacion = facturacion()
         conexion.Conexion.conexion()
         conexion.Conexion.cargaProv()
         conexion.Conexion.cargaProv_clientes()
+        conexion.Conexion.selDrivers()
         conexion.Conexion.mostrardrivers()
         conexion.Conexion.mostrarclientes()
         var.ui.frame.hide()
@@ -61,8 +65,15 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btnCalendar_2.clicked.connect(eventos.Eventos.abrir_calendar)
         var.ui.btnCalendar_Cliente.clicked.connect(lambda: drivers.Drivers.set_calendar("fecha baja cliente"))
         var.ui.btnCalendar_Cliente.clicked.connect(eventos.Eventos.abrir_calendar)
+        var.ui.btn_fecha_factura.clicked.connect(lambda: drivers.Drivers.set_calendar("fecha factura"))
+        var.ui.btn_fecha_factura.clicked.connect(eventos.Eventos.abrir_calendar)
         var.ui.actionAcerca_de.triggered.connect(eventos.Eventos.abrir_acerca_de)
         '''
+      
+        
+        
+        
+        
         
         botones Driver
         '''
@@ -75,7 +86,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.actionListarConductores.triggered.connect(informes.informes.report_conductores)
 
         '''
-        botones Clinete
+        botones Cliente
         '''
         var.ui.btnaltaCliente.clicked.connect(cliente.Cliente.alta_cliente)
         var.ui.btnBuscarCliente.clicked.connect(cliente.Cliente.get_from_dni)
@@ -84,12 +95,11 @@ class Main(QtWidgets.QMainWindow):
         var.ui.botonesDeCliente.buttonClicked.connect(conexion.Conexion.mostrarclientes)
         var.ui.botonesDeCliente.buttonClicked.connect(eventos.Eventos.limpiar)
         var.ui.actionListar_Clientes.triggered.connect(informes.informes.reportclientes)
-        '''
-              botones Clinete
-        '''
         var.ui.btnBuscar_Cli_facturacion.clicked.connect(cliente.Cliente.get_from_dni)
-
-
+        '''
+              botones Facturacion
+              '''
+        var.ui.btn_facturar.clicked.connect(conexion.Conexion.insert_factura)
         '''
         zona de eventos salir
         '''

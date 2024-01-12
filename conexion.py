@@ -7,6 +7,7 @@ import Ventanas
 import cliente
 import conexion
 import drivers
+import facturacion
 import var
 
 
@@ -131,6 +132,21 @@ class Conexion:
 
         except Exception as error:
             print("Error en la carga de municipios", error)
+    ### Cargar los conductores en el combo box
+    def selDrivers(self=None):
+        try:
+            var.ui.cmb_listado_conductores.clear()
+            query = QtSql.QSqlQuery()
+            query.prepare("select codigo, apeldri from drivers where bajadri = '' order by codigo")
+            if query.exec():
+                while query.next():
+                    var.ui.cmb_listado_conductores.addItem( str(query.value(0)) + "  ||  " + str(query.value(1)))
+        except Exception as error:
+            print("Error en la carga de municipios", error)
+
+
+
+
 
     def selMuni_cliente(self=None):
         try:
@@ -457,3 +473,25 @@ class Conexion:
 
         except Exception as error:
             print("Error en el método de validar si DNI existe:", error)
+
+
+        ### ZONA FACTURACION ###
+
+    def insert_factura(self):
+            try:
+                registro = facturacion.facturacion.crear_registro()
+                for i in registro:
+                    if i == "":
+                      Ventanas.Ventanas.mensaje_warning("Campos Vacios")
+                      return
+
+                query = QtSql.QSqlQuery()
+                query.prepare('insert into facturas (dniCliente,fechaFactura, idConductor) VALUES (:dniCliente, :fechaFactura, :idConductor)')
+                query.bindValue(':dniCliente',registro[0])
+                query.bindValue(':fechaFactura',registro[1])
+                query.bindValue(':idConductor',registro[2])
+                query.exec()
+                Ventanas.Ventanas.ventana_info("Se ha creado una factura")
+            except Exception as error:
+                Ventanas.Ventanas.mensaje_warning("No se ha insertado nada en la tabla")
+                print("Error en la insercion en la tabla de facturas",error)

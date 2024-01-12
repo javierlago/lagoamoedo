@@ -1883,8 +1883,8 @@ background-color: rgb(247, 181, 0);</string>
           <widget class="QFrame" name="frame_2">
            <property name="geometry">
             <rect>
-             <x>19</x>
-             <y>19</y>
+             <x>20</x>
+             <y>30</y>
              <width>1201</width>
              <height>141</height>
             </rect>
@@ -1901,8 +1901,8 @@ background-color: rgb(247, 181, 0);</string>
            <widget class="QLineEdit" name="txt_cif_cliente">
             <property name="geometry">
              <rect>
-              <x>100</x>
-              <y>20</y>
+              <x>60</x>
+              <y>50</y>
               <width>151</width>
               <height>20</height>
              </rect>
@@ -1914,8 +1914,8 @@ background-color: rgb(247, 181, 0);</string>
            <widget class="QLabel" name="label_Cliente">
             <property name="geometry">
              <rect>
-              <x>40</x>
-              <y>20</y>
+              <x>10</x>
+              <y>50</y>
               <width>47</width>
               <height>13</height>
              </rect>
@@ -1927,8 +1927,8 @@ background-color: rgb(247, 181, 0);</string>
            <widget class="QPushButton" name="btnBuscar_Cli_facturacion">
             <property name="geometry">
              <rect>
-              <x>260</x>
-              <y>20</y>
+              <x>220</x>
+              <y>50</y>
               <width>24</width>
               <height>24</height>
              </rect>
@@ -1955,6 +1955,140 @@ background-color: rgb(225, 225, 225);</string>
             <property name="icon">
              <iconset>
               <normaloff>../img/lupa2.png</normaloff>../img/lupa2.png</iconset>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="btn_fecha_factura">
+            <property name="geometry">
+             <rect>
+              <x>550</x>
+              <y>50</y>
+              <width>24</width>
+              <height>24</height>
+             </rect>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>24</width>
+              <height>24</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border-radius:2px; 
+background-color: rgb(225, 225, 225);</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>../img/calendario.png</normaloff>../img/calendario.png</iconset>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_fecha_factuta">
+            <property name="geometry">
+             <rect>
+              <x>276</x>
+              <y>50</y>
+              <width>101</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Fecha factura:</string>
+            </property>
+           </widget>
+           <widget class="QLineEdit" name="txt_fecha_factura">
+            <property name="geometry">
+             <rect>
+              <x>390</x>
+              <y>50</y>
+              <width>151</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_num_factura">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>20</y>
+              <width>81</width>
+              <height>16</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Nº Factura:</string>
+            </property>
+           </widget>
+           <widget class="QLineEdit" name="txt_numero_factura">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="geometry">
+             <rect>
+              <x>100</x>
+              <y>20</y>
+              <width>101</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">
+background-color: rgb(255, 255, 127);</string>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+           <widget class="QLabel" name="label_conductor">
+            <property name="geometry">
+             <rect>
+              <x>300</x>
+              <y>20</y>
+              <width>81</width>
+              <height>16</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Conductores:</string>
+            </property>
+           </widget>
+           <widget class="QComboBox" name="cmb_listado_conductores">
+            <property name="geometry">
+             <rect>
+              <x>400</x>
+              <y>20</y>
+              <width>87</width>
+              <height>22</height>
+             </rect>
+            </property>
+            <property name="sizeAdjustPolicy">
+             <enum>QComboBox::AdjustToContents</enum>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="btn_facturar">
+            <property name="geometry">
+             <rect>
+              <x>440</x>
+              <y>110</y>
+              <width>75</width>
+              <height>23</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Facturar</string>
             </property>
            </widget>
           </widget>

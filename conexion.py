@@ -474,6 +474,22 @@ class Conexion:
         except Exception as error:
             print("Error en el método de validar si DNI existe:", error)
 
+    def dni_existe_no_esta_deja(dni):
+        try:
+            query = QtSql.QSqlQuery()
+            query.prepare("SELECT * FROM listadoClientes WHERE dnicliente = :dni AND bajacliente IS ''")
+            query.bindValue(":dni", dni)
+
+            if query.exec() and query.next():
+                # el dni exite en la base de datos y no esta de baja
+                return True
+            else:
+                # El DNI no se encuentra en la base de datos, devuelve False
+                return False
+
+        except Exception as error:
+            print("Error en el método de validar si DNI existe y el cliente no esta dado de baja", error)
+
 
         ### ZONA FACTURACION ###
 
@@ -485,6 +501,12 @@ class Conexion:
                       Ventanas.Ventanas.mensaje_warning("Campos Vacios")
                       return
 
+                if conexion.Conexion.dni_existe(registro[0]) is False:
+                    Ventanas.Ventanas.mensaje_warning("Cliente no se encuentra en la base de datos")
+                    return
+                if conexion.Conexion.dni_existe_no_esta_deja(registro[0]) is False:
+                    Ventanas.Ventanas.mensaje_warning("El cliente del que deseas facturar esta dado de baja")
+                    return
                 query = QtSql.QSqlQuery()
                 query.prepare('insert into facturas (dniCliente,fechaFactura, idConductor) VALUES (:dniCliente, :fechaFactura, :idConductor)')
                 query.bindValue(':dniCliente',registro[0])
@@ -492,6 +514,7 @@ class Conexion:
                 query.bindValue(':idConductor',registro[2])
                 query.exec()
                 Ventanas.Ventanas.ventana_info("Se ha creado una factura")
+                conexion.Conexion.cargar_facturas()
             except Exception as error:
                 Ventanas.Ventanas.mensaje_warning("No se ha insertado nada en la tabla")
                 print("Error en la insercion en la tabla de facturas",error)

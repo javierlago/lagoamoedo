@@ -34,6 +34,7 @@ class Main(QtWidgets.QMainWindow):
         conexion.Conexion.selDrivers()
         conexion.Conexion.mostrardrivers()
         conexion.Conexion.mostrarclientes()
+        conexion.Conexion.cargar_facturas()
         var.ui.frame.hide()
 
 
@@ -142,6 +143,7 @@ class Main(QtWidgets.QMainWindow):
         '''
         eventos.Eventos.resize_tabDriver2(self)
         eventos.Eventos.resize_tabClientes(self)
+        eventos.Eventos.resize_tab_facturas(self)
         var.ui.tabDriver2.clicked.connect(drivers.Drivers.get_from_tab)
         var.ui.tabClientes.clicked.connect(cliente.Cliente.get_from_tab)
 

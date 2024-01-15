@@ -150,6 +150,7 @@ class Cliente:
             else:
                 print(nuevoRegistros)
                 index = 0
+                print(type(var.ui.tabClientes))
                 for registro in nuevoRegistros:
                     var.ui.tabClientes.setRowCount(index + 1)
                     var.ui.tabClientes.setItem(index, 0, QtWidgets.QTableWidgetItem(str(registro[0])))

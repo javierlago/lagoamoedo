@@ -309,6 +309,17 @@ class Eventos:
             print("error resize tab driver", error)
 
     @staticmethod
+    def resize_tab_facturas(self):
+        try:
+            header = var.ui.tab_facturas.horizontalHeader();
+            header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeMode.ResizeToContents)
+            header.setSectionResizeMode(1, QtWidgets.QHeaderView.ResizeMode.Stretch)
+
+
+        except Exception as error:
+            print("error resize tab driver", error)
+
+    @staticmethod
     def format_caja_texto(self=None):
         try:
             var.ui.txtDni_2.setText(var.ui.txtDni_2.text().title())

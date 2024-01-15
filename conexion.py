@@ -495,3 +495,19 @@ class Conexion:
             except Exception as error:
                 Ventanas.Ventanas.mensaje_warning("No se ha insertado nada en la tabla")
                 print("Error en la insercion en la tabla de facturas",error)
+
+    def cargar_facturas(self=None):
+
+        try:
+            registros_facturas = []
+            query = QtSql.QSqlQuery()
+            query.prepare('select  numFactura,dniCliente from facturas')
+            if query.exec():
+                while query.next():
+                    row = row = [query.value(i) for i in range(query.record().count())]
+                    registros_facturas.append(row)
+            print(registros_facturas)
+            facturacion.facturacion.cargartabla(registros_facturas)
+
+        except Exception as error:
+            print("Error al cargar facturas")

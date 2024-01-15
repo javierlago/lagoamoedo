@@ -42,7 +42,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../../../.designer/img/taxiIcon.png</normaloff>../../../.designer/img/taxiIcon.png</iconset>
+    <normaloff>../../../../../.designer/img/taxiIcon.png</normaloff>../../../../../.designer/img/taxiIcon.png</iconset>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
@@ -85,14 +85,14 @@
        <item>
         <widget class="QTabWidget" name="PanPrincipal">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
          <property name="minimumSize">
           <size>
-           <width>1186</width>
+           <width>1187</width>
            <height>491</height>
           </size>
          </property>
@@ -520,7 +520,7 @@ background-color: rgb(225, 225, 225);</string>
                               </property>
                               <property name="icon">
                                <iconset>
-                                <normaloff>../../../.designer/img/lupa2.png</normaloff>../../../.designer/img/lupa2.png</iconset>
+                                <normaloff>../../../../../.designer/img/lupa2.png</normaloff>../../../../../.designer/img/lupa2.png</iconset>
                               </property>
                              </widget>
                             </item>
@@ -909,7 +909,7 @@ background-color: rgb(225, 225, 225);</string>
                             </property>
                             <property name="icon">
                              <iconset>
-                              <normaloff>../../../.designer/img/calendario.png</normaloff>../../../.designer/img/calendario.png</iconset>
+                              <normaloff>../../../../../.designer/img/calendario.png</normaloff>../../../../../.designer/img/calendario.png</iconset>
                             </property>
                             <property name="iconSize">
                              <size>
@@ -1055,7 +1055,7 @@ background-color: rgb(225, 225, 225);</string>
                                </property>
                                <property name="icon">
                                 <iconset>
-                                 <normaloff>../../../.designer/img/calendario.png</normaloff>../../../.designer/img/calendario.png</iconset>
+                                 <normaloff>../../../../../.designer/img/calendario.png</normaloff>../../../../../.designer/img/calendario.png</iconset>
                                </property>
                                <property name="iconSize">
                                 <size>
@@ -1898,7 +1898,7 @@ background-color: rgb(247, 181, 0);</string>
            <property name="frameShadow">
             <enum>QFrame::Raised</enum>
            </property>
-           <widget class="QWidget" name="">
+           <widget class="QWidget" name="layoutWidget">
             <property name="geometry">
              <rect>
               <x>210</x>
@@ -2004,7 +2004,7 @@ background-color: rgb(225, 225, 225);</string>
                    </property>
                    <property name="icon">
                     <iconset>
-                     <normaloff>../../../.designer/img/lupa2.png</normaloff>../../../.designer/img/lupa2.png</iconset>
+                     <normaloff>../../../../../.designer/img/lupa2.png</normaloff>../../../../../.designer/img/lupa2.png</iconset>
                    </property>
                   </widget>
                  </item>
@@ -2045,7 +2045,7 @@ background-color: rgb(225, 225, 225);</string>
                    </property>
                    <property name="icon">
                     <iconset>
-                     <normaloff>../../../.designer/img/calendario.png</normaloff>../../../.designer/img/calendario.png</iconset>
+                     <normaloff>../../../../../.designer/img/calendario.png</normaloff>../../../../../.designer/img/calendario.png</iconset>
                    </property>
                   </widget>
                  </item>
@@ -2075,6 +2075,96 @@ background-color: rgb(225, 225, 225);</string>
              </item>
             </layout>
            </widget>
+          </widget>
+          <widget class="QTableWidget" name="tab_facturas">
+           <property name="geometry">
+            <rect>
+             <x>30</x>
+             <y>220</y>
+             <width>200</width>
+             <height>470</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Alef</family>
+             <pointsize>10</pointsize>
+             <weight>75</weight>
+             <italic>false</italic>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"> QHeaderView::section {
+        background-color: rgb(247, 181, 0);
+        border-radius: 1px;
+        color: black;
+        font-weight: bold;
+        border: 1px solid black;
+    }
+
+ QTableView {
+ selection-background-color: rgb(247, 181, 0);
+}
+
+
+</string>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::NoFrame</enum>
+           </property>
+           <property name="lineWidth">
+            <number>0</number>
+           </property>
+           <property name="editTriggers">
+            <set>QAbstractItemView::NoEditTriggers</set>
+           </property>
+           <property name="dragDropMode">
+            <enum>QAbstractItemView::NoDragDrop</enum>
+           </property>
+           <property name="alternatingRowColors">
+            <bool>true</bool>
+           </property>
+           <property name="selectionMode">
+            <enum>QAbstractItemView::NoSelection</enum>
+           </property>
+           <property name="selectionBehavior">
+            <enum>QAbstractItemView::SelectRows</enum>
+           </property>
+           <attribute name="verticalHeaderVisible">
+            <bool>false</bool>
+           </attribute>
+           <column>
+            <property name="text">
+             <string>Factura</string>
+            </property>
+           </column>
+           <column>
+            <property name="text">
+             <string>Id Cliente</string>
+            </property>
+           </column>
           </widget>
          </widget>
          <widget class="QWidget" name="tabCars">
@@ -2476,7 +2566,7 @@ background-color: rgb(225, 225, 225);</string>
                           </property>
                           <property name="icon">
                            <iconset>
-                            <normaloff>../../../.designer/img/lupa2.png</normaloff>../../../.designer/img/lupa2.png</iconset>
+                            <normaloff>../../../../../.designer/img/lupa2.png</normaloff>../../../../../.designer/img/lupa2.png</iconset>
                           </property>
                          </widget>
                         </item>
@@ -2743,7 +2833,7 @@ background-color: rgb(225, 225, 225);</string>
                          </property>
                          <property name="icon">
                           <iconset>
-                           <normaloff>../../../.designer/img/calendario.png</normaloff>../../../.designer/img/calendario.png</iconset>
+                           <normaloff>../../../../../.designer/img/calendario.png</normaloff>../../../../../.designer/img/calendario.png</iconset>
                          </property>
                          <property name="iconSize">
                           <size>
@@ -3560,7 +3650,7 @@ background-color: rgb(247, 181, 0);</string>
   <action name="Salir">
    <property name="icon">
     <iconset>
-     <normaloff>../../../.designer/img/salir.png</normaloff>../../../.designer/img/salir.png</iconset>
+     <normaloff>../../../../../.designer/img/salir.png</normaloff>../../../../../.designer/img/salir.png</iconset>
    </property>
    <property name="text">
     <string>salir</string>
@@ -3569,7 +3659,7 @@ background-color: rgb(247, 181, 0);</string>
   <action name="btnLimpiar">
    <property name="icon">
     <iconset>
-     <normaloff>../../../.designer/img/pincel.png</normaloff>../../../.designer/img/pincel.png</iconset>
+     <normaloff>../../../../../.designer/img/pincel.png</normaloff>../../../../../.designer/img/pincel.png</iconset>
    </property>
    <property name="text">
     <string/>
@@ -3588,7 +3678,7 @@ background-color: rgb(247, 181, 0);</string>
   <action name="actionCrear_Copia_Seguridad">
    <property name="icon">
     <iconset>
-     <normaloff>../../../.designer/img/actualizar.png</normaloff>../../../.designer/img/actualizar.png</iconset>
+     <normaloff>../../../../../.designer/img/actualizar.png</normaloff>../../../../../.designer/img/actualizar.png</iconset>
    </property>
    <property name="text">
     <string>Crear Copia Seguridad</string>
@@ -3600,7 +3690,7 @@ background-color: rgb(247, 181, 0);</string>
   <action name="actionRestarurar_Copia">
    <property name="icon">
     <iconset>
-     <normaloff>../../../.designer/img/restaura_bbdd.png</normaloff>../../../.designer/img/restaura_bbdd.png</iconset>
+     <normaloff>../../../../../.designer/img/restaura_bbdd.png</normaloff>../../../../../.designer/img/restaura_bbdd.png</iconset>
    </property>
    <property name="text">
     <string>Restarurar Copia</string>

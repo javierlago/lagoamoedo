@@ -1,5 +1,6 @@
+from PyQt6.QtGui import QBrush, QColor
 from PyQt6.uic.properties import QtWidgets, QtCore
-from PyQt6 import QtGui, QtWidgets, QtCore
+from PyQt6 import QtGui, QtWidgets, QtCore, QtSql
 import conexion
 import var
 
@@ -30,3 +31,35 @@ class facturacion:
                     index += 1
         except Exception as error:
             print("Error completar tabla ", error)
+
+    def mostrar_datos_factura(self):
+        try:
+            # Limpiar el estilo de todas las filas
+            for r in range(var.ui.tab_facturas.rowCount()):
+                for c in range(var.ui.tab_facturas.columnCount()):
+                    item = var.ui.tab_facturas.item(r, c)
+                    if item is not None:
+                        item.setBackground(QBrush(QColor(0, 0, 0, 0)))
+
+            # Establecer el fondo amarillo solo para la fila seleccionada
+            row = var.ui.tab_facturas.currentRow()
+
+            codigo = var.ui.tab_facturas.item(row, 3).text()
+            print(codigo)
+
+            for c in range(var.ui.tab_facturas.columnCount()):
+                item = var.ui.tab_facturas.item(row, c)
+                if item is not None:
+                    item.setBackground(QBrush(QColor("#CCA963")))
+            registro = conexion.Conexion.buscar_segun_codigo(codigo)
+            print(registro)
+
+
+
+        except Exception as error:
+            print("Error al cargar desde la tabla", error)
+
+
+
+
+

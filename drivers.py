@@ -21,8 +21,8 @@ class Drivers:
     def borrar_datos(self):
         try:
             dni = var.ui.txtDni.text()
-            print(dni)
             conexion.Conexion.borrarDriver(dni)
+            conexion.Conexion.cargar_cmb_drivers_facturacion()
             conexion.Conexion.mostrardrivers()
         except Exception as error:
             print("Error al dar de baja a un conductor", error)
@@ -139,7 +139,6 @@ class Drivers:
 
                 for fila in range(var.ui.tabDriver2.rowCount()):
                     if var.ui.tabDriver2.item(fila,0) == str(registro[0]):
-                        print("hola")
                         var.ui.tabDriver2.setItem(fila, 0, QtWidgets.QTableWidgetItem(str(registro[0])))
                         var.ui.tabDriver2.setItem(fila, 1, QtWidgets.QTableWidgetItem(str(registro[1])))
                         var.ui.tabDriver2.setItem(fila, 2, QtWidgets.QTableWidgetItem(str(registro[2])))
@@ -282,7 +281,7 @@ class Drivers:
 
         driver.append(str("-".join(licencias)))
         driver.append(var.ui.txtDate_2.text())
-        print(driver)
+
 
         return driver
 
@@ -296,10 +295,9 @@ class Drivers:
         try:
             driver = drivers.Drivers.recuperar_datos(self)
             driver.remove(driver[0])
-            print("printeo del metodo")
+
             print(drivers.Drivers.validar_datos(driver))
-            print("printeo del driver")
-            print (driver)
+
             if not drivers.Drivers.validar_datos(driver):
                 Ventanas.Ventanas.mensaje_warning("Campos vacíos")
             else:

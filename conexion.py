@@ -133,7 +133,7 @@ class Conexion:
         except Exception as error:
             print("Error en la carga de municipios", error)
     ### Cargar los conductores en el combo box
-    def selDrivers(self=None):
+    def cargar_cmb_drivers_facturacion(self=None):
         try:
             var.ui.cmb_listado_conductores.clear()
             query = QtSql.QSqlQuery()
@@ -291,10 +291,9 @@ class Conexion:
                 while query1.next():
                     row = [query1.value(i) for i in range(query1.record().count())]
                     registros.append(row)
-                    print(row)
+
             else:
                 print(query1.lastError())
-            print(registros)
             cliente.Cliente.cargartabla(registros)
 
 
@@ -331,7 +330,7 @@ class Conexion:
             print("Error en fichero conexion datos de 1 driver: ", error)
 
     def buscar_segun_dni(dni):
-        print(dni)
+
         try:
             registro = []
             query = QtSql.QSqlQuery()
@@ -344,7 +343,7 @@ class Conexion:
             else:
                 Ventanas.Ventanas.mensaje_warning("Dni no esta en la base de datos")
 
-            print(registro, "esto es el registro del metodo buscar segun dni")
+
             if registro[11] != '':
                 var.ui.rbtAlta.isChecked()
             return registro
@@ -353,7 +352,7 @@ class Conexion:
             print("Error al buscar segun dni: ", error)
 
     def buscar_segun_dni_cliente(dni):
-        print(dni)
+
         try:
             registro = []
             query = QtSql.QSqlQuery()
@@ -383,7 +382,7 @@ class Conexion:
             if query.exec():
                 while query.next():
                     valor = query.value(0)
-            print(valor)
+
             if valor == "":
                 fecha = datetime.now()
                 fecha = fecha.strftime("%d/%m/%Y")
@@ -393,7 +392,7 @@ class Conexion:
                 queryFecha.bindValue(':fechabaja', str(fecha))
                 queryFecha.bindValue(':altadri', '')
                 if queryFecha.exec():
-                    print("Se ha ejecutado la baja")
+
                     Ventanas.Ventanas.ventana_info("Se ha dado de baja al conductor")
 
                 else:
@@ -424,8 +423,6 @@ class Conexion:
     @staticmethod
     def guardarCliente(nuevoCliente):
         try:
-            print(nuevoCliente)
-            print(nuevoCliente[0])
             query = QtSql.QSqlQuery()
             query2 = QtSql.QSqlQuery()
             query2.prepare("select * from listadoClientes  where dnicliente = :dni")
@@ -474,7 +471,7 @@ class Conexion:
         except Exception as error:
             print("Error en el método de validar si DNI existe:", error)
 
-    def dni_existe_no_esta_deja(dni):
+    def dni_existe_no_esta_baja(dni):
         try:
             query = QtSql.QSqlQuery()
             query.prepare("SELECT * FROM listadoClientes WHERE dnicliente = :dni AND bajacliente IS ''")
@@ -504,7 +501,7 @@ class Conexion:
                 if conexion.Conexion.dni_existe(registro[0]) is False:
                     Ventanas.Ventanas.mensaje_warning("Cliente no se encuentra en la base de datos")
                     return
-                if conexion.Conexion.dni_existe_no_esta_deja(registro[0]) is False:
+                if conexion.Conexion.dni_existe_no_esta_baja(registro[0]) is False:
                     Ventanas.Ventanas.mensaje_warning("El cliente del que deseas facturar esta dado de baja")
                     return
                 query = QtSql.QSqlQuery()
@@ -529,7 +526,6 @@ class Conexion:
                 while query.next():
                     row = row = [query.value(i) for i in range(query.record().count())]
                     registros_facturas.append(row)
-            print(registros_facturas)
             facturacion.facturacion.cargartabla(registros_facturas)
 
         except Exception as error:

@@ -32,7 +32,7 @@ class Cliente:
     def alta_cliente(self):
         try:
             new_cliente = cliente.Cliente.recuperar_datos(self)
-            print(new_cliente)
+
             if not drivers.Drivers.validar_datos(new_cliente):
                 Ventanas.Ventanas.mensaje_warning("Campos vacios")
             else:
@@ -122,7 +122,7 @@ class Cliente:
         driver = [var.ui.txtDni_3.text(), var.ui.txtRazonSocial.text(), var.ui.txtDireccion_Cliente.text(),
                   var.ui.txtMovil_Cliente.text(), var.ui.cmbProvincia_Cliente.currentText(),
                   var.ui.cmbLocalidad_Cliente.currentText(), var.ui.txtDate_Cliente.text()]
-        print(driver)
+
         return driver
 
     @staticmethod
@@ -148,9 +148,9 @@ class Cliente:
             if len(nuevoRegistros) == 0:
                 var.ui.tabClientes.setRowCount(0)
             else:
-                print(nuevoRegistros)
+
                 index = 0
-                print(type(var.ui.tabClientes))
+
                 for registro in nuevoRegistros:
                     var.ui.tabClientes.setRowCount(index + 1)
                     var.ui.tabClientes.setItem(index, 0, QtWidgets.QTableWidgetItem(str(registro[0])))
@@ -191,7 +191,7 @@ class Cliente:
 
     def carga_cliente(registro):
         try:
-            print(registro)
+
             if registro == None:
                 Ventanas.Ventanas.mensaje_warning('El dni no se encuentra en la base de datos')
             else:

@@ -86,7 +86,7 @@ class Eventos:
                         new = []
                         for j in range(columnas):
                             dato = str(datos.cell_value(i, j))
-                            print(dato)
+
                             if j == 1:
                                 if datos.cell_type(i, j) == xlrd.XL_CELL_DATE:
                                     dato = xlrd.xldate.xldate_as_datetime(dato, documento.datemode).strftime('%d/%m/%Y')
@@ -170,7 +170,7 @@ class Eventos:
 
 
         except Exception as error:
-            print(error)
+
             Ventanas.Ventanas.mensaje_warning("Error en la copia de seguridad", error)
 
     @staticmethod

@@ -31,7 +31,7 @@ class Main(QtWidgets.QMainWindow):
         conexion.Conexion.conexion()
         conexion.Conexion.cargaProv()
         conexion.Conexion.cargaProv_clientes()
-        conexion.Conexion.selDrivers()
+        conexion.Conexion.cargar_cmb_drivers_facturacion()
         conexion.Conexion.mostrardrivers()
         conexion.Conexion.mostrarclientes()
         conexion.Conexion.cargar_facturas()
@@ -146,6 +146,7 @@ class Main(QtWidgets.QMainWindow):
         eventos.Eventos.resize_tab_facturas(self)
         var.ui.tabDriver2.clicked.connect(drivers.Drivers.get_from_tab)
         var.ui.tabClientes.clicked.connect(cliente.Cliente.get_from_tab)
+        var.ui.tab_facturas.clicked.connect(facturacion.mostrar_datos_factura)
 
 
     def closeEvent(self, event):

@@ -530,3 +530,4 @@ class Conexion:
 
         except Exception as error:
             print("Error al cargar facturas")
+

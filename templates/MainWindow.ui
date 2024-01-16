@@ -115,7 +115,7 @@
           <enum>QTabWidget::Rounded</enum>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>2</number>
          </property>
          <widget class="QWidget" name="tabDrivers">
           <property name="sizePolicy">
@@ -2004,7 +2004,7 @@ background-color: rgb(225, 225, 225);</string>
                    </property>
                    <property name="icon">
                     <iconset>
-                     <normaloff>../../../../../.designer/img/lupa2.png</normaloff>../../../../../.designer/img/lupa2.png</iconset>
+                     <normaloff>../img/lupa2.png</normaloff>../img/lupa2.png</iconset>
                    </property>
                   </widget>
                  </item>
@@ -2045,7 +2045,7 @@ background-color: rgb(225, 225, 225);</string>
                    </property>
                    <property name="icon">
                     <iconset>
-                     <normaloff>../../../../../.designer/img/calendario.png</normaloff>../../../../../.designer/img/calendario.png</iconset>
+                     <normaloff>../img/calendario.png</normaloff>../img/calendario.png</iconset>
                    </property>
                   </widget>
                  </item>
@@ -3650,7 +3650,7 @@ background-color: rgb(247, 181, 0);</string>
   <action name="Salir">
    <property name="icon">
     <iconset>
-     <normaloff>../../../../../.designer/img/salir.png</normaloff>../../../../../.designer/img/salir.png</iconset>
+     <normaloff>../img/salir.png</normaloff>../img/salir.png</iconset>
    </property>
    <property name="text">
     <string>salir</string>
@@ -3659,13 +3659,17 @@ background-color: rgb(247, 181, 0);</string>
   <action name="btnLimpiar">
    <property name="icon">
     <iconset>
-     <normaloff>../../../../../.designer/img/pincel.png</normaloff>../../../../../.designer/img/pincel.png</iconset>
+     <normaloff>../img/pincel.png</normaloff>../img/pincel.png</iconset>
    </property>
    <property name="text">
     <string/>
    </property>
   </action>
   <action name="actionSalir">
+   <property name="icon">
+    <iconset>
+     <normaloff>../img/salir.png</normaloff>../img/salir.png</iconset>
+   </property>
    <property name="text">
     <string>Salir</string>
    </property>
@@ -3678,7 +3682,7 @@ background-color: rgb(247, 181, 0);</string>
   <action name="actionCrear_Copia_Seguridad">
    <property name="icon">
     <iconset>
-     <normaloff>../../../../../.designer/img/actualizar.png</normaloff>../../../../../.designer/img/actualizar.png</iconset>
+     <normaloff>../img/actualizar.png</normaloff>../img/actualizar.png</iconset>
    </property>
    <property name="text">
     <string>Crear Copia Seguridad</string>
@@ -3690,7 +3694,7 @@ background-color: rgb(247, 181, 0);</string>
   <action name="actionRestarurar_Copia">
    <property name="icon">
     <iconset>
-     <normaloff>../../../../../.designer/img/restaura_bbdd.png</normaloff>../../../../../.designer/img/restaura_bbdd.png</iconset>
+     <normaloff>../img/restaura_bbdd.png</normaloff>../img/restaura_bbdd.png</iconset>
    </property>
    <property name="text">
     <string>Restarurar Copia</string>
@@ -3747,7 +3751,7 @@ background-color: rgb(247, 181, 0);</string>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="botonesDeCliente"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="botonesDeCliente"/>
  </buttongroups>
 </ui>

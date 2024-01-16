@@ -11,6 +11,7 @@ import Ventanas
 import cliente
 import conexion
 import drivers
+import facturacion
 
 import var
 from datetime import *
@@ -177,10 +178,13 @@ class Eventos:
     def limpiar():
         try:
             conexion.Conexion.mostrardrivers()
+            conexion.Conexion.mostrarclientes()
+            conexion.Conexion.cargar_facturas()
             listalimpiar = [var.ui.txtDni, var.ui.txtDate, var.ui.txtDni_2, var.ui.txtNombre, var.ui.txtDireccion,
                             var.ui.txtMovil, var.ui.txtSalario, var.ui.lblCodDB, var.ui.txtDate_2,
                             var.ui.lblCodDB_Cliente, var.ui.txtDni_3, var.ui.txtRazonSocial,
-                            var.ui.txtDireccion_Cliente, var.ui.txtMovil_Cliente, var.ui.txtDate_Cliente, ]
+                            var.ui.txtDireccion_Cliente, var.ui.txtMovil_Cliente, var.ui.txtDate_Cliente, var.ui.txt_numero_factura,var.ui.txt_cif_cliente,
+                            var.ui.txt_fecha_factura]
             # var.ui.lblCheckDNI.hide()
             var.ui.lblCheckDNI.setText(" ")
             var.ui.lblCheckDNI_Cliente.setText(" ")
@@ -195,6 +199,8 @@ class Eventos:
             var.ui.cmbProvincia_Cliente.setCurrentText("")
             var.ui.cmbLocalidad.setCurrentText("")
             var.ui.cmbLocalidad_Cliente.setCurrentText("")
+
+
 
 
         except Exception as error:

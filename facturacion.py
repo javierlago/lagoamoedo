@@ -43,19 +43,27 @@ class facturacion:
 
             # Establecer el fondo amarillo solo para la fila seleccionada
             row = var.ui.tab_facturas.currentRow()
+            print(row)
+            print(var.ui.tab_facturas.item(row, 0).text())
+            query = QtSql.QSqlQuery()
+            query.prepare("select idConductor,fechaFactura from facturas where numFactura = :numFactura")
+            query.bindValue(":numFactura",var.ui.tab_facturas.item(row, 0).text())
+            if query.exec():
+                if query.next():
+                    codigo = query.value(0)
+                    fecha = query.value(1)
 
-            codigo = var.ui.tab_facturas.item(row, 3).text()
             print(codigo)
-
+            print(fecha)
             for c in range(var.ui.tab_facturas.columnCount()):
                 item = var.ui.tab_facturas.item(row, c)
                 if item is not None:
                     item.setBackground(QBrush(QColor("#CCA963")))
             registro = conexion.Conexion.buscar_segun_codigo(codigo)
-            print(registro)
-
-
-
+            var.ui.txt_numero_factura.setText(var.ui.tab_facturas.item(row, 0).text())
+            var.ui.txt_cif_cliente.setText(var.ui.tab_facturas.item(row, 1).text())
+            var.ui.txt_fecha_factura.setText(fecha)
+            var.ui.cmb_listado_conductores.setCurrentText(registro[0] + "  ||  " + registro[3])
         except Exception as error:
             print("Error al cargar desde la tabla", error)
 

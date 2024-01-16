@@ -237,10 +237,10 @@ class Cliente:
     def get_from_dni(self):
         try:
             objetivo = None
-            if var.ui.txtDni_3.text() is not None:
+            if var.ui.txtDni_3.text() != '':
                 dni = var.ui.txtDni_3.text()
-            elif var.ui.txt_cif_cliente is not None:
-                dni = var.ui.txt_cif_cliente
+            elif var.ui.txt_cif_cliente != '':
+                dni = var.ui.txt_cif_cliente.text()
             cliente.Cliente.carga_cliente(conexion.Conexion.buscar_segun_dni_cliente(dni))
             registro = conexion.Conexion.buscar_segun_dni_cliente(dni)
             if registro[7] == '':

@@ -3584,6 +3584,8 @@ background-color: rgb(247, 181, 0);</string>
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="btn_menu_print"/>
+   <addaction name="separator"/>
    <addaction name="actionCrear_Copia_Seguridad"/>
    <addaction name="actionRestarurar_Copia"/>
    <addaction name="separator"/>
@@ -3642,6 +3644,10 @@ background-color: rgb(247, 181, 0);</string>
   <action name="actionAcerca_de">
    <property name="enabled">
     <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>../img/OkIco.svg</normaloff>../img/OkIco.svg</iconset>
    </property>
    <property name="text">
     <string>Acerca de...</string>
@@ -3726,6 +3732,22 @@ background-color: rgb(247, 181, 0);</string>
   <action name="actionListar_Clientes">
    <property name="text">
     <string>Listar Clientes</string>
+   </property>
+  </action>
+  <action name="btn_menu_print">
+   <property name="icon">
+    <iconset>
+     <normalon>../img/impresora.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>btn_menu_print</string>
+   </property>
+   <property name="autoRepeat">
+    <bool>true</bool>
+   </property>
+   <property name="visible">
+    <bool>true</bool>
    </property>
   </action>
  </widget>

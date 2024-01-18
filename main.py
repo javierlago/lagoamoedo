@@ -4,10 +4,10 @@ import sys
 from PyQt6.QtWidgets import QApplication
 
 import cliente
-import conexion
-import eventos
+
 import facturacion
 import informes
+
 from MainWindow import *
 from facturacion import *
 from windowaux import *
@@ -20,14 +20,13 @@ class Main(QtWidgets.QMainWindow):
 
     def __init__(self):
         super(Main, self).__init__()
-
         var.ui = Ui_MainWindow()
         var.ui.setupUi(self)
         var.calendar = Calendar()
         var.acercade = Acerca()
+        var.print_facturas = print_dialog()
         var.ventana_salir = SalirVentana()
         var.dlg_abrir = FileDialogAbrir()
-        var.facturacion = facturacion()
         conexion.Conexion.conexion()
         conexion.Conexion.cargaProv()
         conexion.Conexion.cargaProv_clientes()
@@ -36,8 +35,6 @@ class Main(QtWidgets.QMainWindow):
         conexion.Conexion.mostrarclientes()
         conexion.Conexion.cargar_facturas()
         var.ui.frame.hide()
-
-
 
         '''
         
@@ -69,6 +66,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btn_fecha_factura.clicked.connect(lambda: drivers.Drivers.set_calendar("fecha factura"))
         var.ui.btn_fecha_factura.clicked.connect(eventos.Eventos.abrir_calendar)
         var.ui.actionAcerca_de.triggered.connect(eventos.Eventos.abrir_acerca_de)
+        var.ui.btn_menu_print.triggered.connect(eventos.Eventos.abrir_window_print)
         '''
       
         
@@ -111,8 +109,8 @@ class Main(QtWidgets.QMainWindow):
         """
         zona de eventos cajas
         """
-        var.ui.txtDni.editingFinished.connect(lambda : drivers.Drivers.validar_dni(var.ui.txtDni.text()))
-        var.ui.txtDni_3.editingFinished.connect(lambda : cliente.Cliente.validar_dni(var.ui.txtDni_3.text()))
+        var.ui.txtDni.editingFinished.connect(lambda: drivers.Drivers.validar_dni(var.ui.txtDni.text()))
+        var.ui.txtDni_3.editingFinished.connect(lambda: cliente.Cliente.validar_dni(var.ui.txtDni_3.text()))
         var.ui.txtNombre.editingFinished.connect(eventos.Eventos.format_caja_texto)
         var.ui.txtDni_2.editingFinished.connect(eventos.Eventos.format_caja_texto)
         var.ui.txtSalario.editingFinished.connect(eventos.Eventos.format_caja_texto)
@@ -147,7 +145,6 @@ class Main(QtWidgets.QMainWindow):
         var.ui.tabDriver2.clicked.connect(drivers.Drivers.get_from_tab)
         var.ui.tabClientes.clicked.connect(cliente.Cliente.get_from_tab)
         var.ui.tab_facturas.clicked.connect(facturacion.mostrar_datos_factura)
-
 
     def closeEvent(self, event):
 

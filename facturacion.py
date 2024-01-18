@@ -1,6 +1,8 @@
 from PyQt6.QtGui import QBrush, QColor
 from PyQt6.uic.properties import QtWidgets, QtCore
 from PyQt6 import QtGui, QtWidgets, QtCore, QtSql
+
+
 import conexion
 import var
 
@@ -64,6 +66,8 @@ class facturacion:
             var.ui.txt_cif_cliente.setText(var.ui.tab_facturas.item(row, 1).text())
             var.ui.txt_fecha_factura.setText(fecha)
             var.ui.cmb_listado_conductores.setCurrentText(registro[0] + "  ||  " + registro[3])
+
+
         except Exception as error:
             print("Error al cargar desde la tabla", error)
 

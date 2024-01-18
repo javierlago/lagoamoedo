@@ -67,7 +67,7 @@ class informes:
                 if file.endswith(nombre):
                     os.startfile('%s%s' % (root_path, file))
         except Exception as e:
-            print("error en la ejecucion del informe de clientes")
+            print("error en la ejecucion del informe de clientes",e)
 
     def report_conductores(self):
         try:
@@ -118,7 +118,7 @@ class informes:
                 if file.endswith(nombre):
                     os.startfile('%s%s' % (root_path, file))
         except Exception as e:
-            print("error en la ejecucion del informe")
+            print("error en la ejecucion del informe",e)
 
     def top_informe(titulo):
         try:

@@ -2,32 +2,47 @@ import os.path
 import shutil
 import sys
 import zipfile
+from pprint import pprint
 
 import xlwt
 import xlrd
-from PyQt6.QtGui import QIcon
+
 
 import Ventanas
 import cliente
 import conexion
 import drivers
-import facturacion
 
 import var
 from datetime import *
-from PyQt6 import QtWidgets, QtCore, QtSql
+
 import locale
+from PyQt6 import QtCore, QtGui, QtWidgets
+import windowaux
+from VentanaPrint import Ui_menu_printear
 
 locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 locale.setlocale(locale.LC_MONETARY, 'es_ES.UTF-8')
 
 
 class Eventos:
+
+
+
+
+    @staticmethod
+    def abrir_window_print(self):
+        try:
+            var.print_facturas.show()
+
+        except Exception as error:
+            print("erro en abrir", error)
+
     def importar_datos_clientes(self):
         try:
             estado = 0
             inserciones = 0
-            dniRepetidos = False;
+            dniRepetidos = False
             dniMalFormdos = False
             filename = var.dlg_abrir.getOpenFileName(None, 'Importar datos', '', '*.xls;;Allfiles(*)')
             if var.dlg_abrir.accept and filename != '':
@@ -111,7 +126,7 @@ class Eventos:
             fecha = fecha.strftime('%Y_%m_%d_%H_%M_%S')
             file = (str(fecha) + 'Datos.xls')
             directorio, filename = var.dlg_abrir.getSaveFileName(None, 'Exportar datos en XLS', file, '.xls')
-            if var.dlg_abrir.accept and filename:
+            if var.dlg_abrir.accept and filename != '':
                 wb = xlwt.Workbook()
                 sheet1 = wb.add_sheet('conductores')
                 sheet1.write(0, 0, 'ID')
@@ -161,12 +176,12 @@ class Eventos:
             fecha = fecha.strftime('%Y_%m_%d_%H_%M_%S')
             copia = str(fecha) + "_backup.zip"
             directorio, filename = var.dlg_abrir.getSaveFileName(None, 'Guardar copia de seguridad', copia, '.zip')
-            if var.dlg_abrir.accept and filename is not None:
+            if var.dlg_abrir.accept and filename != '':
                 fichzip = zipfile.ZipFile(copia, 'w')
                 fichzip.write(var.bbdd, os.path.basename(var.bbdd), zipfile.ZIP_DEFLATED)
                 fichzip.close()
                 shutil.move(str(copia), str(directorio))
-                Ventanas.Ventanas.ventana_info("Copia se seguridad creada")
+                Ventanas.Ventanas.ventana_info("Copia se seguridad creada", e)
 
 
 
@@ -183,7 +198,8 @@ class Eventos:
             listalimpiar = [var.ui.txtDni, var.ui.txtDate, var.ui.txtDni_2, var.ui.txtNombre, var.ui.txtDireccion,
                             var.ui.txtMovil, var.ui.txtSalario, var.ui.lblCodDB, var.ui.txtDate_2,
                             var.ui.lblCodDB_Cliente, var.ui.txtDni_3, var.ui.txtRazonSocial,
-                            var.ui.txtDireccion_Cliente, var.ui.txtMovil_Cliente, var.ui.txtDate_Cliente, var.ui.txt_numero_factura,var.ui.txt_cif_cliente,
+                            var.ui.txtDireccion_Cliente, var.ui.txtMovil_Cliente, var.ui.txtDate_Cliente,
+                            var.ui.txt_numero_factura, var.ui.txt_cif_cliente,
                             var.ui.txt_fecha_factura]
             # var.ui.lblCheckDNI.hide()
             var.ui.lblCheckDNI.setText(" ")
@@ -334,3 +350,5 @@ class Eventos:
 
         except Exception as error:
             print("error letra capital", error)
+
+

@@ -2479,12 +2479,12 @@ background-color: rgb(225, 225, 225);</string>
             <layout class="QHBoxLayout" name="horizontalLayout_34">
              <item>
               <widget class="QTableWidget" name="tab_facturas">
-               <property name="sizePolicy">
+               <propert ty name="sizePolicy">
                 <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
-               </property>
+               </propertty>
                <property name="minimumSize">
                 <size>
                  <width>200</width>

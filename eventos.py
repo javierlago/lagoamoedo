@@ -12,6 +12,7 @@ import Ventanas
 import cliente
 import conexion
 import drivers
+import informes
 
 import var
 from datetime import *
@@ -350,5 +351,45 @@ class Eventos:
 
         except Exception as error:
             print("error letra capital", error)
+
+    @staticmethod
+    def printear_informes(self):
+        try:
+            mbox = QtWidgets.QMessageBox()
+            mbox.setWindowTitle("Realizar Informe")
+            mbox.setWindowIcon(QtGui.QIcon("img/impresora.png"))
+            mbox.setText("Seleccione informe/es")
+
+            conductorcheck = QtWidgets.QCheckBox("Informe de conductores")
+            clientecheck = QtWidgets.QCheckBox("Informe de clientes")
+
+            layout = QtWidgets.QVBoxLayout()
+            layout.addWidget(conductorcheck)
+            layout.addWidget(clientecheck)
+
+            container = QtWidgets.QWidget()
+            container.setLayout(layout)
+
+            mbox.layout().addWidget(container, 1, 1, 1, mbox.layout().columnCount())
+
+            mbox.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Yes | QtWidgets.QMessageBox.StandardButton.No)
+            mbox.button(QtWidgets.QMessageBox.StandardButton.Yes).setText('Aceptar')
+            mbox.button(QtWidgets.QMessageBox.StandardButton.No).setText('Cancelar')
+
+            resultado = mbox.exec()
+
+            if resultado == QtWidgets.QMessageBox.StandardButton.Yes:
+                if conductorcheck.isChecked():
+                    Ventanas.Ventanas.ventana_info("Se ha creado el infome clientes")
+                    informes.informes.reportclientes(self)
+                if clientecheck.isChecked():
+                    Ventanas.Ventanas.ventana_info("Se ha creado el informe de condutores")
+                    informes.informes.report_conductores(self)
+
+                if not (conductorcheck.isChecked() or clientecheck.isChecked()):
+                    Ventanas.Ventanas.ventana_info("Aviso", "No se ha seleccionado ningún informe")
+
+        except Exception as error:
+            print("Error en checkbox_informe", error)
 
 

@@ -1,17 +1,11 @@
 import locale
 import sys
-
 from PyQt6.QtWidgets import QApplication
-
 import cliente
-
 import facturacion
-import informes
-
 from MainWindow import *
 from facturacion import *
 from windowaux import *
-
 locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 locale.setlocale(locale.LC_MONETARY, 'es_ES.UTF-8')
 
@@ -66,7 +60,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btn_fecha_factura.clicked.connect(lambda: drivers.Drivers.set_calendar("fecha factura"))
         var.ui.btn_fecha_factura.clicked.connect(eventos.Eventos.abrir_calendar)
         var.ui.actionAcerca_de.triggered.connect(eventos.Eventos.abrir_acerca_de)
-        var.ui.btn_menu_print.triggered.connect(eventos.Eventos.abrir_window_print)
+        var.ui.btn_menu_print.triggered.connect(eventos.Eventos.printear_informes)
         '''
       
         

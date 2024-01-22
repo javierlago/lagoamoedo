@@ -2161,7 +2161,7 @@ background-color: rgb(225, 225, 225);</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QComboBox" name="cmbProvincia_2">
+                     <widget class="QComboBox" name="cmb_provincia_origen">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                         <horstretch>0</horstretch>
@@ -2186,7 +2186,7 @@ background-color: rgb(225, 225, 225);</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QComboBox" name="cmbLocalidad_2">
+                     <widget class="QComboBox" name="cmb_localidad_origen">
                       <property name="minimumSize">
                        <size>
                         <width>170</width>
@@ -2261,7 +2261,7 @@ background-color: rgb(225, 225, 225);</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QComboBox" name="cmbProvincia_3">
+                     <widget class="QComboBox" name="cmb_provincia_destino">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                         <horstretch>0</horstretch>
@@ -2286,7 +2286,7 @@ background-color: rgb(225, 225, 225);</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QComboBox" name="cmbLocalidad_3">
+                     <widget class="QComboBox" name="cmb_localidad_destino">
                       <property name="minimumSize">
                        <size>
                         <width>170</width>
@@ -2478,13 +2478,20 @@ background-color: rgb(225, 225, 225);</string>
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_34">
              <item>
+              <spacer name="horizontalSpacer_53">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
               <widget class="QTableWidget" name="tab_facturas">
-               <propert ty name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </propertty>
                <property name="minimumSize">
                 <size>
                  <width>200</width>
@@ -2581,20 +2588,20 @@ background-color: rgb(225, 225, 225);</string>
              <item>
               <widget class="QTableWidget" name="tab_facturas_2">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
                <property name="minimumSize">
                 <size>
-                 <width>502</width>
+                 <width>602</width>
                  <height>0</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>501</width>
+                 <width>601</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -2674,6 +2681,11 @@ background-color: rgb(225, 225, 225);</string>
                <column>
                 <property name="text">
                  <string>Kilometros</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string>Total</string>
                 </property>
                </column>
               </widget>
@@ -4301,8 +4313,8 @@ background-color: rgb(247, 181, 0);</string>
  <resources/>
  <connections/>
  <buttongroups>
+  <buttongroup name="btn_group_tarifas"/>
   <buttongroup name="botonesDeCliente"/>
   <buttongroup name="buttonGroup"/>
-  <buttongroup name="btn_group_tarifas"/>
  </buttongroups>
 </ui>

@@ -85,18 +85,7 @@ class Conexion:
             print("Base de datos conectada")
             return True
 
-    def cargaProv(self=None):
-        try:
-            var.ui.cmbProvincia.clear()
-            query = QtSql.QSqlQuery()
-            query.prepare("select provincia from provincias")
-            if query.exec():
-                var.ui.cmbProvincia.addItem("")
-                while query.next():
-                    # print(str(query.value(0)))
-                    var.ui.cmbProvincia.addItem(query.value(0))
-        except Exception as error:
-            print("Error en la carga del combo prov: ", error)
+
 
     def cargaProv_clientes(self=None):
         try:
@@ -108,6 +97,20 @@ class Conexion:
                 while query.next():
                     # print(str(query.value(0)))
                     var.ui.cmbProvincia_Cliente.addItem(query.value(0))
+        except Exception as error:
+            print("Error en la carga del combo prov: ", error)
+
+    def cargar_provincias(comboBox):
+        try:
+
+            comboBox.clear()
+            query = QtSql.QSqlQuery()
+            query.prepare("select provincia from provincias")
+            if query.exec():
+                var.ui.cmbProvincia_Cliente.addItem("")
+                while query.next():
+                    # print(str(query.value(0)))
+                    comboBox.addItem(query.value(0))
         except Exception as error:
             print("Error en la carga del combo prov: ", error)
 
@@ -132,6 +135,32 @@ class Conexion:
 
         except Exception as error:
             print("Error en la carga de municipios", error)
+
+
+    def sel_muni_parametrizado(comboBoxProvincia ,comboBoxLocalidad):
+        try:
+            print(type(comboBoxLocalidad))
+            comboBoxLocalidad.clear()
+            id = 0
+            prov = comboBoxProvincia.currentText()
+            query = QtSql.QSqlQuery()
+            query.prepare("select idprov from provincias where provincia = :prov")
+            query.bindValue(':prov', prov)
+            if query.exec():
+                while query.next():
+                    id = query.value(0)
+            query1 = QtSql.QSqlQuery()
+            query1.prepare("select municipio from municipios where idprov = :id")
+            query1.bindValue(":id", int(id))
+            if query1.exec():
+                comboBoxLocalidad.addItem('')
+                while query1.next():
+                    comboBoxLocalidad.addItem(query1.value(0))
+        except Exception as error:
+            print("Error en la carga de municipios", error)
+
+
+
     ### Cargar los conductores en el combo box
     def cargar_cmb_drivers_facturacion(self=None):
         try:

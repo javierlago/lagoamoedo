@@ -2,7 +2,6 @@ from PyQt6.QtGui import QBrush, QColor
 from PyQt6.uic.properties import QtWidgets, QtCore
 from PyQt6 import QtGui, QtWidgets, QtCore, QtSql
 
-
 import conexion
 import var
 
@@ -12,25 +11,23 @@ class facturacion:
     def crear_registro(self=None):
         try:
 
-            registroFactura = [var.ui.txt_cif_cliente.text(),var.ui.txt_fecha_factura.text(), var.ui.cmb_listado_conductores.currentText().split("  ||  ")[0]]
+            registroFactura = [var.ui.txt_cif_cliente.text(), var.ui.txt_fecha_factura.text(),
+                               var.ui.cmb_listado_conductores.currentText().split("  ||  ")[0]]
             return registroFactura
         except Exception as error:
-            print("Errore en la recogida de datos de la factura",error)
-
-
-
+            print("Errore en la recogida de datos de la factura", error)
 
     def cargartabla(registros):
         try:
-                index = 0
-                for registro in registros:
-                    var.ui.tab_facturas.setRowCount(index + 1)
-                    var.ui.tab_facturas.setItem(index, 0, QtWidgets.QTableWidgetItem(str(registro[0])))
-                    var.ui.tab_facturas.setItem(index, 1, QtWidgets.QTableWidgetItem(str(registro[1])))
-                    var.ui.tab_facturas.item(index, 0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-                    var.ui.tab_facturas.item(index, 1).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+            index = 0
+            for registro in registros:
+                var.ui.tab_facturas.setRowCount(index + 1)
+                var.ui.tab_facturas.setItem(index, 0, QtWidgets.QTableWidgetItem(str(registro[0])))
+                var.ui.tab_facturas.setItem(index, 1, QtWidgets.QTableWidgetItem(str(registro[1])))
+                var.ui.tab_facturas.item(index, 0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                var.ui.tab_facturas.item(index, 1).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
 
-                    index += 1
+                index += 1
         except Exception as error:
             print("Error completar tabla ", error)
 
@@ -49,7 +46,7 @@ class facturacion:
             print(var.ui.tab_facturas.item(row, 0).text())
             query = QtSql.QSqlQuery()
             query.prepare("select idConductor,fechaFactura from facturas where numFactura = :numFactura")
-            query.bindValue(":numFactura",var.ui.tab_facturas.item(row, 0).text())
+            query.bindValue(":numFactura", var.ui.tab_facturas.item(row, 0).text())
             if query.exec():
                 if query.next():
                     codigo = query.value(0)
@@ -71,7 +68,23 @@ class facturacion:
         except Exception as error:
             print("Error al cargar desde la tabla", error)
 
+    def crear_regitro_viaje(self):
+        try:
+            print("Metodo en el que se generean registrod de los viajes")
 
 
 
 
+
+        except Exception as error:
+            print("Error a la hora de crear un registro", error)
+
+
+    def calcular_tarifa(self):
+        try:
+            listadoComboBox= [var.ui.cmb_provincia_origen.currentText(),var.ui.cmb_provincia_destino.currentText(),
+                              var.ui.cmb_localidad_origen.currentText(),var.ui.cmb_localidad_destino.currenText()
+                              ]
+            print(listadoComboBox)
+        except Exception as error:
+            print(error)

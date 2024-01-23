@@ -1914,24 +1914,17 @@ border: 2px solid black;
                 <item>
                  <layout class="QHBoxLayout" name="horizontalLayout_27">
                   <item>
-                   <spacer name="horizontalSpacer_40">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
-                  <item>
                    <layout class="QVBoxLayout" name="verticalLayout_14">
                     <item>
                      <layout class="QHBoxLayout" name="horizontalLayout_19">
                       <item>
                        <widget class="QLabel" name="label_num_factura">
+                        <property name="maximumSize">
+                         <size>
+                          <width>75</width>
+                          <height>20</height>
+                         </size>
+                        </property>
                         <property name="text">
                          <string>Nº Factura:</string>
                         </property>
@@ -1941,6 +1934,12 @@ border: 2px solid black;
                        <widget class="QLineEdit" name="txt_numero_factura">
                         <property name="enabled">
                          <bool>false</bool>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>30</width>
+                          <height>16777215</height>
+                         </size>
                         </property>
                         <property name="styleSheet">
                          <string notr="true">
@@ -1956,6 +1955,12 @@ background-color: rgb(255, 255, 127);</string>
                       </item>
                       <item>
                        <widget class="QLabel" name="label_conductor">
+                        <property name="maximumSize">
+                         <size>
+                          <width>87</width>
+                          <height>16777215</height>
+                         </size>
+                        </property>
                         <property name="text">
                          <string>Conductores:</string>
                         </property>
@@ -1981,6 +1986,12 @@ background-color: rgb(255, 255, 127);</string>
                       </item>
                       <item>
                        <widget class="QLineEdit" name="txt_cif_cliente">
+                        <property name="maximumSize">
+                         <size>
+                          <width>100</width>
+                          <height>16777215</height>
+                         </size>
+                        </property>
                         <property name="alignment">
                          <set>Qt::AlignCenter</set>
                         </property>
@@ -2022,6 +2033,12 @@ background-color: rgb(225, 225, 225);</string>
                       </item>
                       <item>
                        <widget class="QLineEdit" name="txt_fecha_factura">
+                        <property name="maximumSize">
+                         <size>
+                          <width>100</width>
+                          <height>16777215</height>
+                         </size>
+                        </property>
                         <property name="alignment">
                          <set>Qt::AlignCenter</set>
                         </property>
@@ -2095,19 +2112,6 @@ background-color: rgb(225, 225, 225);</string>
                     </item>
                    </layout>
                   </item>
-                  <item>
-                   <spacer name="horizontalSpacer_29">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
-                     <size>
-                      <width>40</width>
-                      <height>20</height>
-                     </size>
-                    </property>
-                   </spacer>
-                  </item>
                  </layout>
                 </item>
                 <item>
@@ -2131,7 +2135,7 @@ background-color: rgb(225, 225, 225);</string>
                       </property>
                       <property name="minimumSize">
                        <size>
-                        <width>50</width>
+                        <width>60</width>
                         <height>24</height>
                        </size>
                       </property>
@@ -2153,7 +2157,7 @@ background-color: rgb(225, 225, 225);</string>
                        <string notr="true">font: 75 10pt &quot;Alef&quot;; font-weight: bold;</string>
                       </property>
                       <property name="text">
-                       <string>Origen</string>
+                       <string>Origen:</string>
                       </property>
                       <property name="alignment">
                        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -2231,8 +2235,14 @@ background-color: rgb(225, 225, 225);</string>
                       </property>
                       <property name="minimumSize">
                        <size>
-                        <width>50</width>
+                        <width>60</width>
                         <height>24</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>87</width>
+                        <height>16777215</height>
                        </size>
                       </property>
                       <property name="sizeIncrement">
@@ -2253,7 +2263,7 @@ background-color: rgb(225, 225, 225);</string>
                        <string notr="true">font: 75 10pt &quot;Alef&quot;; font-weight: bold;</string>
                       </property>
                       <property name="text">
-                       <string>Destitno</string>
+                       <string>Destitno:</string>
                       </property>
                       <property name="alignment">
                        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -2331,23 +2341,13 @@ background-color: rgb(225, 225, 225);</string>
                         <height>20</height>
                        </size>
                       </property>
+                      <property name="styleSheet">
+                       <string notr="true">border: 2px solid black; border-radius: 3px;</string>
+                      </property>
                       <property name="alignment">
                        <set>Qt::AlignCenter</set>
                       </property>
                      </widget>
-                    </item>
-                    <item>
-                     <spacer name="horizontalSpacer_48">
-                      <property name="orientation">
-                       <enum>Qt::Horizontal</enum>
-                      </property>
-                      <property name="sizeHint" stdset="0">
-                       <size>
-                        <width>40</width>
-                        <height>20</height>
-                       </size>
-                      </property>
-                     </spacer>
                     </item>
                    </layout>
                   </item>
@@ -2374,7 +2374,13 @@ background-color: rgb(225, 225, 225);</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QRadioButton" name="radioButton">
+                     <widget class="QRadioButton" name="rbt_tarifa_nacional">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">color: rgb(0, 0, 0);</string>
+                      </property>
                       <property name="text">
                        <string>Nacional</string>
                       </property>
@@ -2384,7 +2390,13 @@ background-color: rgb(225, 225, 225);</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QRadioButton" name="radioButton_2">
+                     <widget class="QRadioButton" name="rbt_tarifa_provincia">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">color: rgb(0, 0, 0);</string>
+                      </property>
                       <property name="text">
                        <string>Provincia</string>
                       </property>
@@ -2394,7 +2406,13 @@ background-color: rgb(225, 225, 225);</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QRadioButton" name="radioButton_3">
+                     <widget class="QRadioButton" name="rbt_tarifa_local">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">color: rgb(0, 0, 0);</string>
+                      </property>
                       <property name="text">
                        <string>Local</string>
                       </property>
@@ -2492,15 +2510,21 @@ background-color: rgb(225, 225, 225);</string>
              </item>
              <item>
               <widget class="QTableWidget" name="tab_facturas">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
                <property name="minimumSize">
                 <size>
-                 <width>200</width>
+                 <width>202</width>
                  <height>0</height>
                 </size>
                </property>
                <property name="maximumSize">
                 <size>
-                 <width>16777215</width>
+                 <width>200</width>
                  <height>16777215</height>
                 </size>
                </property>
@@ -2579,7 +2603,7 @@ background-color: rgb(225, 225, 225);</string>
                </property>
                <property name="sizeHint" stdset="0">
                 <size>
-                 <width>40</width>
+                 <width>81</width>
                  <height>20</height>
                 </size>
                </property>
@@ -2665,11 +2689,6 @@ background-color: rgb(225, 225, 225);</string>
                </column>
                <column>
                 <property name="text">
-                 <string>CIF Cliente</string>
-                </property>
-               </column>
-               <column>
-                <property name="text">
                  <string>Origen</string>
                 </property>
                </column>
@@ -2685,7 +2704,17 @@ background-color: rgb(225, 225, 225);</string>
                </column>
                <column>
                 <property name="text">
+                 <string>Tarifa</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
                  <string>Total</string>
+                </property>
+               </column>
+               <column>
+                <property name="text">
+                 <string/>
                 </property>
                </column>
               </widget>
@@ -4313,8 +4342,8 @@ background-color: rgb(247, 181, 0);</string>
  <resources/>
  <connections/>
  <buttongroups>
+  <buttongroup name="buttonGroup"/>
   <buttongroup name="btn_group_tarifas"/>
   <buttongroup name="botonesDeCliente"/>
-  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>

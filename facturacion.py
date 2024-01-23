@@ -1,10 +1,11 @@
 from PyQt6.QtGui import QBrush, QColor
 from PyQt6.uic.properties import QtWidgets, QtCore
 from PyQt6 import QtGui, QtWidgets, QtCore, QtSql
-
+from PyQt6 import *
+from PyQt6.QtWidgets import *
 import conexion
 import var
-
+from PyQt6 import QtWidgets, QtSql, QtCore
 
 class facturacion:
 
@@ -82,9 +83,19 @@ class facturacion:
 
     def calcular_tarifa(self):
         try:
-            listadoComboBox= [var.ui.cmb_provincia_origen.currentText(),var.ui.cmb_provincia_destino.currentText(),
-                              var.ui.cmb_localidad_origen.currentText(),var.ui.cmb_localidad_destino.currenText()
-                              ]
-            print(listadoComboBox)
+            print("Calculando tarifa")
+            print(var.ui.cmb_provincia_origen.currentText())
+            array_destinos = [var.ui.cmb_provincia_origen.currentText(),var.ui.cmb_provincia_destino.currentText(),
+                              var.ui.cmb_localidad_origen.currentText(),var.ui.cmb_localidad_destino.currentText()]
+
+            if array_destinos[0] != array_destinos[1]:
+               var.ui.rbt_tarifa_nacional.setChecked(True)
+            elif array_destinos[2] != array_destinos[3]:
+               var.ui.rbt_tarifa_provincia.setChecked(True)
+            else:
+               var.ui.rbt_tarifa_local.setChecked(True)
+
+
+
         except Exception as error:
-            print(error)
+            print("Error en el metodo calcular tarifa",error)

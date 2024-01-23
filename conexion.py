@@ -85,59 +85,20 @@ class Conexion:
             print("Base de datos conectada")
             return True
 
-
-
-    def cargaProv_clientes(self=None):
-        try:
-            var.ui.cmbProvincia_Cliente.clear()
-            query = QtSql.QSqlQuery()
-            query.prepare("select provincia from provincias")
-            if query.exec():
-                var.ui.cmbProvincia_Cliente.addItem("")
-                while query.next():
-                    # print(str(query.value(0)))
-                    var.ui.cmbProvincia_Cliente.addItem(query.value(0))
-        except Exception as error:
-            print("Error en la carga del combo prov: ", error)
-
     def cargar_provincias(comboBox):
         try:
-
             comboBox.clear()
             query = QtSql.QSqlQuery()
             query.prepare("select provincia from provincias")
             if query.exec():
-                var.ui.cmbProvincia_Cliente.addItem("")
+                comboBox.addItem("")
                 while query.next():
                     # print(str(query.value(0)))
                     comboBox.addItem(query.value(0))
         except Exception as error:
             print("Error en la carga del combo prov: ", error)
 
-    def selMuni(self=None):
-        try:
-            var.ui.cmbLocalidad.clear()
-            id = 0
-            prov = var.ui.cmbProvincia.currentText()
-            query = QtSql.QSqlQuery()
-            query.prepare("select idprov from provincias where provincia = :prov")
-            query.bindValue(':prov', prov)
-            if query.exec():
-                while query.next():
-                    id = query.value(0)
-            query1 = QtSql.QSqlQuery()
-            query1.prepare("select municipio from municipios where idprov = :id")
-            query1.bindValue(":id", int(id))
-            if query1.exec():
-                var.ui.cmbLocalidad.addItem('')
-                while query1.next():
-                    var.ui.cmbLocalidad.addItem(query1.value(0))
-
-        except Exception as error:
-            print("Error en la carga de municipios", error)
-
-
-    def sel_muni_parametrizado(comboBoxProvincia ,comboBoxLocalidad):
+    def sel_muni_parametrizado(comboBoxProvincia, comboBoxLocalidad):
         try:
             print(type(comboBoxLocalidad))
             comboBoxLocalidad.clear()
@@ -159,8 +120,6 @@ class Conexion:
         except Exception as error:
             print("Error en la carga de municipios", error)
 
-
-
     ### Cargar los conductores en el combo box
     def cargar_cmb_drivers_facturacion(self=None):
         try:
@@ -169,33 +128,7 @@ class Conexion:
             query.prepare("select codigo, apeldri from drivers where bajadri = '' order by codigo")
             if query.exec():
                 while query.next():
-                    var.ui.cmb_listado_conductores.addItem( str(query.value(0)) + "  ||  " + str(query.value(1)))
-        except Exception as error:
-            print("Error en la carga de municipios", error)
-
-
-
-
-
-    def selMuni_cliente(self=None):
-        try:
-            var.ui.cmbLocalidad_Cliente.clear()
-            id = 0
-            prov = var.ui.cmbProvincia_Cliente.currentText()
-            query = QtSql.QSqlQuery()
-            query.prepare("select idprov from provincias where provincia = :prov")
-            query.bindValue(':prov', prov)
-            if query.exec():
-                while query.next():
-                    id = query.value(0)
-            query1 = QtSql.QSqlQuery()
-            query1.prepare("select municipio from municipios where idprov = :id")
-            query1.bindValue(":id", int(id))
-            if query1.exec():
-                var.ui.cmbLocalidad_Cliente.addItem('')
-                while query1.next():
-                    var.ui.cmbLocalidad_Cliente.addItem(query1.value(0))
-
+                    var.ui.cmb_listado_conductores.addItem(str(query.value(0)) + "  ||  " + str(query.value(1)))
         except Exception as error:
             print("Error en la carga de municipios", error)
 
@@ -372,7 +305,6 @@ class Conexion:
             else:
                 Ventanas.Ventanas.mensaje_warning("Dni no esta en la base de datos")
 
-
             if registro[11] != '':
                 var.ui.rbtAlta.isChecked()
             return registro
@@ -516,34 +448,34 @@ class Conexion:
         except Exception as error:
             print("Error en el método de validar si DNI existe y el cliente no esta dado de baja", error)
 
-
         ### ZONA FACTURACION ###
 
     def insert_factura(self):
-            try:
-                registro = facturacion.facturacion.crear_registro()
-                for i in registro:
-                    if i == "":
-                      Ventanas.Ventanas.mensaje_warning("Campos Vacios")
-                      return
+        try:
+            registro = facturacion.facturacion.crear_registro()
+            for i in registro:
+                if i == "":
+                    Ventanas.Ventanas.mensaje_warning("Campos Vacios")
+                    return
 
-                if conexion.Conexion.dni_existe(registro[0]) is False:
-                    Ventanas.Ventanas.mensaje_warning("Cliente no se encuentra en la base de datos")
-                    return
-                if conexion.Conexion.dni_existe_no_esta_baja(registro[0]) is False:
-                    Ventanas.Ventanas.mensaje_warning("El cliente del que deseas facturar esta dado de baja")
-                    return
-                query = QtSql.QSqlQuery()
-                query.prepare('insert into facturas (dniCliente,fechaFactura, idConductor) VALUES (:dniCliente, :fechaFactura, :idConductor)')
-                query.bindValue(':dniCliente',registro[0])
-                query.bindValue(':fechaFactura',registro[1])
-                query.bindValue(':idConductor',registro[2])
-                query.exec()
-                Ventanas.Ventanas.ventana_info("Se ha creado una factura")
-                conexion.Conexion.cargar_facturas()
-            except Exception as error:
-                Ventanas.Ventanas.mensaje_warning("No se ha insertado nada en la tabla")
-                print("Error en la insercion en la tabla de facturas",error)
+            if conexion.Conexion.dni_existe(registro[0]) is False:
+                Ventanas.Ventanas.mensaje_warning("Cliente no se encuentra en la base de datos")
+                return
+            if conexion.Conexion.dni_existe_no_esta_baja(registro[0]) is False:
+                Ventanas.Ventanas.mensaje_warning("El cliente del que deseas facturar esta dado de baja")
+                return
+            query = QtSql.QSqlQuery()
+            query.prepare(
+                'insert into facturas (dniCliente,fechaFactura, idConductor) VALUES (:dniCliente, :fechaFactura, :idConductor)')
+            query.bindValue(':dniCliente', registro[0])
+            query.bindValue(':fechaFactura', registro[1])
+            query.bindValue(':idConductor', registro[2])
+            query.exec()
+            Ventanas.Ventanas.ventana_info("Se ha creado una factura")
+            conexion.Conexion.cargar_facturas()
+        except Exception as error:
+            Ventanas.Ventanas.mensaje_warning("No se ha insertado nada en la tabla")
+            print("Error en la insercion en la tabla de facturas", error)
 
     def cargar_facturas(self=None):
 
@@ -559,4 +491,3 @@ class Conexion:
 
         except Exception as error:
             print("Error al cargar facturas")
-

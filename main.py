@@ -26,7 +26,6 @@ class Main(QtWidgets.QMainWindow):
         conexion.Conexion.cargar_provincias(var.ui.cmb_provincia_destino)
         conexion.Conexion.cargar_provincias(var.ui.cmbProvincia)
         conexion.Conexion.cargar_provincias(var.ui.cmbProvincia_Cliente)
-
         conexion.Conexion.cargar_cmb_drivers_facturacion()
         conexion.Conexion.mostrardrivers()
         conexion.Conexion.mostrarclientes()
@@ -45,14 +44,18 @@ class Main(QtWidgets.QMainWindow):
         '''
 
         '''
-        combox
+        combobox
         '''
 
         var.ui.cmb_provincia_origen.currentIndexChanged.connect(lambda: conexion.Conexion.sel_muni_parametrizado(var.ui.cmb_provincia_origen,var.ui.cmb_localidad_origen))
         var.ui.cmb_provincia_destino.currentIndexChanged.connect(lambda: conexion.Conexion.sel_muni_parametrizado(var.ui.cmb_provincia_destino,var.ui.cmb_localidad_destino))
-        var.ui.cmbProvincia.currentIndexChanged.connect(lambda: conexion.Conexion.sel_muni_parametrizado(var.ui.cmbProvincia,var.ui.cmbLocalidad))
+        var.ui.cmbProvincia.currentIndexChanged.connect(lambda: conexion.Conexion.sel_muni_parametrizado(var.ui.cmbProvincia, var.ui.cmbLocalidad))
         var.ui.cmbProvincia_Cliente.currentIndexChanged.connect(lambda: conexion.Conexion.sel_muni_parametrizado(var.ui.cmbProvincia_Cliente,var.ui.cmbLocalidad_Cliente))
 
+            ## Metodos para poder calcular la tarifa segun cambie el comboBox
+        var.ui.cmb_localidad_origen.currentIndexChanged.connect(facturacion.calcular_tarifa)
+        var.ui.cmb_localidad_destino.currentIndexChanged.connect(facturacion.calcular_tarifa)
+                    # --------------------------------------  #
 
         '''
         botones

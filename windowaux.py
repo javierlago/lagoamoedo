@@ -45,7 +45,6 @@ class FileDialogAbrir(QtWidgets.QFileDialog):
 class print_dialog(QtWidgets.QDialog):
     def __init__(self):
         super(print_dialog, self).__init__()
-
         var.print_facturas = Ui_menu_printear()
         var.print_facturas.setupUi(self)
         var.print_facturas.pushButton.clicked.connect(self.panel_informes)

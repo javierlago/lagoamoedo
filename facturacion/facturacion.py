@@ -1,13 +1,20 @@
 from PyQt6.QtGui import QBrush, QColor
 from PyQt6.uic.properties import QtWidgets, QtCore
-from PyQt6 import QtGui, QtWidgets, QtCore, QtSql
-from PyQt6 import *
-from PyQt6.QtWidgets import *
+
+import Ventanas
 import conexion
+import drivers
+
+
+
 import var
 from PyQt6 import QtWidgets, QtSql, QtCore
 
-class facturacion:
+
+from facturacion import facturacion_repository
+
+
+class Facturacion:
 
     def crear_registro(self=None):
         try:
@@ -34,6 +41,8 @@ class facturacion:
 
     def mostrar_datos_factura(self):
         try:
+            fecha = ""
+            codigo = ""
             # Limpiar el estilo de todas las filas
             for r in range(var.ui.tab_facturas.rowCount()):
                 for c in range(var.ui.tab_facturas.columnCount()):
@@ -53,8 +62,6 @@ class facturacion:
                     codigo = query.value(0)
                     fecha = query.value(1)
 
-            print(codigo)
-            print(fecha)
             for c in range(var.ui.tab_facturas.columnCount()):
                 item = var.ui.tab_facturas.item(row, c)
                 if item is not None:
@@ -80,22 +87,38 @@ class facturacion:
         except Exception as error:
             print("Error a la hora de crear un registro", error)
 
-
     def calcular_tarifa(self):
         try:
             print("Calculando tarifa")
             print(var.ui.cmb_provincia_origen.currentText())
-            array_destinos = [var.ui.cmb_provincia_origen.currentText(),var.ui.cmb_provincia_destino.currentText(),
-                              var.ui.cmb_localidad_origen.currentText(),var.ui.cmb_localidad_destino.currentText()]
+            array_destinos = [var.ui.cmb_provincia_origen.currentText(), var.ui.cmb_provincia_destino.currentText(),
+                              var.ui.cmb_localidad_origen.currentText(), var.ui.cmb_localidad_destino.currentText()]
 
             if array_destinos[0] != array_destinos[1]:
-               var.ui.rbt_tarifa_nacional.setChecked(True)
+                var.ui.rbt_tarifa_nacional.setChecked(True)
+                return 0.8
             elif array_destinos[2] != array_destinos[3]:
-               var.ui.rbt_tarifa_provincia.setChecked(True)
+                var.ui.rbt_tarifa_provincia.setChecked(True)
+                return 0.4
             else:
-               var.ui.rbt_tarifa_local.setChecked(True)
-
+                var.ui.rbt_tarifa_local.setChecked(True)
+                return 0.2
 
 
         except Exception as error:
-            print("Error en el metodo calcular tarifa",error)
+            print("Error en el metodo calcular tarifa", error)
+
+    def insertar_datos_viaje(self):
+        try:
+            datos_linea_de_factura: list = [var.ui.txt_numero_factura.text(), var.ui.cmb_localidad_origen.currentText(),
+                                            var.ui.cmb_localidad_destino.currentText(), var.ui.txt_kilometros.text(),
+                                            str(Facturacion.calcular_tarifa(self))]
+            if drivers.Drivers.validar_datos(datos_linea_de_factura):
+                facturacion_repository.Facturacion_Repository.insert_line_de_viaje(datos_linea_de_factura)
+            else:
+                Ventanas.Ventanas.mensaje_warning("Debes rellenar todos los campor")
+        except Exception as error:
+            print("Error a la hora de recuperar los datos", error)
+
+
+

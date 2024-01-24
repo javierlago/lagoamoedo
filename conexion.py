@@ -1,13 +1,13 @@
 import datetime
 from datetime import datetime
-from PyQt6 import QtWidgets, QtSql, QtCore
+from PyQt6 import QtWidgets, QtSql
 from PyQt6.QtGui import QIcon
 
 import Ventanas
 import cliente
 import conexion
 import drivers
-import facturacion
+from facturacion import facturacion,facturacion_repository
 import var
 
 
@@ -126,6 +126,7 @@ class Conexion:
             var.ui.cmb_listado_conductores.clear()
             query = QtSql.QSqlQuery()
             query.prepare("select codigo, apeldri from drivers where bajadri = '' order by codigo")
+            var.ui.cmb_listado_conductores.addItem("")
             if query.exec():
                 while query.next():
                     var.ui.cmb_listado_conductores.addItem(str(query.value(0)) + "  ||  " + str(query.value(1)))
@@ -450,32 +451,7 @@ class Conexion:
 
         ### ZONA FACTURACION ###
 
-    def insert_factura(self):
-        try:
-            registro = facturacion.facturacion.crear_registro()
-            for i in registro:
-                if i == "":
-                    Ventanas.Ventanas.mensaje_warning("Campos Vacios")
-                    return
 
-            if conexion.Conexion.dni_existe(registro[0]) is False:
-                Ventanas.Ventanas.mensaje_warning("Cliente no se encuentra en la base de datos")
-                return
-            if conexion.Conexion.dni_existe_no_esta_baja(registro[0]) is False:
-                Ventanas.Ventanas.mensaje_warning("El cliente del que deseas facturar esta dado de baja")
-                return
-            query = QtSql.QSqlQuery()
-            query.prepare(
-                'insert into facturas (dniCliente,fechaFactura, idConductor) VALUES (:dniCliente, :fechaFactura, :idConductor)')
-            query.bindValue(':dniCliente', registro[0])
-            query.bindValue(':fechaFactura', registro[1])
-            query.bindValue(':idConductor', registro[2])
-            query.exec()
-            Ventanas.Ventanas.ventana_info("Se ha creado una factura")
-            conexion.Conexion.cargar_facturas()
-        except Exception as error:
-            Ventanas.Ventanas.mensaje_warning("No se ha insertado nada en la tabla")
-            print("Error en la insercion en la tabla de facturas", error)
 
     def cargar_facturas(self=None):
 
@@ -487,7 +463,9 @@ class Conexion:
                 while query.next():
                     row = row = [query.value(i) for i in range(query.record().count())]
                     registros_facturas.append(row)
-            facturacion.facturacion.cargartabla(registros_facturas)
+                    facturacion.Facturacion.cargartabla(registros_facturas)
 
         except Exception as error:
-            print("Error al cargar facturas")
+            print("Error al cargar facturas",query.lastError())
+
+

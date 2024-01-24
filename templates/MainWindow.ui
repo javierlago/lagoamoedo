@@ -2322,7 +2322,7 @@ background-color: rgb(225, 225, 225);</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="txt_cif_cliente_2">
+                     <widget class="QLineEdit" name="txt_kilometros">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                         <horstretch>0</horstretch>
@@ -2452,7 +2452,7 @@ background-color: rgb(225, 225, 225);</string>
                      </spacer>
                     </item>
                     <item>
-                     <widget class="QPushButton" name="btn_facturar_2">
+                     <widget class="QPushButton" name="btn_grabar_registro_viaje">
                       <property name="text">
                        <string>Grabar</string>
                       </property>
@@ -4342,8 +4342,8 @@ background-color: rgb(247, 181, 0);</string>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="btn_group_tarifas"/>
+  <buttongroup name="buttonGroup"/>
   <buttongroup name="botonesDeCliente"/>
  </buttongroups>
 </ui>

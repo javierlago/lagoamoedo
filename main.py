@@ -2,9 +2,11 @@ import locale
 import sys
 from PyQt6.QtWidgets import QApplication
 import cliente
-import facturacion
+
 from MainWindow import *
-from facturacion import *
+import conexion
+from facturacion import facturacion
+
 from windowaux import *
 locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 locale.setlocale(locale.LC_MONETARY, 'es_ES.UTF-8')
@@ -53,14 +55,13 @@ class Main(QtWidgets.QMainWindow):
         var.ui.cmbProvincia_Cliente.currentIndexChanged.connect(lambda: conexion.Conexion.sel_muni_parametrizado(var.ui.cmbProvincia_Cliente,var.ui.cmbLocalidad_Cliente))
 
             ## Metodos para poder calcular la tarifa segun cambie el comboBox
-        var.ui.cmb_localidad_origen.currentIndexChanged.connect(facturacion.calcular_tarifa)
-        var.ui.cmb_localidad_destino.currentIndexChanged.connect(facturacion.calcular_tarifa)
+        var.ui.cmb_localidad_origen.currentIndexChanged.connect(facturacion.Facturacion.calcular_tarifa)
+        var.ui.cmb_localidad_destino.currentIndexChanged.connect(facturacion.Facturacion.calcular_tarifa)
                     # --------------------------------------  #
 
         '''
         botones
         '''
-
         var.ui.btnCalendar.clicked.connect(lambda: drivers.Drivers.set_calendar("fecha alta driver"))
         var.ui.btnCalendar.clicked.connect(eventos.Eventos.abrir_calendar)
         var.ui.btnCalendar_2.clicked.connect(lambda: drivers.Drivers.set_calendar("fecha baja driver"))
@@ -71,6 +72,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btn_fecha_factura.clicked.connect(eventos.Eventos.abrir_calendar)
         var.ui.actionAcerca_de.triggered.connect(eventos.Eventos.abrir_acerca_de)
         var.ui.btn_menu_print.triggered.connect(eventos.Eventos.printear_informes)
+        var.ui.btn_grabar_registro_viaje.clicked.connect(facturacion.Facturacion.insertar_datos_viaje)
         '''
       
         
@@ -102,7 +104,7 @@ class Main(QtWidgets.QMainWindow):
         '''
               botones Facturacion
               '''
-        var.ui.btn_facturar.clicked.connect(conexion.Conexion.insert_factura)
+        var.ui.btn_facturar.clicked.connect(facturacion.Facturacion.crear_registro)
         '''
         zona de eventos salir
         '''
@@ -148,7 +150,7 @@ class Main(QtWidgets.QMainWindow):
         eventos.Eventos.resize_tab_facturas(self)
         var.ui.tabDriver2.clicked.connect(drivers.Drivers.get_from_tab)
         var.ui.tabClientes.clicked.connect(cliente.Cliente.get_from_tab)
-        var.ui.tab_facturas.clicked.connect(facturacion.mostrar_datos_factura)
+        var.ui.tab_facturas.clicked.connect(facturacion.Facturacion.mostrar_datos_factura)
 
     def closeEvent(self, event):
 

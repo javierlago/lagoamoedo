@@ -2610,7 +2610,7 @@ background-color: rgb(225, 225, 225);</string>
               </spacer>
              </item>
              <item>
-              <widget class="QTableWidget" name="tab_facturas_2">
+              <widget class="QTableWidget" name="tab_lineas_de_viaje">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
                  <horstretch>0</horstretch>
@@ -4342,8 +4342,8 @@ background-color: rgb(247, 181, 0);</string>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="btn_group_tarifas"/>
-  <buttongroup name="buttonGroup"/>
   <buttongroup name="botonesDeCliente"/>
+  <buttongroup name="buttonGroup"/>
+  <buttongroup name="btn_group_tarifas"/>
  </buttongroups>
 </ui>

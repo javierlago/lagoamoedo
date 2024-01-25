@@ -5,7 +5,7 @@ import cliente
 
 from MainWindow import *
 import conexion
-from facturacion import facturacion
+from Facturas import facturacion, facturacion_repository
 
 from windowaux import *
 locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
@@ -104,7 +104,7 @@ class Main(QtWidgets.QMainWindow):
         '''
               botones Facturacion
               '''
-        var.ui.btn_facturar.clicked.connect(facturacion.Facturacion.crear_registro)
+        var.ui.btn_facturar.clicked.connect(facturacion_repository.Facturacion_Repository.insert_factura)
         '''
         zona de eventos salir
         '''
@@ -151,6 +151,8 @@ class Main(QtWidgets.QMainWindow):
         var.ui.tabDriver2.clicked.connect(drivers.Drivers.get_from_tab)
         var.ui.tabClientes.clicked.connect(cliente.Cliente.get_from_tab)
         var.ui.tab_facturas.clicked.connect(facturacion.Facturacion.mostrar_datos_factura)
+        var.ui.tab_facturas.clicked.connect(facturacion.Facturacion.rellenar_tabla_lineas_viaje)
+
 
     def closeEvent(self, event):
 

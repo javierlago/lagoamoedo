@@ -3,7 +3,9 @@ from PyQt6 import QtSql
 import Ventanas
 import conexion
 import var
-import facturacion
+from Facturas import *
+
+
 class Facturacion_Repository:
 
     def insert_line_de_viaje(registro):
@@ -25,6 +27,7 @@ class Facturacion_Repository:
 
     def insert_factura(self):
         try:
+            from facturacion import facturacion
             registro = facturacion.Facturacion.crear_registro()
             for i in registro:
                 if i == "":
@@ -49,3 +52,21 @@ class Facturacion_Repository:
         except Exception as error:
             Ventanas.Ventanas.mensaje_warning("No se ha insertado nada en la tabla")
             print("Error en la insercion en la tabla de facturas", error)
+
+
+    def recupera_lineas_de_viaje(idFactura):
+        try:
+            print(idFactura)
+            lineas_de_viaje :list = []
+            query = QtSql.QSqlQuery()
+            query.prepare('select * from viajes where idFactura = :idFactura')
+            query.bindValue(':idFactura',idFactura)
+            if query.exec():
+                    while query.next():
+                        row = [query.value(i) for i in range(query.record().count())]
+                        lineas_de_viaje.append(row)
+            print(lineas_de_viaje)
+            return lineas_de_viaje
+
+        except Exception as error:
+            print("Error en la el metodo recuperar todas las lineas de viaje de una factura" , error, query.lastError().text())

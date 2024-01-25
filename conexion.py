@@ -7,7 +7,7 @@ import Ventanas
 import cliente
 import conexion
 import drivers
-from facturacion import facturacion,facturacion_repository
+from Facturas import facturacion,facturacion_repository
 import var
 
 

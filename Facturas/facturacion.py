@@ -4,14 +4,10 @@ from PyQt6.uic.properties import QtWidgets, QtCore
 import Ventanas
 import conexion
 import drivers
-
-
+from Facturas import facturacion_repository
 
 import var
 from PyQt6 import QtWidgets, QtSql, QtCore
-
-
-from facturacion import facturacion_repository
 
 
 class Facturacion:
@@ -116,9 +112,30 @@ class Facturacion:
             if drivers.Drivers.validar_datos(datos_linea_de_factura):
                 facturacion_repository.Facturacion_Repository.insert_line_de_viaje(datos_linea_de_factura)
             else:
-                Ventanas.Ventanas.mensaje_warning("Debes rellenar todos los campor")
+                Ventanas.Ventanas.mensaje_warning("Debes rellenar todos los campos")
         except Exception as error:
             print("Error a la hora de recuperar los datos", error)
 
+    def rellenar_tabla_lineas_viaje(self):
+        try:
+            lineas_de_viaje = facturacion_repository.Facturacion_Repository.recupera_lineas_de_viaje(int(var.ui.txt_numero_factura.text()))
+            print(var.ui.tab_lineas_de_viaje.rowCount())
+            print(var.ui.tab_lineas_de_viaje.columnCount())
+            print(lineas_de_viaje)
+            for fila in range(len(lineas_de_viaje)):
+
+                for columna in range(var.ui.tab_lineas_de_viaje.columnCount()):
+                    if columna == 5:
+                        var.ui.tab_lineas_de_viaje.setItem(fila, columna, QtWidgets.QTableWidgetItem(
+                            str(lineas_de_viaje[3] * lineas_de_viaje[4])))
+                    else:
+                        var.ui.tab_lineas_de_viaje.setItem(fila, columna,QtWidgets.QTableWidgetItem(str(lineas_de_viaje[columna])))
+
+                # var.ui.tabClientes.item(index, 0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                # var.ui.tabClientes.item(index, 1).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                # var.ui.tabClientes.item(index, 2).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                # var.ui.tabClientes.item(index, 3).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
 
 
+        except Exception as error:
+            print("Error completar tabla ", error)

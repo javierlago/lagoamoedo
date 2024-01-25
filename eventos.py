@@ -2,7 +2,7 @@ import os.path
 import shutil
 import sys
 import zipfile
-from pprint import pprint
+
 
 import xlwt
 import xlrd
@@ -19,8 +19,7 @@ from datetime import *
 
 import locale
 from PyQt6 import QtCore, QtGui, QtWidgets
-import windowaux
-from VentanaPrint import Ui_menu_printear
+
 
 locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 locale.setlocale(locale.LC_MONETARY, 'es_ES.UTF-8')
@@ -182,12 +181,11 @@ class Eventos:
                 fichzip.write(var.bbdd, os.path.basename(var.bbdd), zipfile.ZIP_DEFLATED)
                 fichzip.close()
                 shutil.move(str(copia), str(directorio))
-                Ventanas.Ventanas.ventana_info("Copia se seguridad creada", e)
+                Ventanas.Ventanas.ventana_info("Copia se seguridad creada")
 
 
 
         except Exception as error:
-
             Ventanas.Ventanas.mensaje_warning("Error en la copia de seguridad", error)
 
     @staticmethod

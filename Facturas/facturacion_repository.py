@@ -3,7 +3,8 @@ from PyQt6 import QtSql
 import Ventanas
 import conexion
 import var
-from Facturas import *
+
+from Facturas import facturacion
 
 
 class Facturacion_Repository:
@@ -27,7 +28,7 @@ class Facturacion_Repository:
 
     def insert_factura(self):
         try:
-            from facturacion import facturacion
+
             registro = facturacion.Facturacion.crear_registro()
             for i in registro:
                 if i == "":
@@ -64,8 +65,8 @@ class Facturacion_Repository:
             if query.exec():
                     while query.next():
                         row = [query.value(i) for i in range(query.record().count())]
+                        row.pop(1)
                         lineas_de_viaje.append(row)
-            print(lineas_de_viaje)
             return lineas_de_viaje
 
         except Exception as error:

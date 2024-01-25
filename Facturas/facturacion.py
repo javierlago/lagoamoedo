@@ -1,4 +1,5 @@
 from PyQt6.QtGui import QBrush, QColor
+from PyQt6.QtWidgets import QHeaderView
 from PyQt6.uic.properties import QtWidgets, QtCore
 
 import Ventanas
@@ -111,6 +112,7 @@ class Facturacion:
                                             str(Facturacion.calcular_tarifa(self))]
             if drivers.Drivers.validar_datos(datos_linea_de_factura):
                 facturacion_repository.Facturacion_Repository.insert_line_de_viaje(datos_linea_de_factura)
+                Facturacion.rellenar_tabla_lineas_viaje(self)
             else:
                 Ventanas.Ventanas.mensaje_warning("Debes rellenar todos los campos")
         except Exception as error:
@@ -118,23 +120,29 @@ class Facturacion:
 
     def rellenar_tabla_lineas_viaje(self):
         try:
-            lineas_de_viaje = facturacion_repository.Facturacion_Repository.recupera_lineas_de_viaje(int(var.ui.txt_numero_factura.text()))
-            print(var.ui.tab_lineas_de_viaje.rowCount())
-            print(var.ui.tab_lineas_de_viaje.columnCount())
-            print(lineas_de_viaje)
+            lineas_de_viaje = facturacion_repository.Facturacion_Repository.recupera_lineas_de_viaje(
+                var.ui.txt_numero_factura.text())
+            for i in range(var.ui.tab_lineas_de_viaje.columnCount()):
+                if i == 1 or i == 2 or i == 3:
+                    var.ui.tab_lineas_de_viaje.horizontalHeader().setSectionResizeMode(i,
+                                                                                       QHeaderView.ResizeMode.ResizeToContents)
+                else:
+                    var.ui.tab_lineas_de_viaje.horizontalHeader().setSectionResizeMode(i,
+                                                                                       QHeaderView.ResizeMode.Stretch)
+            var.ui.tab_lineas_de_viaje.setRowCount(len(lineas_de_viaje))
             for fila in range(len(lineas_de_viaje)):
-
-                for columna in range(var.ui.tab_lineas_de_viaje.columnCount()):
+                for columna in range(var.ui.tab_lineas_de_viaje.columnCount() - 1):
                     if columna == 5:
                         var.ui.tab_lineas_de_viaje.setItem(fila, columna, QtWidgets.QTableWidgetItem(
-                            str(lineas_de_viaje[3] * lineas_de_viaje[4])))
+                            str(lineas_de_viaje[fila][3] * lineas_de_viaje[fila][4])))
+                        var.ui.tab_lineas_de_viaje.item(fila, columna).setTextAlignment(
+                            QtCore.Qt.AlignmentFlag.AlignCenter)
                     else:
-                        var.ui.tab_lineas_de_viaje.setItem(fila, columna,QtWidgets.QTableWidgetItem(str(lineas_de_viaje[columna])))
+                        var.ui.tab_lineas_de_viaje.setItem(fila, columna, QtWidgets.QTableWidgetItem(
+                            str(lineas_de_viaje[fila][columna])))
+                        var.ui.tab_lineas_de_viaje.item(fila, columna).setTextAlignment(
+                            QtCore.Qt.AlignmentFlag.AlignCenter)
 
-                # var.ui.tabClientes.item(index, 0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-                # var.ui.tabClientes.item(index, 1).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-                # var.ui.tabClientes.item(index, 2).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-                # var.ui.tabClientes.item(index, 3).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
 
 
         except Exception as error:

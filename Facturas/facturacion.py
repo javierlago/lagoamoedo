@@ -1,6 +1,6 @@
 from PyQt6.QtGui import QBrush, QColor
 from PyQt6.QtWidgets import QHeaderView
-from PyQt6.uic.properties import QtWidgets, QtCore
+from PyQt6.uic.properties import QtWidgets, QtCore, QtGui
 
 import Ventanas
 import conexion
@@ -9,7 +9,7 @@ from Facturas import facturacion_repository
 
 import var
 from PyQt6 import QtWidgets, QtSql, QtCore
-
+from PyQt6 import *
 
 class Facturacion:
 
@@ -120,10 +120,12 @@ class Facturacion:
 
     def rellenar_tabla_lineas_viaje(self):
         try:
+
+
             lineas_de_viaje = facturacion_repository.Facturacion_Repository.recupera_lineas_de_viaje(
                 var.ui.txt_numero_factura.text())
             for i in range(var.ui.tab_lineas_de_viaje.columnCount()):
-                if i == 1 or i == 2 or i == 3:
+                if i == 1 or i == 2 or i == 3 or i == 6:
                     var.ui.tab_lineas_de_viaje.horizontalHeader().setSectionResizeMode(i,
                                                                                        QHeaderView.ResizeMode.ResizeToContents)
                 else:
@@ -131,12 +133,17 @@ class Facturacion:
                                                                                        QHeaderView.ResizeMode.Stretch)
             var.ui.tab_lineas_de_viaje.setRowCount(len(lineas_de_viaje))
             for fila in range(len(lineas_de_viaje)):
-                for columna in range(var.ui.tab_lineas_de_viaje.columnCount() - 1):
+                for columna in range(var.ui.tab_lineas_de_viaje.columnCount()):
                     if columna == 5:
                         var.ui.tab_lineas_de_viaje.setItem(fila, columna, QtWidgets.QTableWidgetItem(
                             str(lineas_de_viaje[fila][3] * lineas_de_viaje[fila][4])))
                         var.ui.tab_lineas_de_viaje.item(fila, columna).setTextAlignment(
                             QtCore.Qt.AlignmentFlag.AlignCenter)
+                    elif columna == 6:
+                        btn_borrar = QtWidgets.QPushButton()
+                        btn_borrar.setFixedSize(30, 28)
+                        btn_borrar.setIcon(QtGui.QIcon('./img/papelera.png'))
+                        var.ui.tab_lineas_de_viaje.setCellWidget(fila,columna,btn_borrar)
                     else:
                         var.ui.tab_lineas_de_viaje.setItem(fila, columna, QtWidgets.QTableWidgetItem(
                             str(lineas_de_viaje[fila][columna])))

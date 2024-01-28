@@ -21,7 +21,7 @@ class Cliente:
         try:
 
             cliente_baja = cliente.Cliente.recuperar_datos()
-            if cliente.Cliente.validar_datos(cliente_baja):
+            if cliente_baja.Cliente.validar_datos(cliente_baja):
                 conexion.Conexion.borrarCliente(cliente_baja[0])
                 conexion.Conexion.mostrarclientes()
             else:
@@ -179,7 +179,7 @@ class Cliente:
             for c in range(var.ui.tabClientes.columnCount()):
                 item = var.ui.tabClientes.item(row, c)
                 if item is not None:
-                    item.setBackground(QBrush(QColor("#CCA963")))
+                    item.setBackground(QBrush(QColor(247, 181, 0)))
 
             codigo = var.ui.tabClientes.item(row, 0).text()
 

@@ -1,5 +1,5 @@
 from PyQt6.QtGui import QBrush, QColor
-from PyQt6.QtWidgets import QHeaderView
+from PyQt6.QtWidgets import QHeaderView, QMessageBox
 from PyQt6.uic.properties import QtWidgets, QtCore, QtGui
 
 import Ventanas
@@ -11,9 +11,10 @@ import var
 from PyQt6 import QtWidgets, QtSql, QtCore
 from PyQt6 import *
 
+
 class Facturacion:
 
-    def crear_registro(self=None):
+    def crear_registro(self):
         try:
 
             registroFactura = [var.ui.txt_cif_cliente.text(), var.ui.txt_fecha_factura.text(),
@@ -21,6 +22,14 @@ class Facturacion:
             return registroFactura
         except Exception as error:
             print("Errore en la recogida de datos de la factura", error)
+
+    def recoger_datos_viaje(self):
+        try:
+            datos_viaje = [var.ui.cmb_provincia_origen.currentText(), var.ui.cmb_provincia_destino.currentText(),
+                           var.ui.cmb_localidad_origen.currentText(), var.ui.cmb_localidad_destino.currentText()]
+            return datos_viaje
+        except Exception as error:
+            print("Error en la recuperacion de datos del vieaje", error)
 
     def cargartabla(registros):
         try:
@@ -62,7 +71,7 @@ class Facturacion:
             for c in range(var.ui.tab_facturas.columnCount()):
                 item = var.ui.tab_facturas.item(row, c)
                 if item is not None:
-                    item.setBackground(QBrush(QColor("#CCA963")))
+                    item.setBackground(QBrush(QColor(247, 181, 0)))
             registro = conexion.Conexion.buscar_segun_codigo(codigo)
             var.ui.txt_numero_factura.setText(var.ui.tab_facturas.item(row, 0).text())
             var.ui.txt_cif_cliente.setText(var.ui.tab_facturas.item(row, 1).text())
@@ -73,18 +82,7 @@ class Facturacion:
         except Exception as error:
             print("Error al cargar desde la tabla", error)
 
-    def crear_regitro_viaje(self):
-        try:
-            print("Metodo en el que se generean registrod de los viajes")
-
-
-
-
-
-        except Exception as error:
-            print("Error a la hora de crear un registro", error)
-
-    def calcular_tarifa(self):
+    def calcular_tarifa(self=None):
         try:
             print("Calculando tarifa")
             print(var.ui.cmb_provincia_origen.currentText())
@@ -105,14 +103,19 @@ class Facturacion:
         except Exception as error:
             print("Error en el metodo calcular tarifa", error)
 
-    def insertar_datos_viaje(self):
+    def insertar_datos_viaje(last_insert):
         try:
+            print(str(last_insert))
             datos_linea_de_factura: list = [var.ui.txt_numero_factura.text(), var.ui.cmb_localidad_origen.currentText(),
                                             var.ui.cmb_localidad_destino.currentText(), var.ui.txt_kilometros.text(),
-                                            str(Facturacion.calcular_tarifa(self))]
+                                            str(Facturacion.calcular_tarifa())]
+            if datos_linea_de_factura[0] == "":
+                datos_linea_de_factura[0] = str(last_insert)
+                print(drivers.Drivers.validar_datos(datos_linea_de_factura))
+                print(int(last_insert))
             if drivers.Drivers.validar_datos(datos_linea_de_factura):
                 facturacion_repository.Facturacion_Repository.insert_line_de_viaje(datos_linea_de_factura)
-                Facturacion.rellenar_tabla_lineas_viaje(self)
+                Facturacion.rellenar_tabla_lineas_viaje(self=None)
             else:
                 Ventanas.Ventanas.mensaje_warning("Debes rellenar todos los campos")
         except Exception as error:
@@ -120,7 +123,6 @@ class Facturacion:
 
     def rellenar_tabla_lineas_viaje(self):
         try:
-
 
             lineas_de_viaje = facturacion_repository.Facturacion_Repository.recupera_lineas_de_viaje(
                 var.ui.txt_numero_factura.text())
@@ -140,17 +142,50 @@ class Facturacion:
                         var.ui.tab_lineas_de_viaje.item(fila, columna).setTextAlignment(
                             QtCore.Qt.AlignmentFlag.AlignCenter)
                     elif columna == 6:
-                        btn_borrar = QtWidgets.QPushButton()
-                        btn_borrar.setFixedSize(30, 28)
-                        btn_borrar.setIcon(QtGui.QIcon('./img/papelera.png'))
-                        var.ui.tab_lineas_de_viaje.setCellWidget(fila,columna,btn_borrar)
+                        btn_borrar_linea_viaje = QtWidgets.QPushButton()
+                        btn_borrar_linea_viaje.setFixedSize(30, 28)
+                        btn_borrar_linea_viaje.setIcon(QtGui.QIcon('./img/papelera.png'))
+                        var.ui.tab_lineas_de_viaje.setCellWidget(fila, columna, btn_borrar_linea_viaje)
+                        btn_borrar_linea_viaje.clicked.connect(Facturacion.eliminar_linea_de_viaje)
                     else:
                         var.ui.tab_lineas_de_viaje.setItem(fila, columna, QtWidgets.QTableWidgetItem(
                             str(lineas_de_viaje[fila][columna])))
                         var.ui.tab_lineas_de_viaje.item(fila, columna).setTextAlignment(
                             QtCore.Qt.AlignmentFlag.AlignCenter)
 
-
-
+            var.ui.txt_subtotal.setText(str(Facturacion.calculo_factura_de_viaje(var.ui.tab_lineas_de_viaje)))
+            iva = Facturacion.calculo_factura_de_viaje(var.ui.tab_lineas_de_viaje)*0,21
+            var.ui.txt
         except Exception as error:
             print("Error completar tabla ", error)
+
+    def eliminar_linea_de_viaje(self):
+        try:
+            mensaje = QMessageBox()
+            mensaje.setText("¿Deseas eliminar este viaje?")
+            mensaje.setWindowTitle("Lineas de viaje")
+            mensaje.setIcon(QMessageBox.Icon.Warning)
+            mensaje.setStandardButtons(QMessageBox.StandardButton.Ok | QMessageBox.StandardButton.Cancel)
+            resultado = mensaje.exec()
+            if resultado == QMessageBox.StandardButton.Ok:
+                print(var.ui.tab_lineas_de_viaje.item(var.ui.tab_lineas_de_viaje.currentRow(), 0).text())
+                facturacion_repository.Facturacion_Repository.borra_linea_de_viaje(
+                    var.ui.tab_lineas_de_viaje.item(var.ui.tab_lineas_de_viaje.currentRow(), 0).text())
+                var.ui.tab_lineas_de_viaje.removeRow(var.ui.tab_lineas_de_viaje.currentRow())
+
+        except Exception as error:
+            print("Error en el metodo de borrado de linea de viaje", error)
+    def calculo_factura_de_viaje(tabla):
+        try:
+            presupuesto = 0
+            for a in range(tabla.rowCount()):
+                print(tabla.item(a,5).text())
+                presupuesto += float(tabla.item(a,5).text())
+            return presupuesto
+        except Exception as error:
+            print("Error en el metodo de suma del total",error)
+
+
+
+
+

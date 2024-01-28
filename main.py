@@ -154,6 +154,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.tab_facturas.clicked.connect(facturacion.Facturacion.rellenar_tabla_lineas_viaje)
 
 
+
     def closeEvent(self, event):
 
         mbox = QtWidgets.QMessageBox.information(self, "Salir", "Estas seguro de salir?",

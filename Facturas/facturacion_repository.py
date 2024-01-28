@@ -2,6 +2,7 @@ from PyQt6 import QtSql
 
 import Ventanas
 import conexion
+import drivers
 import var
 
 from Facturas import facturacion
@@ -18,23 +19,28 @@ class Facturacion_Repository:
             query.bindValue(":origen", registro[1])
             query.bindValue(":destino", registro[2])
             query.bindValue(":kms", int(registro[3]))
-            query.bindValue(":tarifa", registro[4])
+            query.bindValue(":tarifa", float(registro[4]))
             if query.exec():
                 print("Se han introducido los datos")
         except Exception as erro:
-            print(query.lastError().text(), erro, "Error en el insert de viajes")
+            Ventanas.Ventanas.mensaje_warning("Debes seleccionar una factuta")
+            print(erro, "Error en el insert de viajes")
 
 
 
     def insert_factura(self):
         try:
-
-            registro = facturacion.Facturacion.crear_registro()
-            for i in registro:
-                if i == "":
+            if not drivers.Drivers.validar_datos(facturacion.Facturacion.crear_registro(self)):
                     Ventanas.Ventanas.mensaje_warning("Campos Vacios")
                     return
+            if not drivers.Drivers.validar_datos(facturacion.Facturacion.recoger_datos_viaje(self)):
+                    Ventanas.Ventanas.mensaje_warning("Debes añadir al menos un viaje para crear una factura")
+                    return
 
+            registro = facturacion.Facturacion.crear_registro(self)
+            if Facturacion_Repository.comprobarr_factura_existe(var.ui.txt_numero_factura.text()):
+                Ventanas.Ventanas.mensaje_warning("Fatura ya existe")
+                return
             if conexion.Conexion.dni_existe(registro[0]) is False:
                 Ventanas.Ventanas.mensaje_warning("Cliente no se encuentra en la base de datos")
                 return
@@ -48,6 +54,9 @@ class Facturacion_Repository:
             query.bindValue(':fechaFactura', registro[1])
             query.bindValue(':idConductor', registro[2])
             query.exec()
+            print(str(query.lastInsertId()))
+            facturacion.Facturacion.insertar_datos_viaje(query.lastInsertId())
+
             Ventanas.Ventanas.ventana_info("Se ha creado una factura")
             conexion.Conexion.cargar_facturas()
         except Exception as error:
@@ -71,3 +80,27 @@ class Facturacion_Repository:
 
         except Exception as error:
             print("Error en la el metodo recuperar todas las lineas de viaje de una factura" , error, query.lastError().text())
+
+    def borra_linea_de_viaje(id_viaje):
+        try:
+            print(id_viaje)
+            query_borrar_linea_de_viaje = QtSql.QSqlQuery()
+            query_borrar_linea_de_viaje.prepare('delete from viajes where idViaje = :idViaje')
+            query_borrar_linea_de_viaje.bindValue(':idViaje', id_viaje)
+            query_borrar_linea_de_viaje.exec()
+            if query_borrar_linea_de_viaje.exec():
+                print("Se ha eliminado el viaje")
+        except Exception as erro:
+            print("Error en el metodo de borrar una linea de viaje",erro)
+
+
+    def comprobarr_factura_existe(id_Factura):
+        try:
+            query_verificar_factura_existe = QtSql.QSqlQuery()
+            query_verificar_factura_existe.prepare('select * from facturas where numFactura = :nunFactura')
+            query_verificar_factura_existe.bindValue(':nunFactura',id_Factura)
+            if query_verificar_factura_existe.exec() and query_verificar_factura_existe.next():
+                return True
+
+        except Exception as error:
+            print("Error al validar la existencia de una factura")

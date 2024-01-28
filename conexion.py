@@ -299,13 +299,12 @@ class Conexion:
             query = QtSql.QSqlQuery()
             query.prepare("SELECT * FROM drivers WHERE dnidri = :dnidri")
             query.bindValue(':dnidri', str(dni))
-            if query.exec() and query.next():
+            if query.exec():
                 while query.next():
                     for i in range(12):
                         registro.append(str(query.value(i)))
             else:
                 Ventanas.Ventanas.mensaje_warning("Dni no esta en la base de datos")
-
             if registro[11] != '':
                 var.ui.rbtAlta.isChecked()
             return registro

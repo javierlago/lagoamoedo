@@ -104,3 +104,11 @@ class Facturacion_Repository:
 
         except Exception as error:
             print("Error al validar la existencia de una factura")
+
+
+    
+
+
+
+
+

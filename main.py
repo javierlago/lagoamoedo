@@ -2,10 +2,11 @@ import locale
 import sys
 from PyQt6.QtWidgets import QApplication
 import cliente
+from Facturas.facturacion_informes import Facturacion_informes
 
 from MainWindow import *
 import conexion
-from Facturas import facturacion, facturacion_repository
+from Facturas import facturacion, facturacion_repository, facturacion_informes
 
 from windowaux import *
 locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
@@ -89,6 +90,8 @@ class Main(QtWidgets.QMainWindow):
         var.ui.buttonGroup.buttonClicked.connect(eventos.Eventos.limpiar)
         var.ui.btnBajaDriver.clicked.connect(drivers.Drivers.borrar_datos)
         var.ui.actionListarConductores.triggered.connect(informes.informes.report_conductores)
+        var.ui.actionImprimir_Factura.triggered.connect(Facturacion_informes.report_facturas)
+
 
         '''
         botones Cliente

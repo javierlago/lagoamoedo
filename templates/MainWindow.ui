@@ -520,7 +520,7 @@ background-color: rgb(225, 225, 225);</string>
                               </property>
                               <property name="icon">
                                <iconset>
-                                <normaloff>../../../../../.designer/img/lupa2.png</normaloff>../../../../../.designer/img/lupa2.png</iconset>
+                                <normaloff>../img/lupa2.png</normaloff>../img/lupa2.png</iconset>
                               </property>
                              </widget>
                             </item>
@@ -2867,7 +2867,7 @@ background-color: rgb(247, 181, 0);</string>
                            </size>
                           </property>
                           <property name="text">
-                           <string>IVA:</string>
+                           <string>IVA (21%):</string>
                           </property>
                          </widget>
                         </item>
@@ -3383,7 +3383,7 @@ background-color: rgb(225, 225, 225);</string>
                           </property>
                           <property name="icon">
                            <iconset>
-                            <normaloff>../../../../../.designer/img/lupa2.png</normaloff>../../../../../.designer/img/lupa2.png</iconset>
+                            <normaloff>../img/lupa2.png</normaloff>../img/lupa2.png</iconset>
                           </property>
                          </widget>
                         </item>
@@ -4449,9 +4449,10 @@ background-color: rgb(247, 181, 0);</string>
     <property name="title">
      <string>Informes</string>
     </property>
-    <addaction name="separator"/>
     <addaction name="actionListarConductores"/>
     <addaction name="actionListar_Clientes"/>
+    <addaction name="separator"/>
+    <addaction name="actionImprimir_Factura"/>
    </widget>
    <addaction name="menuArchivo"/>
    <addaction name="menuHerramientas"/>
@@ -4567,6 +4568,11 @@ background-color: rgb(247, 181, 0);</string>
     <bool>true</bool>
    </property>
   </action>
+  <action name="actionImprimir_Factura">
+   <property name="text">
+    <string>Imprimir Factura</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>btnBajaDriver</tabstop>
@@ -4590,8 +4596,8 @@ background-color: rgb(247, 181, 0);</string>
  <resources/>
  <connections/>
  <buttongroups>
+  <buttongroup name="botonesDeCliente"/>
   <buttongroup name="btn_group_tarifas"/>
   <buttongroup name="buttonGroup"/>
-  <buttongroup name="botonesDeCliente"/>
  </buttongroups>
 </ui>

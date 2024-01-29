@@ -154,8 +154,13 @@ class Facturacion:
                             QtCore.Qt.AlignmentFlag.AlignCenter)
 
             var.ui.txt_subtotal.setText(str(Facturacion.calculo_factura_de_viaje(var.ui.tab_lineas_de_viaje)))
-            iva = Facturacion.calculo_factura_de_viaje(var.ui.tab_lineas_de_viaje)*0,21
-            var.ui.txt
+            iva = (Facturacion.calculo_factura_de_viaje(var.ui.tab_lineas_de_viaje)*0.21)
+            var.ui.txt_iva.setText(str(round(iva,2)))
+            total = (iva + Facturacion.calculo_factura_de_viaje(var.ui.tab_lineas_de_viaje))
+            var.ui.txt_total.setText(str(round(total, 2)))
+            print(total)
+
+
         except Exception as error:
             print("Error completar tabla ", error)
 

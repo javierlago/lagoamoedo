@@ -127,7 +127,7 @@ class Facturacion:
             lineas_de_viaje = facturacion_repository.Facturacion_Repository.recupera_lineas_de_viaje(
                 var.ui.txt_numero_factura.text())
             for i in range(var.ui.tab_lineas_de_viaje.columnCount()):
-                if i == 1 or i == 2 or i == 3 or i == 6:
+                if  i == 1 or i == 2 or i == 3 or i == 6:
                     var.ui.tab_lineas_de_viaje.horizontalHeader().setSectionResizeMode(i,
                                                                                        QHeaderView.ResizeMode.ResizeToContents)
                 else:

@@ -106,8 +106,24 @@ class Facturacion_Repository:
             print("Error al validar la existencia de una factura")
 
 
-    
-
+    def recuperar_datos_cliente_factura(self=None):
+        try:
+            print(var.ui.tab_facturas.item(var.ui.tab_facturas.currentRow(), 1).text())
+            datos_factura = []
+            query_datos_factura = QtSql.QSqlQuery()
+            query_datos_factura.prepare('select * from facturas where numFactura = :numFactura')
+            query_datos_factura.bindValue(':numFactura', var.ui.tab_facturas.item(var.ui.tab_facturas.currentRow(), 0).text())
+            if query_datos_factura.exec():
+                while query_datos_factura.next():
+                    row = [query_datos_factura.value(i) for i in range(query_datos_factura.record().count())]
+                    datos_factura.append(row)
+            print(datos_factura)
+            datos_cliente = conexion.Conexion.buscar_segun_dni_cliente(var.ui.tab_facturas.item(var.ui.tab_facturas.currentRow(), 1).text())
+            print(datos_cliente)
+            datos_cliente_factura = [datos_factura[0][0],datos_factura[0][2],datos_cliente[2],datos_cliente[3],datos_cliente[4],datos_cliente[5],datos_cliente[6]]
+            return datos_cliente_factura
+        except Exception as error:
+            print("Error en el metodo de creadcion del array datos factura datos cliente",error)
 
 
 

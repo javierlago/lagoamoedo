@@ -2666,20 +2666,20 @@ background-color: rgb(247, 181, 0);</string>
                   <item>
                    <widget class="QTableWidget" name="tab_lineas_de_viaje">
                     <property name="sizePolicy">
-                     <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                     <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
                       <horstretch>0</horstretch>
                       <verstretch>0</verstretch>
                      </sizepolicy>
                     </property>
                     <property name="minimumSize">
                      <size>
-                      <width>700</width>
+                      <width>702</width>
                       <height>0</height>
                      </size>
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>700</width>
+                      <width>702</width>
                       <height>16777215</height>
                      </size>
                     </property>
@@ -4596,8 +4596,8 @@ background-color: rgb(247, 181, 0);</string>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="botonesDeCliente"/>
   <buttongroup name="btn_group_tarifas"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="botonesDeCliente"/>
  </buttongroups>
 </ui>

@@ -141,6 +141,27 @@ class informes:
         except Exception as e:
             print(e)
 
+    def top_informe_factura(titulo):
+        try:
+
+            logo = '.\\img\\taxiIcon.png'
+            var.report.line(50, 800, 525, 800)
+            var.report.setFont('Helvetica-Bold', size=14)
+            var.report.drawString(55, 785, 'Trasnsportes Teis')
+            var.report.drawString(240, 645, titulo)
+            var.report.line(50, 635, 525, 635)
+            var.report.drawImage(logo, 440, 725, width=45, height=45)
+            var.report.setFont('Helvetica', size=9)
+            var.report.drawString(55, 770, 'CIF:A12345678')
+            var.report.drawString(55, 755, 'Avd Galicia 101')
+            var.report.drawString(55, 740, 'Vigo - 36216 - España')
+            var.report.drawString(55, 725, 'Telefono: 986 123 456')
+            var.report.drawString(55, 710, 'e-mail carteis@gmail.com')
+
+
+        except Exception as e:
+            print(e)
+
     def foot_informe(titulo):
 
         try:

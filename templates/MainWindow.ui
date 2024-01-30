@@ -367,6 +367,9 @@ border: 2px solid black;
                            <layout class="QHBoxLayout" name="horizontalLayout_5">
                             <item>
                              <widget class="QLabel" name="lblCodDB">
+                              <property name="enabled">
+                               <bool>false</bool>
+                              </property>
                               <property name="sizePolicy">
                                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                 <horstretch>0</horstretch>
@@ -386,7 +389,8 @@ border: 2px solid black;
                                </size>
                               </property>
                               <property name="styleSheet">
-                               <string notr="true">background-color: rgb(247, 181, 0);border: 2px solid black; border-radius: 3px;</string>
+                               <string notr="true">background-color: rgb(247, 181, 0);border: 2px solid black; border-radius: 3px;
+color: rgb(0, 0, 0);</string>
                               </property>
                               <property name="text">
                                <string/>
@@ -1880,9 +1884,9 @@ background-color: rgb(247, 181, 0);</string>
           <attribute name="title">
            <string>Facturación</string>
           </attribute>
-          <layout class="QVBoxLayout" name="verticalLayout_18">
+          <layout class="QVBoxLayout" name="verticalLayout_19">
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_33">
+            <layout class="QHBoxLayout" name="horizontalLayout_41">
              <item>
               <spacer name="horizontalSpacer_45">
                <property name="orientation">
@@ -1898,6 +1902,12 @@ background-color: rgb(247, 181, 0);</string>
              </item>
              <item>
               <widget class="QFrame" name="frame_2">
+               <property name="maximumSize">
+                <size>
+                 <width>940</width>
+                 <height>16777215</height>
+                </size>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QFrame#frame_2{
 border-radius:10px;
@@ -1910,212 +1920,396 @@ border: 2px solid black;
                <property name="frameShadow">
                 <enum>QFrame::Raised</enum>
                </property>
-               <layout class="QHBoxLayout" name="horizontalLayout_32">
+               <layout class="QHBoxLayout" name="horizontalLayout_40">
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_27">
+                 <layout class="QVBoxLayout" name="verticalLayout_15">
                   <item>
-                   <layout class="QVBoxLayout" name="verticalLayout_14">
+                   <layout class="QHBoxLayout" name="horizontalLayout_27">
                     <item>
-                     <layout class="QHBoxLayout" name="horizontalLayout_19">
-                      <item>
-                       <widget class="QLabel" name="label_num_factura">
-                        <property name="maximumSize">
-                         <size>
-                          <width>75</width>
-                          <height>20</height>
-                         </size>
-                        </property>
-                        <property name="text">
-                         <string>Nº Factura:</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QLineEdit" name="txt_numero_factura">
-                        <property name="enabled">
-                         <bool>false</bool>
-                        </property>
-                        <property name="maximumSize">
-                         <size>
-                          <width>30</width>
-                          <height>16777215</height>
-                         </size>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">background-color: rgb(247, 181, 0);border: 2px solid black; border-radius: 3px;</string>
-                        </property>
-                        <property name="frame">
-                         <bool>false</bool>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QLabel" name="label_conductor">
-                        <property name="maximumSize">
-                         <size>
-                          <width>87</width>
-                          <height>16777215</height>
-                         </size>
-                        </property>
-                        <property name="text">
-                         <string>Conductores:</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QComboBox" name="cmb_listado_conductores">
-                        <property name="sizeAdjustPolicy">
-                         <enum>QComboBox::AdjustToContents</enum>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
+                     <spacer name="horizontalSpacer_40">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
                     </item>
                     <item>
-                     <layout class="QHBoxLayout" name="horizontalLayout_25">
-                      <item>
-                       <widget class="QLabel" name="label_Cliente">
-                        <property name="text">
-                         <string>Cliente</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QLineEdit" name="txt_cif_cliente">
-                        <property name="maximumSize">
-                         <size>
-                          <width>100</width>
-                          <height>16777215</height>
-                         </size>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">border: 2px solid black; border-radius: 3px;</string>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QPushButton" name="btnBuscar_Cli_facturacion">
-                        <property name="minimumSize">
-                         <size>
-                          <width>24</width>
-                          <height>24</height>
-                         </size>
-                        </property>
-                        <property name="maximumSize">
-                         <size>
-                          <width>24</width>
-                          <height>24</height>
-                         </size>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">border-radius:2px; 
-background-color: rgb(225, 225, 225);</string>
-                        </property>
-                        <property name="text">
-                         <string/>
-                        </property>
-                        <property name="icon">
-                         <iconset>
-                          <normaloff>../img/lupa2.png</normaloff>../img/lupa2.png</iconset>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QLabel" name="label_fecha_factuta">
-                        <property name="text">
-                         <string>Fecha factura:</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QLineEdit" name="txt_fecha_factura">
-                        <property name="maximumSize">
-                         <size>
-                          <width>100</width>
-                          <height>16777215</height>
-                         </size>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">border: 2px solid black; border-radius: 3px;</string>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <widget class="QPushButton" name="btn_fecha_factura">
-                        <property name="minimumSize">
-                         <size>
-                          <width>24</width>
-                          <height>24</height>
-                         </size>
-                        </property>
-                        <property name="maximumSize">
-                         <size>
-                          <width>24</width>
-                          <height>24</height>
-                         </size>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">border-radius:2px; 
-background-color: rgb(225, 225, 225);</string>
-                        </property>
-                        <property name="text">
-                         <string/>
-                        </property>
-                        <property name="icon">
-                         <iconset>
-                          <normaloff>../img/calendario.png</normaloff>../img/calendario.png</iconset>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
+                     <widget class="QLabel" name="label_titulo_facturacion">
+                      <property name="minimumSize">
+                       <size>
+                        <width>121</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>100</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">font: 81 14pt &quot;Montserrat ExtraBold&quot;;</string>
+                      </property>
+                      <property name="text">
+                       <string>Facturación</string>
+                      </property>
+                     </widget>
                     </item>
                     <item>
-                     <layout class="QHBoxLayout" name="horizontalLayout_26">
+                     <spacer name="horizontalSpacer_48">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="zona_facturar">
+                    <item>
+                     <layout class="QVBoxLayout" name="verticalLayout_14">
                       <item>
-                       <spacer name="horizontalSpacer_42">
+                       <layout class="QHBoxLayout" name="horizontalLayout_19">
+                        <item>
+                         <spacer name="horizontalSpacer_59">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>40</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_num_factura">
+                          <property name="maximumSize">
+                           <size>
+                            <width>75</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                          <property name="text">
+                           <string>Nº Factura:</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLineEdit" name="txt_numero_factura">
+                          <property name="enabled">
+                           <bool>false</bool>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>30</width>
+                            <height>0</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>30</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(247, 181, 0);border: 2px solid black; border-radius: 3px;
+color: rgb(0, 0, 0);</string>
+                          </property>
+                          <property name="frame">
+                           <bool>false</bool>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_conductor">
+                          <property name="maximumSize">
+                           <size>
+                            <width>87</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="text">
+                           <string>Conductores:</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QComboBox" name="cmb_listado_conductores">
+                          <property name="minimumSize">
+                           <size>
+                            <width>200</width>
+                            <height>0</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>200</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">border: 2px solid black; border-radius: 3px;</string>
+                          </property>
+                          <property name="sizeAdjustPolicy">
+                           <enum>QComboBox::AdjustToContents</enum>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="horizontalSpacer_58">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>40</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                       </layout>
+                      </item>
+                      <item>
+                       <layout class="QHBoxLayout" name="horizontalLayout_25">
+                        <item>
+                         <spacer name="horizontalSpacer_60">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>40</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_Cliente">
+                          <property name="text">
+                           <string>Cliente</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLineEdit" name="txt_cif_cliente">
+                          <property name="maximumSize">
+                           <size>
+                            <width>100</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">border: 2px solid black; border-radius: 3px;</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="horizontalSpacer_66">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                          <property name="sizeType">
+                           <enum>QSizePolicy::Fixed</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>33</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="btnBuscar_Cli_facturacion">
+                          <property name="minimumSize">
+                           <size>
+                            <width>24</width>
+                            <height>24</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>24</width>
+                            <height>24</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">border-radius:2px; 
+background-color: rgb(225, 225, 225);</string>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="icon">
+                           <iconset>
+                            <normaloff>../img/lupa2.png</normaloff>../img/lupa2.png</iconset>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_fecha_factuta">
+                          <property name="text">
+                           <string>Fecha factura:</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLineEdit" name="txt_fecha_factura">
+                          <property name="maximumSize">
+                           <size>
+                            <width>100</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">border: 2px solid black; border-radius: 3px;</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignCenter</set>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="btn_fecha_factura">
+                          <property name="minimumSize">
+                           <size>
+                            <width>24</width>
+                            <height>24</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>24</width>
+                            <height>24</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">border-radius:2px; 
+background-color: rgb(225, 225, 225);</string>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="icon">
+                           <iconset>
+                            <normaloff>../img/calendario.png</normaloff>../img/calendario.png</iconset>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="horizontalSpacer_57">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>40</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                       </layout>
+                      </item>
+                      <item>
+                       <spacer name="verticalSpacer_11">
                         <property name="orientation">
-                         <enum>Qt::Horizontal</enum>
+                         <enum>Qt::Vertical</enum>
+                        </property>
+                        <property name="sizeType">
+                         <enum>QSizePolicy::Fixed</enum>
                         </property>
                         <property name="sizeHint" stdset="0">
                          <size>
-                          <width>40</width>
-                          <height>20</height>
+                          <width>20</width>
+                          <height>24</height>
                          </size>
                         </property>
                        </spacer>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="btn_facturar">
-                        <property name="styleSheet">
-                         <string notr="true">border: 2px solid black; border-radius: 3px;
+                       <spacer name="verticalSpacer_12">
+                        <property name="orientation">
+                         <enum>Qt::Vertical</enum>
+                        </property>
+                        <property name="sizeType">
+                         <enum>QSizePolicy::Fixed</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>20</width>
+                          <height>24</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <layout class="QHBoxLayout" name="horizontalLayout_26">
+                        <item>
+                         <spacer name="horizontalSpacer_42">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>40</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="btn_facturar">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>24</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">border: 2px solid black; border-radius: 3px;
 background-color: rgb(247, 181, 0);</string>
-                        </property>
-                        <property name="text">
-                         <string>Facturar</string>
-                        </property>
-                       </widget>
-                      </item>
-                      <item>
-                       <spacer name="horizontalSpacer_41">
-                        <property name="orientation">
-                         <enum>Qt::Horizontal</enum>
-                        </property>
-                        <property name="sizeHint" stdset="0">
-                         <size>
-                          <width>40</width>
-                          <height>20</height>
-                         </size>
-                        </property>
-                       </spacer>
+                          </property>
+                          <property name="text">
+                           <string>Facturar</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <spacer name="horizontalSpacer_41">
+                          <property name="orientation">
+                           <enum>Qt::Horizontal</enum>
+                          </property>
+                          <property name="sizeHint" stdset="0">
+                           <size>
+                            <width>40</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                         </spacer>
+                        </item>
+                       </layout>
                       </item>
                      </layout>
                     </item>
@@ -2137,9 +2331,83 @@ background-color: rgb(247, 181, 0);</string>
                  </widget>
                 </item>
                 <item>
-                 <layout class="QVBoxLayout" name="verticalLayout_15">
+                 <layout class="QVBoxLayout" name="verticalLayout_18">
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_32">
+                    <item>
+                     <spacer name="horizontalSpacer_52">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_conductor_3">
+                      <property name="minimumSize">
+                       <size>
+                        <width>154</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>180</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <family>Montserrat ExtraBold</family>
+                        <pointsize>14</pointsize>
+                        <weight>10</weight>
+                        <italic>false</italic>
+                        <bold>false</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">font: 81 14pt &quot;Montserrat ExtraBold&quot;;</string>
+                      </property>
+                      <property name="text">
+                       <string>Registro de viajes</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_55">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                   </layout>
+                  </item>
                   <item>
                    <layout class="QHBoxLayout" name="horizontalLayout_30">
+                    <item>
+                     <spacer name="horizontalSpacer_61">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
                     <item>
                      <widget class="QLabel" name="lblProvincia_3">
                       <property name="sizePolicy">
@@ -2152,6 +2420,12 @@ background-color: rgb(247, 181, 0);</string>
                        <size>
                         <width>60</width>
                         <height>24</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>60</width>
+                        <height>16777215</height>
                        </size>
                       </property>
                       <property name="sizeIncrement">
@@ -2241,6 +2515,19 @@ background-color: rgb(247, 181, 0);</string>
                   <item>
                    <layout class="QHBoxLayout" name="horizontalLayout_29">
                     <item>
+                     <spacer name="horizontalSpacer_62">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
                      <widget class="QLabel" name="lblProvincia_4">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -2256,7 +2543,7 @@ background-color: rgb(247, 181, 0);</string>
                       </property>
                       <property name="maximumSize">
                        <size>
-                        <width>87</width>
+                        <width>60</width>
                         <height>16777215</height>
                        </size>
                       </property>
@@ -2330,7 +2617,49 @@ background-color: rgb(247, 181, 0);</string>
                      </widget>
                     </item>
                     <item>
+                     <spacer name="horizontalSpacer_47">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_33">
+                    <item>
+                     <spacer name="horizontalSpacer_64">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
                      <widget class="QLabel" name="label_Cliente_2">
+                      <property name="minimumSize">
+                       <size>
+                        <width>60</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>60</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
                       <property name="text">
                        <string>Kms</string>
                       </property>
@@ -2347,13 +2676,13 @@ background-color: rgb(247, 181, 0);</string>
                       <property name="minimumSize">
                        <size>
                         <width>40</width>
-                        <height>20</height>
+                        <height>24</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>40</width>
-                        <height>20</height>
+                        <height>24</height>
                        </size>
                       </property>
                       <property name="styleSheet">
@@ -2363,6 +2692,32 @@ background-color: rgb(247, 181, 0);</string>
                        <set>Qt::AlignCenter</set>
                       </property>
                      </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_56">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>324</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_63">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
                     </item>
                    </layout>
                   </item>
@@ -2468,12 +2823,41 @@ background-color: rgb(247, 181, 0);</string>
                     </item>
                     <item>
                      <widget class="QPushButton" name="btn_grabar_registro_viaje">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>24</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>24</height>
+                       </size>
+                      </property>
                       <property name="styleSheet">
                        <string notr="true">border: 2px solid black; border-radius: 3px;
 background-color: rgb(247, 181, 0);</string>
                       </property>
                       <property name="text">
                        <string>Grabar</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="btn_modificar_viaje">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>24</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">border: 2px solid black; border-radius: 3px;
+background-color: rgb(247, 181, 0);</string>
+                      </property>
+                      <property name="text">
+                       <string>Modificar</string>
                       </property>
                      </widget>
                     </item>
@@ -2498,7 +2882,7 @@ background-color: rgb(247, 181, 0);</string>
               </widget>
              </item>
              <item>
-              <spacer name="horizontalSpacer_47">
+              <spacer name="horizontalSpacer_65">
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
                </property>
@@ -2821,18 +3205,19 @@ background-color: rgb(247, 181, 0);</string>
                           </property>
                           <property name="minimumSize">
                            <size>
-                            <width>50</width>
+                            <width>65</width>
                             <height>0</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
-                            <width>50</width>
+                            <width>65</width>
                             <height>16777215</height>
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">background-color: rgb(247, 181, 0)</string>
+                           <string notr="true">background-color: rgb(247, 181, 0); border-radius: 3px;
+color: rgb(0, 0, 0);</string>
                           </property>
                           <property name="frame">
                            <bool>false</bool>
@@ -2878,18 +3263,19 @@ background-color: rgb(247, 181, 0);</string>
                           </property>
                           <property name="minimumSize">
                            <size>
-                            <width>50</width>
+                            <width>65</width>
                             <height>0</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
-                            <width>50</width>
+                            <width>65</width>
                             <height>16777215</height>
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">background-color: rgb(247, 181, 0)</string>
+                           <string notr="true">background-color: rgb(247, 181, 0); border-radius: 3px;
+color: rgb(0, 0, 0);</string>
                           </property>
                           <property name="frame">
                            <bool>false</bool>
@@ -2935,18 +3321,19 @@ background-color: rgb(247, 181, 0);</string>
                           </property>
                           <property name="minimumSize">
                            <size>
-                            <width>50</width>
+                            <width>65</width>
                             <height>0</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
-                            <width>50</width>
+                            <width>65</width>
                             <height>16777215</height>
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">background-color: rgb(247, 181, 0)</string>
+                           <string notr="true">background-color: rgb(247, 181, 0); border-radius: 3px;
+color: rgb(0, 0, 0);</string>
                           </property>
                           <property name="frame">
                            <bool>false</bool>
@@ -3249,7 +3636,8 @@ border: 2px solid black;
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">background-color: rgb(247, 181, 0);border: 2px solid black; border-radius: 3px;</string>
+                           <string notr="true">background-color: rgb(247, 181, 0);border: 2px solid black; border-radius: 3px;
+color: rgb(0, 0, 0);</string>
                           </property>
                           <property name="text">
                            <string/>
@@ -4596,8 +4984,8 @@ background-color: rgb(247, 181, 0);</string>
  <resources/>
  <connections/>
  <buttongroups>
+  <buttongroup name="botonesDeCliente"/>
   <buttongroup name="btn_group_tarifas"/>
   <buttongroup name="buttonGroup"/>
-  <buttongroup name="botonesDeCliente"/>
  </buttongroups>
 </ui>

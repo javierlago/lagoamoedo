@@ -2,11 +2,13 @@ import os
 from datetime import datetime
 
 from PyQt6 import QtSql
+from PyQt6.QtGui import QBrush, QColor
 from reportlab.pdfgen import canvas
 
 import Ventanas
 import var
 from Facturas import *
+from Facturas import facturacion
 from Facturas.facturacion_repository import Facturacion_Repository
 from informes import informes
 
@@ -68,9 +70,9 @@ class Facturacion_informes:
                     var.report.drawString(400, y - 30, "IVA 21%:")
                     var.report.drawString(400, y - 50, "Total:")
                     var.report.setFont('Helvetica', size=10)
-                    var.report.drawRightString(500, y - 10, str(precio_subtotal))
-                    var.report.drawRightString(500, y - 30, str(precio_subtotal * 0.21))
-                    var.report.drawRightString(500, y - 50, str(precio_subtotal + (precio_subtotal * 0.21)))
+                    var.report.drawRightString(500, y - 10, str(round(precio_subtotal,2))+"€")
+                    var.report.drawRightString(500, y - 30, str(round(precio_subtotal*0.21,2))+"€")
+                    var.report.drawRightString(500, y - 50, str(round((precio_subtotal*0.21)+precio_subtotal,2))+"€")
 
             var.report.save()
             root_path = '.\\Facturacion\\'
@@ -106,3 +108,5 @@ class Facturacion_informes:
 
         except Exception as e:
             print("Eror a la hora de printear los datos de un cliente",e)
+
+

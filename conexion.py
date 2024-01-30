@@ -7,7 +7,7 @@ import Ventanas
 import cliente
 import conexion
 import drivers
-from Facturas import facturacion,facturacion_repository
+from Facturas import facturacion, facturacion_repository
 import var
 
 
@@ -450,8 +450,6 @@ class Conexion:
 
         ### ZONA FACTURACION ###
 
-
-
     def cargar_facturas(self=None):
 
         try:
@@ -465,6 +463,25 @@ class Conexion:
                     facturacion.Facturacion.cargartabla(registros_facturas)
 
         except Exception as error:
-            print("Error al cargar facturas",query.lastError())
+            print("Error al cargar facturas", query.lastError())
 
+    def provincia_segun_municipio(nombre_municipio):
+        try:
+            id_provincia = None
+            nombre_provincia = None
+            query_obtener_id_provincia = QtSql.QSqlQuery()
+            query_obtener_nombre_provincia = QtSql.QSqlQuery()
+            query_obtener_id_provincia.prepare('SELECT idprov from municipios where municipio = :municipio')
+            query_obtener_id_provincia.bindValue(':municipio', nombre_municipio)
+            if query_obtener_id_provincia.exec():
+                while query_obtener_id_provincia.next():
+                    id_provincia = query_obtener_id_provincia.value(0)
+            query_obtener_nombre_provincia.prepare('SELECT provincia from provincias where idprov = :idprov')
+            query_obtener_nombre_provincia.bindValue(':idprov', id_provincia)
+            if query_obtener_nombre_provincia.exec():
+                while query_obtener_nombre_provincia.next():
+                    nombre_provincia = query_obtener_nombre_provincia.value(0)
+            return nombre_provincia
 
+        except Exception as error:
+            print("Error al obtener una provincia segun el municipio")

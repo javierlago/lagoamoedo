@@ -123,7 +123,7 @@ class informes:
     def top_informe(titulo):
         try:
 
-            logo = '.\\img\\taxiIcon.png'
+            logo = '.\\img\\IconoInfome.png'
             var.report.line(50, 800, 525, 800)
             var.report.setFont('Helvetica-Bold', size=14)
             var.report.drawString(55, 785, 'Trasnsportes Teis')
@@ -144,7 +144,7 @@ class informes:
     def top_informe_factura(titulo):
         try:
 
-            logo = '.\\img\\taxiIcon.png'
+            logo = '.\\img\\IconoInfome.png'
             var.report.line(50, 800, 525, 800)
             var.report.setFont('Helvetica-Bold', size=14)
             var.report.drawString(55, 785, 'Trasnsportes Teis')

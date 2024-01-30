@@ -1,3 +1,5 @@
+from typing import List, Any
+
 from PyQt6 import QtSql
 
 import Ventanas
@@ -127,4 +129,33 @@ class Facturacion_Repository:
 
 
 
+    def modificar_viaje(self):
+        try:
+           print(str(facturacion.Facturacion.calcular_tarifa(self)))
+           datos_linea_viaje = facturacion.Facturacion.recoger_datos_linea_viaje(self)
+           datos_linea_viaje_para_comparar = [datos_linea_viaje[1],datos_linea_viaje[2],datos_linea_viaje[3]]
+           datos_panel_linea: list[Any] = [var.ui.cmb_localidad_origen.currentText(),var.ui.cmb_localidad_destino.currentText(),var.ui.txt_kilometros.text()]
+           if datos_linea_viaje_para_comparar==datos_panel_linea:
+               Ventanas.Ventanas.ventana_info("No has modificado datos del viaje")
+           else:
+               query_modificar_linea_de_viaje = QtSql.QSqlQuery()
+               query_modificar_linea_de_viaje.prepare('update viajes set origen = :origen  ,destino = :destino ,kms =:kms ,tarifa = :tarifa where idViaje = :idViaje')
+               query_modificar_linea_de_viaje.bindValue(':origen',str(datos_panel_linea[0]))
+               query_modificar_linea_de_viaje.bindValue(':destino',str(datos_panel_linea[1]))
+               query_modificar_linea_de_viaje.bindValue(':kms',int(datos_panel_linea[2]))
+               query_modificar_linea_de_viaje.bindValue(':tarifa',float(facturacion.Facturacion.calcular_tarifa(self)))
+               query_modificar_linea_de_viaje.bindValue(':idViaje', int(datos_linea_viaje[0]))
+           try:
+               if query_modificar_linea_de_viaje.exec():
+                    Ventanas.Ventanas.ventana_info("Se ha modificado la linea de viaje")
+                    facturacion.Facturacion.rellenar_tabla_lineas_viaje(self)
+                    var.ui.btn_modificar_viaje.setVisible(False)
+                    facturacion.Facturacion.limpiar_panel_viajes(self)
+               else:
+                   print("no se ha modificado nada")
+           except QtSql.QSqlError as error:
+               print(error)
+
+        except Exception as error:
+            print("Error en la modificación de una linea de viaje",error)
 

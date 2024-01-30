@@ -47,6 +47,12 @@ class Facturacion:
 
     def mostrar_datos_factura(self):
         try:
+            var.ui.btn_modificar_viaje.setVisible(False)
+            var.ui.cmb_provincia_origen.setCurrentText('')
+            var.ui.cmb_provincia_destino.setCurrentText('')
+            var.ui.cmb_localidad_origen.setCurrentText('')
+            var.ui.cmb_localidad_destino.setCurrentText('')
+            var.ui.txt_kilometros.setText("")
             fecha = ""
             codigo = ""
             # Limpiar el estilo de todas las filas
@@ -84,8 +90,6 @@ class Facturacion:
 
     def calcular_tarifa(self=None):
         try:
-            print("Calculando tarifa")
-            print(var.ui.cmb_provincia_origen.currentText())
             array_destinos = [var.ui.cmb_provincia_origen.currentText(), var.ui.cmb_provincia_destino.currentText(),
                               var.ui.cmb_localidad_origen.currentText(), var.ui.cmb_localidad_destino.currentText()]
 
@@ -127,7 +131,7 @@ class Facturacion:
             lineas_de_viaje = facturacion_repository.Facturacion_Repository.recupera_lineas_de_viaje(
                 var.ui.txt_numero_factura.text())
             for i in range(var.ui.tab_lineas_de_viaje.columnCount()):
-                if  i == 1 or i == 2 or i == 3 or i == 6:
+                if i == 1 or i == 2 or i == 3 or i == 6:
                     var.ui.tab_lineas_de_viaje.horizontalHeader().setSectionResizeMode(i,
                                                                                        QHeaderView.ResizeMode.ResizeToContents)
                 else:
@@ -138,7 +142,7 @@ class Facturacion:
                 for columna in range(var.ui.tab_lineas_de_viaje.columnCount()):
                     if columna == 5:
                         var.ui.tab_lineas_de_viaje.setItem(fila, columna, QtWidgets.QTableWidgetItem(
-                            str(lineas_de_viaje[fila][3] * lineas_de_viaje[fila][4])))
+                            str(round(lineas_de_viaje[fila][3] * lineas_de_viaje[fila][4], 2))))
                         var.ui.tab_lineas_de_viaje.item(fila, columna).setTextAlignment(
                             QtCore.Qt.AlignmentFlag.AlignCenter)
                     elif columna == 6:
@@ -153,11 +157,12 @@ class Facturacion:
                         var.ui.tab_lineas_de_viaje.item(fila, columna).setTextAlignment(
                             QtCore.Qt.AlignmentFlag.AlignCenter)
 
-            var.ui.txt_subtotal.setText(str(Facturacion.calculo_factura_de_viaje(var.ui.tab_lineas_de_viaje)))
-            iva = (Facturacion.calculo_factura_de_viaje(var.ui.tab_lineas_de_viaje)*0.21)
-            var.ui.txt_iva.setText(str(round(iva,2)))
+            var.ui.txt_subtotal.setText(
+                str(round(Facturacion.calculo_factura_de_viaje(var.ui.tab_lineas_de_viaje), 2)) + " €")
+            iva = (Facturacion.calculo_factura_de_viaje(var.ui.tab_lineas_de_viaje) * 0.21)
+            var.ui.txt_iva.setText(str(round(iva, 2)) + " €")
             total = (iva + Facturacion.calculo_factura_de_viaje(var.ui.tab_lineas_de_viaje))
-            var.ui.txt_total.setText(str(round(total, 2)))
+            var.ui.txt_total.setText(str(round(total, 2)) + " €")
             print(total)
 
 
@@ -180,17 +185,58 @@ class Facturacion:
 
         except Exception as error:
             print("Error en el metodo de borrado de linea de viaje", error)
+
     def calculo_factura_de_viaje(tabla):
         try:
             presupuesto = 0
             for a in range(tabla.rowCount()):
-                print(tabla.item(a,5).text())
-                presupuesto += float(tabla.item(a,5).text())
+                print(tabla.item(a, 5).text())
+                presupuesto += float(tabla.item(a, 5).text())
             return presupuesto
         except Exception as error:
-            print("Error en el metodo de suma del total",error)
+            print("Error en el metodo de suma del total", error)
 
+    def seleccionar_linea_de_viaje(self):
+        try:
 
+            datos_fila_seleccionada = Facturacion.recoger_datos_linea_viaje(self)
+            var.ui.btn_modificar_viaje.setVisible(True)
+            for r in range(var.ui.tab_lineas_de_viaje.rowCount()):
+                for c in range(var.ui.tab_lineas_de_viaje.columnCount()):
+                    item = var.ui.tab_lineas_de_viaje.item(r, c)
+                    if item is not None:
+                        item.setBackground(QBrush(QColor(0, 0, 0, 0)))
+            row_number = var.ui.tab_lineas_de_viaje.currentRow()
+            for colunm_number in range(var.ui.tab_lineas_de_viaje.columnCount()):
+                item = var.ui.tab_lineas_de_viaje.item(row_number, colunm_number)
+                if item is not None:
+                    item.setBackground(QBrush(QColor(247, 181, 0)))
+            provincia_origen = conexion.Conexion.provincia_segun_municipio(datos_fila_seleccionada[1])
+            provincia_destino = conexion.Conexion.provincia_segun_municipio(datos_fila_seleccionada[2])
+            var.ui.cmb_provincia_origen.setCurrentText(provincia_origen)
+            var.ui.cmb_provincia_destino.setCurrentText(provincia_destino)
+            var.ui.cmb_localidad_origen.setCurrentText(datos_fila_seleccionada[1])
+            var.ui.cmb_localidad_destino.setCurrentText(datos_fila_seleccionada[2])
+            var.ui.txt_kilometros.setText(datos_fila_seleccionada[3])
+        except Exception as error:
+            print("Error en el metodo de seleccionar lineas de viaje", error)
 
+    def recoger_datos_linea_viaje(self):
+        row_number = var.ui.tab_lineas_de_viaje.currentRow()
+        datos_fila_seleccionada: list = []
+        for colunm_number in range(var.ui.tab_lineas_de_viaje.columnCount()):
+            item = var.ui.tab_lineas_de_viaje.item(row_number, colunm_number)
+            if item is not None:
+                item.setBackground(QBrush(QColor(247, 181, 0)))
+                datos_fila_seleccionada.append(item.text())
+        return datos_fila_seleccionada
+    def limpiar_panel_viajes(self):
+        try:
+            var.ui.cmb_provincia_origen.setCurrentText('')
+            var.ui.cmb_provincia_destino.setCurrentText('')
+            var.ui.cmb_localidad_origen.setCurrentText('')
+            var.ui.cmb_localidad_destino.setCurrentText('')
+            var.ui.txt_kilometros.setText('')
 
-
+        except Exception as error:
+            print("Error en el metodo limpiar panel viajes")

@@ -34,6 +34,7 @@ class Main(QtWidgets.QMainWindow):
         conexion.Conexion.mostrarclientes()
         conexion.Conexion.cargar_facturas()
         var.ui.frame.hide()
+        var.ui.btn_modificar_viaje.setVisible(False)
 
         '''
         
@@ -73,14 +74,9 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btn_fecha_factura.clicked.connect(eventos.Eventos.abrir_calendar)
         var.ui.actionAcerca_de.triggered.connect(eventos.Eventos.abrir_acerca_de)
         var.ui.btn_menu_print.triggered.connect(eventos.Eventos.printear_informes)
-        var.ui.btn_grabar_registro_viaje.clicked.connect(facturacion.Facturacion.insertar_datos_viaje)
+
+
         '''
-      
-        
-        
-        
-        
-        
         botones Driver
         '''
         var.ui.btnaltaDriver.clicked.connect(drivers.Drivers.alta_driver)
@@ -107,7 +103,9 @@ class Main(QtWidgets.QMainWindow):
         '''
               botones Facturacion
               '''
+        var.ui.btn_grabar_registro_viaje.clicked.connect(facturacion.Facturacion.insertar_datos_viaje)
         var.ui.btn_facturar.clicked.connect(facturacion_repository.Facturacion_Repository.insert_factura)
+        var.ui.btn_modificar_viaje.clicked.connect(facturacion_repository.Facturacion_Repository.modificar_viaje)
         '''
         zona de eventos salir
         '''
@@ -155,6 +153,8 @@ class Main(QtWidgets.QMainWindow):
         var.ui.tabClientes.clicked.connect(cliente.Cliente.get_from_tab)
         var.ui.tab_facturas.clicked.connect(facturacion.Facturacion.mostrar_datos_factura)
         var.ui.tab_facturas.clicked.connect(facturacion.Facturacion.rellenar_tabla_lineas_viaje)
+        var.ui.tab_facturas.clicked.connect(facturacion.Facturacion.rellenar_tabla_lineas_viaje)
+        var.ui.tab_lineas_de_viaje.clicked.connect(facturacion.Facturacion.seleccionar_linea_de_viaje)
 
 
 

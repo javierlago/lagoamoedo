@@ -199,7 +199,7 @@ class Eventos:
                             var.ui.lblCodDB_Cliente, var.ui.txtDni_3, var.ui.txtRazonSocial,
                             var.ui.txtDireccion_Cliente, var.ui.txtMovil_Cliente, var.ui.txtDate_Cliente,
                             var.ui.txt_numero_factura, var.ui.txt_cif_cliente,
-                            var.ui.txt_fecha_factura,var.ui.txt_subtotal,var.ui.txt_iva,var.ui.txt_total]
+                            var.ui.txt_fecha_factura,var.ui.txt_subtotal,var.ui.txt_iva,var.ui.txt_total,var.ui.txt_kilometros]
             # var.ui.lblCheckDNI.hide()
             var.ui.lblCheckDNI.setText(" ")
             var.ui.lblCheckDNI_Cliente.setText(" ")
@@ -215,6 +215,12 @@ class Eventos:
             var.ui.cmbLocalidad.setCurrentText("")
             var.ui.cmbLocalidad_Cliente.setCurrentText("")
             var.ui.tab_lineas_de_viaje.setRowCount(0)
+            var.ui.btn_modificar_viaje.setVisible(False)
+            var.ui.cmb_listado_conductores.setCurrentText("")
+            var.ui.cmb_provincia_origen.setCurrentText('')
+            var.ui.cmb_provincia_destino.setCurrentText('')
+            var.ui.cmb_localidad_origen.setCurrentText('')
+            var.ui.cmb_localidad_destino.setCurrentText('')
 
 
 

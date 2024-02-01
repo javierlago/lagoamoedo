@@ -227,6 +227,7 @@ class Conexion:
             print("Error al guardar el conductor", error)
 
     def mostrardrivers(self=None):
+
         try:
             registros = list()
             query1 = QtSql.QSqlQuery()
@@ -265,6 +266,12 @@ class Conexion:
             print("error al mostrar resultados", error)
 
     def buscar_segun_codigo(codigo):
+        """
+        :param : recibe un código para buscar en la tabla de drivers
+        :return: Registro de el driver donde coincida con el codigo
+        :rtype: Array de datos del driver.
+        Metodo para buscar un driver en la tabla de driver a traves de un código
+        """
         try:
             registro = []
             query = QtSql.QSqlQuery()

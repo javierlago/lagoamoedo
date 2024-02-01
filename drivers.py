@@ -19,6 +19,7 @@ class Drivers:
 
 
     def borrar_datos(self):
+
         try:
             dni = var.ui.txtDni.text()
             conexion.Conexion.borrarDriver(dni)

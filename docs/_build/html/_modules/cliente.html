@@ -5,37 +5,29 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>cliente &#8212; documentación de LagoAmoedo - v:0.0.1</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=514cf933" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=f63d8bfa" />
+    <link rel="stylesheet" type="text/css" href="../_static/haiku.css?v=e491ac2d" />
     <script src="../_static/documentation_options.js?v=dc1d13be"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/translations.js?v=efdbd0b9"></script>
-    
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" /> 
   </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navegación</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="Índice General"
-             accesskey="I">índice</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Índice de Módulos Python"
-             >módulos</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">documentación de LagoAmoedo - v:0.0.1</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Código de módulo</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">cliente</a></li> 
-      </ul>
-    </div>  
+      <div class="header" role="banner"><h1 class="heading"><a href="../index.html">
+          <span>documentación de LagoAmoedo - v:0.0.1</span></a></h1>
+        <h2 class="heading"><span>cliente</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        <a class="uplink" href="../index.html">Contenidos</a>
+        </p>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
+      </div>
+      <div class="content" role="main">
+        
+        
   <h1>Código fuente para cliente</h1><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">locale</span>
 <span class="kn">import</span> <span class="nn">re</span>
@@ -61,6 +53,12 @@
 <div class="viewcode-block" id="Cliente.baja_cliente">
 <a class="viewcode-back" href="../src/cliente.html#cliente.Cliente.baja_cliente">[documentos]</a>
     <span class="k">def</span> <span class="nf">baja_cliente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Metodo para borrar un cliente en la base de datos.En caso de que no esten todos lo campos completos del cliente a borrar</span>
+<span class="sd">        se mostrara una ventana de aviso, indicando que faltan campos por completar.</span>
+<span class="sd">        :return:</span>
+<span class="sd">        :rtype:</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">try</span><span class="p">:</span>
 
             <span class="n">cliente_baja</span> <span class="o">=</span> <span class="n">cliente</span><span class="o">.</span><span class="n">Cliente</span><span class="o">.</span><span class="n">recuperar_datos</span><span class="p">()</span>
@@ -76,6 +74,12 @@
 <div class="viewcode-block" id="Cliente.alta_cliente">
 <a class="viewcode-back" href="../src/cliente.html#cliente.Cliente.alta_cliente">[documentos]</a>
     <span class="k">def</span> <span class="nf">alta_cliente</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Metodo con el que se dara de alta a un cliente.El metodo mostrara una ventana de aviso en caso de que no se completaran los campos necesarios para dar de alta a un cliente.</span>
+
+<span class="sd">        :return:</span>
+<span class="sd">        :rtype:</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">new_cliente</span> <span class="o">=</span> <span class="n">cliente</span><span class="o">.</span><span class="n">Cliente</span><span class="o">.</span><span class="n">recuperar_datos</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
@@ -99,6 +103,12 @@
 <div class="viewcode-block" id="Cliente.validar_datos">
 <a class="viewcode-back" href="../src/cliente.html#cliente.Cliente.validar_datos">[documentos]</a>
     <span class="k">def</span> <span class="nf">validar_datos</span><span class="p">(</span><span class="n">listadeDatos</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Metodo para validar que una lista no contenga campos vacios.</span>
+<span class="sd">        :param: Lista</span>
+<span class="sd">        :return: Devuelve True en caso de que ninguna de las posiciones de la lista este vacia.</span>
+<span class="sd">        :rtype: Boolean</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">listadeDatos</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">listadeDatos</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
                 <span class="k">return</span> <span class="kc">False</span>
@@ -108,6 +118,11 @@
 <div class="viewcode-block" id="Cliente.validar_tlf">
 <a class="viewcode-back" href="../src/cliente.html#cliente.Cliente.validar_tlf">[documentos]</a>
     <span class="k">def</span> <span class="nf">validar_tlf</span><span class="p">(</span><span class="bp">self</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Validacion de un numero de telefono segun un patron.El nuemero tiene que estar compuesto de 9 numeros.</span>
+<span class="sd">        :return:</span>
+<span class="sd">        :rtype:</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">tlf</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtMovil_Cliente</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
 
@@ -130,10 +145,19 @@
 <div class="viewcode-block" id="Cliente.validar_dni">
 <a class="viewcode-back" href="../src/cliente.html#cliente.Cliente.validar_dni">[documentos]</a>
     <span class="k">def</span> <span class="nf">validar_dni</span><span class="p">(</span><span class="n">dni</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            Validación de un **DNI** según el algoritmo de validación español.</span>
+
+
+
+<span class="sd">            :param dni: String que tiene que ser al menos de 9 caracteres.</span>
+<span class="sd">            :return: True si el DNI es válido, False en caso contrario.</span>
+<span class="sd">            :rtype: bool</span>
+<span class="sd">            &#39;&#39;&#39;</span>
         <span class="k">try</span><span class="p">:</span>
-            <span class="c1"># dni = var.ui.txtDni_3.text()</span>
+
             <span class="n">dni</span> <span class="o">=</span> <span class="n">dni</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
-            <span class="c1"># var.ui.txtDni_3.setText(dni)</span>
+
             <span class="n">tabla</span> <span class="o">=</span> <span class="s2">&quot;TRWAGMYFPDXBNJZSQVHLCKE&quot;</span>
             <span class="n">dig_ext</span> <span class="o">=</span> <span class="s2">&quot;XYZ&quot;</span>
             <span class="n">reemp_dig_ext</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;Z&quot;</span><span class="p">:</span> <span class="s2">&quot;2&quot;</span><span class="p">}</span>
@@ -143,28 +167,24 @@
                 <span class="n">dig_control</span> <span class="o">=</span> <span class="n">dni</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span>  <span class="c1"># tomo la letra del dni</span>
                 <span class="n">dni</span> <span class="o">=</span> <span class="n">dni</span><span class="p">[:</span><span class="mi">8</span><span class="p">]</span>  <span class="c1"># tomo los numeros del dni</span>
 
-                <span class="k">if</span> <span class="n">dni</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">dig_ext</span><span class="p">:</span>  <span class="c1"># reemplazas la letra por el numero correspondiente</span>
+                <span class="k">if</span> <span class="n">dni</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">dig_ext</span><span class="p">:</span>
                     <span class="n">dni</span> <span class="o">=</span> <span class="n">dni</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">dni</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">reemp_dig_ext</span><span class="p">[</span><span class="n">dni</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
-                    <span class="c1"># comprueba que no haya letras en el medio</span>
+
 
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dni</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">([</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">dni</span> <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">numeros</span><span class="p">])</span> <span class="ow">and</span> <span class="n">tabla</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">dni</span><span class="p">)</span> <span class="o">%</span> <span class="mi">23</span><span class="p">]</span> <span class="o">==</span> <span class="n">dig_control</span><span class="p">:</span>
-                    <span class="c1">#  var.ui.lblCheckDNI_Cliente.setStyleSheet(&#39;color:green;&#39;)</span>
-                    <span class="c1"># var.ui.lblCheckDNI_Cliente.setText(&#39;V&#39;)</span>
+
                     <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">lblCheckDNI_Cliente</span><span class="o">.</span><span class="n">setScaledContents</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
                     <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">lblCheckDNI_Cliente</span><span class="o">.</span><span class="n">setPixmap</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QPixmap</span><span class="p">(</span><span class="s2">&quot;img/OkIco.svg&quot;</span><span class="p">))</span>
                     <span class="k">return</span> <span class="kc">True</span>
 
                 <span class="k">else</span><span class="p">:</span>
-                    <span class="c1"># var.ui.lblCheckDNI_Cliente.setStyleSheet(&#39;color:red;&#39;)</span>
-                    <span class="c1"># var.ui.lblCheckDNI_Cliente.setText(&#39;X&#39;)</span>
+
                     <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">lblCheckDNI_Cliente</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
                     <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">lblCheckDNI_Cliente</span><span class="o">.</span><span class="n">setScaledContents</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
                     <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">lblCheckDNI_Cliente</span><span class="o">.</span><span class="n">setPixmap</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QPixmap</span><span class="p">(</span><span class="s2">&quot;img/CancelIco.ico&quot;</span><span class="p">))</span>
                     <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDni_3</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
                     <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDni_3</span><span class="o">.</span><span class="n">setFocus</span><span class="p">()</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="c1">#  var.ui.lblCheckDNI_Cliente.setStyleSheet(&#39;color:red;&#39;)</span>
-                <span class="c1"># var.ui.lblCheckDNI_Cliente.setText(&#39;X&#39;)</span>
                 <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">lblCheckDNI_Cliente</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
                 <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">lblCheckDNI_Cliente</span><span class="o">.</span><span class="n">setScaledContents</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
                 <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">lblCheckDNI_Cliente</span><span class="o">.</span><span class="n">setPixmap</span><span class="p">(</span><span class="n">QtGui</span><span class="o">.</span><span class="n">QPixmap</span><span class="p">(</span><span class="s2">&quot;img/CancelIco.ico&quot;</span><span class="p">))</span>
@@ -177,6 +197,7 @@
 <div class="viewcode-block" id="Cliente.recuperar_datos">
 <a class="viewcode-back" href="../src/cliente.html#cliente.Cliente.recuperar_datos">[documentos]</a>
     <span class="k">def</span> <span class="nf">recuperar_datos</span><span class="p">(</span><span class="bp">self</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
         <span class="n">driver</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDni_3</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtRazonSocial</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDireccion_Cliente</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span>
                   <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtMovil_Cliente</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">cmbProvincia_Cliente</span><span class="o">.</span><span class="n">currentText</span><span class="p">(),</span>
                   <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">cmbLocalidad_Cliente</span><span class="o">.</span><span class="n">currentText</span><span class="p">(),</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDate_Cliente</span><span class="o">.</span><span class="n">text</span><span class="p">()]</span>
@@ -336,40 +357,15 @@
 
 </pre></div>
 
-            <div class="clearer"></div>
-          </div>
-        </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Búsqueda rápida</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Ir a" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        <a class="uplink" href="../index.html">Contenidos</a>
+        </p>
+
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navegación</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="Índice General"
-             >índice</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Índice de Módulos Python"
-             >módulos</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">documentación de LagoAmoedo - v:0.0.1</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >Código de módulo</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">cliente</a></li> 
-      </ul>
-    </div>
+
     <div class="footer" role="contentinfo">
     &#169; Copyright 2024, Javier.
       Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.

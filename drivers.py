@@ -225,6 +225,11 @@ class Drivers:
 
 
     def validar_dni(dni):
+        '''
+        Metodo que recibe un String para validar un DNI por el formato español.
+        :return:Devuelve True en caso de que el DNI sea valido por el algoritmo de validación de DNIs español.
+        :rtype: Boolean
+        '''
         try:
             #dni = var.ui.txtDni.text()
             dni = dni.upper()

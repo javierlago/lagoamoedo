@@ -1,7 +1,7 @@
 import os
 import sys
 
-sys.path.insert(0,os.path.abspath('C:\\Users\\a22javierla\\PycharmProjects\\lagoamoedo'))
+sys.path.insert(0,os.path.abspath('C:\\Users\\a22javierla\\PycharmProjects\\lagoamoedo\\docs'))
 
 
 project = 'LagoAmoedo'
@@ -16,6 +16,8 @@ extensions = ['sphinx.ext.autodoc','sphinx.ext.intersphinx','sphinx.ext.ifconfig
 
 templates_path = ['_templates']
 exclude_patterns = []
+html_static_path = ['_static']
+
 
 language = 'es'
 source_patterns = '.rst'

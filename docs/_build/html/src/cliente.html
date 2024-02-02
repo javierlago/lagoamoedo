@@ -38,12 +38,25 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="cliente.Cliente.alta_cliente">
 <span class="sig-name descname"><span class="pre">alta_cliente</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cliente.html#Cliente.alta_cliente"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#cliente.Cliente.alta_cliente" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Metodo con el que se dara de alta a un cliente.El metodo mostrara una ventana de aviso en caso de que no se completaran los campos necesarios para dar de alta a un cliente.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cliente.Cliente.baja_cliente">
 <span class="sig-name descname"><span class="pre">baja_cliente</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cliente.html#Cliente.baja_cliente"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#cliente.Cliente.baja_cliente" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Metodo para borrar un cliente en la base de datos.En caso de que no esten todos lo campos completos del cliente a borrar
+se mostrara una ventana de aviso, indicando que faltan campos por completar.
+:return:
+:rtype:</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cliente.Cliente.carga_cliente">
@@ -73,17 +86,36 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="cliente.Cliente.validar_datos">
 <span class="sig-name descname"><span class="pre">validar_datos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cliente.html#Cliente.validar_datos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#cliente.Cliente.validar_datos" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Metodo para validar que una lista no contenga campos vacios.
+:param: Lista
+:return: Devuelve True en caso de que ninguna de las posiciones de la lista este vacia.
+:rtype: Boolean</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cliente.Cliente.validar_dni">
 <span class="sig-name descname"><span class="pre">validar_dni</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cliente.html#Cliente.validar_dni"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#cliente.Cliente.validar_dni" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Validación de un <strong>DNI</strong> según el algoritmo de validación español.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dni</strong> – String que tiene que ser al menos de 9 caracteres.</p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>True si el DNI es válido, False en caso contrario.</p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cliente.Cliente.validar_tlf">
 <span class="sig-name descname"><span class="pre">validar_tlf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cliente.html#Cliente.validar_tlf"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#cliente.Cliente.validar_tlf" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Validacion de un numero de telefono segun un patron.El nuemero tiene que estar compuesto de 9 numeros.
+:return:
+:rtype:</p>
+</dd></dl>
 
 </dd></dl>
 

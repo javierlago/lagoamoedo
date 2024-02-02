@@ -18,6 +18,12 @@ from PyQt6.QtWidgets import QMessageBox
 class Cliente:
 
     def baja_cliente(self):
+        '''
+        Metodo para borrar un cliente en la base de datos.En caso de que no esten todos lo campos completos del cliente a borrar
+        se mostrara una ventana de aviso, indicando que faltan campos por completar.
+        :return:
+        :rtype:
+        '''
         try:
 
             cliente_baja = cliente.Cliente.recuperar_datos()
@@ -30,6 +36,12 @@ class Cliente:
             print("Error en el metodo baja_cliente", error)
 
     def alta_cliente(self):
+        '''
+        Metodo con el que se dara de alta a un cliente.El metodo mostrara una ventana de aviso en caso de que no se completaran los campos necesarios para dar de alta a un cliente.
+
+        :return:
+        :rtype:
+        '''
         try:
             new_cliente = cliente.Cliente.recuperar_datos(self)
 
@@ -50,12 +62,23 @@ class Cliente:
             print("error alta cliente", error)
 
     def validar_datos(listadeDatos):
+        '''
+        Metodo para validar que una lista no contenga campos vacios.
+        :param: Lista
+        :return: Devuelve True en caso de que ninguna de las posiciones de la lista este vacia.
+        :rtype: Boolean
+        '''
         for i in range(len(listadeDatos) - 1):
             if listadeDatos[i].strip() == '':
                 return False
         return True
 
     def validar_tlf(self=None):
+        '''
+        Validacion de un numero de telefono segun un patron.El nuemero tiene que estar compuesto de 9 numeros.
+        :return:
+        :rtype:
+        '''
         try:
             tlf = var.ui.txtMovil_Cliente.text()
 
@@ -75,10 +98,17 @@ class Cliente:
             print("error en validar telf: ", error)
 
     def validar_dni(dni):
+        '''
+            Validación de un **DNI** según el algoritmo de validación español.
+            En caso de ser valido pondra un imagen y si es falso pondra otra.Este medoto no dejara mover el cursor de esta caja de texto mientras el **DNI** introducido no sea el correcto.
+            :param dni: String que tiene que ser al menos de 9 caracteres.
+            :return: True si el DNI es válido, False en caso contrario.
+            :rtype: bool
+            '''
         try:
-            # dni = var.ui.txtDni_3.text()
+
             dni = dni.upper()
-            # var.ui.txtDni_3.setText(dni)
+
             tabla = "TRWAGMYFPDXBNJZSQVHLCKE"
             dig_ext = "XYZ"
             reemp_dig_ext = {"X": "0", "Y": "1", "Z": "2"}
@@ -88,28 +118,24 @@ class Cliente:
                 dig_control = dni[8]  # tomo la letra del dni
                 dni = dni[:8]  # tomo los numeros del dni
 
-                if dni[0] in dig_ext:  # reemplazas la letra por el numero correspondiente
+                if dni[0] in dig_ext:
                     dni = dni.replace(dni[0], reemp_dig_ext[dni[0]])
-                    # comprueba que no haya letras en el medio
+
 
                 if len(dni) == len([n for n in dni if n in numeros]) and tabla[int(dni) % 23] == dig_control:
-                    #  var.ui.lblCheckDNI_Cliente.setStyleSheet('color:green;')
-                    # var.ui.lblCheckDNI_Cliente.setText('V')
+
                     var.ui.lblCheckDNI_Cliente.setScaledContents(True)
                     var.ui.lblCheckDNI_Cliente.setPixmap(QtGui.QPixmap("img/OkIco.svg"))
                     return True
 
                 else:
-                    # var.ui.lblCheckDNI_Cliente.setStyleSheet('color:red;')
-                    # var.ui.lblCheckDNI_Cliente.setText('X')
+
                     var.ui.lblCheckDNI_Cliente.show()
                     var.ui.lblCheckDNI_Cliente.setScaledContents(True)
                     var.ui.lblCheckDNI_Cliente.setPixmap(QtGui.QPixmap("img/CancelIco.ico"))
                     var.ui.txtDni_3.setText("")
                     var.ui.txtDni_3.setFocus()
             else:
-                #  var.ui.lblCheckDNI_Cliente.setStyleSheet('color:red;')
-                # var.ui.lblCheckDNI_Cliente.setText('X')
                 var.ui.lblCheckDNI_Cliente.show()
                 var.ui.lblCheckDNI_Cliente.setScaledContents(True)
                 var.ui.lblCheckDNI_Cliente.setPixmap(QtGui.QPixmap("img/CancelIco.ico"))
@@ -119,6 +145,12 @@ class Cliente:
             print("error en validar dni: ", error)
 
     def recuperar_datos(self=None):
+        '''
+        Este metodo recoge todos los datos que hay en las cajas de texto en en panel del cliente.
+        :return: Devuelve una lista con todos los datos del cliente que estan en las cajas de texto.
+        :rtype: List
+        '''
+
         driver = [var.ui.txtDni_3.text(), var.ui.txtRazonSocial.text(), var.ui.txtDireccion_Cliente.text(),
                   var.ui.txtMovil_Cliente.text(), var.ui.cmbProvincia_Cliente.currentText(),
                   var.ui.cmbLocalidad_Cliente.currentText(), var.ui.txtDate_Cliente.text()]
@@ -127,6 +159,14 @@ class Cliente:
 
     @staticmethod
     def cargartabla(registros):
+        '''
+        Metodo para cargar la tabla de clientes con todos los clientes que existen en la base de datos.
+
+        :param registros:
+        :type registros:
+        :return:
+        :rtype:
+        '''
 
         try:
             nuevoRegistros = list()

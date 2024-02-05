@@ -206,6 +206,9 @@ class Cliente:
             print("Error completar tabla ", error)
 
     def get_from_tab(self):
+        '''
+        Metodo para recoger los datos de una fila seleccionada y pasarlos al panel del cliente, tambien colorea la fila que se ha seleccionao.
+        '''
         try:
             # Limpiar el estilo de todas las filas
             for r in range(var.ui.tabClientes.rowCount()):
@@ -230,6 +233,10 @@ class Cliente:
             print("Error al cargar desde la tabla", error)
 
     def carga_cliente(registro):
+        '''
+        Metodo para cargar un cliente en  que se encuentra en la base de datos.En caso de que ese cliente no exita en la base de datos, se muestra una ventana indicando al usuario que ese cliente no existe en la base de datos.
+        :param:Recibe por parametro un un registro que contiene los datos del cliente.
+        '''
         try:
 
             if registro == None:
@@ -275,6 +282,9 @@ class Cliente:
             print("Error al cargar datos: ", error)
 
     def get_from_dni(self):
+        '''
+        Metodo que recoge los datos de un Text Box y verifica que el dni existe y es valido.Si existe el dni se desplaza hasta la fila en la que se encuentra ese DNI.
+        '''
         try:
             objetivo = None
             if var.ui.txtDni_3.text() != '':

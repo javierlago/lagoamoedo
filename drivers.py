@@ -19,6 +19,11 @@ class Drivers:
 
 
     def borrar_datos(self):
+        '''
+          Borra los datos de un conductor según el DNI proporcionado.
+
+          :return: None
+          '''
 
         try:
             dni = var.ui.txtDni.text()
@@ -31,6 +36,12 @@ class Drivers:
 
 
     def modif_driver(self):
+        '''
+          Modifica los datos de un conductor.
+
+          :return: None
+        '''
+
         try:
             driver = drivers.Drivers.recuperar_datos()
 
@@ -43,6 +54,11 @@ class Drivers:
             print("Error al modificar el conductor", error)
 
     def  get_from_dni (self):
+        '''
+           Obtiene y muestra los datos de un conductor según el DNI proporcionado.
+
+           :return: None
+        '''
         try:
             obteivo = None
             dni = var.ui.txtDni.text()
@@ -71,6 +87,11 @@ class Drivers:
             print("Error al cargar segun el DNI",error)
 
     def get_from_tab(self):
+        '''
+            Obtiene y muestra los datos de un conductor seleccionado en la tabla.
+
+            :return: None
+        '''
         try:
             # Limpiar el estilo de todas las filas
             for r in range(var.ui.tabDriver2.rowCount()):
@@ -101,6 +122,13 @@ class Drivers:
 
 
     def carga_driver(registro):
+        '''
+           Carga los datos de un conductor en la interfaz gráfica.
+
+           :param registro: Lista que contiene los datos del conductor.
+           :type registro: list or None
+           :return: None
+           '''
 
         try:
             if  registro == None:
@@ -162,6 +190,11 @@ class Drivers:
             print("Error al cargar datos: ", error)
 
     def validar_tlf(self=None):
+        '''
+           Valida el formato del número de teléfono introducido en la interfaz gráfica.
+
+           :return: None
+        '''
         try:
             tlf = var.ui.txtMovil.text()
 
@@ -181,16 +214,29 @@ class Drivers:
             print("error en validar telf: ", error)
 
     def validar_numero(string):
-            # Patrón de expresión regular para validar el formato del número
-            patron = re.compile(r'^\d+(?:\.\d{1,2})?$')
+        '''
+            Valida el formato de un número.
+
+            :param string: Cadena que se desea validar.
+            :type string: str
+            :return: True si el formato es válido, False de lo contrario.
+            :rtype: bool
+        '''
+
+        patron = re.compile(r'^\d+(?:\.\d{1,2})?$')
 
             # Intenta hacer coincidir el patrón con el string
-            coincidencia = patron.match(string)
+        coincidencia = patron.match(string)
 
             # Retorna True si hay coincidencia, de lo contrario, retorna False
-            return bool(coincidencia)
+        return bool(coincidencia)
 
     def validar_salario(self=None):
+        '''
+           Valida el formato del salario introducido en la interfaz gráfica.
+
+           :return: None
+        '''
         try:
             salario = var.ui.txtSalario.text()
             salario = salario.replace(',', '.')
@@ -209,6 +255,13 @@ class Drivers:
 
 
     def carga_fecha(qDate):
+        '''
+            Carga la fecha seleccionada en el calendario en el campo de texto correspondiente.
+
+            :param qDate: Fecha seleccionada en el calendario.
+            :type qDate: QDate
+            :return: None
+            '''
         try:
             data = ('{:02d}/{:02d}/{:4d}'.format(qDate.day(), qDate.month(), qDate.year()))
             if drivers.Drivers.param == "fecha alta driver":
@@ -275,6 +328,12 @@ class Drivers:
 
 
     def recuperar_datos(self=None):
+        '''
+            Recupera los datos introducidos en la interfaz gráfica y devuelve una lista.
+
+            :return: Lista con los datos del conductor.
+            :rtype: list
+            '''
         driver =[var.ui.lblCodDB.text(),var.ui.txtDni.text(), var.ui.txtDate.text(), var.ui.txtDni_2.text(), var.ui.txtNombre.text(),
                       var.ui.txtDireccion.text(), var.ui.cmbProvincia.currentText(),
                       var.ui.cmbLocalidad.currentText(), var.ui.txtMovil.text(), var.ui.txtSalario.text()]
@@ -292,12 +351,25 @@ class Drivers:
         return driver
 
     def validar_datos(listadeDatos):
+        '''
+            Valida que no haya campos vacíos en la lista de datos proporcionada.
+
+            :param listadeDatos: Lista de datos a validar.
+            :type listadeDatos: list
+            :return: True si no hay campos vacíos, False de lo contrario.
+            :rtype: bool
+            '''
         for i in range(len(listadeDatos) - 1):
             if listadeDatos[i].strip() == '':
                 return False
         return True
 
     def alta_driver(self):
+        '''
+           Realiza el proceso de dar de alta a un conductor.
+
+           :return: None
+        '''
         try:
             driver = drivers.Drivers.recuperar_datos(self)
             driver.remove(driver[0])

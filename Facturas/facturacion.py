@@ -127,7 +127,6 @@ class Facturacion:
 
     def rellenar_tabla_lineas_viaje(self):
         try:
-
             lineas_de_viaje = facturacion_repository.Facturacion_Repository.recupera_lineas_de_viaje(
                 var.ui.txt_numero_factura.text())
             for i in range(var.ui.tab_lineas_de_viaje.columnCount()):
@@ -139,6 +138,7 @@ class Facturacion:
                                                                                        QHeaderView.ResizeMode.Stretch)
             var.ui.tab_lineas_de_viaje.setRowCount(len(lineas_de_viaje))
             for fila in range(len(lineas_de_viaje)):
+
                 for columna in range(var.ui.tab_lineas_de_viaje.columnCount()):
                     if columna == 5:
                         var.ui.tab_lineas_de_viaje.setItem(fila, columna, QtWidgets.QTableWidgetItem(

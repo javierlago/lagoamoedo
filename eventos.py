@@ -312,6 +312,13 @@ class Eventos:
 
     @staticmethod
     def resize_tabDriver2(self):
+        '''
+         Metodo para dar forma a la tabla de conductores
+        :param self:
+        :type self:
+        :return: None
+        :rtype: None
+        '''
         try:
             header = var.ui.tabDriver2.horizontalHeader()
             for i in range(5):
@@ -326,6 +333,15 @@ class Eventos:
 
     @staticmethod
     def resize_tabClientes(self):
+        '''
+        Metodo para dar forma a la tabla de clientes
+
+
+        :param self:
+        :type self:
+        :return:
+        :rtype:
+        '''
         try:
             header = var.ui.tabClientes.horizontalHeader()
             for i in range(5):

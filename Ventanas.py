@@ -6,6 +6,17 @@ class Ventanas:
 
 
     def mensaje_warning( mensaje):
+        """
+            Función para mostrar un mensaje de advertencia en una ventana emergente.
+
+            :param mensaje: El mensaje de advertencia a mostrar.
+            :type mensaje: str
+
+            :return: None
+
+            Descripción:
+            Esta función muestra un mensaje de advertencia en una ventana emergente. El mensaje puede ser cualquier texto proporcionado como argumento.
+            """
         try:
             mbox = QtWidgets.QMessageBox()
             mbox.setWindowTitle('Aviso')
@@ -18,6 +29,17 @@ class Ventanas:
             print(error)
 
     def ventana_info( mensaje):
+        """
+           Función para mostrar un mensaje de información en una ventana emergente.
+
+           :param mensaje: El mensaje de información a mostrar.
+           :type mensaje: str
+
+           :return: None
+
+           Descripción:
+           Esta función muestra un mensaje de información en una ventana emergente. El mensaje puede ser cualquier texto proporcionado como argumento.
+           """
         try:
             mbox = QtWidgets.QMessageBox()
             mbox.setWindowTitle('Aviso')

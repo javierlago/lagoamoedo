@@ -147,9 +147,7 @@
     <span class="k">def</span> <span class="nf">validar_dni</span><span class="p">(</span><span class="n">dni</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">            Validación de un **DNI** según el algoritmo de validación español.</span>
-
-
-
+<span class="sd">            En caso de ser valido pondra un imagen y si es falso pondra otra.Este medoto no dejara mover el cursor de esta caja de texto mientras el **DNI** introducido no sea el correcto.</span>
 <span class="sd">            :param dni: String que tiene que ser al menos de 9 caracteres.</span>
 <span class="sd">            :return: True si el DNI es válido, False en caso contrario.</span>
 <span class="sd">            :rtype: bool</span>
@@ -197,6 +195,11 @@
 <div class="viewcode-block" id="Cliente.recuperar_datos">
 <a class="viewcode-back" href="../src/cliente.html#cliente.Cliente.recuperar_datos">[documentos]</a>
     <span class="k">def</span> <span class="nf">recuperar_datos</span><span class="p">(</span><span class="bp">self</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Este metodo recoge todos los datos que hay en las cajas de texto en en panel del cliente.</span>
+<span class="sd">        :return: Devuelve una lista con todos los datos del cliente que estan en las cajas de texto.</span>
+<span class="sd">        :rtype: List</span>
+<span class="sd">        &#39;&#39;&#39;</span>
 
         <span class="n">driver</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDni_3</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtRazonSocial</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDireccion_Cliente</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span>
                   <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtMovil_Cliente</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">cmbProvincia_Cliente</span><span class="o">.</span><span class="n">currentText</span><span class="p">(),</span>
@@ -209,6 +212,14 @@
 <a class="viewcode-back" href="../src/cliente.html#cliente.Cliente.cargartabla">[documentos]</a>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">cargartabla</span><span class="p">(</span><span class="n">registros</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Metodo para cargar la tabla de clientes con todos los clientes que existen en la base de datos.</span>
+
+<span class="sd">        :param registros:</span>
+<span class="sd">        :type registros:</span>
+<span class="sd">        :return:</span>
+<span class="sd">        :rtype:</span>
+<span class="sd">        &#39;&#39;&#39;</span>
 
         <span class="k">try</span><span class="p">:</span>
             <span class="n">nuevoRegistros</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
@@ -251,6 +262,9 @@
 <div class="viewcode-block" id="Cliente.get_from_tab">
 <a class="viewcode-back" href="../src/cliente.html#cliente.Cliente.get_from_tab">[documentos]</a>
     <span class="k">def</span> <span class="nf">get_from_tab</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Metodo para recoger los datos de una fila seleccionada y pasarlos al panel del cliente, tambien colorea la fila que se ha seleccionao.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="c1"># Limpiar el estilo de todas las filas</span>
             <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">tabClientes</span><span class="o">.</span><span class="n">rowCount</span><span class="p">()):</span>
@@ -278,6 +292,10 @@
 <div class="viewcode-block" id="Cliente.carga_cliente">
 <a class="viewcode-back" href="../src/cliente.html#cliente.Cliente.carga_cliente">[documentos]</a>
     <span class="k">def</span> <span class="nf">carga_cliente</span><span class="p">(</span><span class="n">registro</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Metodo para cargar un cliente en  que se encuentra en la base de datos.En caso de que ese cliente no exita en la base de datos, se muestra una ventana indicando al usuario que ese cliente no existe en la base de datos.</span>
+<span class="sd">        :param:Recibe por parametro un un registro que contiene los datos del cliente.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">try</span><span class="p">:</span>
 
             <span class="k">if</span> <span class="n">registro</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
@@ -326,6 +344,9 @@
 <div class="viewcode-block" id="Cliente.get_from_dni">
 <a class="viewcode-back" href="../src/cliente.html#cliente.Cliente.get_from_dni">[documentos]</a>
     <span class="k">def</span> <span class="nf">get_from_dni</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        Metodo que recoge los datos de un Text Box y verifica que el dni existe y es valido.Si existe el dni se desplaza hasta la fila en la que se encuentra ese DNI.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">objetivo</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="k">if</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDni_3</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>

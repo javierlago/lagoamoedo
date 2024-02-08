@@ -54,6 +54,11 @@
 <div class="viewcode-block" id="Drivers.borrar_datos">
 <a class="viewcode-back" href="../src/drivers.html#drivers.Drivers.borrar_datos">[documentos]</a>
     <span class="k">def</span> <span class="nf">borrar_datos</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">          Borra los datos de un conductor según el DNI proporcionado.</span>
+
+<span class="sd">          :return: None</span>
+<span class="sd">          &#39;&#39;&#39;</span>
 
         <span class="k">try</span><span class="p">:</span>
             <span class="n">dni</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDni</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
@@ -69,6 +74,12 @@
 <div class="viewcode-block" id="Drivers.modif_driver">
 <a class="viewcode-back" href="../src/drivers.html#drivers.Drivers.modif_driver">[documentos]</a>
     <span class="k">def</span> <span class="nf">modif_driver</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">          Modifica los datos de un conductor.</span>
+
+<span class="sd">          :return: None</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
         <span class="k">try</span><span class="p">:</span>
             <span class="n">driver</span> <span class="o">=</span> <span class="n">drivers</span><span class="o">.</span><span class="n">Drivers</span><span class="o">.</span><span class="n">recuperar_datos</span><span class="p">()</span>
 
@@ -84,6 +95,11 @@
 <div class="viewcode-block" id="Drivers.get_from_dni">
 <a class="viewcode-back" href="../src/drivers.html#drivers.Drivers.get_from_dni">[documentos]</a>
     <span class="k">def</span>  <span class="nf">get_from_dni</span> <span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">           Obtiene y muestra los datos de un conductor según el DNI proporcionado.</span>
+
+<span class="sd">           :return: None</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">obteivo</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="n">dni</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDni</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
@@ -115,6 +131,11 @@
 <div class="viewcode-block" id="Drivers.get_from_tab">
 <a class="viewcode-back" href="../src/drivers.html#drivers.Drivers.get_from_tab">[documentos]</a>
     <span class="k">def</span> <span class="nf">get_from_tab</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            Obtiene y muestra los datos de un conductor seleccionado en la tabla.</span>
+
+<span class="sd">            :return: None</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="c1"># Limpiar el estilo de todas las filas</span>
             <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">tabDriver2</span><span class="o">.</span><span class="n">rowCount</span><span class="p">()):</span>
@@ -148,6 +169,13 @@
 <div class="viewcode-block" id="Drivers.carga_driver">
 <a class="viewcode-back" href="../src/drivers.html#drivers.Drivers.carga_driver">[documentos]</a>
     <span class="k">def</span> <span class="nf">carga_driver</span><span class="p">(</span><span class="n">registro</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">           Carga los datos de un conductor en la interfaz gráfica.</span>
+
+<span class="sd">           :param registro: Lista que contiene los datos del conductor.</span>
+<span class="sd">           :type registro: list or None</span>
+<span class="sd">           :return: None</span>
+<span class="sd">           &#39;&#39;&#39;</span>
 
         <span class="k">try</span><span class="p">:</span>
             <span class="k">if</span>  <span class="n">registro</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
@@ -212,6 +240,11 @@
 <div class="viewcode-block" id="Drivers.validar_tlf">
 <a class="viewcode-back" href="../src/drivers.html#drivers.Drivers.validar_tlf">[documentos]</a>
     <span class="k">def</span> <span class="nf">validar_tlf</span><span class="p">(</span><span class="bp">self</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">           Valida el formato del número de teléfono introducido en la interfaz gráfica.</span>
+
+<span class="sd">           :return: None</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">tlf</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtMovil</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
 
@@ -234,19 +267,32 @@
 <div class="viewcode-block" id="Drivers.validar_numero">
 <a class="viewcode-back" href="../src/drivers.html#drivers.Drivers.validar_numero">[documentos]</a>
     <span class="k">def</span> <span class="nf">validar_numero</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
-            <span class="c1"># Patrón de expresión regular para validar el formato del número</span>
-            <span class="n">patron</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^\d+(?:\.\d{1,2})?$&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            Valida el formato de un número.</span>
+
+<span class="sd">            :param string: Cadena que se desea validar.</span>
+<span class="sd">            :type string: str</span>
+<span class="sd">            :return: True si el formato es válido, False de lo contrario.</span>
+<span class="sd">            :rtype: bool</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+
+        <span class="n">patron</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^\d+(?:\.\d{1,2})?$&#39;</span><span class="p">)</span>
 
             <span class="c1"># Intenta hacer coincidir el patrón con el string</span>
-            <span class="n">coincidencia</span> <span class="o">=</span> <span class="n">patron</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+        <span class="n">coincidencia</span> <span class="o">=</span> <span class="n">patron</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
 
             <span class="c1"># Retorna True si hay coincidencia, de lo contrario, retorna False</span>
-            <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">coincidencia</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">coincidencia</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Drivers.validar_salario">
 <a class="viewcode-back" href="../src/drivers.html#drivers.Drivers.validar_salario">[documentos]</a>
     <span class="k">def</span> <span class="nf">validar_salario</span><span class="p">(</span><span class="bp">self</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">           Valida el formato del salario introducido en la interfaz gráfica.</span>
+
+<span class="sd">           :return: None</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">salario</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtSalario</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
             <span class="n">salario</span> <span class="o">=</span> <span class="n">salario</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
@@ -271,6 +317,13 @@
 <div class="viewcode-block" id="Drivers.carga_fecha">
 <a class="viewcode-back" href="../src/drivers.html#drivers.Drivers.carga_fecha">[documentos]</a>
     <span class="k">def</span> <span class="nf">carga_fecha</span><span class="p">(</span><span class="n">qDate</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            Carga la fecha seleccionada en el calendario en el campo de texto correspondiente.</span>
+
+<span class="sd">            :param qDate: Fecha seleccionada en el calendario.</span>
+<span class="sd">            :type qDate: QDate</span>
+<span class="sd">            :return: None</span>
+<span class="sd">            &#39;&#39;&#39;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;</span><span class="si">{:02d}</span><span class="s1">/</span><span class="si">{:02d}</span><span class="s1">/</span><span class="si">{:4d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">qDate</span><span class="o">.</span><span class="n">day</span><span class="p">(),</span> <span class="n">qDate</span><span class="o">.</span><span class="n">month</span><span class="p">(),</span> <span class="n">qDate</span><span class="o">.</span><span class="n">year</span><span class="p">()))</span>
             <span class="k">if</span> <span class="n">drivers</span><span class="o">.</span><span class="n">Drivers</span><span class="o">.</span><span class="n">param</span> <span class="o">==</span> <span class="s2">&quot;fecha alta driver&quot;</span><span class="p">:</span>
@@ -343,6 +396,12 @@
 <div class="viewcode-block" id="Drivers.recuperar_datos">
 <a class="viewcode-back" href="../src/drivers.html#drivers.Drivers.recuperar_datos">[documentos]</a>
     <span class="k">def</span> <span class="nf">recuperar_datos</span><span class="p">(</span><span class="bp">self</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            Recupera los datos introducidos en la interfaz gráfica y devuelve una lista.</span>
+
+<span class="sd">            :return: Lista con los datos del conductor.</span>
+<span class="sd">            :rtype: list</span>
+<span class="sd">            &#39;&#39;&#39;</span>
         <span class="n">driver</span> <span class="o">=</span><span class="p">[</span><span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">lblCodDB</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span><span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDni</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDate</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDni_2</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtNombre</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span>
                       <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDireccion</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">cmbProvincia</span><span class="o">.</span><span class="n">currentText</span><span class="p">(),</span>
                       <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">cmbLocalidad</span><span class="o">.</span><span class="n">currentText</span><span class="p">(),</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtMovil</span><span class="o">.</span><span class="n">text</span><span class="p">(),</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtSalario</span><span class="o">.</span><span class="n">text</span><span class="p">()]</span>
@@ -363,6 +422,14 @@
 <div class="viewcode-block" id="Drivers.validar_datos">
 <a class="viewcode-back" href="../src/drivers.html#drivers.Drivers.validar_datos">[documentos]</a>
     <span class="k">def</span> <span class="nf">validar_datos</span><span class="p">(</span><span class="n">listadeDatos</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">            Valida que no haya campos vacíos en la lista de datos proporcionada.</span>
+
+<span class="sd">            :param listadeDatos: Lista de datos a validar.</span>
+<span class="sd">            :type listadeDatos: list</span>
+<span class="sd">            :return: True si no hay campos vacíos, False de lo contrario.</span>
+<span class="sd">            :rtype: bool</span>
+<span class="sd">            &#39;&#39;&#39;</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">listadeDatos</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">listadeDatos</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
                 <span class="k">return</span> <span class="kc">False</span>
@@ -372,6 +439,11 @@
 <div class="viewcode-block" id="Drivers.alta_driver">
 <a class="viewcode-back" href="../src/drivers.html#drivers.Drivers.alta_driver">[documentos]</a>
     <span class="k">def</span> <span class="nf">alta_driver</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">           Realiza el proceso de dar de alta a un conductor.</span>
+
+<span class="sd">           :return: None</span>
+<span class="sd">        &#39;&#39;&#39;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">driver</span> <span class="o">=</span> <span class="n">drivers</span><span class="o">.</span><span class="n">Drivers</span><span class="o">.</span><span class="n">recuperar_datos</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
             <span class="n">driver</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">driver</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>

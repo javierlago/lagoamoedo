@@ -15,6 +15,18 @@ from PyQt6 import *
 class Facturacion:
 
     def crear_registro(self):
+        """
+         Método para recoger los datos del viaje.
+
+         :param self: Referencia al objeto actual.
+         :type self: object
+
+         :return: Una lista que contiene la provincia y localidad de origen, y la provincia y localidad de destino del viaje.
+         :rtype: list
+
+         Descripción:
+         Este método recoge los datos del viaje seleccionados por el usuario y devuelve una lista con estos datos.
+         """
         try:
 
             registroFactura = [var.ui.txt_cif_cliente.text(), var.ui.txt_fecha_factura.text(),
@@ -24,6 +36,18 @@ class Facturacion:
             print("Errore en la recogida de datos de la factura", error)
 
     def recoger_datos_viaje(self):
+        """
+           Método para recoger los datos del viaje seleccionados por el usuario.
+
+           :param self: Referencia al objeto actual.
+           :type self: object
+
+           :return: Una lista que contiene la provincia de origen, provincia de destino, localidad de origen y localidad de destino del viaje.
+           :rtype: list
+
+           Descripción:
+           Este método recoge los datos del viaje seleccionados por el usuario a través de los comboboxes correspondientes y los devuelve en una lista.
+           """
         try:
             datos_viaje = [var.ui.cmb_provincia_origen.currentText(), var.ui.cmb_provincia_destino.currentText(),
                            var.ui.cmb_localidad_origen.currentText(), var.ui.cmb_localidad_destino.currentText()]
@@ -32,6 +56,16 @@ class Facturacion:
             print("Error en la recuperacion de datos del vieaje", error)
 
     def cargartabla(registros):
+        """
+        Método para cargar registros en una tabla.
+
+        :param registros: Lista de registros a cargar en la tabla.
+        :type registros: list
+
+        Descripción:
+        Este método carga los registros proporcionados en una tabla de la interfaz de usuario. Itera sobre los registros y los inserta en la tabla fila por fila.
+        """
+
         try:
             index = 0
             for registro in registros:
@@ -46,6 +80,16 @@ class Facturacion:
             print("Error completar tabla ", error)
 
     def mostrar_datos_factura(self):
+        """
+        Método para mostrar los datos de una factura en los campos correspondientes de la interfaz.
+
+        Descripción:
+        Este método oculta el botón de modificar viaje y limpia los campos de provincia, localidad y kilómetros.
+        Además, limpia el estilo de todas las filas de la tabla de facturas y establece un fondo amarillo para la fila seleccionada.
+        Posteriormente, recupera el código del conductor y la fecha de la factura seleccionada en la tabla de facturas,
+        y muestra estos datos junto con el número de factura y el CIF del cliente en los campos de la interfaz.
+        """
+
         try:
             var.ui.btn_modificar_viaje.setVisible(False)
             var.ui.cmb_provincia_origen.setCurrentText('')
@@ -89,6 +133,23 @@ class Facturacion:
             print("Error al cargar desde la tabla", error)
 
     def calcular_tarifa(self=None):
+        """
+        Método para calcular la tarifa según el tipo de viaje seleccionado.
+
+        :param self: Referencia al objeto actual.
+        :type self: object
+
+        :return: La tarifa calculada según el tipo de viaje.
+        :rtype: float
+
+        Descripción:
+        Este método calcula la tarifa del viaje según el tipo de viaje seleccionado en los comboboxes de provincia y localidad de origen y destino.
+        Si la provincia de origen es diferente a la provincia de destino, se establece la tarifa nacional y se devuelve 0.8.
+        Si la localidad de origen es diferente a la localidad de destino pero la provincia es la misma, se establece la tarifa provincial y se devuelve 0.4.
+        Si la localidad de origen y destino son iguales, se establece la tarifa local y se devuelve 0.2.
+        En caso de error, imprime un mensaje de error en la consola.
+        """
+
         try:
             array_destinos = [var.ui.cmb_provincia_origen.currentText(), var.ui.cmb_provincia_destino.currentText(),
                               var.ui.cmb_localidad_origen.currentText(), var.ui.cmb_localidad_destino.currentText()]
@@ -126,6 +187,22 @@ class Facturacion:
             print("Error a la hora de recuperar los datos", error)
 
     def rellenar_tabla_lineas_viaje(self):
+        """
+        Método para insertar datos de un viaje en la base de datos.
+
+        :param last_insert: Último identificador insertado en la base de datos.
+        :type last_insert: int
+
+        :return: None
+
+        Descripción:
+        Este método inserta los datos de un viaje en la base de datos. Los datos incluyen el número de factura, localidad de origen, localidad de destino, kilómetros y tarifa.
+        Si el número de factura está vacío, se utiliza el último identificador insertado. Luego, se valida la información del viaje.
+        Si los datos son válidos, se insertan en la base de datos y se actualiza la tabla de líneas de viaje en la interfaz.
+        En caso contrario, se muestra un mensaje de advertencia indicando que se deben completar todos los campos.
+        En caso de error, imprime un mensaje de error en la consola.
+        """
+
         try:
             lineas_de_viaje = facturacion_repository.Facturacion_Repository.recupera_lineas_de_viaje(
                 var.ui.txt_numero_factura.text())
@@ -170,6 +247,20 @@ class Facturacion:
             print("Error completar tabla ", error)
 
     def eliminar_linea_de_viaje(self):
+        """
+        Método para eliminar una línea de viaje.
+
+        :param self: Referencia al objeto actual.
+        :type self: object
+
+        :return: None
+
+        Descripción:
+        Este método muestra un mensaje de advertencia preguntando al usuario si desea eliminar la línea de viaje seleccionada.
+        Si el usuario confirma la eliminación, se borra la línea de viaje de la base de datos y se elimina de la tabla en la interfaz.
+        En caso de error, imprime un mensaje de error en la consola.
+        """
+
         try:
             mensaje = QMessageBox()
             mensaje.setText("¿Deseas eliminar este viaje?")
@@ -187,6 +278,22 @@ class Facturacion:
             print("Error en el metodo de borrado de linea de viaje", error)
 
     def calculo_factura_de_viaje(tabla):
+        """
+        Método para calcular el total de la factura de un viaje.
+
+        :param tabla: Tabla que contiene los datos de los viajes.
+        :type tabla: QTableWidget
+
+        :return: El total de la factura del viaje.
+        :rtype: float
+
+        Descripción:
+        Este método calcula el total de la factura sumando los importes de cada línea de viaje en la tabla proporcionada.
+        Itera sobre todas las filas de la tabla, obtiene el importe de cada línea y lo suma al presupuesto total.
+        Finalmente, devuelve el presupuesto total de la factura.
+        En caso de error, imprime un mensaje de error en la consola.
+        """
+
         try:
             presupuesto = 0
             for a in range(tabla.rowCount()):
@@ -197,6 +304,23 @@ class Facturacion:
             print("Error en el metodo de suma del total", error)
 
     def seleccionar_linea_de_viaje(self):
+        """
+        Método para seleccionar una línea de viaje.
+
+        :param self: Referencia al objeto actual.
+        :type self: object
+
+        :return: None
+
+        Descripción:
+        Este método selecciona una línea de viaje en la tabla de líneas de viaje de la interfaz.
+        Primero recoge los datos de la fila seleccionada, luego muestra el botón de modificar viaje y limpia el fondo de todas las filas de la tabla.
+        Después, resalta la fila seleccionada estableciendo un fondo amarillo.
+        A continuación, obtiene las provincias correspondientes a las localidades de origen y destino de la línea de viaje seleccionada y las establece en los comboboxes de provincia de origen y destino.
+        Finalmente, establece las localidades de origen y destino y los kilómetros en los campos correspondientes de la interfaz.
+        En caso de error, imprime un mensaje de error en la consola.
+        """
+
         try:
 
             datos_fila_seleccionada = Facturacion.recoger_datos_linea_viaje(self)
@@ -222,6 +346,22 @@ class Facturacion:
             print("Error en el metodo de seleccionar lineas de viaje", error)
 
     def recoger_datos_linea_viaje(self):
+        """
+        Método para recoger los datos de una línea de viaje seleccionada en la tabla.
+
+        :param self: Referencia al objeto actual.
+        :type self: object
+
+        :return: Una lista que contiene los datos de la línea de viaje seleccionada.
+        :rtype: list
+
+        Descripción:
+        Este método recoge los datos de una línea de viaje seleccionada en la tabla de líneas de viaje de la interfaz.
+        Itera sobre los elementos de la fila seleccionada en la tabla y los agrega a una lista.
+        Además, establece un fondo amarillo para resaltar la fila seleccionada en la tabla.
+        Finalmente, devuelve la lista con los datos de la fila seleccionada.
+        """
+
         row_number = var.ui.tab_lineas_de_viaje.currentRow()
         datos_fila_seleccionada: list = []
         for colunm_number in range(var.ui.tab_lineas_de_viaje.columnCount()):
@@ -231,6 +371,20 @@ class Facturacion:
                 datos_fila_seleccionada.append(item.text())
         return datos_fila_seleccionada
     def limpiar_panel_viajes(self):
+        """
+        Método para limpiar los campos del panel de viajes.
+
+        :param self: Referencia al objeto actual.
+        :type self: object
+
+        :return: None
+
+        Descripción:
+        Este método limpia los campos del panel de viajes en la interfaz.
+        Establece el texto vacío en los comboboxes de provincia y localidad de origen y destino, así como en el campo de kilómetros.
+        En caso de error, imprime un mensaje de error en la consola.
+        """
+
         try:
             var.ui.cmb_provincia_origen.setCurrentText('')
             var.ui.cmb_provincia_destino.setCurrentText('')

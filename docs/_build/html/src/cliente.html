@@ -61,27 +61,46 @@ se mostrara una ventana de aviso, indicando que faltan campos por completar.
 <dl class="py method">
 <dt class="sig sig-object py" id="cliente.Cliente.carga_cliente">
 <span class="sig-name descname"><span class="pre">carga_cliente</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cliente.html#Cliente.carga_cliente"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#cliente.Cliente.carga_cliente" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Metodo para cargar un cliente en  que se encuentra en la base de datos.En caso de que ese cliente no exita en la base de datos, se muestra una ventana indicando al usuario que ese cliente no existe en la base de datos.
+:param:Recibe por parametro un un registro que contiene los datos del cliente.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cliente.Cliente.cargartabla">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cargartabla</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">registros</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cliente.html#Cliente.cargartabla"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#cliente.Cliente.cargartabla" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Metodo para cargar la tabla de clientes con todos los clientes que existen en la base de datos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>registros</strong> – </p>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cliente.Cliente.get_from_dni">
 <span class="sig-name descname"><span class="pre">get_from_dni</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cliente.html#Cliente.get_from_dni"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#cliente.Cliente.get_from_dni" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Metodo que recoge los datos de un Text Box y verifica que el dni existe y es valido.Si existe el dni se desplaza hasta la fila en la que se encuentra ese DNI.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cliente.Cliente.get_from_tab">
 <span class="sig-name descname"><span class="pre">get_from_tab</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cliente.html#Cliente.get_from_tab"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#cliente.Cliente.get_from_tab" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Metodo para recoger los datos de una fila seleccionada y pasarlos al panel del cliente, tambien colorea la fila que se ha seleccionao.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cliente.Cliente.recuperar_datos">
 <span class="sig-name descname"><span class="pre">recuperar_datos</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cliente.html#Cliente.recuperar_datos"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#cliente.Cliente.recuperar_datos" title="Link to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Este metodo recoge todos los datos que hay en las cajas de texto en en panel del cliente.
+:return: Devuelve una lista con todos los datos del cliente que estan en las cajas de texto.
+:rtype: List</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="cliente.Cliente.validar_datos">
@@ -95,18 +114,11 @@ se mostrara una ventana de aviso, indicando que faltan campos por completar.
 <dl class="py method">
 <dt class="sig sig-object py" id="cliente.Cliente.validar_dni">
 <span class="sig-name descname"><span class="pre">validar_dni</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/cliente.html#Cliente.validar_dni"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#cliente.Cliente.validar_dni" title="Link to this definition">¶</a></dt>
-<dd><p>Validación de un <strong>DNI</strong> según el algoritmo de validación español.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>dni</strong> – String que tiene que ser al menos de 9 caracteres.</p>
-</dd>
-<dt class="field-even">Devuelve<span class="colon">:</span></dt>
-<dd class="field-even"><p>True si el DNI es válido, False en caso contrario.</p>
-</dd>
-<dt class="field-odd">Tipo del valor devuelto<span class="colon">:</span></dt>
-<dd class="field-odd"><p>bool</p>
-</dd>
-</dl>
+<dd><p>Validación de un <strong>DNI</strong> según el algoritmo de validación español.
+En caso de ser valido pondra un imagen y si es falso pondra otra.Este medoto no dejara mover el cursor de esta caja de texto mientras el <strong>DNI</strong> introducido no sea el correcto.
+:param dni: String que tiene que ser al menos de 9 caracteres.
+:return: True si el DNI es válido, False en caso contrario.
+:rtype: bool</p>
 </dd></dl>
 
 <dl class="py method">

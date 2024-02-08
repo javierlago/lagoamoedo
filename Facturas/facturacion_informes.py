@@ -15,6 +15,26 @@ from informes import informes
 
 class Facturacion_informes:
     def report_facturas(self):
+        """
+        Método para generar y mostrar un informe de factura para un cliente seleccionado.
+
+        :param self: Referencia al objeto actual.
+        :type self: object
+
+        :return: None
+
+        Descripción:
+        Este método genera un informe de factura para un cliente seleccionado en la interfaz.
+        Primero verifica si se ha seleccionado una factura en la tabla de facturas. Si no se ha seleccionado ninguna, muestra un mensaje de advertencia y termina la ejecución del método.
+        Luego, obtiene la fecha actual y crea un nombre único para el archivo PDF del informe.
+        Después, inicializa el lienzo del informe y establece el título de la factura.
+        Rellena los datos del cliente en el informe.
+        Agrega los encabezados de las columnas y recupera las líneas de viaje asociadas a la factura seleccionada.
+        Itera sobre las líneas de viaje y agrega sus datos al informe, calculando el subtotal, el IVA y el total de la factura.
+        Guarda el informe como un archivo PDF y lo muestra en el sistema de archivos del usuario.
+        En caso de error, imprime un mensaje de error en la consola.
+        """
+
         try:
 
             if var.ui.tab_facturas.item(var.ui.tab_facturas.currentRow(), 0) is None:
@@ -83,6 +103,21 @@ class Facturacion_informes:
             print("error en la ejecucion del informe", e)
 
     def rellenar_datos_cliente(datos_cliente_factura):
+        """
+        Método para rellenar los datos del cliente en el informe de factura.
+
+        :param datos_cliente_factura: Lista que contiene los datos del cliente para la factura.
+        :type datos_cliente_factura: list
+
+        :return: None
+
+        Descripción:
+        Este método rellena los datos del cliente en el informe de factura.
+        Recupera los datos del cliente utilizando el método `recuperar_datos_cliente_factura()` del repositorio de facturación.
+        Luego, establece la fuente y el tamaño de la letra para los encabezados y los datos del cliente en el informe.
+        Finalmente, imprime los datos del cliente en posiciones específicas en el informe.
+        En caso de error, imprime un mensaje de error en la consola.
+        """
 
         try:
 

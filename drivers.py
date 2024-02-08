@@ -392,6 +392,14 @@ class Drivers:
 
     @staticmethod
     def cargartabla(registros):
+        '''
+            Metodo para cargar la tabla de los conductores.
+            Le pasaremos una lista de conductores que obtenemos de una query de una base de datos.
+        :param registros:
+        :type List
+        :return: None
+
+        '''
 
         try:
             nuevoRegistros = list()

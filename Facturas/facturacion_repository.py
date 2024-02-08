@@ -13,6 +13,21 @@ from Facturas import facturacion
 class Facturacion_Repository:
 
     def insert_line_de_viaje(registro):
+        """
+        Método para insertar una línea de viaje en la base de datos.
+
+        :param registro: Lista que contiene los datos de la línea de viaje a insertar.
+        :type registro: list
+
+        :return: None
+
+        Descripción:
+        Este método inserta una nueva línea de viaje en la base de datos.
+        Prepara la consulta SQL para la inserción de los datos de la línea de viaje utilizando los parámetros proporcionados.
+        Vincula los valores del registro a los marcadores de posición en la consulta SQL.
+        Ejecuta la consulta SQL y muestra un mensaje de éxito si la inserción se realiza correctamente.
+        En caso de error, muestra una advertencia al usuario y imprime el error en la consola.
+        """
 
         try:
             query = QtSql.QSqlQuery()
@@ -31,6 +46,22 @@ class Facturacion_Repository:
 
 
     def insert_factura(self):
+        """
+        Método para insertar una factura en la base de datos.
+
+        :return: None
+
+        Descripción:
+        Este método inserta una nueva factura en la base de datos utilizando los datos proporcionados por el usuario.
+        Realiza varias validaciones antes de la inserción para garantizar la integridad de los datos.
+        Si algún dato no cumple con las validaciones, muestra un mensaje de advertencia correspondiente.
+        Prepara la consulta SQL para la inserción de la factura con los datos proporcionados.
+        Ejecuta la consulta SQL para insertar la factura en la base de datos.
+        Llama al método para insertar los datos de viaje relacionados con la factura recién creada.
+        Muestra un mensaje de éxito después de la inserción y actualiza la lista de facturas en la interfaz.
+        En caso de error, muestra un mensaje de advertencia y registra el error en la consola.
+        """
+
         try:
             if not drivers.Drivers.validar_datos(facturacion.Facturacion.crear_registro(self)):
                     Ventanas.Ventanas.mensaje_warning("Campos Vacios")
@@ -67,6 +98,24 @@ class Facturacion_Repository:
 
 
     def recupera_lineas_de_viaje(idFactura):
+        """
+        Método para recuperar las líneas de viaje asociadas a una factura.
+
+        :param idFactura: El ID de la factura para la cual se recuperarán las líneas de viaje.
+        :type idFactura: int
+        :return: Una lista de listas que contiene las líneas de viaje asociadas a la factura.
+        :rtype: list
+
+        Descripción:
+        Este método recupera todas las líneas de viaje asociadas a una factura específica de la base de datos.
+        Prepara una consulta SQL para seleccionar todas las líneas de viaje que corresponden al ID de la factura proporcionado.
+        Ejecuta la consulta SQL y recorre los resultados para construir una lista de listas que contiene las líneas de viaje.
+        Por cada fila en los resultados de la consulta, se crea una lista con los valores de cada columna, excluyendo el ID de la factura.
+        Añade esta lista de valores a la lista principal de líneas de viaje.
+        Devuelve la lista de líneas de viaje al finalizar.
+        En caso de error, muestra un mensaje de error en la consola y registra el error específico de la consulta SQL.
+        """
+
         try:
             print(idFactura)
             lineas_de_viaje :list = []
@@ -84,6 +133,20 @@ class Facturacion_Repository:
             print("Error en la el metodo recuperar todas las lineas de viaje de una factura" , error, query.lastError().text())
 
     def borra_linea_de_viaje(id_viaje):
+        """
+        Método para eliminar una línea de viaje de la base de datos.
+
+        :param id_viaje: El ID de la línea de viaje que se va a eliminar.
+        :type id_viaje: int
+
+        Descripción:
+        Este método elimina una línea de viaje específica de la base de datos.
+        Prepara una consulta SQL para eliminar la línea de viaje con el ID proporcionado.
+        Ejecuta la consulta SQL y comprueba si se ejecuta correctamente.
+        Imprime un mensaje indicando que la línea de viaje se ha eliminado si la consulta se ejecuta con éxito.
+        En caso de error, muestra un mensaje de error en la consola y registra el error específico.
+        """
+
         try:
             print(id_viaje)
             query_borrar_linea_de_viaje = QtSql.QSqlQuery()
@@ -97,6 +160,23 @@ class Facturacion_Repository:
 
 
     def comprobarr_factura_existe(id_Factura):
+        """
+        Método para comprobar si una factura existe en la base de datos.
+
+        :param id_Factura: El ID de la factura que se va a comprobar.
+        :type id_Factura: int
+
+        :return: True si la factura existe, False de lo contrario.
+        :rtype: bool
+
+        Descripción:
+        Este método verifica si una factura con el ID especificado existe en la base de datos.
+        Prepara una consulta SQL para seleccionar todas las filas de la tabla de facturas donde el número de factura coincida con el ID proporcionado.
+        Ejecuta la consulta SQL y comprueba si se ejecuta correctamente y si hay resultados.
+        Si la consulta se ejecuta correctamente y se encuentra al menos una fila, devuelve True, lo que indica que la factura existe.
+        En caso de error, imprime un mensaje de error en la consola y registra el error específico.
+        """
+
         try:
             query_verificar_factura_existe = QtSql.QSqlQuery()
             query_verificar_factura_existe.prepare('select * from facturas where numFactura = :nunFactura')
@@ -109,6 +189,23 @@ class Facturacion_Repository:
 
 
     def recuperar_datos_cliente_factura(self=None):
+        """
+        Método para recuperar los datos del cliente asociado a una factura.
+
+        :return: Una lista con los datos del cliente asociado a la factura actual.
+        :rtype: list
+
+        Descripción:
+        Este método recupera los datos del cliente asociado a la factura actualmente seleccionada en la tabla de facturas.
+        Obtiene el número de factura de la fila actualmente seleccionada en la tabla de facturas.
+        Prepara una consulta SQL para seleccionar todas las filas de la tabla de facturas donde el número de factura coincida con el número obtenido.
+        Ejecuta la consulta SQL y recupera todos los registros de la factura actual.
+        Obtiene el DNI del cliente asociado a la factura a partir de los datos recuperados de la factura.
+        Utiliza el DNI del cliente para recuperar los datos completos del cliente desde la base de datos.
+        Crea una lista con los datos combinados de la factura y el cliente, y la devuelve.
+        En caso de error, imprime un mensaje de error en la consola y registra el error específico.
+        """
+
         try:
             print(var.ui.tab_facturas.item(var.ui.tab_facturas.currentRow(), 1).text())
             datos_factura = []
@@ -130,6 +227,28 @@ class Facturacion_Repository:
 
 
     def modificar_viaje(self):
+        """
+        Método para modificar un viaje en la base de datos.
+
+        :return: None
+        :rtype: None
+
+        Descripción:
+        Este método permite modificar los detalles de un viaje en la base de datos.
+        Primero, calcula la tarifa del viaje actual utilizando el método `calcular_tarifa` de la clase `Facturacion`.
+        Luego, recoge los datos del viaje actualmente seleccionado desde la interfaz de usuario.
+        Los compara con los datos introducidos en el panel de edición de viajes para determinar si se han realizado cambios.
+        Si no se han realizado cambios, muestra un mensaje informativo y no realiza ninguna modificación.
+        En caso contrario, prepara una consulta SQL para actualizar los detalles del viaje en la base de datos.
+        Ejecuta la consulta SQL y, si tiene éxito, muestra un mensaje de confirmación, actualiza la tabla de viajes en la interfaz de usuario y limpia el panel de edición de viajes.
+        En caso de error durante el proceso de modificación, imprime un mensaje de error en la consola.
+
+        Raises:
+        Exception: Si se produce un error durante el proceso de modificación del viaje.
+
+        """
+
+
         try:
            print(str(facturacion.Facturacion.calcular_tarifa(self)))
            datos_linea_viaje = facturacion.Facturacion.recoger_datos_linea_viaje(self)

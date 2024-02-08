@@ -12,6 +12,21 @@ class informes:
     global contador
 
     def reportclientes(self):
+        """
+           Método para generar un informe en formato PDF de la lista de clientes.
+
+           :param self: Referencia al objeto actual.
+           :type self: object
+
+           :raises: Exception: Se produce si hay algún error durante la ejecución del informe.
+
+           :return: None
+
+           Descripción:
+           Este método genera un informe en formato PDF que contiene una lista de clientes. El informe incluye los siguientes campos:
+           Código, DNI, Razón social, Municipio, Provincia, y Estado de baja del cliente.
+           Los datos se obtienen de una base de datos y se ordenan por la razón social del cliente.
+           """
         try:
             contador = 1
             fecha = datetime.today()
@@ -70,6 +85,21 @@ class informes:
             print("error en la ejecucion del informe de clientes",e)
 
     def report_conductores(self):
+        """
+         Método para generar un informe en formato PDF del listado de conductores.
+
+         :param self: Referencia al objeto actual.
+         :type self: object
+
+         :raises: Exception: Se produce si hay algún error durante la ejecución del informe.
+
+         :return: None
+
+         Descripción:
+         Este método genera un informe en formato PDF que contiene un listado de conductores. El informe incluye los siguientes campos:
+         Código, Apellidos, Nombre, Móvil, Licencias, y Fecha de baja.
+         Los datos se obtienen de una base de datos y se ordenan por los apellidos de los conductores.
+         """
         try:
             fecha = datetime.today()
             fecha = fecha.strftime('%Y_%m_%d_%H_%M_%S')
@@ -121,6 +151,18 @@ class informes:
             print("error en la ejecucion del informe",e)
 
     def top_informe(titulo):
+        """
+           Función para agregar el encabezado de un informe en un documento PDF.
+
+           :param titulo: Título del informe.
+           :type titulo: str
+
+           :return: None
+
+           Descripción:
+           Esta función agrega el encabezado de un informe en un documento PDF, incluyendo el nombre de la empresa,
+           el título del informe, el logotipo de la empresa y la información de contacto.
+           """
         try:
 
             logo = '.\\img\\IconoInfome.png'
@@ -142,6 +184,18 @@ class informes:
             print(e)
 
     def top_informe_factura(titulo):
+        """
+            Función para agregar el encabezado de una factura en un documento PDF.
+
+            :param titulo: Título de la factura.
+            :type titulo: str
+
+            :return: None
+
+            Descripción:
+            Esta función agrega el encabezado de una factura en un documento PDF, incluyendo el nombre de la empresa,
+            el título de la factura, el logotipo de la empresa y la información de contacto.
+            """
         try:
 
             logo = '.\\img\\IconoInfome.png'
@@ -163,7 +217,18 @@ class informes:
             print(e)
 
     def foot_informe(titulo):
+        """
+            Función para agregar el pie de página en un documento PDF de informe.
 
+            :param titulo: Título del informe.
+            :type titulo: str
+
+            :return: None
+
+            Descripción:
+            Esta función agrega el pie de página en un documento PDF de informe, incluyendo la fecha y hora de creación del informe,
+            el título del informe y el número de página actual.
+            """
         try:
             var.report.line(50, 50, 525, 50)
             fecha = datetime.today()

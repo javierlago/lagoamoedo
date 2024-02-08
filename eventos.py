@@ -3,10 +3,8 @@ import shutil
 import sys
 import zipfile
 
-
 import xlwt
 import xlrd
-
 
 import Ventanas
 import cliente
@@ -20,18 +18,20 @@ from datetime import *
 import locale
 from PyQt6 import QtCore, QtGui, QtWidgets
 
-
 locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
 locale.setlocale(locale.LC_MONETARY, 'es_ES.UTF-8')
 
 
 class Eventos:
 
-
-
-
     @staticmethod
     def abrir_window_print(self):
+        '''
+        Metodo para abrir la ventana para imprimir facturas.
+        :param self:
+        :type self:
+
+        '''
         try:
             var.print_facturas.show()
 
@@ -39,6 +39,11 @@ class Eventos:
             print("erro en abrir", error)
 
     def importar_datos_clientes(self):
+        '''
+        Metodo para importar datos de los clientes desde un archivo XLS
+        :return: None
+        :rtype: None
+        '''
         try:
             estado = 0
             inserciones = 0
@@ -85,6 +90,11 @@ class Eventos:
             print("Error al importar datos", error)
 
     def importar_datos(self):
+        '''
+        Metodos par importar datos de conductores.
+        :return: None
+        :rtype: None
+        '''
         try:
             estado = 0
             filename = var.dlg_abrir.getOpenFileName(None, 'Importar datos', '', '*.xls;;Allfiles(*)')
@@ -121,6 +131,11 @@ class Eventos:
             print(f"Error al importar datos: {str(e)}")
 
     def exportar_datos_xls(self):
+        '''
+        Metodo para expottar datos de los conductores.
+        :return: None
+        :rtype: None
+        '''
         try:
             fecha = datetime.today()
             fecha = fecha.strftime('%Y_%m_%d_%H_%M_%S')
@@ -155,6 +170,11 @@ class Eventos:
             Ventanas.Ventanas.mensaje_warning("Error exportar datos en hoja de calculo", error)
 
     def restaurar_back_up(self):
+        '''
+        Metodo para restaurar la base de datos desde un archivo.
+        :return:
+        :rtype:
+        '''
         try:
             filename = var.dlg_abrir.getOpenFileName(None, 'Restaurar copia de seguridad',
                                                      '', '*.zip;;All Files(*)')
@@ -165,12 +185,17 @@ class Eventos:
                 Ventanas.Ventanas.ventana_info("Copia restaurada")
                 conexion.Conexion.mostrardrivers()
 
-
         except Exception as error:
 
             Ventanas.Ventanas.mensaje_warning("Error en la copia de seguridad", error)
 
     def crear_back_up(self):
+        '''
+        Metodo para crear un copia de seguridad de nuestra base de datos.
+
+        :return: None
+        :rtype: None
+        '''
         try:
             fecha = datetime.today()
             fecha = fecha.strftime('%Y_%m_%d_%H_%M_%S')
@@ -190,6 +215,11 @@ class Eventos:
 
     @staticmethod
     def limpiar():
+        '''
+        Metodo que pone en blanco todos los paneles de la interfaz.Este metodo esta asociado a un boton en el menuBar de la aplicacion.
+        :return: None
+        :rtype: None.
+        '''
         try:
             conexion.Conexion.mostrardrivers()
             conexion.Conexion.mostrarclientes()
@@ -199,7 +229,8 @@ class Eventos:
                             var.ui.lblCodDB_Cliente, var.ui.txtDni_3, var.ui.txtRazonSocial,
                             var.ui.txtDireccion_Cliente, var.ui.txtMovil_Cliente, var.ui.txtDate_Cliente,
                             var.ui.txt_numero_factura, var.ui.txt_cif_cliente,
-                            var.ui.txt_fecha_factura,var.ui.txt_subtotal,var.ui.txt_iva,var.ui.txt_total,var.ui.txt_kilometros]
+                            var.ui.txt_fecha_factura, var.ui.txt_subtotal, var.ui.txt_iva, var.ui.txt_total,
+                            var.ui.txt_kilometros]
             # var.ui.lblCheckDNI.hide()
             var.ui.lblCheckDNI.setText(" ")
             var.ui.lblCheckDNI_Cliente.setText(" ")
@@ -221,17 +252,16 @@ class Eventos:
             var.ui.cmb_provincia_destino.setCurrentText('')
             var.ui.cmb_localidad_origen.setCurrentText('')
             var.ui.cmb_localidad_destino.setCurrentText('')
-
-
-
-
-
-
         except Exception as error:
             print("Error al limpiar", error)
 
     @staticmethod
     def abrir_calendar():
+        '''
+        Metod para abrir la ventana de calendario.
+        :return: None
+        :rtype: None
+        '''
 
         try:
             var.calendar.show()
@@ -239,15 +269,15 @@ class Eventos:
         except Exception as error:
             print("erro en abrir", error)
 
-    def abrir_calendar_baja(self):
-
-        try:
-            var.calendarBaja.show()
-        except Exception as error:
-            print("erro en abrir", error)
 
     @staticmethod
     def abrir_acerca_de():
+        '''
+        Meotodo utilizado para abrir el la ventana "Acerca de " donde se mostrara información sobre el programa.
+        Este metodo se ejecuta al pulsar el boton que hay en el estatus bar del programa.
+        :return: None
+        :rtype: None
+        '''
 
         try:
             var.acercade.show()
@@ -257,6 +287,11 @@ class Eventos:
 
     @staticmethod
     def show_salir():
+        '''
+        Metodo que abre la ventana salir, indicado si quiere salir del programa.
+        :return: None
+        :rtype: None
+        '''
         try:
             var.ventana_salir.show()
         except Exception as error:
@@ -264,6 +299,11 @@ class Eventos:
 
     @staticmethod
     def hide_salir():
+        '''
+        Metodo para ocular la ventana de dialogo de salir del programa.
+        :return: None
+        :rtype: None
+        '''
         try:
             var.ventana_salir.hide()
         except Exception as error:
@@ -271,6 +311,11 @@ class Eventos:
 
     @staticmethod
     def salir_acerca_de():
+        '''
+        Metodo para ocultar el cuadro de dialogo en de la ventana "Acerca de", este metodo sera ejecutado cuando en la propia ventana se pulse sobre el boton aceptar
+        :return: None
+        :rtype: None
+        '''
 
         try:
             var.acercade.hide()
@@ -279,6 +324,11 @@ class Eventos:
 
     @staticmethod
     def salir():
+        '''
+        Metodo para salir del programa. Cuando en el cuadro de dialogo de la ventana "Salir" se pulsa el boton aceptar se ejecutara este metodo
+        :return:
+        :rtype:
+        '''
 
         try:
             sys.exit()
@@ -287,6 +337,11 @@ class Eventos:
 
     @staticmethod
     def devolver_fecha():
+        '''
+        Metodo que devuelve la fecha actual con un formato dia/mes/año
+        :return: fecha
+        :rtype: datetime
+        '''
         fecha = datetime.now()
         fecha = fecha.strftime("%A-" + '%d-%m-%Y')
         return fecha
@@ -356,6 +411,18 @@ class Eventos:
 
     @staticmethod
     def resize_tab_facturas(self):
+        """
+           Método estático para redimensionar las columnas de una tabla de facturas en una interfaz de usuario.
+
+           :param self: Referencia al objeto actual.
+           :type self: object
+
+           :raises: No se producen excepciones explícitas en este método, pero pueden ocurrir excepciones
+                    durante la ejecución del código dentro del bloque try.
+
+           :return: None
+
+           """
         try:
             header = var.ui.tab_facturas.horizontalHeader();
             header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeMode.ResizeToContents)
@@ -367,6 +434,19 @@ class Eventos:
 
     @staticmethod
     def format_caja_texto(self=None):
+        """
+        Método estático para formatear el texto en las cajas de texto de una interfaz de usuario.
+
+        :param self: Referencia al objeto actual. Por defecto es None.
+        :type self: object or None
+
+        :raises: No se producen excepciones explícitas en este método, pero pueden ocurrir excepciones
+                 durante la ejecución del código dentro del bloque try.
+
+        :return: None
+
+  .
+        """
         try:
             var.ui.txtDni_2.setText(var.ui.txtDni_2.text().title())
             var.ui.txtNombre.setText(var.ui.txtNombre.text().title())
@@ -377,6 +457,23 @@ class Eventos:
 
     @staticmethod
     def printear_informes(self):
+        """
+          Método estático para imprimir informes seleccionados en una interfaz de usuario.
+
+          :param self: Referencia al objeto actual.
+          :type self: object
+
+          :raises: No se producen excepciones explícitas en este método, pero pueden ocurrir excepciones
+                   durante la ejecución del código dentro del bloque try.
+
+          :return: None
+
+          Descripción:
+          Este método muestra un cuadro de diálogo para que el usuario seleccione los informes que desea imprimir.
+          Los informes disponibles incluyen 'Informe de conductores' y 'Informe de clientes'.
+          Después de que el usuario elige los informes y hace clic en 'Aceptar', se crean los informes correspondientes
+          y se muestra un mensaje de confirmación. Si no se selecciona ningún informe, se muestra un mensaje de advertencia.
+          """
         try:
             mbox = QtWidgets.QMessageBox()
             mbox.setWindowTitle("Realizar Informe")
@@ -414,5 +511,3 @@ class Eventos:
 
         except Exception as error:
             print("Error en checkbox_informe", error)
-
-

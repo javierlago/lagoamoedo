@@ -21,7 +21,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.setupUi(self)
         var.calendar = Calendar()
         var.acercade = Acerca()
-        var.print_facturas = print_dialog()
+
         var.ventana_salir = SalirVentana()
         var.dlg_abrir = FileDialogAbrir()
         conexion.Conexion.conexion()

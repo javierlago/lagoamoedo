@@ -108,7 +108,7 @@ class Drivers:
                     item.setBackground(QBrush(QColor("#CCA963")))
 
             codigo = var.ui.tabDriver2.item(row, 0).text()
-            if var.ui.tabDriver2.item(row,5).text() != '':
+            if var.ui.tabDriver2.item(row, 5).text() != '':
                 var.ui.frame.show()
             else:
                 var.ui.frame.hide()
@@ -393,8 +393,10 @@ class Drivers:
     @staticmethod
     def cargartabla(registros):
         '''
+
             Metodo para cargar la tabla de los conductores.
             Le pasaremos una lista de conductores que obtenemos de una query de una base de datos.
+
         :param registros:
         :type List
         :return: None
@@ -434,5 +436,7 @@ class Drivers:
                     var.ui.tabDriver2.item(index, 4).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
                     var.ui.tabDriver2.item(index, 5).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
                     index += 1
+
         except Exception as error:
             print("Error completar tabla ", error)
+

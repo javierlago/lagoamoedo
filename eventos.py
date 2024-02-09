@@ -216,9 +216,11 @@ class Eventos:
     @staticmethod
     def limpiar():
         '''
-        Metodo que pone en blanco todos los paneles de la interfaz.Este metodo esta asociado a un boton en el menuBar de la aplicacion.
+
+         Metodo que pone en blanco todos los paneles de la interfaz.Este metodo esta asociado a un boton en el menuBar de la aplicacion.
         :return: None
         :rtype: None.
+
         '''
         try:
             conexion.Conexion.mostrardrivers()
@@ -373,6 +375,7 @@ class Eventos:
         :type self:
         :return: None
         :rtype: None
+
         '''
         try:
             header = var.ui.tabDriver2.horizontalHeader()

@@ -12,6 +12,30 @@ from Facturas import facturacion
 
 class Facturacion_Repository:
 
+
+
+    def recuperar_facturas_segun_dni(dni):
+        try:
+            listado_de_facturas = []
+            query = QtSql.QSqlQuery()
+            query.prepare("select * from facturas where dniCliente = :dniCliente")
+            query.bindValue(":dniCliente", str(dni))
+            if query.exec():
+               while query.next():
+                    registro = [query.value(i) for i in range(query.record().count())]
+                    listado_de_facturas.append(registro)
+
+            if len(listado_de_facturas)==0:
+                Ventanas.Ventanas.mensaje_warning("El cliente no tiene facturas en la base de datos")
+                return
+            else:
+                return listado_de_facturas
+        except Exception as erro:
+            print(erro)
+
+
+
+
     def insert_line_de_viaje(registro):
         """
         Método para insertar una línea de viaje en la base de datos.

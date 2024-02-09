@@ -9,6 +9,7 @@ import conexion
 import drivers
 import eventos
 import Ventanas
+from Facturas import facturacion_repository,facturacion
 
 import var
 from PyQt6 import QtGui, QtWidgets, QtCore
@@ -242,7 +243,7 @@ class Cliente:
             if registro == None:
                 Ventanas.Ventanas.mensaje_warning('El dni no se encuentra en la base de datos')
             else:
-                var.ui.txt_cif_cliente.setText(str(registro[1]))
+                ##var.ui.txt_cif_cliente.setText(str(registro[1]))
                 datos = [var.ui.lblCodDB_Cliente, var.ui.txtDni_3, var.ui.txtRazonSocial, var.ui.txtDireccion_Cliente,
                          var.ui.txtMovil_Cliente, var.ui.cmbProvincia_Cliente,
                          var.ui.cmbLocalidad_Cliente, var.ui.txtDate_Cliente]
@@ -291,7 +292,12 @@ class Cliente:
                 dni = var.ui.txtDni_3.text()
             elif var.ui.txt_cif_cliente != '':
                 dni = var.ui.txt_cif_cliente.text()
+
+
+
             cliente.Cliente.carga_cliente(conexion.Conexion.buscar_segun_dni_cliente(dni))
+            facturacion.Facturacion.cargartabla(facturacion_repository.Facturacion_Repository.recuperar_facturas_segun_dni(dni))
+
             registro = conexion.Conexion.buscar_segun_dni_cliente(dni)
             if registro[7] == '':
                 var.ui.rbtAltaCliente.setChecked(True)

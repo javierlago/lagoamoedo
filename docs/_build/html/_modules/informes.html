@@ -5,37 +5,29 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>informes &#8212; documentación de LagoAmoedo - v:0.0.1</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../_static/classic.css?v=514cf933" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=f63d8bfa" />
+    <link rel="stylesheet" type="text/css" href="../_static/haiku.css?v=e491ac2d" />
     <script src="../_static/documentation_options.js?v=dc1d13be"></script>
     <script src="../_static/doctools.js?v=888ff710"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/translations.js?v=efdbd0b9"></script>
-    
     <link rel="index" title="Índice" href="../genindex.html" />
     <link rel="search" title="Búsqueda" href="../search.html" /> 
   </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navegación</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="Índice General"
-             accesskey="I">índice</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Índice de Módulos Python"
-             >módulos</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">documentación de LagoAmoedo - v:0.0.1</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Código de módulo</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">informes</a></li> 
-      </ul>
-    </div>  
+      <div class="header" role="banner"><h1 class="heading"><a href="../index.html">
+          <span>documentación de LagoAmoedo - v:0.0.1</span></a></h1>
+        <h2 class="heading"><span>informes</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        <a class="uplink" href="../index.html">Contenidos</a>
+        </p>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
+      </div>
+      <div class="content" role="main">
+        
+        
   <h1>Código fuente para informes</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 
@@ -55,6 +47,21 @@
 <div class="viewcode-block" id="informes.reportclientes">
 <a class="viewcode-back" href="../src/informes.html#informes.informes.reportclientes">[documentos]</a>
     <span class="k">def</span> <span class="nf">reportclientes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">           Método para generar un informe en formato PDF de la lista de clientes.</span>
+
+<span class="sd">           :param self: Referencia al objeto actual.</span>
+<span class="sd">           :type self: object</span>
+
+<span class="sd">           :raises: Exception: Se produce si hay algún error durante la ejecución del informe.</span>
+
+<span class="sd">           :return: None</span>
+
+<span class="sd">           Descripción:</span>
+<span class="sd">           Este método genera un informe en formato PDF que contiene una lista de clientes. El informe incluye los siguientes campos:</span>
+<span class="sd">           Código, DNI, Razón social, Municipio, Provincia, y Estado de baja del cliente.</span>
+<span class="sd">           Los datos se obtienen de una base de datos y se ordenan por la razón social del cliente.</span>
+<span class="sd">           &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">contador</span> <span class="o">=</span> <span class="mi">1</span>
             <span class="n">fecha</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
@@ -116,6 +123,21 @@
 <div class="viewcode-block" id="informes.report_conductores">
 <a class="viewcode-back" href="../src/informes.html#informes.informes.report_conductores">[documentos]</a>
     <span class="k">def</span> <span class="nf">report_conductores</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">         Método para generar un informe en formato PDF del listado de conductores.</span>
+
+<span class="sd">         :param self: Referencia al objeto actual.</span>
+<span class="sd">         :type self: object</span>
+
+<span class="sd">         :raises: Exception: Se produce si hay algún error durante la ejecución del informe.</span>
+
+<span class="sd">         :return: None</span>
+
+<span class="sd">         Descripción:</span>
+<span class="sd">         Este método genera un informe en formato PDF que contiene un listado de conductores. El informe incluye los siguientes campos:</span>
+<span class="sd">         Código, Apellidos, Nombre, Móvil, Licencias, y Fecha de baja.</span>
+<span class="sd">         Los datos se obtienen de una base de datos y se ordenan por los apellidos de los conductores.</span>
+<span class="sd">         &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">fecha</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
             <span class="n">fecha</span> <span class="o">=</span> <span class="n">fecha</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y_%m_</span><span class="si">%d</span><span class="s1">_%H_%M_%S&#39;</span><span class="p">)</span>
@@ -170,6 +192,18 @@
 <div class="viewcode-block" id="informes.top_informe">
 <a class="viewcode-back" href="../src/informes.html#informes.informes.top_informe">[documentos]</a>
     <span class="k">def</span> <span class="nf">top_informe</span><span class="p">(</span><span class="n">titulo</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">           Función para agregar el encabezado de un informe en un documento PDF.</span>
+
+<span class="sd">           :param titulo: Título del informe.</span>
+<span class="sd">           :type titulo: str</span>
+
+<span class="sd">           :return: None</span>
+
+<span class="sd">           Descripción:</span>
+<span class="sd">           Esta función agrega el encabezado de un informe en un documento PDF, incluyendo el nombre de la empresa,</span>
+<span class="sd">           el título del informe, el logotipo de la empresa y la información de contacto.</span>
+<span class="sd">           &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
 
             <span class="n">logo</span> <span class="o">=</span> <span class="s1">&#39;.</span><span class="se">\\</span><span class="s1">img</span><span class="se">\\</span><span class="s1">IconoInfome.png&#39;</span>
@@ -194,6 +228,18 @@
 <div class="viewcode-block" id="informes.top_informe_factura">
 <a class="viewcode-back" href="../src/informes.html#informes.informes.top_informe_factura">[documentos]</a>
     <span class="k">def</span> <span class="nf">top_informe_factura</span><span class="p">(</span><span class="n">titulo</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Función para agregar el encabezado de una factura en un documento PDF.</span>
+
+<span class="sd">            :param titulo: Título de la factura.</span>
+<span class="sd">            :type titulo: str</span>
+
+<span class="sd">            :return: None</span>
+
+<span class="sd">            Descripción:</span>
+<span class="sd">            Esta función agrega el encabezado de una factura en un documento PDF, incluyendo el nombre de la empresa,</span>
+<span class="sd">            el título de la factura, el logotipo de la empresa y la información de contacto.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
 
             <span class="n">logo</span> <span class="o">=</span> <span class="s1">&#39;.</span><span class="se">\\</span><span class="s1">img</span><span class="se">\\</span><span class="s1">IconoInfome.png&#39;</span>
@@ -218,7 +264,18 @@
 <div class="viewcode-block" id="informes.foot_informe">
 <a class="viewcode-back" href="../src/informes.html#informes.informes.foot_informe">[documentos]</a>
     <span class="k">def</span> <span class="nf">foot_informe</span><span class="p">(</span><span class="n">titulo</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Función para agregar el pie de página en un documento PDF de informe.</span>
 
+<span class="sd">            :param titulo: Título del informe.</span>
+<span class="sd">            :type titulo: str</span>
+
+<span class="sd">            :return: None</span>
+
+<span class="sd">            Descripción:</span>
+<span class="sd">            Esta función agrega el pie de página en un documento PDF de informe, incluyendo la fecha y hora de creación del informe,</span>
+<span class="sd">            el título del informe y el número de página actual.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">var</span><span class="o">.</span><span class="n">report</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">525</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
             <span class="n">fecha</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
@@ -236,40 +293,15 @@
 
 </pre></div>
 
-            <div class="clearer"></div>
-          </div>
-        </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Búsqueda rápida</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Ir a" />
-    </form>
-    </div>
-</div>
-<script>document.getElementById('searchbox').style.display = "block"</script>
-        </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        <a class="uplink" href="../index.html">Contenidos</a>
+        </p>
+
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navegación</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="Índice General"
-             >índice</a></li>
-        <li class="right" >
-          <a href="../py-modindex.html" title="Índice de Módulos Python"
-             >módulos</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">documentación de LagoAmoedo - v:0.0.1</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="index.html" >Código de módulo</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">informes</a></li> 
-      </ul>
-    </div>
+
     <div class="footer" role="contentinfo">
     &#169; Copyright 2024, Javier.
       Creado usando <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.

@@ -115,7 +115,7 @@
           <enum>QTabWidget::Rounded</enum>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="tabDrivers">
           <property name="sizePolicy">
@@ -4984,8 +4984,8 @@ background-color: rgb(247, 181, 0);</string>
  <resources/>
  <connections/>
  <buttongroups>
+  <buttongroup name="botonesDeCliente"/>
   <buttongroup name="buttonGroup"/>
   <buttongroup name="btn_group_tarifas"/>
-  <buttongroup name="botonesDeCliente"/>
  </buttongroups>
 </ui>

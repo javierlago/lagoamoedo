@@ -28,7 +28,7 @@ class Cliente:
         try:
 
             cliente_baja = cliente.Cliente.recuperar_datos()
-            if cliente_baja.Cliente.validar_datos(cliente_baja):
+            if Cliente.validar_datos(cliente_baja):
                 conexion.Conexion.borrarCliente(cliente_baja[0])
                 conexion.Conexion.mostrarclientes()
             else:

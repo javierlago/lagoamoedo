@@ -2215,6 +2215,12 @@ background-color: rgb(225, 225, 225);</string>
                            <iconset>
                             <normaloff>../img/calendario.png</normaloff>../img/calendario.png</iconset>
                           </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>24</width>
+                            <height>24</height>
+                           </size>
+                          </property>
                          </widget>
                         </item>
                         <item>
@@ -2308,6 +2314,39 @@ background-color: rgb(247, 181, 0);</string>
                            </size>
                           </property>
                          </spacer>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="btn_limpiar_facturas">
+                          <property name="minimumSize">
+                           <size>
+                            <width>24</width>
+                            <height>24</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>24</width>
+                            <height>24</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">border-radius:2px; 
+background-color: rgb(225, 225, 225);</string>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                          <property name="icon">
+                           <iconset>
+                            <normaloff>../img/pincel.png</normaloff>../img/pincel.png</iconset>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>24</width>
+                            <height>24</height>
+                           </size>
+                          </property>
+                         </widget>
                         </item>
                        </layout>
                       </item>
@@ -2873,6 +2912,45 @@ background-color: rgb(247, 181, 0);</string>
                        </size>
                       </property>
                      </spacer>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="btn_limpiar_viajes">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>24</width>
+                        <height>24</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>24</width>
+                        <height>24</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">border-radius:2px; 
+background-color: rgb(225, 225, 225);</string>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="icon">
+                       <iconset>
+                        <normaloff>../img/pincel.png</normaloff>../img/pincel.png</iconset>
+                      </property>
+                      <property name="iconSize">
+                       <size>
+                        <width>24</width>
+                        <height>24</height>
+                       </size>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </item>
@@ -4984,8 +5062,8 @@ background-color: rgb(247, 181, 0);</string>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="botonesDeCliente"/>
   <buttongroup name="buttonGroup"/>
+  <buttongroup name="botonesDeCliente"/>
   <buttongroup name="btn_group_tarifas"/>
  </buttongroups>
 </ui>

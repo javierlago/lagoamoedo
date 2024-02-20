@@ -67,7 +67,7 @@ class Facturacion:
         """
 
         try:
-            if registros==None:
+            if registros == None:
                 var.ui.tab_facturas.setRowCount(0)
             else:
                 index = 0
@@ -373,6 +373,7 @@ class Facturacion:
                 item.setBackground(QBrush(QColor(247, 181, 0)))
                 datos_fila_seleccionada.append(item.text())
         return datos_fila_seleccionada
+
     def limpiar_panel_viajes(self):
         """
         Método para limpiar los campos del panel de viajes.
@@ -397,3 +398,22 @@ class Facturacion:
 
         except Exception as error:
             print("Error en el metodo limpiar panel viajes")
+    @staticmethod
+    def limpiar_panel_facturas(self):
+        try:
+            var.ui.txt_cif_cliente.setText("")
+            var.ui.txt_fecha_factura.setText("")
+            var.ui.txt_numero_factura.setText("")
+            var.ui.cmb_listado_conductores.setCurrentText('')
+        except Exception as error:
+            print("Error al limpiar el panel de facturas", error)
+    @staticmethod
+    def limpiar_panel_solo_viajes(self):
+        try:
+            var.ui.txt_kilometros.setText("")
+            var.ui.cmb_provincia_origen.setCurrentText('')
+            var.ui.cmb_provincia_destino.setCurrentText('')
+            var.ui.cmb_localidad_origen.setCurrentText('')
+            var.ui.cmb_localidad_destino.setCurrentText('')
+        except Exception as error:
+            print("Error al limpiar el panel de facturas", error)

@@ -2,6 +2,7 @@ import locale
 import sys
 from PyQt6.QtWidgets import QApplication
 import cliente
+import informes
 from Facturas.facturacion_informes import Facturacion_informes
 
 from MainWindow import *
@@ -74,6 +75,8 @@ class Main(QtWidgets.QMainWindow):
         var.ui.btn_fecha_factura.clicked.connect(eventos.Eventos.abrir_calendar)
         var.ui.actionAcerca_de.triggered.connect(eventos.Eventos.abrir_acerca_de)
         var.ui.btn_menu_print.triggered.connect(eventos.Eventos.printear_informes)
+        var.ui.btn_limpiar_facturas.clicked.connect(facturacion.Facturacion.limpiar_panel_facturas)
+        var.ui.btn_limpiar_viajes.clicked.connect(facturacion.Facturacion.limpiar_panel_solo_viajes)
 
 
         '''

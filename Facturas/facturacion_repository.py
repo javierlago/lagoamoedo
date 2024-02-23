@@ -183,6 +183,21 @@ class Facturacion_Repository:
             print("Error en el metodo de borrar una linea de viaje",erro)
 
 
+
+    def borrar_factura(num_factura):
+        try:
+            print(num_factura)
+            query_borrar_factura = QtSql.QSqlQuery()
+            query_borrar_factura.prepare('delete from facturas where numFactura = :num_factura')
+            query_borrar_factura.bindValue(':num_factura', num_factura)
+            query_borrar_factura.exec()
+            if query_borrar_factura.exec():
+                print("Se he eliminado el viaje correctamente")
+
+        except Exception as error:
+            print("Error en el metodo de borrado de una factura", error)
+
+
     def comprobarr_factura_existe(id_Factura):
         """
         Método para comprobar si una factura existe en la base de datos.

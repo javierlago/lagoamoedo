@@ -3105,6 +3105,11 @@ background-color: rgb(225, 225, 225);</string>
                     <string>Id Cliente</string>
                    </property>
                   </column>
+                  <column>
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </column>
                  </widget>
                 </item>
                 <item>
@@ -5062,8 +5067,8 @@ background-color: rgb(247, 181, 0);</string>
  <resources/>
  <connections/>
  <buttongroups>
-  <buttongroup name="buttonGroup"/>
-  <buttongroup name="botonesDeCliente"/>
   <buttongroup name="btn_group_tarifas"/>
+  <buttongroup name="botonesDeCliente"/>
+  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>

@@ -105,7 +105,7 @@ class Drivers:
             for c in range(var.ui.tabDriver2.columnCount()):
                 item = var.ui.tabDriver2.item(row, c)
                 if item is not None:
-                    item.setBackground(QBrush(QColor("#CCA963")))
+                    item.setBackground(QBrush(QColor(247, 181, 0)))
 
             codigo = var.ui.tabDriver2.item(row, 0).text()
             if var.ui.tabDriver2.item(row, 5).text() != '':

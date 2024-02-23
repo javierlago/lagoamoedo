@@ -271,7 +271,6 @@ class Eventos:
         except Exception as error:
             print("erro en abrir", error)
 
-
     @staticmethod
     def abrir_acerca_de():
         '''
@@ -489,14 +488,16 @@ class Eventos:
             layout = QtWidgets.QVBoxLayout()
             layout.addWidget(conductorcheck)
             layout.addWidget(clientecheck)
-
             container = QtWidgets.QWidget()
             container.setLayout(layout)
 
             mbox.layout().addWidget(container, 1, 1, 1, mbox.layout().columnCount())
 
+
+
             mbox.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Yes | QtWidgets.QMessageBox.StandardButton.No)
             mbox.button(QtWidgets.QMessageBox.StandardButton.Yes).setText('Aceptar')
+
             mbox.button(QtWidgets.QMessageBox.StandardButton.No).setText('Cancelar')
 
             resultado = mbox.exec()

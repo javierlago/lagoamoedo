@@ -60,10 +60,10 @@ class Facturacion_informes:
                 var.report.line(50, 620, 525, 620)
 
             print_Titulo(items)
-            print(var.ui.tab_facturas.item(var.ui.tab_facturas.currentRow(), 0).text())
+            #print(var.ui.tab_facturas.item(var.ui.tab_facturas.currentRow(), 0).text())
             lineas_de_viajes = Facturacion_Repository.recupera_lineas_de_viaje(
                 var.ui.tab_facturas.item(var.ui.tab_facturas.currentRow(), 0).text())
-            print(lineas_de_viajes)
+            #print(lineas_de_viajes)
             y = 605
             precio_subtotal = 0
             for numerofila, linea_de_viaje in enumerate(lineas_de_viajes):
@@ -81,7 +81,9 @@ class Facturacion_informes:
                 var.report.drawCentredString(255, y, str(linea_de_viaje[2]))  # Destino
                 var.report.drawCentredString(335, y, str(linea_de_viaje[3]))  # Kilometros
                 var.report.drawCentredString(415, y, str(linea_de_viaje[4]))  # Tarifa
-                var.report.drawCentredString(485, y, str((linea_de_viaje[3] * linea_de_viaje[4])))  # Total
+                var.report.drawCentredString(485, y, str(round((linea_de_viaje[3] * linea_de_viaje[4]), 2)))  # Total
+
+
                 precio_subtotal += (linea_de_viaje[3] * linea_de_viaje[4])
                 y -= 20
                 if numerofila == len(lineas_de_viajes) - 1:
@@ -90,9 +92,9 @@ class Facturacion_informes:
                     var.report.drawString(400, y - 30, "IVA 21%:")
                     var.report.drawString(400, y - 50, "Total:")
                     var.report.setFont('Helvetica', size=10)
-                    var.report.drawRightString(500, y - 10, str(round(precio_subtotal,2))+"€")
-                    var.report.drawRightString(500, y - 30, str(round(precio_subtotal*0.21,2))+"€")
-                    var.report.drawRightString(500, y - 50, str(round((precio_subtotal*0.21)+precio_subtotal,2))+"€")
+                    var.report.drawRightString(500, y - 10, str(round(precio_subtotal, 2))+"€")
+                    var.report.drawRightString(500, y - 30, str(round(precio_subtotal*0.21, 2))+"€")
+                    var.report.drawRightString(500, y - 50, str(round((precio_subtotal*0.21)+precio_subtotal, 2))+"€")
 
             var.report.save()
             root_path = '.\\Facturacion\\'
@@ -142,6 +144,6 @@ class Facturacion_informes:
             var.report.drawString(290, 680, str(datos_cliente_factura[6]))
 
         except Exception as e:
-            print("Eror a la hora de printear los datos de un cliente",e)
+            print("Erorr a la hora de printear los datos de un cliente",e)
 
 

@@ -67,16 +67,25 @@ class Facturacion:
         """
 
         try:
+
             if registros == None:
                 var.ui.tab_facturas.setRowCount(0)
             else:
                 index = 0
+
                 for registro in registros:
                     var.ui.tab_facturas.setRowCount(index + 1)
                     var.ui.tab_facturas.setItem(index, 0, QtWidgets.QTableWidgetItem(str(registro[0])))
                     var.ui.tab_facturas.setItem(index, 1, QtWidgets.QTableWidgetItem(str(registro[1])))
+                    btn_borrar_linea = QtWidgets.QPushButton()
+                    btn_borrar_linea.setFixedSize(30, 28)
+                    btn_borrar_linea.setIcon(QtGui.QIcon('./img/papelera.png'))
+                    btn_borrar_linea.clicked.connect(Facturacion.eliminar_linea_factura)
+                    var.ui.tab_facturas.setCellWidget(index, 2, btn_borrar_linea)
                     var.ui.tab_facturas.item(index, 0).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
                     var.ui.tab_facturas.item(index, 1).setTextAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+                    var.ui.tab_facturas.horizontalHeader().setSectionResizeMode(2,
+                                                                                QHeaderView.ResizeMode.ResizeToContents)
 
                     index += 1
         except Exception as error:
@@ -265,6 +274,7 @@ class Facturacion:
         """
 
         try:
+
             mensaje = QMessageBox()
             mensaje.setText("¿Deseas eliminar este viaje?")
             mensaje.setWindowTitle("Lineas de viaje")
@@ -272,7 +282,6 @@ class Facturacion:
             mensaje.setStandardButtons(QMessageBox.StandardButton.Ok | QMessageBox.StandardButton.Cancel)
             resultado = mensaje.exec()
             if resultado == QMessageBox.StandardButton.Ok:
-                print(var.ui.tab_lineas_de_viaje.item(var.ui.tab_lineas_de_viaje.currentRow(), 0).text())
                 facturacion_repository.Facturacion_Repository.borra_linea_de_viaje(
                     var.ui.tab_lineas_de_viaje.item(var.ui.tab_lineas_de_viaje.currentRow(), 0).text())
                 var.ui.tab_lineas_de_viaje.removeRow(var.ui.tab_lineas_de_viaje.currentRow())
@@ -398,6 +407,7 @@ class Facturacion:
 
         except Exception as error:
             print("Error en el metodo limpiar panel viajes")
+
     @staticmethod
     def limpiar_panel_facturas(self):
         try:
@@ -407,6 +417,7 @@ class Facturacion:
             var.ui.cmb_listado_conductores.setCurrentText('')
         except Exception as error:
             print("Error al limpiar el panel de facturas", error)
+
     @staticmethod
     def limpiar_panel_solo_viajes(self):
         try:
@@ -417,3 +428,19 @@ class Facturacion:
             var.ui.cmb_localidad_destino.setCurrentText('')
         except Exception as error:
             print("Error al limpiar el panel de facturas", error)
+
+    def eliminar_linea_factura(self):
+        try:
+            mensaje = QMessageBox()
+            mensaje.setText("¿Deseas eliminar esta factura?")
+            mensaje.setWindowTitle("Facturas")
+            mensaje.setIcon(QMessageBox.Icon.Warning)
+            mensaje.setStandardButtons(QMessageBox.StandardButton.Ok | QMessageBox.StandardButton.Cancel)
+            resultado = mensaje.exec()
+            print(var.ui.tab_facturas.item(var.ui.tab_facturas.currentRow(), 0).text())
+            if resultado == QMessageBox.StandardButton.Ok:
+                facturacion_repository.Facturacion_Repository.borrar_factura(
+                    var.ui.tab_facturas.item(var.ui.tab_facturas.currentRow(), 0).text())
+                var.ui.tab_facturas.removeRow(var.ui.tab_facturas.currentRow())
+        except Exception as error:
+            print("Error en el metodo eliminar_linea_factura",error)

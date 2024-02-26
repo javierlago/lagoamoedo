@@ -4911,10 +4911,11 @@ background-color: rgb(247, 181, 0);</string>
     <addaction name="actionCrear_Copia_Seguridad"/>
     <addaction name="actionRestarurar_Copia"/>
     <addaction name="separator"/>
-    <addaction name="actionExportar_Datos_XLS"/>
     <addaction name="actionImportar_Datos_XLS"/>
+    <addaction name="actionExportar_Datos_XLS"/>
     <addaction name="separator"/>
     <addaction name="actionImportar_Datos_Cliente_XLS"/>
+    <addaction name="actionExportar_Datos_Cliente_XLS"/>
    </widget>
    <widget class="QMenu" name="menuInformes">
     <property name="title">
@@ -5000,12 +5001,12 @@ background-color: rgb(247, 181, 0);</string>
   </action>
   <action name="actionExportar_Datos_XLS">
    <property name="text">
-    <string>Exportar Datos XLS</string>
+    <string>Exportar DatosConductores  XLS</string>
    </property>
   </action>
   <action name="actionImportar_Datos_XLS">
    <property name="text">
-    <string>Importar Datos XLS</string>
+    <string>Importar Datos Conductores XLS</string>
    </property>
   </action>
   <action name="actionImportar_Datos_Cliente_XLS">
@@ -5044,6 +5045,11 @@ background-color: rgb(247, 181, 0);</string>
     <string>Imprimir Factura</string>
    </property>
   </action>
+  <action name="actionExportar_Datos_Cliente_XLS">
+   <property name="text">
+    <string>Exportar Datos Cliente XLS</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>btnBajaDriver</tabstop>
@@ -5067,8 +5073,8 @@ background-color: rgb(247, 181, 0);</string>
  <resources/>
  <connections/>
  <buttongroups>
+  <buttongroup name="buttonGroup"/>
   <buttongroup name="btn_group_tarifas"/>
   <buttongroup name="botonesDeCliente"/>
-  <buttongroup name="buttonGroup"/>
  </buttongroups>
 </ui>

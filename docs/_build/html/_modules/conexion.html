@@ -540,7 +540,33 @@
             <span class="k">return</span> <span class="n">registro</span>
 
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error al buscar segun dni: &quot;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error al recuperar los conductores: &quot;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Conexion.select_all_clients">
+<a class="viewcode-back" href="../src/conexion.html#conexion.Conexion.select_all_clients">[documentos]</a>
+    <span class="k">def</span> <span class="nf">select_all_clients</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">                  Realiza una consulta para obtener todos los registros de clientes en la base de datos.</span>
+
+<span class="sd">                  :return: Lista de listas que contiene los registros de clientes.</span>
+<span class="sd">                  :rtype: list</span>
+<span class="sd">                  &#39;&#39;&#39;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">registro_de_clientes</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">query</span> <span class="o">=</span> <span class="n">QtSql</span><span class="o">.</span><span class="n">QSqlQuery</span><span class="p">()</span>
+            <span class="n">query</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="s2">&quot;select * from listadoClientes &quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">query</span><span class="o">.</span><span class="n">exec</span><span class="p">():</span>
+                <span class="k">while</span> <span class="n">query</span><span class="o">.</span><span class="n">next</span><span class="p">():</span>
+                    <span class="n">cliente</span><span class="o">=</span><span class="p">[</span><span class="n">query</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">query</span><span class="o">.</span><span class="n">record</span><span class="p">()</span><span class="o">.</span><span class="n">count</span><span class="p">())]</span>
+                    <span class="n">registro_de_clientes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cliente</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">registro_de_clientes</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span> <span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error al recuperar los clientes: &quot;</span><span class="p">,</span><span class="n">error</span><span class="p">)</span></div>
+
+
+
 
 
 <div class="viewcode-block" id="Conexion.guardarCliente">

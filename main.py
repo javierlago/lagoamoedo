@@ -2,6 +2,7 @@ import locale
 import sys
 from PyQt6.QtWidgets import QApplication
 import cliente
+import eventos
 import informes
 from Facturas.facturacion_informes import Facturacion_informes
 
@@ -136,6 +137,7 @@ class Main(QtWidgets.QMainWindow):
         var.ui.Salir.triggered.connect(eventos.Eventos.show_salir)
         var.ui.btnLimpiar.triggered.connect(eventos.Eventos.limpiar)
         var.ui.actionExportar_Datos_XLS.triggered.connect(eventos.Eventos.exportar_datos_xls)
+        var.ui.actionExportar_Datos_Cliente_XLS.triggered.connect(eventos.Eventos.exportar_datos_xls_cliente)
         var.ui.actionImportar_Datos_XLS.triggered.connect(eventos.Eventos.importar_datos)
         var.ui.actionImportar_Datos_Cliente_XLS.triggered.connect(eventos.Eventos.importar_datos_clientes)
         '''

@@ -460,7 +460,30 @@ class Conexion:
             return registro
 
         except Exception as error:
-            print("Error al buscar segun dni: ", error)
+            print("Error al recuperar los conductores: ", error)
+
+    def select_all_clients(self):
+        '''
+                  Realiza una consulta para obtener todos los registros de clientes en la base de datos.
+
+                  :return: Lista de listas que contiene los registros de clientes.
+                  :rtype: list
+                  '''
+
+        try:
+            registro_de_clientes = []
+            query = QtSql.QSqlQuery()
+            query.prepare("select * from listadoClientes ")
+            if query.exec():
+                while query.next():
+                    cliente=[query.value(i) for i in range(query.record().count())]
+                    registro_de_clientes.append(cliente)
+            return registro_de_clientes
+        except Exception as error :
+            print("Error al recuperar los clientes: ",error)
+
+
+
 
     @staticmethod
     def guardarCliente(nuevoCliente):

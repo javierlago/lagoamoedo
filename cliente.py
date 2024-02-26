@@ -9,7 +9,7 @@ import conexion
 import drivers
 import eventos
 import Ventanas
-from Facturas import facturacion_repository,facturacion
+from Facturas import facturacion_repository, facturacion
 
 import var
 from PyQt6 import QtGui, QtWidgets, QtCore
@@ -121,7 +121,6 @@ class Cliente:
 
                 if dni[0] in dig_ext:
                     dni = dni.replace(dni[0], reemp_dig_ext[dni[0]])
-
 
                 if len(dni) == len([n for n in dni if n in numeros]) and tabla[int(dni) % 23] == dig_control:
 
@@ -293,10 +292,10 @@ class Cliente:
             elif var.ui.txt_cif_cliente != '':
                 dni = var.ui.txt_cif_cliente.text()
 
-
-
             cliente.Cliente.carga_cliente(conexion.Conexion.buscar_segun_dni_cliente(dni))
-            facturacion.Facturacion.cargartabla(facturacion_repository.Facturacion_Repository.recuperar_facturas_segun_dni(dni))
+            if var.ui.txt_cif_cliente.text() != '':
+                facturacion.Facturacion.cargartabla(
+                    facturacion_repository.Facturacion_Repository.recuperar_facturas_segun_dni(dni))
 
             registro = conexion.Conexion.buscar_segun_dni_cliente(dni)
             if registro[7] == '':
@@ -314,7 +313,7 @@ class Cliente:
                         if current_item is not None:
                             current_item.setBackground(brush)
                             objetivo = current_item
-            if objetivo !=None:
+            if objetivo != None:
                 var.ui.tabClientes.scrollToItem(objetivo)
         except Exception as error:
             print("Error al cargar segun el DNI", error)

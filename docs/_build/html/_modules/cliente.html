@@ -40,6 +40,7 @@
 <span class="kn">import</span> <span class="nn">drivers</span>
 <span class="kn">import</span> <span class="nn">eventos</span>
 <span class="kn">import</span> <span class="nn">Ventanas</span>
+<span class="kn">from</span> <span class="nn">Facturas</span> <span class="kn">import</span> <span class="n">facturacion_repository</span><span class="p">,</span> <span class="n">facturacion</span>
 
 <span class="kn">import</span> <span class="nn">var</span>
 <span class="kn">from</span> <span class="nn">PyQt6</span> <span class="kn">import</span> <span class="n">QtGui</span><span class="p">,</span> <span class="n">QtWidgets</span><span class="p">,</span> <span class="n">QtCore</span>
@@ -62,7 +63,7 @@
         <span class="k">try</span><span class="p">:</span>
 
             <span class="n">cliente_baja</span> <span class="o">=</span> <span class="n">cliente</span><span class="o">.</span><span class="n">Cliente</span><span class="o">.</span><span class="n">recuperar_datos</span><span class="p">()</span>
-            <span class="k">if</span> <span class="n">cliente_baja</span><span class="o">.</span><span class="n">Cliente</span><span class="o">.</span><span class="n">validar_datos</span><span class="p">(</span><span class="n">cliente_baja</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">Cliente</span><span class="o">.</span><span class="n">validar_datos</span><span class="p">(</span><span class="n">cliente_baja</span><span class="p">):</span>
                 <span class="n">conexion</span><span class="o">.</span><span class="n">Conexion</span><span class="o">.</span><span class="n">borrarCliente</span><span class="p">(</span><span class="n">cliente_baja</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
                 <span class="n">conexion</span><span class="o">.</span><span class="n">Conexion</span><span class="o">.</span><span class="n">mostrarclientes</span><span class="p">()</span>
             <span class="k">else</span><span class="p">:</span>
@@ -167,7 +168,6 @@
 
                 <span class="k">if</span> <span class="n">dni</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">dig_ext</span><span class="p">:</span>
                     <span class="n">dni</span> <span class="o">=</span> <span class="n">dni</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">dni</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">reemp_dig_ext</span><span class="p">[</span><span class="n">dni</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
-
 
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dni</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">([</span><span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">dni</span> <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">numeros</span><span class="p">])</span> <span class="ow">and</span> <span class="n">tabla</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">dni</span><span class="p">)</span> <span class="o">%</span> <span class="mi">23</span><span class="p">]</span> <span class="o">==</span> <span class="n">dig_control</span><span class="p">:</span>
 
@@ -301,7 +301,7 @@
             <span class="k">if</span> <span class="n">registro</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">Ventanas</span><span class="o">.</span><span class="n">Ventanas</span><span class="o">.</span><span class="n">mensaje_warning</span><span class="p">(</span><span class="s1">&#39;El dni no se encuentra en la base de datos&#39;</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txt_cif_cliente</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">registro</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+                <span class="c1">##var.ui.txt_cif_cliente.setText(str(registro[1]))</span>
                 <span class="n">datos</span> <span class="o">=</span> <span class="p">[</span><span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">lblCodDB_Cliente</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDni_3</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtRazonSocial</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDireccion_Cliente</span><span class="p">,</span>
                          <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtMovil_Cliente</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">cmbProvincia_Cliente</span><span class="p">,</span>
                          <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">cmbLocalidad_Cliente</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDate_Cliente</span><span class="p">]</span>
@@ -353,7 +353,12 @@
                 <span class="n">dni</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txtDni_3</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
             <span class="k">elif</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txt_cif_cliente</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
                 <span class="n">dni</span> <span class="o">=</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txt_cif_cliente</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+
             <span class="n">cliente</span><span class="o">.</span><span class="n">Cliente</span><span class="o">.</span><span class="n">carga_cliente</span><span class="p">(</span><span class="n">conexion</span><span class="o">.</span><span class="n">Conexion</span><span class="o">.</span><span class="n">buscar_segun_dni_cliente</span><span class="p">(</span><span class="n">dni</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">txt_cif_cliente</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+                <span class="n">facturacion</span><span class="o">.</span><span class="n">Facturacion</span><span class="o">.</span><span class="n">cargartabla</span><span class="p">(</span>
+                    <span class="n">facturacion_repository</span><span class="o">.</span><span class="n">Facturacion_Repository</span><span class="o">.</span><span class="n">recuperar_facturas_segun_dni</span><span class="p">(</span><span class="n">dni</span><span class="p">))</span>
+
             <span class="n">registro</span> <span class="o">=</span> <span class="n">conexion</span><span class="o">.</span><span class="n">Conexion</span><span class="o">.</span><span class="n">buscar_segun_dni_cliente</span><span class="p">(</span><span class="n">dni</span><span class="p">)</span>
             <span class="k">if</span> <span class="n">registro</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
                 <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">rbtAltaCliente</span><span class="o">.</span><span class="n">setChecked</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
@@ -370,7 +375,7 @@
                         <span class="k">if</span> <span class="n">current_item</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
                             <span class="n">current_item</span><span class="o">.</span><span class="n">setBackground</span><span class="p">(</span><span class="n">brush</span><span class="p">)</span>
                             <span class="n">objetivo</span> <span class="o">=</span> <span class="n">current_item</span>
-            <span class="k">if</span> <span class="n">objetivo</span> <span class="o">!=</span><span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">objetivo</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
                 <span class="n">var</span><span class="o">.</span><span class="n">ui</span><span class="o">.</span><span class="n">tabClientes</span><span class="o">.</span><span class="n">scrollToItem</span><span class="p">(</span><span class="n">objetivo</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error al cargar segun el DNI&quot;</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span></div>

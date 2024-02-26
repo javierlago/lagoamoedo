@@ -158,6 +158,7 @@ class Eventos:
                 sheet1.write(0, 11, 'Fecha baja')
 
                 registros = conexion.Conexion.select_all_driver(self)
+                print(registros)
 
                 for j, registro in enumerate(registros, 1):
                     for i, valor in enumerate(registro):
@@ -168,6 +169,41 @@ class Eventos:
 
         except Exception as error:
             Ventanas.Ventanas.mensaje_warning("Error exportar datos en hoja de calculo", error)
+
+    def exportar_datos_xls_cliente(self):
+        '''
+        Metodo para expottar datos de los clientes.
+        :return: None
+        :rtype: None
+        '''
+        try:
+            fecha = datetime.today()
+            fecha = fecha.strftime('%Y_%m_%d_%H_%M_%S')
+            file = (str(fecha) + 'DatosClientes.xls')
+            directorio, filename = var.dlg_abrir.getSaveFileName(None, 'Exportar datos en XLS', file, '.xls')
+            if var.dlg_abrir.accept and filename != '':
+                wb = xlwt.Workbook()
+                sheet1 = wb.add_sheet('clientes')
+                sheet1.write(0, 0, 'DNI')
+                sheet1.write(0, 1, 'RAZON')
+                sheet1.write(0, 2, 'Direccion')
+                sheet1.write(0, 3, 'Telefono')
+                sheet1.write(0, 4, 'Provincia')
+                sheet1.write(0, 5, 'Municipio')
+                sheet1.write(0, 6, 'Baja Cliente')
+
+                registro_de_cliente = conexion.Conexion.select_all_clients(self)
+
+                for j, registro_de_cliente in enumerate(registro_de_cliente,1):
+                    for i, valor in enumerate(registro_de_cliente[1:]):
+                         sheet1.write(j, i, valor)
+                wb.save(directorio)
+            Ventanas.Ventanas.ventana_info("Se ha exportado los datos correctamente")
+
+
+        except Exception as error:
+            Ventanas.Ventanas.mensaje_warning("Error exportar datos en hoja de calculo", error)
+
 
     def restaurar_back_up(self):
         '''

@@ -133,7 +133,7 @@ class Facturacion:
             for c in range(var.ui.tab_facturas.columnCount()):
                 item = var.ui.tab_facturas.item(row, c)
                 if item is not None:
-                    item.setBackground(QBrush(QColor(247, 181, 0)))
+                    item.setBackground(QBrush(QColor(243, 220, 173)))
             registro = conexion.Conexion.buscar_segun_codigo(codigo)
             var.ui.txt_numero_factura.setText(var.ui.tab_facturas.item(row, 0).text())
             var.ui.txt_cif_cliente.setText(var.ui.tab_facturas.item(row, 1).text())
@@ -346,7 +346,7 @@ class Facturacion:
             for colunm_number in range(var.ui.tab_lineas_de_viaje.columnCount()):
                 item = var.ui.tab_lineas_de_viaje.item(row_number, colunm_number)
                 if item is not None:
-                    item.setBackground(QBrush(QColor(247, 181, 0)))
+                    item.setBackground(QBrush(QColor(243, 220, 173)))
             provincia_origen = conexion.Conexion.provincia_segun_municipio(datos_fila_seleccionada[1])
             provincia_destino = conexion.Conexion.provincia_segun_municipio(datos_fila_seleccionada[2])
             var.ui.cmb_provincia_origen.setCurrentText(provincia_origen)
@@ -379,7 +379,7 @@ class Facturacion:
         for colunm_number in range(var.ui.tab_lineas_de_viaje.columnCount()):
             item = var.ui.tab_lineas_de_viaje.item(row_number, colunm_number)
             if item is not None:
-                item.setBackground(QBrush(QColor(247, 181, 0)))
+                item.setBackground(QBrush(QColor(243, 220, 173)))
                 datos_fila_seleccionada.append(item.text())
         return datos_fila_seleccionada
 

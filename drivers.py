@@ -76,7 +76,7 @@ class Drivers:
             for row in range(var.ui.tabDriver2.rowCount()):
                 item = var.ui.tabDriver2.item(row, 0)
                 if item and item.text() == str(registro[0]):
-                    brush = QColor(247, 181, 0)
+                    brush = QColor(243, 220, 173)
                     for col in range(var.ui.tabDriver2.columnCount()):
                         current_item = var.ui.tabDriver2.item(row, col)
                         if current_item is not None:
@@ -105,7 +105,7 @@ class Drivers:
             for c in range(var.ui.tabDriver2.columnCount()):
                 item = var.ui.tabDriver2.item(row, c)
                 if item is not None:
-                    item.setBackground(QBrush(QColor(247, 181, 0)))
+                    item.setBackground(QBrush(QColor(243, 220, 173)))
 
             codigo = var.ui.tabDriver2.item(row, 0).text()
             if var.ui.tabDriver2.item(row, 5).text() != '':

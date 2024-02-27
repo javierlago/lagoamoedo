@@ -662,8 +662,8 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.btnaltaDriver.sizePolicy().hasHeightForWidth())
         self.btnaltaDriver.setSizePolicy(sizePolicy)
-        self.btnaltaDriver.setMinimumSize(QtCore.QSize(150, 24))
-        self.btnaltaDriver.setMaximumSize(QtCore.QSize(150, 24))
+        self.btnaltaDriver.setMinimumSize(QtCore.QSize(75, 24))
+        self.btnaltaDriver.setMaximumSize(QtCore.QSize(75, 24))
         font = QtGui.QFont()
         font.setFamily("Alef")
         font.setPointSize(10)
@@ -681,8 +681,8 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.btnModifDriver.sizePolicy().hasHeightForWidth())
         self.btnModifDriver.setSizePolicy(sizePolicy)
-        self.btnModifDriver.setMinimumSize(QtCore.QSize(150, 24))
-        self.btnModifDriver.setMaximumSize(QtCore.QSize(150, 24))
+        self.btnModifDriver.setMinimumSize(QtCore.QSize(75, 24))
+        self.btnModifDriver.setMaximumSize(QtCore.QSize(75, 24))
         font = QtGui.QFont()
         font.setFamily("Alef")
         font.setPointSize(10)
@@ -700,8 +700,8 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.btnBajaDriver.sizePolicy().hasHeightForWidth())
         self.btnBajaDriver.setSizePolicy(sizePolicy)
-        self.btnBajaDriver.setMinimumSize(QtCore.QSize(150, 24))
-        self.btnBajaDriver.setMaximumSize(QtCore.QSize(150, 24))
+        self.btnBajaDriver.setMinimumSize(QtCore.QSize(75, 24))
+        self.btnBajaDriver.setMaximumSize(QtCore.QSize(75, 24))
         font = QtGui.QFont()
         font.setFamily("Alef")
         font.setPointSize(10)
@@ -753,12 +753,16 @@ class Ui_MainWindow(object):
 "\n"
 " QTableView {\n"
 " selection-background-color: rgb(247, 181, 0);\n"
+"\n"
+"\n"
 "}\n"
 "\n"
 "\n"
 "")
         self.tabDriver2.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
-        self.tabDriver2.setLineWidth(0)
+        self.tabDriver2.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
+        self.tabDriver2.setLineWidth(2)
+        self.tabDriver2.setMidLineWidth(2)
         self.tabDriver2.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.NoEditTriggers)
         self.tabDriver2.setDragDropMode(QtWidgets.QAbstractItemView.DragDropMode.NoDragDrop)
         self.tabDriver2.setAlternatingRowColors(True)
@@ -2006,7 +2010,6 @@ class Ui_MainWindow(object):
         self.toolBar.addAction(self.Salir)
         self.toolBar.addSeparator()
         self.menuArchivo.addAction(self.actionSalir)
-        self.menuArchivo.addAction(self.actionHerramientas)
         self.menuHelp.addAction(self.actionAcerca_de)
         self.menuHerramientas.addAction(self.actionCrear_Copia_Seguridad)
         self.menuHerramientas.addAction(self.actionRestarurar_Copia)
@@ -2026,7 +2029,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.PanPrincipal.setCurrentIndex(1)
+        self.PanPrincipal.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.btnBajaDriver, self.txtDni)
         MainWindow.setTabOrder(self.txtDni, self.txtDate)
@@ -2072,6 +2075,7 @@ class Ui_MainWindow(object):
         self.btnaltaDriver.setText(_translate("MainWindow", "Alta"))
         self.btnModifDriver.setText(_translate("MainWindow", "Modificar"))
         self.btnBajaDriver.setText(_translate("MainWindow", "Baja"))
+        self.tabDriver2.setSortingEnabled(False)
         item = self.tabDriver2.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Codigo"))
         item = self.tabDriver2.horizontalHeaderItem(1)
